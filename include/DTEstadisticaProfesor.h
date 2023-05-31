@@ -5,9 +5,12 @@ using namespace std;
 class DTEstadisticaProfesor{
     private:
         string Curso;
-        string Avance;
-        string Promedio;
+        integer Avance;
+        integer Promedio;
     public:
         DTEstadisticaProfesor(string Curso, string Avance, string Promedio);
+        string getNombreCurso();
+        integer getAvance();
+        integer getPromedio();
 
 }

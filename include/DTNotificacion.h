@@ -8,4 +8,6 @@ class DTNotificacion{
         string NombreIdioma;
     public:
         DTNotificacion(string NombreCurso, string NombreIdioma);
+        string getNombreCurso();
+        string getNombreIdioma();
 }
