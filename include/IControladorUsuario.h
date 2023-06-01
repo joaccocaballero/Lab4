@@ -3,13 +3,13 @@
 using namespace std;
 #include "DTEstadisticaProfesor.h"
 #include "DTEstadisticaEstudiante.h"
-#include "DTNoticias.h"
+#include "DTNotificacion.h"
 #include "Usuario.h"
 
 class IcontroladorUsuario{
     virtual void altaProfesor()= 0;
-    virtual boolean confirmarAltaProfesor()= 0;
-    virtual boolean confirmarAltaErofesor()= 0;
+    virtual bool confirmarAltaProfesor()= 0;
+    virtual bool confirmarAltaErofesor()= 0;
     virtual void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descrpcion)= 0;
     virtual void ingresarPaisResidencia(string nombre)= 0;
     virtual set<string> obtenerIdiomasDisponibles()= 0;
@@ -23,7 +23,7 @@ class IcontroladorUsuario{
     virtual set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname)= 0;
     virtual set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname)= 0;
     virtual set<Idioma> obtenerSubscripcionesPendientes(string Nickname)= 0;
-    virtual set<DTNoticias> obtenerNotificaciones(Nickname: string) = 0;
+    virtual set<DTNotificacion> obtenerNotificaciones(Nickname: string) = 0;
     
     virtual ~IcontroladorUsuario(){};
 }
