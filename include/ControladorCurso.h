@@ -1,4 +1,5 @@
 #include <string>
+#include <set>
 #include "Usuario.h"
 #include "DTEstadisticaCurso.h"
 #include "IControladorCurso.h"

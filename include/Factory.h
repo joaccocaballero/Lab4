@@ -1,10 +1,11 @@
 
-#include "IcontroladorUsuarios.h"
-#include "IcontroladorCursos.h"
+#include "IControladorUsuario.h"
+#include "IControladorCurso.h"
 
 class Factory{
     private: 
     public: 
-        getIControladorUsuarios();
-        getIControladorCursos();
+        IControladorUsuario getIControladorUsuarios();
+        IControladorCurso getIControladorCursos();
+        ~Factory();
 }

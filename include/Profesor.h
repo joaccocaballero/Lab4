@@ -14,4 +14,5 @@ class Profesor: public Usuario {
         void AgregarEspecializacion(Idioma idioma);
         set<string> consultarIdiomasProfesor();
         set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
+        ~Profesor();
 }

@@ -8,4 +8,5 @@ class Inscripcion {
         bool    Aprobacion;
     public:
         integer obtenerIdInscripcion()
+        ~Inscripcion();
 }

@@ -1,5 +1,6 @@
 #include <string>
 #include "Curso.h"
+#include "Idioma.h"
 #include "Ejercicio.h"
 
 class ManejadorCurso {

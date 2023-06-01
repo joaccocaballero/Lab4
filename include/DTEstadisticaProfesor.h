@@ -8,7 +8,7 @@ class DTEstadisticaProfesor{
         integer Avance;
         integer Promedio;
     public:
-        DTEstadisticaProfesor(string Curso, string Avance, string Promedio);
+        DTEstadisticaProfesor(string Curso, integer Avance, integer Promedio);
         string getNombreCurso();
         integer getAvance();
         integer getPromedio();

@@ -16,4 +16,5 @@ class Usuario {
         string obtenerNickname();
         void Notificar(DTNotificacion Notificacion);
         set<DTNotificacion> obtenerNotificaciones(string Nickname);
+        virtual ~Usuario();
 }

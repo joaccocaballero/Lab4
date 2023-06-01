@@ -3,7 +3,7 @@
 #include "Usuario.h"
 #include "DTEstadisticaEstudiante.h"
 #include "DTEstadisticaProfesor.h"
-#include "DTNotificaciones.h"
+#include "DTNotificacion.h"
 
 
 class ManejadorUsuario {

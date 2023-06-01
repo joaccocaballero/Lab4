@@ -1,6 +1,7 @@
 #include <string>
 #include <set>
 #include "Usuario.h"
+#include "Idioma.h"
 
 using namespace std;
 
@@ -12,4 +13,5 @@ class Idioma{
         string obtenerNombre();
         void NuevoCurso(Curso curso);
         set<Idioma> obtenerSuscripcionesPendientes(Nickname string);
+        ~Idioma();
 }
