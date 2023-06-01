@@ -8,10 +8,11 @@ enum EnumDificultad { Principiante, Medio, Avanzado };
 class Curso {
     private:
         bool habilitacion;
+        string nombre;
         string descripcion;
         EnumDificultad dificultad;
     public:
-        Curso(bool habilitacion, string descripcion, EnumDificultad dificultad);
+        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad);
         string obtenerNombre();
         set<Leccion> obtenerLecciones();
         set<string> obtenerEjerciciosPendientes(string nombre);
