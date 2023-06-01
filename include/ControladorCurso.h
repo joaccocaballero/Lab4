@@ -2,8 +2,10 @@
 #include "Usuario.h"
 #include "DTEstadisticaCurso.h"
 
-namespace std;
-//incluir enums
+using namespace std;
+
+enum EnumDificultad { Principiante, Medio, Avanzado };
+
 class ControladorCurso {
     private:
         static ControladorCurso * instancia;

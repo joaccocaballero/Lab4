@@ -1,7 +1,7 @@
 #include <string>
 #include "Leccion.h"
 #include "DTEstadisticaCurso.h"
-namespace std;
+using namespace std;
 
 enum EnumDificultad { Principiante, Medio, Avanzado };
 

@@ -1,6 +1,6 @@
 #include <string>
 
-namespace std;
+using namespace std;
 
 enum EnumEjercicios {Traducir, CompletarFrase};
 

@@ -1,6 +1,6 @@
 #include <string>
 #include "Ejercicio.h"
-namespace std
+using namespace std;
 
 class Traducir: public Ejercicio {
     public: 

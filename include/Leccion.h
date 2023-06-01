@@ -1,5 +1,5 @@
 #include <string>
-namespace std;
+using namespace std;
 
 class Leccion {
     public:

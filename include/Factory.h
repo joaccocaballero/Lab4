@@ -5,6 +5,6 @@
 class Factory{
     private: 
     public: 
-        getIControladorUsuarios() 
-        getIControladorCursos()
+        getIControladorUsuarios();
+        getIControladorCursos();
 }

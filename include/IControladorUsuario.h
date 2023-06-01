@@ -10,7 +10,7 @@ class IcontroladorUsuario{
     virtual void altaProfesor()= 0;
     virtual bool confirmarAltaProfesor()= 0;
     virtual bool confirmarAltaErofesor()= 0;
-    virtual void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descrpcion)= 0;
+    virtual void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion)= 0;
     virtual void ingresarPaisResidencia(string nombre)= 0;
     virtual set<string> obtenerIdiomasDisponibles()= 0;
     virtual set<string> obtenerProfesores()= 0;
