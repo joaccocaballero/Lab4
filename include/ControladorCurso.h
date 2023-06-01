@@ -1,12 +1,13 @@
 #include <string>
 #include "Usuario.h"
 #include "DTEstadisticaCurso.h"
+#include "IControladorCurso.h"
 
 using namespace std;
 
 enum EnumDificultad { Principiante, Medio, Avanzado };
 
-class ControladorCurso {
+class ControladorCurso : public IControladorCurso {
     private:
         static ControladorCurso * instancia;
         ControladorCurso();
