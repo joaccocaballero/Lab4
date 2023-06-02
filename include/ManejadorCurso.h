@@ -1,4 +1,5 @@
 #include <string>
+#include <map>
 #include "Curso.h"
 #include "Idioma.h"
 #include "Ejercicio.h"
@@ -6,6 +7,7 @@
 class ManejadorCurso {
     private:
         static ManejadorCurso * instancia;
+        map<string, Curso> ColeccionDeCursos;
         ManejadorCurso();
     public:
         static ManejadorCurso * getInstancia();
