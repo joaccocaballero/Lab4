@@ -1,14 +1,17 @@
 #include <string>
 #include <set>
+#include <map>
 #include "Usuario.h"
 #include "DTEstadisticaEstudiante.h"
 #include "DTEstadisticaProfesor.h"
 #include "DTNotificacion.h"
 
+using namespace std;
 
 class ManejadorUsuario {
     private:
         static ManejadorUsuario * manejadorU;
+        map<string, Usuario*> ColeccionDeUsuarios;
         ManejadorUsuario();
     public:
         static ManejadorUsuario * getManejadorU();

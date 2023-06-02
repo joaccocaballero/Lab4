@@ -4,6 +4,7 @@
 #include <string>
 #include <set>
 using namespace std;
+
 enum EnumEjercicios { Traducir, CompletarFrase };
 
 class CompletarFrase : public Ejercicio {

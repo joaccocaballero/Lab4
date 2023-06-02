@@ -4,6 +4,7 @@ using namespace std;
 #include "DTEstadisticaProfesor.h"
 #include "DTEstadisticaEstudiante.h"
 #include "DTNotificacion.h"
+#include "ControladorUsuario.h"
 #include "Usuario.h"
 
 class IcontroladorUsuario{
@@ -24,6 +25,7 @@ class IcontroladorUsuario{
     virtual set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname)= 0;
     virtual set<Idioma> obtenerSubscripcionesPendientes(string Nickname)= 0;
     virtual set<DTNotificacion> obtenerNotificaciones(Nickname: string) = 0;
+    virtual ControladorUsuario getInstancia() = 0;
     
     virtual ~IcontroladorUsuario(){};
 }

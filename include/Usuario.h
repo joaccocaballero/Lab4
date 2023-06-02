@@ -1,7 +1,6 @@
 
 #include <set>
 #include <string>
-
 #include "DTNotificacion.h"
 using namespace std;
 
@@ -11,6 +10,7 @@ class Usuario {
         string Contrasenia;
         string Nombre;
         string Descripcion;
+        set<DTNotificacion> Notificaciones;
     public:
         Usuario(string Nickname, string Contrasenia, string Nombre, string Descripcion);
         string obtenerNickname();

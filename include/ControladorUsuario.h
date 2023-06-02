@@ -1,20 +1,23 @@
 #include <string>
 #include <set>
-
 #include "DTEstadisticaEstudiante.h"
 #include "DTEstadisticaProfesor.h"
 #include "DTNotificacion.h"
 #include "Usuario.h"
+#include "ManejadorIdioma.h"
+#include "ManejadorUsuario.h"
+
 
 using namespace std;
 
 class ControladorUsuario : public IControladorUsuario {
     private:
-    static ControladorUsuario* instancia;
+    static ControladorUsuario * instancia;
+    ManejadorIdioma * manejadorIdioma;
+    ManejadorUsuario * manejadorUsuario;
     ControladorUsuario();
-
     public:
-        static ControladorUsuario* getInstancia();
+        static ControladorUsuario * getInstancia();
          void altaProfesor();
          bool confirmarAltaProfesor();
          bool confirmarAltaErofesor();

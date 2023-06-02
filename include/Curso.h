@@ -1,5 +1,7 @@
 #include <string>
+#include <set>
 #include "Leccion.h"
+#include "Idioma.h"
 #include "DTEstadisticaCurso.h"
 using namespace std;
 
@@ -11,7 +13,9 @@ class Curso {
         string nombre;
         string descripcion;
         EnumDificultad dificultad;
-    public:
+        Idioma * IdiomaEnseñado;
+        set<Leccion*> Lecciones;
+       public:
         Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad);
         string obtenerNombre();
         set<Leccion> obtenerLecciones();

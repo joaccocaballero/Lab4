@@ -10,6 +10,7 @@ using namespace std;
 class Profesor: public Usuario {
     private:
         string Instituto;
+        set<Idioma*> Especializaciones;
     public:
         void AgregarEspecializacion(Idioma idioma);
         set<string> consultarIdiomasProfesor();

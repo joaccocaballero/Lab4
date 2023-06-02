@@ -1,6 +1,7 @@
 #include <string>
 #include "Usuario.h"
 #include "DTEstadisticaCurso.h"
+#include "ControladorCurso.h"
 
 using namespace std;
 
@@ -27,5 +28,6 @@ class IControladorCurso {
         virtual bool validarEjercicio() = 0;
         virtual set<string> obtenerCursos() = 0;
         virtual DTEstadisticaCurso obtenerEstadisticaCurso(string nombre) = 0;
+        virtual ControladorCurso getInstancia() = 0;
         virtual ~IControladorCurso(){};
 }

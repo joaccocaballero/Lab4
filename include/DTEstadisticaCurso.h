@@ -19,7 +19,7 @@ class DTEstadisticaCurso {
  public:
     DTEstadisticaCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
         string Idioma, string Profesor, string Habilitacion, set<Leccion> Lecciones,
-        set<Inscripcion> Inscripciones, integer Avance)
+        set<Inscripcion> Inscripciones, integer Avance);
     string getNombreCurso();
     string getDescripcionCurso();
     EnumDificultad getDificultad();
