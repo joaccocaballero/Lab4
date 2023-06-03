@@ -21,17 +21,14 @@ class Idioma{
     public:
         Idioma(string Nombre);
         void AgregarSuscriptor(IObserver);
-        void RemoverSuscriptor()
+        void RemoverSuscriptor();
         string obtenerNombre();
         void NuevoCurso(Curso curso);
         set<Idioma> obtenerSuscripcionesPendientes(string Nickname);
         ~Idioma();
 };
 
-<<<<<<< HEAD
-=======
 #include "Usuario.h"
 #include "Curso.h"
 
->>>>>>> 0df75013558da927cdc2eb538cca6b875247e2a8
 #endif

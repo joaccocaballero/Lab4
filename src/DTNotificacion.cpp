@@ -6,8 +6,8 @@ DTNotificacion::DTNotificacion(string NombreCurso, string NombreIdioma){
     this->NombreIdioma = NombreIdioma;
 }
 string DTNotificacion::getNombreCurso(){
-    return this->NombreCurso;
+    return NombreCurso;
 }
 string DTNotificacion::getNombreIdioma(){
-    return this->NombreIdioma;
+    return NombreIdioma;
 }

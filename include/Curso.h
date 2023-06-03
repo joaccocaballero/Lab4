@@ -25,16 +25,10 @@ class Curso {
         string obtenerNombre();
         set<Leccion> obtenerLecciones();
         set<string> obtenerEjerciciosPendientes(string nombre);
-        DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
-<<<<<<< HEAD
-        ~Curso()
-};
-
-=======
+        DTEstadisticaCurso* obtenerEstadisticaCurso(string nombre);
         ~Curso();
 };
 
 #include "DTEstadisticaCurso.h"
 
->>>>>>> 0df75013558da927cdc2eb538cca6b875247e2a8
 #endif

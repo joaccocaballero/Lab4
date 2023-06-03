@@ -24,8 +24,11 @@ set<string> Curso::obtenerEjerciciosPendientes(string nombre){
     return ejercicios;
 }
 
-DTEstadisticaCurso Curso::obtenerEstadisticaCurso(string nombre){
-    DTEstadisticaCurso estadisticas = new DTEstadisticaCurso("a","a",1);
+DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){
+    set<Inscripcion> inscriptos;
+    set<Leccion> lecciones = this->obtenerLecciones();
+    int avance = 10;
+    DTEstadisticaCurso* estadisticas = new DTEstadisticaCurso("a","a",Principiante,"idioma", "profe", "false", lecciones, inscriptos, avance);
     return estadisticas;
 }
 

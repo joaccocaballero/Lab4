@@ -28,13 +28,12 @@ class ControladorUsuario : public IControladorUsuario {
     Usuario * UsuarioRecordado;
     set<Idioma *> SuscripcionesUsuario;
     set<Idioma *> SuscripcionesPendientesUsuario;
-    
     ControladorUsuario();
     public:
         static ControladorUsuario * getInstancia();
          void altaProfesor();
          bool confirmarAltaProfesor();
-         bool confirmarAltaErofesor();
+         bool confirmarAltaEstudiante();
          void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion);
          void ingresarPaisResidencia(string nombre);
          set<string> obtenerIdiomasDisponibles();
@@ -48,7 +47,7 @@ class ControladorUsuario : public IControladorUsuario {
          set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname);
          set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
          set<Idioma> obtenerSubscripcionesPendientes(string Nickname);
-         set<DTNotificacion> obtenerNotificaciones(Nickname: string);
+         set<DTNotificacion> obtenerNotificaciones(string Nickname);
          ~ControladorUsuario(){};
     };
 

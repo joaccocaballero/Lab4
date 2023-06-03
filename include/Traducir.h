@@ -9,9 +9,9 @@
 using namespace std;
 
 class Traducir: public Ejercicio {
-    public: 
+    private: 
         string solucion;
-    private:
+    public:
         Traducir(int id, string consigna, EnumEjercicios tipo, bool aprobacion, string solucion);
         virtual bool esCorrecto(string sol);
         ~Traducir();

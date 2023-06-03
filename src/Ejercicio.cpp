@@ -15,5 +15,7 @@ string Ejercicio::getNombre(){
 EnumEjercicios Ejercicio::obtenerTipo(){
     return this->tipo;
 }
-virtual bool Ejercicio::esCorrecto(){}
-virtual Ejercicio::~Ejercicio(){}
+bool Ejercicio::esCorrecto(){
+    return true;
+}
+Ejercicio::~Ejercicio(){}

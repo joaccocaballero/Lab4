@@ -2,9 +2,6 @@
 #ifndef _DTESTADISTICAPROFESOR
 #define _DTESTADISTICAPROFESOR
 
-#ifndef DTESTADISTICAPROFESOR
-#define DTESTADISTICAPROFESOR
-
 #include <string>
 using namespace std;
 

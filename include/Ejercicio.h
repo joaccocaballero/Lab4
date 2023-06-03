@@ -9,12 +9,12 @@ using namespace std;
 enum EnumEjercicios {Traducir, CompletarFrase};
 
 class Ejercicio {
-    public:
+    private:
         int id;
         string consigna;
         EnumEjercicios tipo;
         bool aprobacion;
-    private:
+    public:
         Ejercicio(int id, string consigna, EnumEjercicios tipo, bool aprobacion);
         string getNombre();
         EnumEjercicios obtenerTipo();

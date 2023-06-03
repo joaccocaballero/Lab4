@@ -3,6 +3,8 @@
 #include <set>
 #include <string>
 #include "DTNotificacion.h"
+#include "IObserver.h"
+
 using namespace std;
 
 class Usuario : public IObserver {

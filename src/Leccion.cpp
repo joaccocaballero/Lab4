@@ -18,7 +18,7 @@
 #include "../include/Ejercicio.h"
 
 
-Leccion Leccion::Leccion(string tema, string objetivo, bool aprobacion):tema(tema),objetivo(objetivo),aprobacion(aprobacion){
+Leccion::Leccion(string tema, string objetivo, bool aprobacion):tema(tema),objetivo(objetivo),aprobacion(aprobacion){
 }
 
 set<Ejercicio> Leccion::obtenerEjercicios(){
@@ -29,9 +29,9 @@ set<string> Leccion::obtenerEjerciciosPendientes(){
     set<string> string;
     return string;
 }
-DTEjercicio Leccion::obtenerEjerciciosLeccion(int id, l Leccion){
-    DTEjercicio ejercicio = new DTEjercicio("sa");
-    return ejercicio
+DTEjercicio Leccion::obtenerEjerciciosLeccion(int id, Leccion l){
+    DTEjercicio ejercicio = DTEjercicio("sa");
+    return ejercicio;
 }
 
 Leccion::~Leccion(){}
