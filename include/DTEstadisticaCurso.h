@@ -1,7 +1,11 @@
+#pragma once
+#ifndef _DTESTADISTICACURSO
+#define _DTESTADISTICACURSO
 
 #include <string>
+#include "Curso.h"
+
 using namespace std;
-enum EnumDificultad { Principiante, Medio, Avanzado };
 
 class Leccion;
 class Inscripcion;
@@ -14,13 +18,13 @@ class DTEstadisticaCurso {
     string Idioma;
     string Profesor;
     string Habilitacion;
-    set<DTLeccion> Lecciones;
-    set<DTInscripcion> Inscripciones;
-    integer Avance;
+    set<Leccion> Lecciones;
+    set<Inscripcion> Inscripciones;
+    int Avance;
  public:
     DTEstadisticaCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
         string Idioma, string Profesor, string Habilitacion, set<Leccion> Lecciones,
-        set<Inscripcion> Inscripciones, integer Avance);
+        set<Inscripcion> Inscripciones, int Avance);
     string getNombreCurso();
     string getDescripcionCurso();
     EnumDificultad getDificultad();
@@ -29,5 +33,10 @@ class DTEstadisticaCurso {
     string getHabilitacion();
     set<Leccion> getLecciones();
     set<Inscripcion> getInscripciones();
-    integer getAvance();
+    int getAvance();
 };
+
+#include "Leccion.h"
+#include "Inscripcion.h"
+
+#endif

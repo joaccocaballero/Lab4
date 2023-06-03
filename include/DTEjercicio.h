@@ -1,3 +1,6 @@
+#pragma once
+#ifndef _DTEJERCICIO
+#define _DTEJERCICIO
 
 #include <string>
 using namespace std;
@@ -9,3 +12,5 @@ class DTEjercicio{
         DTEjercicio(string NombreEjercicio);
         string getNombreEjercicio();
 };
+
+#endif

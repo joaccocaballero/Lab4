@@ -21,7 +21,7 @@ set<Leccion> Curso::obtenerLecciones(){
 
 set<string> Curso::obtenerEjerciciosPendientes(string nombre){
     set<string> ejercicios;
-    return ejercicios
+    return ejercicios;
 }
 
 DTEstadisticaCurso Curso::obtenerEstadisticaCurso(string nombre){

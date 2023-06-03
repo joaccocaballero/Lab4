@@ -7,7 +7,7 @@ using namespace std;
 
 DTEstadisticaCurso::DTEstadisticacurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
         string Idioma, string Profesor, string Habilitacion, set<Leccion> Lecciones,
-        set<Inscripcion> Inscripciones, integer Avance){
+        set<Inscripcion> Inscripciones, int Avance){
     this->Nombre = Nombre;
     this->Desrcipcion = Descripcion;
     this->Dificultad = Dificultad;
@@ -42,6 +42,6 @@ set<Leccion> getLecciones(){
 set<Inscripcion> getInscripciones(){
     return this->Inscripciones;
 }
-integer getAvance(){
+int getAvance(){
     return this->Nombre;
 }

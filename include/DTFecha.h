@@ -1,3 +1,7 @@
+#pragma once
+#ifndef _DTFECHA
+#define _DTFECHA
+
 class DTFecha{
     private:
         int Dia;
@@ -9,3 +13,5 @@ class DTFecha{
         int getMes();
         int getAnio();
 };
+
+#endif

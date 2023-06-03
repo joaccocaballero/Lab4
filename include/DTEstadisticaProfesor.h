@@ -1,3 +1,6 @@
+#pragma once
+#ifndef _DTESTADISTICAPROFESOR
+#define _DTESTADISTICAPROFESOR
 
 #include <string>
 using namespace std;
@@ -5,12 +8,14 @@ using namespace std;
 class DTEstadisticaProfesor{
     private:
         string Curso;
-        integer Avance;
-        integer Promedio;
+        int Avance;
+        int Promedio;
     public:
-        DTEstadisticaProfesor(string Curso, integer Avance, integer Promedio);
+        DTEstadisticaProfesor(string Curso, int Avance, int Promedio);
         string getNombreCurso();
-        integer getAvance();
-        integer getPromedio();
+        int getAvance();
+        int getPromedio();
 
 };
+
+#endif

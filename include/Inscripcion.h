@@ -1,18 +1,25 @@
+#pragma once
+#ifndef _INSCRIPCION
+#define _INSCRIPCION
+
 
 #include "DTFecha.h"
 #include "Curso.h"
 
-class Curso;
 class Estudiante;
 
 class Inscripcion {
     private:
-        integer id;
+        int id;
         DTFecha Fecha;
         bool    Aprobacion;
         Curso * CursoInscripcion;
         Estudiante * EstudianteInscrito;
     public:
-        integer obtenerIdInscripcion();
+        int obtenerIdInscripcion();
         ~Inscripcion();
 };
+
+#include "../include/Estudiante.h"
+
+#endif
