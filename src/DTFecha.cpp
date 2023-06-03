@@ -6,11 +6,11 @@ DTFecha::DTFecha(int Dia, int Mes, int Anio){
     this->Mes = Mes;
 }
 int DTFecha::getDia(){
-    return this->Dia;
+    return Dia;
 }
 int DTFecha::getMes(){
-    return this->Mes;
+    return Mes;
 }
 int DTFecha::getAnio(){
-    return this->Anio;
+    return Dia;
 }

@@ -2,10 +2,6 @@
 #ifndef _INSCRIPCION
 #define _INSCRIPCION
 
-
-#ifndef INSCRIPCION
-#define INSCRIPCION
-
 #include "DTFecha.h"
 #include "Curso.h"
 

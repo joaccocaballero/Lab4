@@ -9,12 +9,11 @@ DTEstadisticaProfesor::DTEstadisticaProfesor(string Curso, int Avance, int Prome
     this->Promedio = Promedio;
 }
 string DTEstadisticaProfesor::getNombreCurso(){
-    return this->Curso;
+    return Curso;
 }
 int DTEstadisticaProfesor::getAvance(){
-    return this->Avance;
-
+    return Avance;
 }
 int DTEstadisticaProfesor::getPromedio(){
-    return this->Promedio;
+    return Promedio;
 }

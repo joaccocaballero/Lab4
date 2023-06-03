@@ -8,8 +8,8 @@ DTEstadisticaEstudiante::DTEstadisticaEstudiante(string Curso, int avance){
     this->Curso = Curso;
 }
 string DTEstadisticaEstudiante::getNombreCurso(){
-    return this->Curso;
+    return Curso;
 }
 int DTEstadisticaEstudiante::getAvance(){
-    return this->Avance;
+    return Avance;
 }

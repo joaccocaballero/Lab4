@@ -20,7 +20,7 @@ class Idioma{
         map<string, IObserver> Suscriptores;
     public:
         void AgregarSuscriptor(IObserver);
-        void RemoverSuscriptor()
+        void RemoverSuscriptor();
         string obtenerNombre();
         void NuevoCurso(Curso curso);
         set<Idioma> obtenerSuscripcionesPendientes(string Nickname);
