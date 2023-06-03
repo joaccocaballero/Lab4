@@ -31,9 +31,6 @@ class ManejadorUsuario {
         set<string> obtenerProfesores();
         set<DTEstadisticaProfesor> obtenerEstadisticasProfesor(string Nickname);
         set<DTNotificacion> obtenerNotificaciones(string Nickname);
-
-
-
 };
 
 #endif

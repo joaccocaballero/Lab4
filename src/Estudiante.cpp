@@ -1,7 +1,8 @@
 
 #include <set>
 #include <string>
-
+ 
+#include "../include/Estudiante.h"
 #include "../include/Idioma.h"
 #include "../include/DTFecha.h"
 
