@@ -19,6 +19,7 @@ class Idioma{
         string Nombre;
         map<string, IObserver> Suscriptores;
     public:
+        Idioma(string Nombre);
         void AgregarSuscriptor(IObserver);
         void RemoverSuscriptor()
         string obtenerNombre();

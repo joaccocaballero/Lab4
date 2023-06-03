@@ -17,7 +17,7 @@ class ManejadorCurso {
   ManejadorCurso();
 
  public:
-  static ManejadorCurso* getInstancia();
+  static ManejadorCurso* getManejadorC();
   bool existeNickname(string nickname);
   void agregarCurso(Curso c);
   set<string> obtenerHabilitados();

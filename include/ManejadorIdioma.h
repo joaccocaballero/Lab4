@@ -11,7 +11,7 @@ using namespace std;
 
 class ManejadorIdioma {
     private:
-        static ManejadorIdioma * manejadorI;
+        static ManejadorIdioma * instancia;
         map<string, Idioma*> ColeccionDeIdiomas;
         ManejadorIdioma();
     public:
