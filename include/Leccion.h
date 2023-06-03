@@ -9,18 +9,18 @@
 using namespace std;
 
 class Leccion {
-    public:
+    private:
         string tema;
         string objetivo;
         bool aprobacion;
         set<Ejercicio*> Ejercicios;
 
-    private:
+    public:
         Leccion(string tema, string objetivo, bool aprobacion);
         set<Ejercicio> obtenerEjercicios();
         set<string> obtenerEjerciciosPendientes();
         DTEjercicio obtenerEjerciciosLeccion(int id, Leccion l);
-        ~Leccion();
+        virtual ~Leccion();
 };
 
 #endif
