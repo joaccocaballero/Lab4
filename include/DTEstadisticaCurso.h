@@ -33,16 +33,10 @@ class DTEstadisticaCurso {
     string getHabilitacion();
     set<Leccion> getLecciones();
     set<Inscripcion> getInscripciones();
-<<<<<<< HEAD
-    integer getAvance();
-};
-
-=======
     int getAvance();
 };
 
 #include "Leccion.h"
 #include "Inscripcion.h"
 
->>>>>>> 0df75013558da927cdc2eb538cca6b875247e2a8
 #endif

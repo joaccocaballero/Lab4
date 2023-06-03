@@ -16,7 +16,7 @@ DTEstadisticaCurso::DTEstadisticacurso(string Nombre, string Descripcion, EnumDi
     this->Habilitacion = Habilitacion,
     this->Lecciones = Lecciones,
     this->Inscripciones = Inscripciones,
-    this->Avance = Avance            
+    this->Avance = Avance;            
 }
 string getNombreCurso(){
     return this->Nombre;

@@ -27,10 +27,7 @@ class Idioma{
         ~Idioma();
 };
 
-<<<<<<< HEAD
-=======
 #include "Usuario.h"
 #include "Curso.h"
 
->>>>>>> 0df75013558da927cdc2eb538cca6b875247e2a8
 #endif
