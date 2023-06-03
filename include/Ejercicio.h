@@ -16,4 +16,4 @@ class Ejercicio {
         EnumEjercicios obtenerTipo();
         virtual bool esCorrecto();
         virtual ~Ejercicio();
-}
+};

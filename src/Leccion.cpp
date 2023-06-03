@@ -14,6 +14,8 @@
 #include <string>
 #include <set>
 #include "../include/Leccion.h"
+#include "../include/DTEjercicio.h"
+#include "../include/Ejercicio.h"
 
 
 Leccion Leccion::Leccion(string tema, string objetivo, bool aprobacion):tema(tema),objetivo(objetivo),aprobacion(aprobacion){

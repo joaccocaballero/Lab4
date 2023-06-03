@@ -1,12 +1,11 @@
-
 class DTFecha{
     private:
-        integer Dia;
-        integer Mes;
-        integer Anio;
+        int Dia;
+        int Mes;
+        int Anio;
     public:
-        DTFecha(integer Dia, integer Mes, integer Anio);
-        integer getDia();
-        integer getMes();
-        integer getAnio();
+        DTFecha(int Dia, int Mes, int Anio);
+        int getDia();
+        int getMes();
+        int getAnio();
 };
