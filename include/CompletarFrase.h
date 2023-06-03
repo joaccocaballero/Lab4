@@ -1,10 +1,11 @@
-#ifndef COMPLETARFRASE
-#define COMPLETARFRASE
-
-#include <string>
-#include "Ejercicio.h"
+#pragma once
+#ifndef _COMPLETAREJERCICIO
+#define _COMPLETAREJERCICIO
 #include <string>
 #include <set>
+
+#include "Ejercicio.h"
+
 using namespace std;
 
 class CompletarFrase : public Ejercicio {

@@ -1,5 +1,6 @@
-#ifndef DTNOTIFICACION
-#define DTNOTIFICACION
+#pragma once
+#ifndef _DTNOTIFICACION
+#define _DTNOTIFICACION
 
 #include <string>
 using namespace std;

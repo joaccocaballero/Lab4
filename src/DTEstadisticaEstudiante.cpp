@@ -3,13 +3,13 @@
 
 using namespace std;
 
-DTEstadisticaEstudiante::DTEstadisticaEstudiante(string Curso, integer avance){
+DTEstadisticaEstudiante::DTEstadisticaEstudiante(string Curso, int avance){
     this->Avance = avance;
     this->Curso = Curso;
 }
 string DTEstadisticaEstudiante::getNombreCurso(){
     return this->Curso;
 }
-integer DTEstadisticaEstudiante::getAvance(){
+int DTEstadisticaEstudiante::getAvance(){
     return this->Avance;
 }

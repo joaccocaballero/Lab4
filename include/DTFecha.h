@@ -1,5 +1,6 @@
-#ifndef DTFECHA
-#define DTFECHA
+#pragma once
+#ifndef _DTFECHA
+#define _DTFECHA
 
 class DTFecha{
     private:

@@ -1,5 +1,6 @@
-#ifndef EJERCICIO
-#define EJERCICIO
+#pragma once
+#ifndef _EJERCICIO
+#define _EJERCICIO
 
 #include <string>
 

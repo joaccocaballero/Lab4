@@ -1,5 +1,6 @@
-#ifndef DTESTADISTICAESTUDIANTE
-#define DTESTADISTICAESTUDIANTE
+#pragma once
+#ifndef _DTESTADISTICAESTUDIANTE
+#define _DTESTADISTICAESTUDIANTE
 
 #include <string>
 using namespace std;
@@ -7,11 +8,11 @@ using namespace std;
 class DTEstadisticaEstudiante {
     private:
         string Curso;
-        integer Avance;
+        int Avance;
     public: 
-        DTEstadisticaEstudiante(string Curso, integer avance);
+        DTEstadisticaEstudiante(string Curso, int avance);
         string getNombreCurso();
-        integer getAvance();
+        int getAvance();
 };
 
 #endif

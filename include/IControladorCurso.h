@@ -1,14 +1,14 @@
-#ifndef ICONTROLADORCURSO
-#define ICONTROLADORCURSO
+#pragma once
+#ifndef _ICONTROLADORCURSO
+#define _ICONTROLADORCURSO
 
 #include <string>
 #include "Usuario.h"
+#include "Curso.h"
 #include "DTEstadisticaCurso.h"
 #include "ControladorCurso.h"
 
 using namespace std;
-
-enum EnumDificultad { Principiante, Medio, Avanzado };
 
 class IControladorCurso {
     public:

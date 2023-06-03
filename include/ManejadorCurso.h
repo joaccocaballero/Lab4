@@ -1,5 +1,6 @@
-#ifndef MANEJADORCURSO
-#define MANEJADORCURSO
+#pragma once
+#ifndef _MANEJADORCURSO
+#define _MANEJADORCURSO
 
 #include <string>
 #include <map>

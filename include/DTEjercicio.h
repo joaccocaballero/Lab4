@@ -1,5 +1,6 @@
-#ifndef DTEJERCICIO
-#define DTEJERCICIO
+#pragma once
+#ifndef _DTEJERCICIO
+#define _DTEJERCICIO
 
 #include <string>
 using namespace std;
@@ -8,7 +9,7 @@ class DTEjercicio{
     private:
         string NombreEjercicio;
     public:
-        DTNotificacion(string NombreEjercicio);
+        DTEjercicio(string NombreEjercicio);
         string getNombreEjercicio();
 };
 

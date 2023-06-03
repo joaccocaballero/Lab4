@@ -5,7 +5,6 @@
 #include <set>
 #include "DTEstadisticaEstudiante.h"
 #include "DTEstadisticaProfesor.h"
-#include "DTNotificacion.h"
 #include "Usuario.h"
 #include "Idioma.h"
 #include "ManejadorIdioma.h"

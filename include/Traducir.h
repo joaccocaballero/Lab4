@@ -1,12 +1,12 @@
-#ifndef TRADUCIR
-#define TRADUCIR
+#pragma once
+#ifndef _TRADUCIR
+#define _TRADUCIR
 
 #include <set>
 #include <string>
 
 #include "Ejercicio.h"
 using namespace std;
-enum EnumEjercicios { Traducir, CompletarFrase };
 
 class Traducir: public Ejercicio {
     public: 

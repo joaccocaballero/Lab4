@@ -1,5 +1,6 @@
-#ifndef IDIOMA
-#define IDIOMA
+#pragma once
+#ifndef _IDIOMA
+#define _IDIOMA
 
 #include <string>
 #include <set>
@@ -10,6 +11,9 @@
 
 using namespace std;
 
+class Usuario;
+class Curso;
+
 class Idioma{
     private:
         string Nombre;
@@ -19,8 +23,14 @@ class Idioma{
         void RemoverSuscriptor()
         string obtenerNombre();
         void NuevoCurso(Curso curso);
-        set<Idioma> obtenerSuscripcionesPendientes(Nickname string);
+        set<Idioma> obtenerSuscripcionesPendientes(string Nickname);
         ~Idioma();
 };
 
+<<<<<<< HEAD
+=======
+#include "Usuario.h"
+#include "Curso.h"
+
+>>>>>>> 0df75013558da927cdc2eb538cca6b875247e2a8
 #endif
