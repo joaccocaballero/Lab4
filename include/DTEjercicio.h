@@ -6,6 +6,6 @@ class DTEjercicio{
     private:
         string NombreEjercicio;
     public:
-        DTNotificacion(string NombreEjercicio);
+        DTEjercicio(string NombreEjercicio);
         string getNombreEjercicio();
 };

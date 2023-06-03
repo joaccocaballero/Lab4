@@ -1,9 +1,10 @@
 
 #include <string>
-#include "Leccion.h"
-#include "Inscripcion.h"
 using namespace std;
 enum EnumDificultad { Principiante, Medio, Avanzado };
+
+class Leccion;
+class Inscripcion;
 
 class DTEstadisticaCurso {
  private:

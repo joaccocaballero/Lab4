@@ -1,7 +1,9 @@
 
 #include "DTFecha.h"
-#include "Estudiante.h"
 #include "Curso.h"
+
+class Curso;
+class Estudiante;
 
 class Inscripcion {
     private:

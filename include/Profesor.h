@@ -7,6 +7,8 @@
 
 using namespace std;
 
+class Idioma;
+
 class Profesor: public Usuario {
     private:
         string Instituto;
