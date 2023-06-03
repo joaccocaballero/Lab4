@@ -22,4 +22,4 @@ class ManejadorIdioma {
         set<Idioma> obtenerSuscripcionesPendientes(string Nickname);
         
 
-}
+};

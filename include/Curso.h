@@ -22,4 +22,4 @@ class Curso {
         set<string> obtenerEjerciciosPendientes(string nombre);
         DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
         ~Curso()
-}
+};

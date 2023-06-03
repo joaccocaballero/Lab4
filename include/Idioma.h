@@ -16,4 +16,4 @@ class Idioma{
         void NuevoCurso(Curso curso);
         set<Idioma> obtenerSuscripcionesPendientes(Nickname string);
         ~Idioma();
-}
+};

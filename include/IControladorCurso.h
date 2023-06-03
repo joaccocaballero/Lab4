@@ -30,4 +30,4 @@ class IControladorCurso {
         virtual DTEstadisticaCurso obtenerEstadisticaCurso(string nombre) = 0;
         virtual ControladorCurso getInstancia() = 0;
         virtual ~IControladorCurso(){};
-}
+};

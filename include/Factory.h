@@ -10,4 +10,4 @@ class Factory{
         IControladorUsuario getIControladorUsuarios();
         IControladorCurso getIControladorCursos();
         ~Factory();
-}
+};

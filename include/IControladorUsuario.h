@@ -28,4 +28,4 @@ class IcontroladorUsuario{
     virtual ControladorUsuario getInstancia() = 0;
     
     virtual ~IcontroladorUsuario(){};
-}
+};

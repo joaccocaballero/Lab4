@@ -14,4 +14,4 @@ class Traducir: public Ejercicio {
         virtual bool esCorrecto(string sol);
         ~Traducir();
         
-}
+};

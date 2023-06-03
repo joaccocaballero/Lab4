@@ -26,4 +26,4 @@ class ManejadorCurso {
   DTEjercicio obtenerEjercicio(int id);
   bool respuestaEjercicio(string sol);
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
-}
+};

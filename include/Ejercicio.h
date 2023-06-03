@@ -13,7 +13,7 @@ class Ejercicio {
     private:
         Ejercicio(int id, string consigna, EnumEjercicios tipo, bool aprobacion);
         string getNombre();
-        EnumEjercicio obtenerTipo();
+        EnumEjercicios obtenerTipo();
         virtual bool esCorrecto();
         virtual ~Ejercicio();
 }

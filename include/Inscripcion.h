@@ -13,4 +13,4 @@ class Inscripcion {
     public:
         integer obtenerIdInscripcion();
         ~Inscripcion();
-}
+};

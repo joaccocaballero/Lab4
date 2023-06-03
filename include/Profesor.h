@@ -16,4 +16,4 @@ class Profesor: public Usuario {
         set<string> consultarIdiomasProfesor();
         set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
         ~Profesor();
-}
+};

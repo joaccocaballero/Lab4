@@ -10,4 +10,4 @@ class DTNotificacion{
         DTNotificacion(string NombreCurso, string NombreIdioma);
         string getNombreCurso();
         string getNombreIdioma();
-}
+};

@@ -16,4 +16,4 @@ class Estudiante: public Usuario {
         void obtenerInscripciones();
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string nickname);
         ~Estudiante();
-}
+};

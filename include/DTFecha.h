@@ -9,4 +9,4 @@ class DTFecha{
         integer getDia();
         integer getMes();
         integer getAnio();
-}
+};

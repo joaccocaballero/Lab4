@@ -36,4 +36,4 @@ class ControladorCurso : public IControladorCurso {
         set<string> obtenerCursos() ;
         DTEstadisticaCurso obtenerEstadisticaCurso(string nombre) ;
         ~ControladorCurso(){};
-}
+};

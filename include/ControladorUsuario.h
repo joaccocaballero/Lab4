@@ -36,4 +36,4 @@ class ControladorUsuario : public IControladorUsuario {
          set<Idioma> obtenerSubscripcionesPendientes(string Nickname);
          set<DTNotificacion> obtenerNotificaciones(Nickname: string);
          ~ControladorUsuario(){};
-    }
+    };

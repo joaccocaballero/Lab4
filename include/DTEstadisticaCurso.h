@@ -29,4 +29,4 @@ class DTEstadisticaCurso {
     set<Leccion> getLecciones();
     set<Inscripcion> getInscripciones();
     integer getAvance();
-    }
+};

@@ -12,8 +12,8 @@ class Leccion {
 
     private:
         Leccion(string tema, string objetivo, bool aprobacion);
-        set<Ejercicios> obtenerEjercicios();
+        set<Ejercicio> obtenerEjercicios();
         set<string> obtenerEjerciciosPendientes();
         DTEjercicio obtenerEjerciciosLeccion(int id, l Leccion);
         ~Leccion()
-}
+};

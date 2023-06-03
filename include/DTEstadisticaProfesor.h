@@ -13,4 +13,4 @@ class DTEstadisticaProfesor{
         integer getAvance();
         integer getPromedio();
 
-}
+};
