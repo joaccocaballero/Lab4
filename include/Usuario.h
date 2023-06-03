@@ -1,11 +1,11 @@
-
+#ifndef USUARIO
+#define USUARIO
 #include <set>
 #include <string>
 #include "DTNotificacion.h"
 using namespace std;
 
-class Usuario {
-    private: 
+class Usuario : public IObserver {
         string Nickname;
         string Contrasenia;
         string Nombre;
@@ -18,3 +18,5 @@ class Usuario {
         set<DTNotificacion> obtenerNotificaciones(string Nickname);
         virtual ~Usuario();
 };
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef ICONTROLADORUSUARIO
+#define ICONTROLADORUSUARIO
 
 #include <string>
 using namespace std;
@@ -29,3 +31,5 @@ class IcontroladorUsuario{
     
     virtual ~IcontroladorUsuario(){};
 };
+
+#endif

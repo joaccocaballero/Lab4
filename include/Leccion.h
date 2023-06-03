@@ -1,3 +1,6 @@
+#ifndef LECCION
+#define LECCION
+
 #include <string>
 #include <set>
 #include "Ejercicio.h"
@@ -17,3 +20,5 @@ class Leccion {
         DTEjercicio obtenerEjerciciosLeccion(int id, l Leccion);
         ~Leccion()
 };
+
+#endif

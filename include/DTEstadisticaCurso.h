@@ -1,3 +1,5 @@
+#ifndef DTESTADISTICACURSO
+#define DTESTADISTICACURSO
 
 #include <string>
 #include "Leccion.h"
@@ -30,3 +32,5 @@ class DTEstadisticaCurso {
     set<Inscripcion> getInscripciones();
     integer getAvance();
 };
+
+#endif

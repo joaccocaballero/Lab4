@@ -1,9 +1,14 @@
+#ifndef CONTROLADORCURSO
+#define CONTROLADORCURSO
+
 #include <string>
 #include <set>
 #include "Usuario.h"
+#include "Curso.h"
 #include "DTEstadisticaCurso.h"
 #include "IControladorCurso.h"
 #include "ManejadorCurso.h"
+#include "Idioma.h"
 
 using namespace std;
 
@@ -13,6 +18,18 @@ class ControladorCurso : public IControladorCurso {
     private:
         static ControladorCurso * instancia;
         ManejadorCurso * manejadorCurso;
+        string Nombre;
+        string Descripcion;
+        EnumDificultad Dificultad;
+        string NicknameProfesor;
+        set<string> CursosPrevios;
+        string Idioma;
+        id EjercicioSeleccionado;
+        Idioma *IdiomaSeleccionado;
+        Usuario *ProfesorSeleccionado;
+        set<string> ListadoProfesores;
+        set<string> ListadoIdiomasProfesor;
+        set<Curso*> ColeccionCursosPrevios;
         ControladorCurso();
     public:
         static ControladorCurso * getInstancia();
@@ -37,3 +54,5 @@ class ControladorCurso : public IControladorCurso {
         DTEstadisticaCurso obtenerEstadisticaCurso(string nombre) ;
         ~ControladorCurso(){};
 };
+
+#endif

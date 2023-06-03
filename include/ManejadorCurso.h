@@ -1,3 +1,6 @@
+#ifndef MANEJADORCURSO
+#define MANEJADORCURSO
+
 #include <string>
 #include <map>
 #include "Curso.h"
@@ -27,3 +30,5 @@ class ManejadorCurso {
   bool respuestaEjercicio(string sol);
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
 };
+
+#endif

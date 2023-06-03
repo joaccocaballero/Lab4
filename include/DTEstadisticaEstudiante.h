@@ -1,3 +1,5 @@
+#ifndef DTESTADISTICAESTUDIANTE
+#define DTESTADISTICAESTUDIANTE
 
 #include <string>
 using namespace std;
@@ -11,3 +13,5 @@ class DTEstadisticaEstudiante {
         string getNombreCurso();
         integer getAvance();
 };
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef DTEJERCICIO
+#define DTEJERCICIO
 
 #include <string>
 using namespace std;
@@ -9,3 +11,5 @@ class DTEjercicio{
         DTNotificacion(string NombreEjercicio);
         string getNombreEjercicio();
 };
+
+#endif

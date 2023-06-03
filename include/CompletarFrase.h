@@ -1,5 +1,7 @@
-#include <string>
+#ifndef COMPLETARFRASE
+#define COMPLETARFRASE
 
+#include <string>
 #include "Ejercicio.h"
 #include <string>
 #include <set>
@@ -14,3 +16,5 @@ class CompletarFrase : public Ejercicio {
   bool esCorrecto(set<string> sol);
    ~CompletarFrase();
 };
+
+#endif

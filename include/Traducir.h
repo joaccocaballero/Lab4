@@ -1,3 +1,5 @@
+#ifndef TRADUCIR
+#define TRADUCIR
 
 #include <set>
 #include <string>
@@ -15,3 +17,5 @@ class Traducir: public Ejercicio {
         ~Traducir();
         
 };
+
+#endif

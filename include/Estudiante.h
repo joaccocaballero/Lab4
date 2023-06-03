@@ -1,3 +1,6 @@
+#ifndef ESTUDIANTE
+#define ESTUDIANTE
+
 #include <set>
 #include <string>
 
@@ -17,3 +20,5 @@ class Estudiante: public Usuario {
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string nickname);
         ~Estudiante();
 };
+
+#endif

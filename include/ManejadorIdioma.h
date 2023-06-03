@@ -1,3 +1,6 @@
+#ifndef MANEJADORIDIOMA
+#define MANEJADORIDIOMA
+
 #include <string>
 #include <set>
 #include <map>
@@ -23,3 +26,5 @@ class ManejadorIdioma {
         
 
 };
+
+#endif

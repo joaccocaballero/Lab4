@@ -1,4 +1,7 @@
 
+#ifndef DTESTADISTICAPROFESOR
+#define DTESTADISTICAPROFESOR
+
 #include <string>
 using namespace std;
 
@@ -14,3 +17,5 @@ class DTEstadisticaProfesor{
         integer getPromedio();
 
 };
+
+#endif

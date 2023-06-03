@@ -1,3 +1,6 @@
+#ifndef CURSO
+#define CURSO
+
 #include <string>
 #include <set>
 #include "Leccion.h"
@@ -23,3 +26,5 @@ class Curso {
         DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
         ~Curso()
 };
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef PROFESOR
+#define PROFESOR
 
 #include <set>
 #include <string>
@@ -17,3 +19,5 @@ class Profesor: public Usuario {
         set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
         ~Profesor();
 };
+
+#endif

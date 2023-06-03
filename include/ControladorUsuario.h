@@ -1,12 +1,15 @@
+#ifndef CONTROLADORUSUARIO
+#define CONTROLADORUSUARIO
+
 #include <string>
 #include <set>
 #include "DTEstadisticaEstudiante.h"
 #include "DTEstadisticaProfesor.h"
 #include "DTNotificacion.h"
 #include "Usuario.h"
+#include "Idioma.h"
 #include "ManejadorIdioma.h"
 #include "ManejadorUsuario.h"
-
 
 using namespace std;
 
@@ -15,6 +18,18 @@ class ControladorUsuario : public IControladorUsuario {
     static ControladorUsuario * instancia;
     ManejadorIdioma * manejadorIdioma;
     ManejadorUsuario * manejadorUsuario;
+    string Nickname;
+    string Nombre;
+    string Contrasenia;
+    string Descripcion;
+    string PaisResidencia;
+    string Instituto;
+    set<string> listadoProfesores;
+    set<Idioma *> IdiomasRecordados;
+    Usuario * UsuarioRecordado;
+    set<Idioma *> SuscripcionesUsuario;
+    set<Idioma *> SuscripcionesPendientesUsuario;
+    
     ControladorUsuario();
     public:
         static ControladorUsuario * getInstancia();
@@ -37,3 +52,5 @@ class ControladorUsuario : public IControladorUsuario {
          set<DTNotificacion> obtenerNotificaciones(Nickname: string);
          ~ControladorUsuario(){};
     };
+
+#endif

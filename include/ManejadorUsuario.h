@@ -1,7 +1,12 @@
+#ifndef MANEJADORUSUARIO
+#define MANEJADORUSUARIO
+
 #include <string>
 #include <set>
 #include <map>
 #include "Usuario.h"
+#include "Estudiante.h"
+#include "Profesor.h"
 #include "DTEstadisticaEstudiante.h"
 #include "DTEstadisticaProfesor.h"
 #include "DTNotificacion.h"
@@ -11,7 +16,8 @@ using namespace std;
 class ManejadorUsuario {
     private:
         static ManejadorUsuario * manejadorU;
-        map<string, Usuario*> ColeccionDeUsuarios;
+        map<string, Estudiante*> ColeccionDeEstudiantes;
+        map<string, Profesor*> ColeccionDeProfesores;
         ManejadorUsuario();
     public:
         static ManejadorUsuario * getManejadorU();
@@ -29,3 +35,5 @@ class ManejadorUsuario {
 
 
 };
+
+#endif

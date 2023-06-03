@@ -1,3 +1,6 @@
+#ifndef EJERCICIO
+#define EJERCICIO
+
 #include <string>
 
 using namespace std;
@@ -17,3 +20,5 @@ class Ejercicio {
         virtual bool esCorrecto();
         virtual ~Ejercicio();
 };
+
+#endif

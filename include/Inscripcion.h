@@ -1,4 +1,7 @@
 
+#ifndef INSCRIPCION
+#define INSCRIPCION
+
 #include "DTFecha.h"
 #include "Estudiante.h"
 #include "Curso.h"
@@ -14,3 +17,5 @@ class Inscripcion {
         integer obtenerIdInscripcion();
         ~Inscripcion();
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef DTFECHA
+#define DTFECHA
+
 class DTFecha{
     private:
         int Dia;
@@ -9,3 +12,5 @@ class DTFecha{
         int getMes();
         int getAnio();
 };
+
+#endif

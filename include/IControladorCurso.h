@@ -1,3 +1,6 @@
+#ifndef ICONTROLADORCURSO
+#define ICONTROLADORCURSO
+
 #include <string>
 #include "Usuario.h"
 #include "DTEstadisticaCurso.h"
@@ -31,3 +34,5 @@ class IControladorCurso {
         virtual ControladorCurso getInstancia() = 0;
         virtual ~IControladorCurso(){};
 };
+
+#endif

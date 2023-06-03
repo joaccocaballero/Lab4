@@ -1,3 +1,5 @@
+#ifndef DTNOTIFICACION
+#define DTNOTIFICACION
 
 #include <string>
 using namespace std;
@@ -11,3 +13,5 @@ class DTNotificacion{
         string getNombreCurso();
         string getNombreIdioma();
 };
+
+#endif
