@@ -1,9 +1,9 @@
-#include <string>
-#include "../include/Leccion.h"
-#include "../include/DTEstadisticaCurso.h"
-#include "../include/Curso.h"
+// #include <string>
+// #include "../include/Leccion.h"
+// #include "../include/DTEstadisticaCurso.h"
+// #include "../include/Curso.h"
 
-using namespace std;
+// using namespace std;
 
 /*enum EnumDificultad { Principiante, Medio, Avanzado };
 
@@ -22,14 +22,14 @@ class Curso {
         ~Curso()
 }*/
 
- Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad):habilitacion(habilitacion),nombre(nombre),descripcion(descripcion),dificultad(dificultad) {}
+//  Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad):habilitacion(habilitacion),nombre(nombre),descripcion(descripcion),dificultad(dificultad) {}
 
- string Curso::obtenerNombre(){}
+//  string Curso::obtenerNombre(){}
 
- set<Leccion> Curso::obtenerLecciones(){}
+//  set<Leccion> Curso::obtenerLecciones(){}
 
- set<string> Curso::obtenerEjerciciosPendientes(string nombre){}
+//  set<string> Curso::obtenerEjerciciosPendientes(string nombre){}
 
-DTEstadisticaCurso Curso::obtenerEstadisticaCurso(string nombre){}
+// DTEstadisticaCurso Curso::obtenerEstadisticaCurso(string nombre){}
 
-Curso::~Curso(){}
+// Curso::~Curso(){}
