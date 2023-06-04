@@ -21,8 +21,8 @@ class ManejadorUsuario {
         ManejadorUsuario();
     public:
         static ManejadorUsuario * getManejadorU();
-        bool existeNickname(string Nickname)
-        void agregarUsuario(Usuario usuario)
+        bool existeNickname(string Nickname);
+        void agregarUsuario(Usuario usuario);
         set<string> obtenerNicknamesProfesores();
         Usuario obtenerProfesor();
         set<string> obtenerIdiomasProfesor();

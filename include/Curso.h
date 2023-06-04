@@ -18,7 +18,7 @@ class Curso {
         string nombre;
         string descripcion;
         EnumDificultad dificultad;
-        Idioma * IdiomaEnseñado;
+        Idioma * IdiomaEnseniado;
         set<Leccion*> Lecciones;
     public:
         Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad);

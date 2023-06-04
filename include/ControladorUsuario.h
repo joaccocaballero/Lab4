@@ -3,6 +3,7 @@
 
 #include <string>
 #include <set>
+#include "IControladorUsuario.h"
 #include "DTEstadisticaEstudiante.h"
 #include "DTEstadisticaProfesor.h"
 #include "Usuario.h"

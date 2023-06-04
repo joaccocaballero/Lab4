@@ -20,11 +20,13 @@ set<Leccion> Curso::obtenerLecciones(){
  }
 
 set<string> Curso::obtenerEjerciciosPendientes(string nombre){
+    nombre= "";
     set<string> ejercicios;
     return ejercicios;
 }
 
 DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){
+    nombre= "";
     set<Inscripcion> inscriptos;
     set<Leccion> lecciones = this->obtenerLecciones();
     int avance = 10;

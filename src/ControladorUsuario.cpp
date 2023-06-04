@@ -5,6 +5,7 @@
 
 ControladorUsuario * ControladorUsuario::instancia = NULL;
 ControladorUsuario::ControladorUsuario(){}
+
 ControladorUsuario * ControladorUsuario::getInstancia(){
     if (instancia == NULL){
         instancia = new ControladorUsuario();
@@ -12,46 +13,81 @@ ControladorUsuario * ControladorUsuario::getInstancia(){
     return instancia; 
 }
 
-void altaProfesor(){}
+void ControladorUsuario::altaProfesor(){}
 
-bool confirmarAltaProfesor(){}
+bool ControladorUsuario::confirmarAltaProfesor(){
+    // Agrega tu implementación aquí
+    return false;
+}
 
-bool confirmarAltaEstudiante(){}
+bool ControladorUsuario::confirmarAltaEstudiante(){
+    // Agrega tu implementación aquí
+    return false;
+}
 
-void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion){
+void ControladorUsuario::ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion){
     this->Nickname = Nickname;
     this->Nombre = Nombre;
     this->Contrasenia = Contrasenia;
     this->Descripcion = Descripcion;
 }
-void ingresarPaisResidencia(string nombre){
+
+void ControladorUsuario::ingresarPaisResidencia(string nombre){
     this->PaisResidencia = nombre;
 }
 
-set<string> obtenerIdiomasDisponibles(){}
+set<string> ControladorUsuario::obtenerIdiomasDisponibles(){
+    // Agrega tu implementación aquí
+    set<string> idiomas;
+    return idiomas;
+}
 
-set<string> obtenerProfesores(){}
+set<string> ControladorUsuario::obtenerProfesores(){
+    // Agrega tu implementación aquí
+    set<string> profesores;
+    return profesores;
+}
 
-Usuario obtenerProfesor(string Nickname){}
+Usuario ControladorUsuario::obtenerProfesor(string Nickname){
+    // Agrega tu implementación aquí
+    Usuario profesor;
+    return profesor;
+}
 
-set<string> obtenerIdiomasProfesor(){}
+set<string> ControladorUsuario::obtenerIdiomasProfesor(){
+    // Agrega tu implementación aquí
+    set<string> idiomas;
+    return idiomas;
+}
 
-void agregarEspecializacion(string Nombreidioma){}
+void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
+    // Agrega tu implementación aquí
+}
 
-void agregarUsuario(){}
+void ControladorUsuario::agregarUsuario(){
+    // Agrega tu implementación aquí
+}
 
-void ingresarInstituto(string NombreInstituto){
+void ControladorUsuario::ingresarInstituto(string NombreInstituto){
     this->Instituto = NombreInstituto;
 }
 
-set<string> obtenerEstudiantes(){}
+set<string> ControladorUsuario::obtenerEstudiantes(){
+    // Agrega tu implementación aquí
+    set<string> estudiantes;
+    return estudiantes;
+}
 
-set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname){}
+set<DTEstadisticaEstudiante> ControladorUsuario::obtenerEstadisticaEstudiante(string Nickname){
+    // Agrega tu implementación aquí
+    set<DTEstadisticaEstudiante> estadisticas;
+    return estadisticas;
+}
 
-set<DTEstadisticaEstudiante> obtenerEstadisticaProfesor(string Nickname){}
+set<DTEstadisticaProfesor> ControladorUsuario::obtenerEstadisticaProfesor(string Nickname){
+    // Agrega tu implementación aquí
+    set<DTEstadisticaProfesor> estadisticas;
+    return estadisticas;
+}
 
-set<Idioma> obtenerSubscripcionesPendientes(string Nickname){}
-
-set<DTNotificacion> obtenerNotificaciones(string Nickname){}
-
-ControladorUsuario ::~ControladorUsuario() {}
+set<Idioma>

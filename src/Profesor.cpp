@@ -3,9 +3,8 @@
 #include <set>
 #include <string>
 
-Profesor :: Profesor(string Instituto, set<Idioma*> Especializaciones){
-    this->Instituto = Instituto;
-    this->Especializaciones = Especializaciones;
+Profesor::Profesor(string Nickname, string Contrasenia, string Nombre, string Descripcion, string Instituto, set<Idioma*> Especializaciones)
+    : Usuario(Nickname, Contrasenia, Nombre, Descripcion), Instituto(Instituto), Especializaciones(Especializaciones) {
 }
 
 void AgregarEspecializacion(Idioma idioma){}
