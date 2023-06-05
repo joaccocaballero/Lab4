@@ -5,8 +5,8 @@
 #include <string>
 #include "Usuario.h"
 #include "Curso.h"
+#include "Profesor.h"
 #include "DTEstadisticaCurso.h"
-#include "ControladorCurso.h"
 
 using namespace std;
 
@@ -23,13 +23,12 @@ class IControladorCurso {
         virtual void confirmarEliminacion(string nombre) = 0;
         virtual void confirmarAltaCurso() = 0;
         virtual set<string> obtenerCursos() = 0;
-        virtual Usuario obtenerProfesor() = 0;
+        virtual Profesor obtenerProfesor() = 0;
         virtual void obtenerCursosNoAprobados(string nombre) = 0;
         virtual void seleccionarCurso(string nombre) = 0;
         virtual set<string> obtenerEjerciciosPendientes() = 0;
         virtual DTEjercicio seleccionarEjercicio(int id) = 0;
         virtual bool validarEjercicio() = 0;
-        virtual set<string> obtenerCursos() = 0;
         virtual DTEstadisticaCurso obtenerEstadisticaCurso(string nombre) = 0;
        // virtual ControladorCurso getInstancia() = 0;
         virtual ~IControladorCurso(){};

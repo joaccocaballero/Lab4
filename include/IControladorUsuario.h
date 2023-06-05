@@ -7,7 +7,6 @@ using namespace std;
 #include "DTEstadisticaProfesor.h"
 #include "DTEstadisticaEstudiante.h"
 #include "DTNotificacion.h"
-#include "ControladorUsuario.h"
 #include "Usuario.h"
 #include "Profesor.h"
 #include "Idioma.h"

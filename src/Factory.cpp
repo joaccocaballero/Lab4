@@ -5,12 +5,12 @@ Factory::Factory() {
     interfaceICtrlCurso = new IControladorCurso();
 }
 
-IControladorUsuario Factory::getIControladorUsuarios() {
-    return *interfaceICtrlUsuario;
+ControladorUsuario Factory::getIControladorUsuarios() {
+    return ControladorUsuario.getInstancia();
 }
 
-IControladorCurso Factory::getIControladorCursos() {
-    return *interfaceICtrlCurso;
+ControladorCurso Factory::getIControladorCursos() {
+    return ControladorCurso.getInstancia;
 }
 
 Factory::~Factory() {
