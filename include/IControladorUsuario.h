@@ -9,6 +9,7 @@ using namespace std;
 #include "DTNotificacion.h"
 #include "ControladorUsuario.h"
 #include "Usuario.h"
+#include "Profesor.h"
 #include "Idioma.h"
 
 class IControladorUsuario {
@@ -20,7 +21,7 @@ class IControladorUsuario {
         virtual void ingresarPaisResidencia(string nombre)= 0;
         virtual set<string> obtenerIdiomasDisponibles()= 0;
         virtual set<string> obtenerProfesores()= 0;
-        virtual Usuario obtenerProfesor(string Nickname)= 0;
+        virtual Profesor* obtenerProfesor(string Nickname)= 0;
         virtual set<string> obtenerIdiomasProfesor( )= 0;
         virtual void agregarEspecializacion(string Nombreidioma) = 0;
         virtual void agregarUsuario()= 0;
@@ -31,7 +32,7 @@ class IControladorUsuario {
         virtual set<Idioma> obtenerSubscripcionesPendientes(string Nickname)= 0;
         virtual set<DTNotificacion> obtenerNotificaciones(string Nickname) = 0;
         //virtual ControladorUsuario getInstancia() = 0;
-        virtual ~IControladorUsuario(){};
+        virtual ~IControladorUsuario() = 0;
 };
 
 #endif

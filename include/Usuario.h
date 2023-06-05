@@ -18,7 +18,7 @@ class Usuario : public IObserver {
         string obtenerNickname();
         void Notificar(DTNotificacion Notificacion);
         set<DTNotificacion> obtenerNotificaciones(string Nickname);
-        virtual ~Usuario();
+        virtual ~Usuario() = 0;
 };
 
 #endif

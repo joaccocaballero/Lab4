@@ -1,5 +1,7 @@
 #include "../include/ControladorUsuario.h"
 #include "../include/Usuario.h"
+#include "../include/Profesor.h"
+
 #include <set>
 #include <string>
 
@@ -48,9 +50,10 @@ set<string> ControladorUsuario::obtenerProfesores(){
     return profesores;
 }
 
-Usuario ControladorUsuario::obtenerProfesor(string Nickname){
+Profesor* ControladorUsuario::obtenerProfesor(string Nickname){
     // Agrega tu implementación aquí
-    Usuario profesor;
+    set<Idioma*> idiomas; 
+    Profesor* profesor = new Profesor("nombre", "1234asd", "pepe", "anonimo", "liceo", idiomas);
     return profesor;
 }
 

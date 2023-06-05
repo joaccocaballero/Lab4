@@ -8,6 +8,7 @@
 #include "DTEstadisticaProfesor.h"
 #include "Usuario.h"
 #include "Idioma.h"
+#include "Profesor.h"
 #include "ManejadorIdioma.h"
 #include "ManejadorUsuario.h"
 
@@ -39,7 +40,7 @@ class ControladorUsuario : public IControladorUsuario {
          void ingresarPaisResidencia(string nombre);
          set<string> obtenerIdiomasDisponibles();
          set<string> obtenerProfesores();
-         Usuario obtenerProfesor(string Nickname);
+         Profesor* obtenerProfesor(string Nickname);
          set<string> obtenerIdiomasProfesor( );
          void agregarEspecializacion(string Nombreidioma);
          void agregarUsuario();
