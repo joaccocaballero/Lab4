@@ -15,23 +15,23 @@ using namespace std;
 
 class ControladorUsuario : public IControladorUsuario {
     private:
-    static ControladorUsuario * instancia;
-    ManejadorIdioma * manejadorIdioma;
-    ManejadorUsuario * manejadorUsuario;
-    string Nickname;
-    string Nombre;
-    string Contrasenia;
-    string Descripcion;
-    string PaisResidencia;
-    string Instituto;
-    set<string> listadoProfesores;
-    set<Idioma *> IdiomasRecordados;
-    Usuario * UsuarioRecordado;
-    set<Idioma *> SuscripcionesUsuario;
-    set<Idioma *> SuscripcionesPendientesUsuario;
-    ControladorUsuario();
+        static ControladorUsuario * instancia;
+        ManejadorIdioma * manejadorIdioma;
+        ManejadorUsuario * manejadorUsuario;
+        string Nickname;
+        string Nombre;
+        string Contrasenia;
+        string Descripcion;
+        string PaisResidencia;
+        string Instituto;
+        set<string> listadoProfesores;
+        set<Idioma *> IdiomasRecordados;
+        Usuario * UsuarioRecordado;
+        set<Idioma *> SuscripcionesUsuario;
+        set<Idioma *> SuscripcionesPendientesUsuario;
+        ControladorUsuario();
     public:
-        static ControladorUsuario * getInstancia();
+         static ControladorUsuario * getInstancia();
          void altaProfesor();
          bool confirmarAltaProfesor();
          bool confirmarAltaEstudiante();
