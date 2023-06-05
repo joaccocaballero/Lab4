@@ -6,7 +6,6 @@
 #include <set>
 #include <map>
 #include "Usuario.h"
-#include "Idioma.h"
 #include "IObserver.h"
 
 using namespace std;
@@ -17,7 +16,7 @@ class Curso;
 class Idioma{
     private:
         string Nombre;
-        map<string, IObserver> Suscriptores;
+        map<string, IObserver*> Suscriptores;
     public:
         Idioma(string Nombre);
         void AgregarSuscriptor(IObserver* observer);

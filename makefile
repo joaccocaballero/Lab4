@@ -29,4 +29,3 @@ main.o: main.cpp $(HEADERS)
 
 clean:
 	rm -f $(OBJS) $(PROG)
-

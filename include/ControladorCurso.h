@@ -4,15 +4,14 @@
 #include <string>
 #include <set>
 #include "Usuario.h"
+#include "Idioma.h"
 #include "Curso.h"
 #include "DTEstadisticaCurso.h"
 #include "IControladorCurso.h"
 #include "ManejadorCurso.h"
-#include "Idioma.h"
 
 using namespace std;
 
-enum EnumDificultad { Principiante, Medio, Avanzado };
 
 class ControladorCurso : public IControladorCurso {
     private:
