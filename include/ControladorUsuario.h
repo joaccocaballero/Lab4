@@ -25,6 +25,7 @@ class ControladorUsuario : public IControladorUsuario {
         string Descripcion;
         string PaisResidencia;
         string Instituto;
+        string fechaNacimiento;
         set<string> listadoProfesores;
         set<Idioma *> IdiomasRecordados;
         Usuario * UsuarioRecordado;
@@ -37,7 +38,7 @@ class ControladorUsuario : public IControladorUsuario {
          bool confirmarAltaProfesor();
          bool confirmarAltaEstudiante();
          void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion);
-         void ingresarPaisResidencia(string nombre);
+         void ingresarDatosEstudiante(string paisResidencia, string fechaNacimiento);
          set<string> obtenerIdiomasDisponibles();
          set<string> obtenerProfesores();
          Profesor* obtenerProfesor(string Nickname);

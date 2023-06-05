@@ -1,6 +1,8 @@
 #include "../include/ControladorUsuario.h"
 #include "../include/Usuario.h"
 #include "../include/Profesor.h"
+#include "../include/DTFecha.h"
+#include "../include/ManejadorIdioma.h"
 
 #include <set>
 #include <string>
@@ -34,17 +36,22 @@ void ControladorUsuario::ingresarDatosUsuario(string Nickname, string Contraseni
     this->Descripcion = Descripcion;
 }
 
-void ControladorUsuario::ingresarPaisResidencia(string nombre){
-    this->PaisResidencia = nombre;
+void ControladorUsuario::ingresarDatosEstudiante(string paisResidencia, string fechaNacimiento){
+    this->PaisResidencia = paisResidencia;
+    this->fechaNacimiento = fechaNacimiento;
 }
 
 set<string> ControladorUsuario::obtenerIdiomasDisponibles(){
-    // Agrega tu implementación aquí
-    set<string> idiomas;
-    return idiomas;
+    map<string, Idioma*> col = this->manejadorIdioma->obtenerColeccionIdiomas();
+    set<string> retorno;
+    for (const auto& idioma : col) {
+        string nombre = idioma.obtenerNombre();
+        retorno.insert(nombre);
+    }
+    return retorno
 }
 
-set<string> ControladorUsuario::obtenerProfesores(){
+set<string> ControladorUsuario::obtenerProfesores() {
     // Agrega tu implementación aquí
     set<string> profesores;
     return profesores;
@@ -64,7 +71,7 @@ set<string> ControladorUsuario::obtenerIdiomasProfesor(){
 }
 
 void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
-    // Agrega tu implementación aquí
+    
 }
 
 void ControladorUsuario::agregarUsuario(){

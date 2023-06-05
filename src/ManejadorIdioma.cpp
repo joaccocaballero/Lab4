@@ -16,6 +16,10 @@ static ManejadorIdioma * getManejadorI(){
     return instancia;
 }
 
+map<string, Idioma*> ManejadorIdioma::obtenerColeccionIdiomas(){
+    return this->ColeccionDeIdiomas;
+}
+
 bool existeNickname(string Nickname){}
 set<string> obtenerNombresIdiomas(){}
 Idioma obtenerIdioma(string nombreIdioma){}
