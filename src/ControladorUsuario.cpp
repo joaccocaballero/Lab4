@@ -92,5 +92,3 @@ set<DTEstadisticaProfesor> ControladorUsuario::obtenerEstadisticaProfesor(string
     set<DTEstadisticaProfesor> estadisticas;
     return estadisticas;
 }
-
-set<Idioma>

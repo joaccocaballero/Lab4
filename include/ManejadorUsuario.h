@@ -24,7 +24,7 @@ class ManejadorUsuario {
         bool existeNickname(string Nickname);
         void agregarUsuario(Usuario usuario);
         set<string> obtenerNicknamesProfesores();
-        Usuario obtenerProfesor();
+        Profesor obtenerProfesor();
         set<string> obtenerIdiomasProfesor();
         set<string> obtenerEstudiantes();
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiantes(string Nickname);

@@ -17,7 +17,6 @@ class ManejadorIdioma {
     public:
         static ManejadorIdioma * getManejadorI();
         bool existeNickname(string Nickname);
-        void agregarUsuario(Usuario usuario);
         set<string> obtenerNombresIdiomas();
         Idioma obtenerIdioma(string nombreIdioma);
         set<string> obtenerIdiomas();
