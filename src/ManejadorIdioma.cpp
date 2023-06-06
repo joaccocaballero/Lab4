@@ -21,6 +21,16 @@ map<string, Idioma*> ManejadorIdioma::obtenerColeccionIdiomas(){
     return this->ColeccionDeIdiomas;
 }
 
+bool ManejadorIdioma::agregarNuevoIdioma(string Nombre) {
+    if (ColeccionDeIdiomas.count(Nombre) == 0) {
+        Idioma* idioma = new Idioma(Nombre);
+        ColeccionDeIdiomas.insert(make_pair(Nombre, idioma));
+        return true;
+    } else {
+        return false;
+    }
+}
+
 bool ManejadorIdioma::existeNickname(string Nickname) {}
 set<string> ManejadorIdioma::obtenerNombresIdiomas(){}
 

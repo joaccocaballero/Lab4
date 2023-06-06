@@ -46,6 +46,7 @@ class ControladorUsuario : public IControladorUsuario {
          set<string> obtenerIdiomasProfesor( );
          void agregarEspecializacion(string Nombreidioma);
          void ingresarInstituto(string NombreInstituto);
+         bool agregarIdioma(string Nombre);
          set<string> obtenerEstudiantes();
          set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname);
          set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);

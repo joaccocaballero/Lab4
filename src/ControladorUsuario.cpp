@@ -97,6 +97,15 @@ set<string> ControladorUsuario::obtenerEstudiantes(){
     return estudiantes;
 }
 
+bool ControladorUsuario::agregarIdioma(string Nombre) {
+    if(manejadorIdioma->agregarNuevoIdioma(Nombre)){
+        cout << "Idioma ingresado correctamente." << endl;
+    }
+    else{
+        cout << "El idioma ingresado ya existe, ingrese otro." << endl;
+    }
+}
+
 set<DTEstadisticaEstudiante> ControladorUsuario::obtenerEstadisticaEstudiante(string Nickname){
     // Agrega tu implementación aquí
     set<DTEstadisticaEstudiante> estadisticas;
