@@ -8,7 +8,7 @@ void casosDeUso() {
 }*/
 
 int main() {
-   /* // instancio Fabrica
+   // instancio Fabrica
     Factory* fabrica = fabrica.getInstancia();
 
     // instancio Controladores
@@ -111,6 +111,6 @@ int main() {
                 ControladorCurso->confirmarAltaCurso();
             }
         }
-    }*/
+    }
     return 0;
 }

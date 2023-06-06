@@ -7,6 +7,9 @@
 #include "Curso.h"
 #include "Profesor.h"
 #include "DTEstadisticaCurso.h"
+
+class ControladorCurso;
+
 using namespace std;
 class IControladorCurso {
     public:
@@ -27,5 +30,7 @@ class IControladorCurso {
         virtual ControladorCurso getInstancia() = 0;
         virtual ~IControladorCurso(){};
 };
+
+#include "ControladorUsuario.h"
 
 #endif
