@@ -18,7 +18,11 @@ static ManejadorIdioma * getManejadorI(){
 
 bool existeNickname(string Nickname){}
 set<string> obtenerNombresIdiomas(){}
-Idioma obtenerIdioma(string nombreIdioma){}
+Idioma ManejadoirIdioma::obtenerIdioma(string nombreIdioma){
+    Idioma idioma = ColeccionIdiomas.find(nombreIdioma);
+    // handlear nulo?
+    return idioma;
+}
 set<string> obtenerIdiomas(){}
 set<string> obtenerEstudiantes(){}
 set<Idioma> obtenerSuscripcionesPendientes(string Nickname){}

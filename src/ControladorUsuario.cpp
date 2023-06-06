@@ -52,14 +52,12 @@ set<string> ControladorUsuario::obtenerProfesores(){
 
 Profesor* ControladorUsuario::obtenerProfesor(string Nickname){
     // Agrega tu implementación aquí
-    set<Idioma*> idiomas; 
-    Profesor* profesor = new Profesor("nombre", "1234asd", "pepe", "anonimo", "liceo", idiomas);
-    return profesor;
+    return manejadorUsuario->obtenerProfesor(Nickname);
+    
 }
 
-set<string> ControladorUsuario::obtenerIdiomasProfesor(){
-    // Agrega tu implementación aquí
-    set<string> idiomas;
+set<string> ControladorUsuario::obtenerIdiomasProfesor(string nickname){
+    set<string> idiomas = manejadorUsuario->obtenerProfesor(nickname).consultarIdiomasProfesor()
     return idiomas;
 }
 

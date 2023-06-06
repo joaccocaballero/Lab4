@@ -29,6 +29,7 @@ class ManejadorCurso {
   set<string> obtenerEjerciciosPendientesCurso(Curso c);
   DTEjercicio obtenerEjercicio(int id);
   bool respuestaEjercicio(string sol);
+  set<Curso*> obtenerCursosPrevios(set<string> cursosPrevios)
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
 };
 
