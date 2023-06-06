@@ -6,6 +6,9 @@
 
 #include <set>
 #include <string>
+#include <iostream>
+
+using namespace std;
 
 ControladorUsuario * ControladorUsuario::instancia = NULL;
 ControladorUsuario::ControladorUsuario(){}
@@ -25,8 +28,14 @@ bool ControladorUsuario::confirmarAltaProfesor(){
 }
 
 bool ControladorUsuario::confirmarAltaEstudiante(){
-    // Agrega tu implementación aquí
-    return false;
+   if(!this->manejadorUsuario->existeNickname(this->Nickname)){
+        Estudiante *e = new Estudiante(this->Nickname, this->Contrasenia, this->Nombre,
+        this->Descripcion, this->PaisResidencia, this->fechaNacimiento);
+        this->manejadorUsuario->agregarEstudiante(e, this->Nickname);
+   }
+   else{
+        cout << "El nickname ya se encuentra registrado, elija otro!" << endl;
+   }
 }
 
 void ControladorUsuario::ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion){
@@ -36,19 +45,19 @@ void ControladorUsuario::ingresarDatosUsuario(string Nickname, string Contraseni
     this->Descripcion = Descripcion;
 }
 
-void ControladorUsuario::ingresarDatosEstudiante(string paisResidencia, string fechaNacimiento){
+void ControladorUsuario::ingresarDatosEstudiante(string paisResidencia, DTFecha fechaNacimiento){
     this->PaisResidencia = paisResidencia;
     this->fechaNacimiento = fechaNacimiento;
 }
 
 set<string> ControladorUsuario::obtenerIdiomasDisponibles(){
     map<string, Idioma*> col = this->manejadorIdioma->obtenerColeccionIdiomas();
+    map<string, Idioma*>::iterator it; 
     set<string> retorno;
-    for (const auto& idioma : col) {
-        string nombre = idioma.obtenerNombre();
-        retorno.insert(nombre);
+    for (it= col.begin(); it != col.end(); ++it) {
+        retorno.insert(it->first);
     }
-    return retorno
+    return retorno;
 }
 
 set<string> ControladorUsuario::obtenerProfesores() {
@@ -71,7 +80,8 @@ set<string> ControladorUsuario::obtenerIdiomasProfesor(){
 }
 
 void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
-    
+    Idioma *i = this->manejadorIdioma->obtenerIdioma(Nombreidioma);
+    this->IdiomasRecordados.insert(i);
 }
 
 void ControladorUsuario::agregarUsuario(){

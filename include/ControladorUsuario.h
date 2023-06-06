@@ -8,7 +8,9 @@
 #include "DTEstadisticaProfesor.h"
 #include "Usuario.h"
 #include "Idioma.h"
+#include "DTFecha.h"
 #include "Profesor.h"
+#include "Estudiante.h"
 #include "ManejadorIdioma.h"
 #include "ManejadorUsuario.h"
 
@@ -25,7 +27,7 @@ class ControladorUsuario : public IControladorUsuario {
         string Descripcion;
         string PaisResidencia;
         string Instituto;
-        string fechaNacimiento;
+        DTFecha fechaNacimiento;
         set<string> listadoProfesores;
         set<Idioma *> IdiomasRecordados;
         Usuario * UsuarioRecordado;
@@ -38,13 +40,13 @@ class ControladorUsuario : public IControladorUsuario {
          bool confirmarAltaProfesor();
          bool confirmarAltaEstudiante();
          void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion);
-         void ingresarDatosEstudiante(string paisResidencia, string fechaNacimiento);
+         void ingresarDatosEstudiante(string paisResidencia, DTFecha fechaNacimiento);
          set<string> obtenerIdiomasDisponibles();
          set<string> obtenerProfesores();
          Profesor* obtenerProfesor(string Nickname);
          set<string> obtenerIdiomasProfesor( );
          void agregarEspecializacion(string Nombreidioma);
-         void agregarUsuario();
+         //void agregarUsuario();
          void ingresarInstituto(string NombreInstituto);
          set<string> obtenerEstudiantes();
          set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname);

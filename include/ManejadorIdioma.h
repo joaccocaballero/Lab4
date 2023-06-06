@@ -18,7 +18,7 @@ class ManejadorIdioma {
         static ManejadorIdioma * getManejadorI();
         bool existeNickname(string Nickname);
         set<string> obtenerNombresIdiomas();
-        Idioma obtenerIdioma(string nombreIdioma);
+        Idioma* obtenerIdioma(string nombreIdioma);
         set<string> obtenerIdiomas();
         set<string> obtenerEstudiantes();
         set<Idioma> obtenerSuscripcionesPendientes(string Nickname);
