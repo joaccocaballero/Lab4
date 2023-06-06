@@ -1,14 +1,14 @@
 #include "include/Factory.h"
 using namespace std;
-
+/*
 void casosDeUso() {
     cout << endl;
     cout << "Ingresar caso de uso"<< endl;
     cout << "1: Alta Curso";
-}
+}*/
 
 int main() {
-    // instancio Fabrica
+   /* // instancio Fabrica
     Factory* fabrica = fabrica.getInstancia();
 
     // instancio Controladores
@@ -111,5 +111,6 @@ int main() {
                 ControladorCurso->confirmarAltaCurso();
             }
         }
-    }
+    }*/
+    return 0;
 }

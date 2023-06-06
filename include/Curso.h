@@ -22,7 +22,7 @@ class Curso {
         set<Leccion*> Lecciones;
         set<Curso*> cursosPrevios;
     public:
-        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma idioma);
+        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma);
         string obtenerNombre();
         set<Leccion> obtenerLecciones();
         set<string> obtenerEjerciciosPendientes(string nombre);

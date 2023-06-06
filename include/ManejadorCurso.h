@@ -19,7 +19,7 @@ class ManejadorCurso {
  public:
   static ManejadorCurso* getManejadorC();
   bool existeNickname(string nickname);
-  void agregarCurso(Curso c);
+  void agregarCurso(Curso *c);
   set<string> obtenerHabilitados();
   Idioma obtenerIdioma(string nomIdioma);
   set<string> obtenerCursos();
@@ -29,7 +29,7 @@ class ManejadorCurso {
   set<string> obtenerEjerciciosPendientesCurso(Curso c);
   DTEjercicio obtenerEjercicio(int id);
   bool respuestaEjercicio(string sol);
-  set<Curso*> obtenerCursosPrevios(set<string> cursosPrevios)
+  set<Curso*> obtenerCursosPrevios(set<string> cursosPrevios);
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
 };
 

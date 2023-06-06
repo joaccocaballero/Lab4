@@ -11,6 +11,7 @@
 #include "IControladorCurso.h"
 #include "ControladorUsuario.h"
 #include "ManejadorCurso.h"
+#include "ManejadorIdioma.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ class ControladorCurso : public IControladorCurso {
     private:
         static ControladorCurso * instancia;
         ManejadorCurso * manejadorCurso;
+        ManejadorIdioma * manejadorIdioma;
         ControladorUsuario * controladorUsuario;
         string Nombre;
         string Descripcion;
@@ -35,18 +37,14 @@ class ControladorCurso : public IControladorCurso {
         ControladorCurso();
     public:
         static ControladorCurso * getInstancia();
-        void altaProfesor();
-        bool confirmarAltaEstudiante();
-        bool confirmarAltaProfesor();
         void ingresarInfoCurso(string nombre, string Descripcion, EnumDificultad Dificultad);
         void asignarProfesor(string nickname);
         set<string> obtenerCursosHabilitados();
-        void ingresarCursosPrevios( set<string> nombresCursosPrevios);
+        void ingresarCursosPrevios(set<string> nombresCursosPrevios);
         void seleccionarIdioma(string nomIdioma);
         void confirmarEliminacion(string nombre);
         void confirmarAltaCurso();
         set<string> obtenerCursos();
-        Profesor obtenerProfesor();
         set<string> obtenerCursosNoAprobados(string nombre);
         void seleccionarCurso(string nombre);
         set<string> obtenerEjerciciosPendientes();

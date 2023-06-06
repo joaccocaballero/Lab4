@@ -15,8 +15,8 @@
   }
 
   bool ManejadorCurso::existeNickname(string nickname){}
-  void ManejadorCurso::agregarCurso(Curso c){
-    ColeccionDeCursos[c.nombre] = c;
+  void ManejadorCurso::agregarCurso(Curso *c){
+    ColeccionDeCursos.insert(make_pair(c->obtenerNombre(), c))
   }
   
   set<string> ManejadorCurso::obtenerHabilitados(){
