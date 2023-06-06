@@ -43,7 +43,7 @@ class ControladorUsuario : public IControladorUsuario {
          set<string> obtenerIdiomasDisponibles();
          set<string> obtenerProfesores();
          Profesor* obtenerProfesor(string Nickname);
-         set<string> obtenerIdiomasProfesor( );
+         set<string> obtenerIdiomasProfesor(string nickname);
          void agregarEspecializacion(string Nombreidioma);
          void ingresarInstituto(string NombreInstituto);
          set<string> obtenerEstudiantes();

@@ -7,7 +7,7 @@
 using namespace std;
 
 
-Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad):habilitacion(habilitacion),nombre(nombre),descripcion(descripcion),dificultad(dificultad) {
+Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, Idioma idioma, set<Curso*> cursosPrevios):habilitacion(habilitacion),nombre(nombre),descripcion(descripcion),dificultad(dificultad),IdiomaEnseniado(idioma), cursoPrevios(cursosPrevios) {
  }
 
 string Curso::obtenerNombre(){
