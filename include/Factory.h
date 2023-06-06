@@ -9,13 +9,15 @@
 #include "ControladorCurso.h"
 
 class Factory{
-    private: 
+    private:
+        static Factory * instancia;
         IControladorUsuario * interfaceICtrlUsuario;
         IControladorCurso * interfaceICtrlCurso;
         Factory();
     public: 
-        ControladorUsuario getIControladorUsuarios();
-        ControladorCurso getIControladorCursos();
+        static Factory * getInstancia();
+        IControladorUsuario getIControladorUsuarios();
+        IControladorCurso getIControladorCursos();
         ~Factory();
 };
 

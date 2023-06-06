@@ -36,7 +36,6 @@ class ControladorUsuario : public IControladorUsuario {
         ControladorUsuario();
     public:
          static ControladorUsuario * getInstancia();
-
          bool confirmarAltaProfesor();
          bool confirmarAltaEstudiante();
          void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion);

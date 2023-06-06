@@ -1,16 +1,27 @@
 #include "Factory.h"
+ 
+#include "IControladorCurso.h"
+#include "IControladorUsuario.h"
+#include "ControladorCurso.h"
+#include "ControladorUsuario.h"
 
-Factory::Factory() {
-    interfaceICtrlUsuario = new IControladorUsuario();
-    interfaceICtrlCurso = new IControladorCurso();
+Factory * Factory::instancia = NULL;
+
+Factory::Factory(){}
+
+Factory * Factory::getInstancia(){
+    if(instancia == NULL){
+        instancia = new Factory();
+    }
+    return instancia;
 }
 
-ControladorUsuario Factory::getIControladorUsuarios() {
-    return ControladorUsuario.getInstancia();
+IControladorUsuario Factory::getIControladorUsuarios() {
+    return interfaceICtrlUsuario->getInstancia();
 }
 
-ControladorCurso Factory::getIControladorCursos() {
-    return ControladorCurso.getInstancia;
+IControladorCurso Factory::getIControladorCursos() {
+    return interfaceICtrlCurso->getInstancia();
 }
 
 Factory::~Factory() {
