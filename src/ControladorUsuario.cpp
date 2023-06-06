@@ -20,11 +20,14 @@ ControladorUsuario * ControladorUsuario::getInstancia(){
     return instancia; 
 }
 
-void ControladorUsuario::altaProfesor(){}
-
 bool ControladorUsuario::confirmarAltaProfesor(){
-    // Agrega tu implementación aquí
-    return false;
+    if(!this->manejadorUsuario->existeNickname(this->Nickname)){
+        Profesor *p = new Profesor(this->Nickname, this->Contrasenia, this->Nombre, this->Descripcion,
+        this->Instituto, this->IdiomasRecordados);
+        this->manejadorUsuario->agregarProfesor(p, this->Nickname);
+    } else {
+        cout << "El nickname ya se encuentra registrado, elija otro!" << endl;
+    }
 }
 
 bool ControladorUsuario::confirmarAltaEstudiante(){
@@ -82,10 +85,6 @@ set<string> ControladorUsuario::obtenerIdiomasProfesor(){
 void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
     Idioma *i = this->manejadorIdioma->obtenerIdioma(Nombreidioma);
     this->IdiomasRecordados.insert(i);
-}
-
-void ControladorUsuario::agregarUsuario(){
-    // Agrega tu implementación aquí
 }
 
 void ControladorUsuario::ingresarInstituto(string NombreInstituto){
