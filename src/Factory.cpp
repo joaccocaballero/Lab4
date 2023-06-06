@@ -17,11 +17,11 @@ Factory * Factory::getInstancia(){
 }
 
 IControladorUsuario Factory::getIControladorUsuarios() {
-    return interfaceICtrlUsuario->getInstancia();
+    return ctrlUsuario.getInstancia();
 }
 
 IControladorCurso Factory::getIControladorCursos() {
-    return interfaceICtrlCurso->getInstancia();
+    return ctrlCurso.getInstancia();
 }
 
 Factory::~Factory() {

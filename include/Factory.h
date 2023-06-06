@@ -13,6 +13,8 @@ class Factory{
         static Factory * instancia;
         IControladorUsuario * interfaceICtrlUsuario;
         IControladorCurso * interfaceICtrlCurso;
+        ControladorUsuario* ctrlUsuario;
+        ControladorCurso* ctrlCurso;
         Factory();
     public: 
         static Factory * getInstancia();

@@ -12,9 +12,10 @@ void AgregarEspecializacion(Idioma idioma){}
 
 set<string> Profesor::consultarIdiomasProfesor(){
     set<string> nombreIdiomas;
-    Idioma* iterador = Especializaciones.begin();
-    while(iterador != Especializaciones.end()) {
-        nombreIdiomas.insert(iterador->obtenerNombre());
+    set<Idioma*> col = Especializaciones;
+    for(set<Idioma*>::iterator it = col.begin(); it!=col.end(); ++it){
+        Idioma *current = *it;
+        nombreIdiomas.insert(current->obtenerNombre());
     }
     return nombreIdiomas;
 }

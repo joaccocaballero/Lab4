@@ -1,5 +1,7 @@
 #include "../include/DTFecha.h"
 
+DTFecha::DTFecha(){}
+
 DTFecha::DTFecha(int Dia, int Mes, int Anio){
     this->Anio = Anio;
     this->Dia = Dia;

@@ -33,8 +33,8 @@ void ManejadorUsuario::agregarProfesor(Profesor*profesor, string nickname){
 };
 
 set<string> ManejadorUsuario::obtenerNicknamesProfesores(){};
-Profesor ManejadorUsuario::obtenerProfesor(){};
-set<string> ManejadorUsuario::obtenerIdiomasProfesor(){};
+Profesor* ManejadorUsuario::obtenerProfesor(string nickname){};
+set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){};
 set<string> ManejadorUsuario::obtenerEstudiantes(){};
 set<DTEstadisticaEstudiante> ManejadorUsuario::obtenerEstadisticasEstudiantes(
     string Nickname){};
