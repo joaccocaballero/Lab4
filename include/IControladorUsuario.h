@@ -24,7 +24,7 @@ class IControladorUsuario {
         virtual set<string> obtenerIdiomasDisponibles()= 0;
         virtual set<string> obtenerProfesores()= 0;
         virtual Profesor* obtenerProfesor(string Nickname)= 0;
-        virtual set<string> obtenerIdiomasProfesor( )= 0;
+        virtual set<string> obtenerIdiomasProfesor(string Nickname )= 0;
         virtual void agregarEspecializacion(string Nombreidioma) = 0;
         virtual void ingresarInstituto(string NombreInstituto)= 0;
         virtual set<string> obtenerEstudiantes()= 0;
