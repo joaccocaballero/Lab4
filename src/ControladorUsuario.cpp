@@ -35,9 +35,10 @@ bool ControladorUsuario::confirmarAltaEstudiante(){
         Estudiante *e = new Estudiante(this->Nickname, this->Contrasenia, this->Nombre,
         this->Descripcion, this->PaisResidencia, this->fechaNacimiento);
         this->manejadorUsuario->agregarEstudiante(e, this->Nickname);
+        return true;
    }
    else{
-        cout << "El nickname ya se encuentra registrado, elija otro!" << endl;
+        return false;
    }
 }
 
