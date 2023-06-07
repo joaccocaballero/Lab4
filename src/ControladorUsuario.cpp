@@ -25,8 +25,9 @@ bool ControladorUsuario::confirmarAltaProfesor(){
         Profesor *p = new Profesor(this->Nickname, this->Contrasenia, this->Nombre, this->Descripcion,
         this->Instituto, this->IdiomasRecordados);
         this->manejadorUsuario->agregarProfesor(p, this->Nickname);
+        return true;
     } else {
-        cout << "El nickname ya se encuentra registrado, elija otro!" << endl;
+        return false;
     }
 }
 
