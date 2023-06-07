@@ -12,8 +12,8 @@ int main() {
     Factory* fabrica = fabrica.getInstancia();
 
     // instancio Controladores
-    IControladorUsuario *ControladorUsuario=fabrica.getIcontroladorFecha();
-    IControladorCurso *ControladorCurso=fabrica.getIcontroladorHostal();
+    IControladorUsuario *ControladorUsuario=fabrica.getIControladorUsuario();
+    IControladorCurso *ControladorCurso=fabrica.getIControladorCurso();
     
     bool continuarSesion = true;
     while(continuarSesion) {
