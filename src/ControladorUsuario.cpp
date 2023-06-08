@@ -98,10 +98,10 @@ set<string> ControladorUsuario::obtenerEstudiantes(){
 
 bool ControladorUsuario::agregarIdioma(string Nombre) {
     if(manejadorIdioma->agregarNuevoIdioma(Nombre)){
-        cout << "Idioma ingresado correctamente." << endl;
+        return true;
     }
     else{
-        cout << "El idioma ingresado ya existe, ingrese otro." << endl;
+        return false;
     }
 }
 
