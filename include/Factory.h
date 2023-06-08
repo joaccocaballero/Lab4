@@ -18,8 +18,8 @@ class Factory{
         Factory();
     public: 
         static Factory * getInstancia();
-        IControladorUsuario getIControladorUsuarios();
-        IControladorCurso getIControladorCursos();
+        IControladorUsuario* getIControladorUsuario();
+        IControladorCurso* getIControladorCurso();
         ~Factory();
 };
 

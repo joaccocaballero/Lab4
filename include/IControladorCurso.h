@@ -7,6 +7,7 @@
 #include "Curso.h"
 #include "Profesor.h"
 #include "DTEstadisticaCurso.h"
+#include "ControladorCurso.h" 
 
 class ControladorCurso;
 

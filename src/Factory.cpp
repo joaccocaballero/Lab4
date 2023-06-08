@@ -16,11 +16,11 @@ Factory * Factory::getInstancia(){
     return instancia;
 }
 
-IControladorUsuario Factory::getIControladorUsuarios() {
+IControladorUsuario* Factory::getIControladorUsuario() {
     return ctrlUsuario->getInstancia();
-}
+}   
 
-IControladorCurso Factory::getIControladorCursos() {
+IControladorCurso* Factory::getIControladorCurso() {
     return ctrlCurso->getInstancia();
 }
 

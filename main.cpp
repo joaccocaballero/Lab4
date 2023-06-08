@@ -13,11 +13,11 @@ void casosDeUso() {
 
 int main() {
    // instancio Fabrica
-    Factory* fabrica = fabrica->getInstancia();
+    Factory * fabrica = fabrica->getInstancia();
 
     // instancio Controladores
-    IControladorUsuario *ControladorUsuario=fabrica->getIControladorUsuario();
-    IControladorCurso *ControladorCurso=fabrica->getIControladorCurso();
+    IControladorUsuario *ControladorUsuario= fabrica->getIControladorUsuario();
+    IControladorCurso *ControladorCurso= fabrica->getIControladorCurso();
     
     bool continuarSesion = true;
     while(continuarSesion) {
