@@ -13,8 +13,6 @@ using namespace std;
 #include "Estudiante.h"
 #include "Idioma.h"
 
-class ControladorUsuario;
-
 class IControladorUsuario {
     public:
         virtual bool confirmarAltaProfesor()= 0;
@@ -35,7 +33,5 @@ class IControladorUsuario {
         virtual bool agregarIdioma(string Nombre) = 0;
         virtual ~IControladorUsuario() = 0;
 };
-
-#include "ControladorUsuario.h"
 
 #endif

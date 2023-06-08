@@ -9,14 +9,14 @@ Usuario::Usuario(string Nickname, string Contrasenia, string Nombre, string Desc
   this->Descripcion = Descripcion;
 }
 
-string obtenerNickname(){
-    return this->Nickname;
+string Usuario::obtenerNickname(){
+    return Nickname;
 }
 
-void Notificar(DTNotificacion Notificacion){
-    this->Notificaciones.insert(Notificacion);
+void Usuario::Notificar(DTNotificacion Notificacion){
+    Notificaciones.push_back(Notificacion);
 }
 
-set<DTNotificacion> obtenerNotificaciones(){}
+vector<DTNotificacion> Usuario::obtenerNotificaciones(string Nickname){}
 
-Usuario ::~Usuario(){}
+Usuario::~Usuario(){}

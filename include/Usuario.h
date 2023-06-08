@@ -1,6 +1,6 @@
 #ifndef USUARIO
 #define USUARIO
-#include <set>
+#include <vector>
 #include <string>
 #include "DTNotificacion.h"
 #include "IObserver.h"
@@ -12,13 +12,13 @@ class Usuario : public IObserver {
         string Contrasenia;
         string Nombre;
         string Descripcion;
-        set<DTNotificacion> Notificaciones;
+        vector<DTNotificacion> Notificaciones;
     public:
         Usuario(string Nickname, string Contrasenia, string Nombre, string Descripcion);
         string obtenerNickname();
         void Notificar(DTNotificacion Notificacion);
-        set<DTNotificacion> obtenerNotificaciones(string Nickname);
-        virtual ~Usuario() = 0;
+        vector<DTNotificacion> obtenerNotificaciones(string Nickname);
+        virtual ~Usuario();
 };
 
 #endif

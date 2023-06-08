@@ -26,6 +26,7 @@ class Curso {
         string obtenerNombre();
         set<Leccion> obtenerLecciones();
         set<string> obtenerEjerciciosPendientes(string nombre);
+        bool obtenerHabilitacion();
         DTEstadisticaCurso* obtenerEstadisticaCurso(string nombre);
         ~Curso();
 };

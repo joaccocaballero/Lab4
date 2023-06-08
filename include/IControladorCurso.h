@@ -7,9 +7,6 @@
 #include "Curso.h"
 #include "Profesor.h"
 #include "DTEstadisticaCurso.h"
-#include "ControladorCurso.h" 
-
-class ControladorCurso;
 
 using namespace std;
 class IControladorCurso {
@@ -28,9 +25,7 @@ class IControladorCurso {
         virtual DTEjercicio seleccionarEjercicio(int id) = 0;
         virtual bool validarEjercicio() = 0;
         virtual DTEstadisticaCurso obtenerEstadisticaCurso(string nombre) = 0;
-        virtual ~IControladorCurso(){};
+        virtual ~IControladorCurso() = 0;
 };
-
-#include "ControladorUsuario.h"
 
 #endif

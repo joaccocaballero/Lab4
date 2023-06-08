@@ -17,8 +17,12 @@ Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificulta
 }
 
 string Curso::obtenerNombre(){
-    return this->nombre;
+    return nombre;
  }
+
+bool Curso::obtenerHabilitacion(){
+    return habilitacion;
+}
 
 set<Leccion> Curso::obtenerLecciones(){
     set<Leccion> lecciones;

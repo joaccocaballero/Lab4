@@ -6,7 +6,7 @@
 Idioma::Idioma(string Nombre){
 this->Nombre=Nombre;
 }
-void Idioma::AgregarSuscriptor(IObserver observer){}
+void Idioma::AgregarSuscriptor(IObserver* observer){}
 void Idioma::RemoverSuscriptor(){}
 string Idioma::obtenerNombre(){
     return this->Nombre;

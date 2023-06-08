@@ -116,3 +116,5 @@ set<DTEstadisticaProfesor> ControladorUsuario::obtenerEstadisticaProfesor(string
     set<DTEstadisticaProfesor> estadisticas;
     return estadisticas;
 }
+
+ControladorUsuario::~ControladorUsuario() { delete instancia; }

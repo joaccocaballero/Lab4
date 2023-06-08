@@ -65,7 +65,6 @@ bool ControladorCurso::validarEjercicio(){
 
 DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){}
 
-/*
 ControladorCurso::~ControladorCurso(){
     delete instancia;
-}*/
+}

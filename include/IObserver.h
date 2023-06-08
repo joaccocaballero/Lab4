@@ -6,8 +6,9 @@
 using namespace std;
 
 class IObserver {
+  public:
   virtual void Notificar(DTNotificacion Notificacion) = 0;
-  virtual ~IObserver(){};
+  virtual ~IObserver() = 0;
 };
 
 #endif

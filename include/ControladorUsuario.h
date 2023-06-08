@@ -52,7 +52,7 @@ class ControladorUsuario : public IControladorUsuario {
          set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
          set<Idioma> obtenerSubscripcionesPendientes(string Nickname);
          set<DTNotificacion> obtenerNotificaciones(string Nickname);
-         ~ControladorUsuario(){};
+         virtual ~ControladorUsuario();
     };
 
 #endif

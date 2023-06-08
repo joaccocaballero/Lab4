@@ -6,7 +6,10 @@
 #include "../include/Idioma.h"
 #include "../include/DTFecha.h"
 
-Estudiante ::Estudiante(string PaisResidencia, DTFecha FechaNacimiento){
+Estudiante::Estudiante(string Nickname, string Contrasenia, string Nombre,
+                       string Descripcion, string PaisResidencia,
+                       DTFecha FechaNacimiento)
+    : Usuario(Nickname, Contrasenia, Nombre, Descripcion) {
   this->PaisResidencia = PaisResidencia;
   this->FechaNacimiento = FechaNacimiento;
 }

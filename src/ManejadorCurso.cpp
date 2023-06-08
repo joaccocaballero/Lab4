@@ -16,14 +16,14 @@
 
   bool ManejadorCurso::existeNickname(string nickname){}
   void ManejadorCurso::agregarCurso(Curso *c){
-    ColeccionDeCursos.insert(make_pair(c->obtenerNombre(), c))
+    ColeccionDeCursos.insert(make_pair(c->obtenerNombre(), c));
   }
   
   set<string> ManejadorCurso::obtenerHabilitados(){
     set<string> cursosHabilitados;
     map<string, Curso*>::iterator it;
-    for (it = ColeccionDeCursos.begin(); it!=dict.end(); ++it){
-      if (it.second.habilitacion == true) {
+    for (it = ColeccionDeCursos.begin(); it!=ColeccionDeCursos.end(); ++it){
+      if (it->second->obtenerHabilitacion() == true) {
         cursosHabilitados.insert(it->first);
       }
     }
@@ -40,8 +40,8 @@
   set<Curso*> ManejadorCurso::obtenerCursosPrevios(set<string> nombrePrevios){
     set<Curso*> cursosPrevios;
     map<string, Curso*>::iterator it;
-    for (it = ColeccionDeCursos.begin(); it!=dict.end(); ++it){
-      if (nombrePrevios.count(it.first)) {
+    for (it = ColeccionDeCursos.begin(); it!=ColeccionDeCursos.end(); ++it){
+      if (nombrePrevios.count(it->first) == 1) {
         cursosPrevios.insert(it->second);
       }
     }

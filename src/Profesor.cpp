@@ -1,14 +1,22 @@
-#include "../include/Profesor.h"
-#include "../include/Idioma.h"
+
 #include <set>
 #include <string>
+
+#include "../include/Idioma.h"
+#include "../include/Profesor.h"
+#include "../include/Usuario.h"
+
 using namespace std;
 
-Profesor::Profesor(string Nickname, string Contrasenia, string Nombre, string Descripcion, string Instituto, set<Idioma*> Especializaciones)
-    : Usuario(Nickname, Contrasenia, Nombre, Descripcion), Instituto(Instituto), Especializaciones(Especializaciones) {
+Profesor::Profesor(string Nickname, string Contrasenia, string Nombre,
+                   string Descripcion, string Instituto,
+                   set<Idioma *> Especializaciones)
+    : Usuario(Nickname, Contrasenia, Nombre, Descripcion) {
+  this->Instituto = Instituto;
+  this->Especializaciones = Especializaciones;
 }
 
-void AgregarEspecializacion(Idioma idioma){}
+void Profesor::AgregarEspecializacion(Idioma idioma){}
 
 set<string> Profesor::consultarIdiomasProfesor(){
     set<string> nombreIdiomas;
