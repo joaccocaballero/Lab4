@@ -6,8 +6,9 @@ using namespace std;
 void casosDeUso() {
     cout << endl;
     cout << "Ingresar caso de uso"<< endl;
-    cout << "1: Alta Curso";
-    cout << "2: Alta Usuario";
+    cout << "1: Alta de Curso";
+    cout << "2: Alta de Usuario";
+    cout << "3: Alta de Idioma"
 }
 
 int main() {
