@@ -8,7 +8,7 @@ void casosDeUso() {
     cout << "Ingresar caso de uso"<< endl;
     cout << "1: Alta de Curso";
     cout << "2: Alta de Usuario";
-    cout << "3: Alta de Idioma"
+    cout << "3: Alta de Idioma";
 }
 
 int main() {
@@ -102,7 +102,7 @@ int main() {
                         string nombreCurso;
                         cout << "Ingrese nombre del curso: " << endl;
                         cin >> nombreCurso;
-                        if (cursosHablitados.count(nombreCurso) && !cursosPrevios.count(nombreCurso)) {
+                        if (cursosHabilitados.count(nombreCurso) && !cursosPrevios.count(nombreCurso)) {
                             cursosPrevios.insert(nombreCurso);
                         }
                         cout << "Agregar otro? Ingrese un numero" << endl;
@@ -215,6 +215,26 @@ int main() {
                 }
             }
         
+            //AltaIdioma
+            case 3: {
+                bool seIngresaNuevo = false;
+                while (seIngresaNuevo = false) {
+                    string nuevoIdioma = "";
+                    bool flagNuevoIdioma = false;
+                    cout << "Ingrese nuevo Idioma" << endl;
+                    cin >> nuevoIdioma;
+                    // Me fijo si existe idioma
+                    flagNuevoIdioma =
+                        ControladorUsuario->agregarIdioma(nuevoIdioma);
+                    if (flagNuevoIdioma) {
+                        cout << "Idioma ingresado correctamente." << endl;
+                        seIngresaNuevo = true;
+                    } else {
+                        cout << "El idioma ingresado ya existe, ingrese otro."
+                             << endl;
+                    }
+                }
+            }
         }
     }
     return 0;
