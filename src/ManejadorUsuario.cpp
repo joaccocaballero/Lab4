@@ -32,7 +32,25 @@ void ManejadorUsuario::agregarProfesor(Profesor*profesor, string nickname){
     this->ColeccionDeProfesores.insert(make_pair(nickname, profesor));
 };
 
-set<string> ManejadorUsuario::obtenerNicknamesProfesores(){};
+set<string> ManejadorUsuario::obtenerNicknamesProfesores(){
+    set<string> retorno;
+    map<string, Profesor*>::iterator it;
+    for (it = ColeccionDeProfesores.begin(); it != ColeccionDeProfesores.end(); ++it) {
+        retorno.insert(it->first);
+    }
+    return retorno;
+};
+
+set<string> ManejadorUsuario::obtenerNicknamesEstudiantes() {
+    set<string> retorno;
+    map<string, Estudiante*>::iterator it;
+    for (it = ColeccionDeEstudiantes.begin(); it != ColeccionDeEstudiantes.end();
+         ++it) {
+        retorno.insert(it->first);
+    }
+    return retorno;
+};
+
 Profesor* ManejadorUsuario::obtenerProfesor(string nickname){};
 set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){};
 set<string> ManejadorUsuario::obtenerEstudiantes(){};

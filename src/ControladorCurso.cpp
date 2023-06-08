@@ -1,5 +1,7 @@
 #include <string>
 #include "../include/ControladorCurso.h"
+#include "../include/ManejadorCurso.h"
+#include "../include/ManejadorIdioma.h"
 #include "../include/Idioma.h"
 using namespace std;
 
@@ -21,7 +23,8 @@ void ControladorCurso::ingresarInfoCurso(string nombre, string Descripcion, Enum
 }
 
 set<string> ControladorCurso::obtenerCursosHabilitados(){
-    return manejadorCurso->obtenerHabilitados();
+    ManejadorCurso * manejador = manejadorCurso->getManejadorC();
+    return manejador->obtenerHabilitados();
 }
 
 void ControladorCurso::ingresarCursosPrevios(set<string> nombresCursosPrevios){
@@ -29,17 +32,19 @@ void ControladorCurso::ingresarCursosPrevios(set<string> nombresCursosPrevios){
 }
 
 void ControladorCurso::seleccionarIdioma(string nomIdioma){
-    Idioma *idiomaSeleccionado = manejadorIdioma->obtenerIdioma(nomIdioma);
+    ManejadorIdioma * manejador = manejadorIdioma->getManejadorI();
+    Idioma *idiomaSeleccionado = manejador->obtenerIdioma(nomIdioma);
     this->IdiomaSeleccionado = idiomaSeleccionado;
 }
 
 void ControladorCurso::confirmarEliminacion(string nombre){}
 
 void ControladorCurso::confirmarAltaCurso() {
-    set<Curso*> cursosPrevios = manejadorCurso->obtenerCursosPrevios(CursosPrevios);
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
     Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado);
     // si hay lecciones agregarlas, supongo que llamo a caso de uso desde main si usuario quiere meterle
-    manejadorCurso->agregarCurso(c);
+    manejador->agregarCurso(c);
 }
 
 void ControladorCurso::asignarProfesor(string nickname) {

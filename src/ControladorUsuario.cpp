@@ -3,6 +3,7 @@
 #include "../include/Profesor.h"
 #include "../include/DTFecha.h"
 #include "../include/ManejadorIdioma.h"
+#include "../include/ManejadorUsuario.h"
 
 #include <set>
 #include <string>
@@ -21,10 +22,11 @@ ControladorUsuario * ControladorUsuario::getInstancia(){
 }
 
 bool ControladorUsuario::confirmarAltaProfesor(){
-    if(!this->manejadorUsuario->existeNickname(this->Nickname)){
-        Profesor *p = new Profesor(this->Nickname, this->Contrasenia, this->Nombre, this->Descripcion,
-        this->Instituto, this->IdiomasRecordados);
-        this->manejadorUsuario->agregarProfesor(p, this->Nickname);
+    ManejadorUsuario * manejador = manejadorUsuario->getManejadorU();
+    if(!manejador->existeNickname(Nickname)){
+        Profesor *p = new Profesor(Nickname, Contrasenia, Nombre, Descripcion,
+        Instituto, IdiomasRecordados);
+        manejadorUsuario->agregarProfesor(p,Nickname);
         return true;
     } else {
         return false;
@@ -32,10 +34,11 @@ bool ControladorUsuario::confirmarAltaProfesor(){
 }
 
 bool ControladorUsuario::confirmarAltaEstudiante(){
-   if(!this->manejadorUsuario->existeNickname(this->Nickname)){
-        Estudiante *e = new Estudiante(this->Nickname, this->Contrasenia, this->Nombre,
-        this->Descripcion, this->PaisResidencia, this->fechaNacimiento);
-        this->manejadorUsuario->agregarEstudiante(e, this->Nickname);
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    if (!manejador->existeNickname(this->Nickname)) {
+        Estudiante *e = new Estudiante(Nickname, Contrasenia, Nombre,
+        Descripcion, PaisResidencia, fechaNacimiento);
+        manejador->agregarEstudiante(e, Nickname);
         return true;
    }
    else{
@@ -56,7 +59,8 @@ void ControladorUsuario::ingresarDatosEstudiante(string paisResidencia, DTFecha 
 }
 
 set<string> ControladorUsuario::obtenerIdiomasDisponibles(){
-    map<string, Idioma*> col = this->manejadorIdioma->obtenerColeccionIdiomas();
+    ManejadorIdioma * manejador = manejadorIdioma->getManejadorI();
+    map<string, Idioma*> col = manejador->obtenerColeccionIdiomas();
     map<string, Idioma*>::iterator it; 
     set<string> retorno;
     for (it= col.begin(); it != col.end(); ++it) {
@@ -66,24 +70,25 @@ set<string> ControladorUsuario::obtenerIdiomasDisponibles(){
 }
 
 set<string> ControladorUsuario::obtenerProfesores() {
-    // Agrega tu implementación aquí
-    set<string> profesores;
-    return profesores;
+    ManejadorUsuario * manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerNicknamesProfesores();
 }
 
 Profesor* ControladorUsuario::obtenerProfesor(string Nickname){
-    return manejadorUsuario->obtenerProfesor(Nickname);
-    
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerProfesor(Nickname);
 }
 
 set<string> ControladorUsuario::obtenerIdiomasProfesor(string nickname){
-    set<string> idiomas = manejadorUsuario->obtenerIdiomasProfesor(nickname);
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    set<string> idiomas = manejador->obtenerIdiomasProfesor(nickname);
     return idiomas;
 }
 
 void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
-    Idioma *i = this->manejadorIdioma->obtenerIdioma(Nombreidioma);
-    this->IdiomasRecordados.insert(i);
+    ManejadorIdioma *manejador = manejadorIdioma->getManejadorI();
+    Idioma *i = manejador->obtenerIdioma(Nombreidioma);
+    IdiomasRecordados.insert(i);
 }
 
 void ControladorUsuario::ingresarInstituto(string NombreInstituto){
@@ -91,13 +96,13 @@ void ControladorUsuario::ingresarInstituto(string NombreInstituto){
 }
 
 set<string> ControladorUsuario::obtenerEstudiantes(){
-    // Agrega tu implementación aquí
-    set<string> estudiantes;
-    return estudiantes;
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerNicknamesEstudiantes();
 }
 
 bool ControladorUsuario::agregarIdioma(string Nombre) {
-    if(manejadorIdioma->agregarNuevoIdioma(Nombre)){
+    ManejadorIdioma *manejador = manejadorIdioma->getManejadorI();
+    if(manejador->agregarNuevoIdioma(Nombre)){
         return true;
     }
     else{

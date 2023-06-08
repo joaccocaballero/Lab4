@@ -26,6 +26,7 @@ class ManejadorUsuario {
         void agregarEstudiante(Estudiante* estudiante, string nickname);
         void agregarProfesor(Profesor* profesor, string nickname);
         set<string> obtenerNicknamesProfesores();
+        set<string> obtenerNicknamesEstudiantes();
         Profesor* obtenerProfesor(string nickname);
         set<string> obtenerIdiomasProfesor(string nickname);
         set<string> obtenerEstudiantes();
