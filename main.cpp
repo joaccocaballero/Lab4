@@ -73,22 +73,19 @@ int main() {
                 //asignar profesor
                 ControladorCurso->asignarProfesor(profesorSeleccionado);
 
+                cout << "Seleccione el idioma del curso:" << endl;
                 set<string> idiomas = ControladorUsuario->obtenerIdiomasProfesor(profesorSeleccionado);
                 string idiomaSeleccionado = "";
-                // imprimo nombre de los profesores
+                // imprimo nombre de los idiomas
                 for (string nombre: idiomas) {
-                    cout << nombre << endl;
+                    cout << "-"+nombre << endl;
                 }
                 cin >> idiomaSeleccionado;
-                if (!(idiomas.count(idiomaSeleccionado))) {
-                    cout << "Seleccione un profesor valido:" << endl;
-                    cin >> idiomaSeleccionado;
-                }
                 ControladorCurso->seleccionarIdioma(idiomaSeleccionado);
 
                 int agregarPrevias = 1;
 
-                cout << "Agregar cursos previos? Ingrese un numero:" << endl;
+                cout << "Desea agregar cursos previos? Ingrese un numero:" << endl;
                 cout << "1- Si" << endl;
                 cout << "2 -No" << endl;
 
@@ -101,10 +98,13 @@ int main() {
                     while (seguirAgregando==1){
                         string nombreCurso;
                         cout << "Ingrese nombre del curso: " << endl;
-                        cin >> nombreCurso;
-                        if (cursosHabilitados.count(nombreCurso) && !cursosPrevios.count(nombreCurso)) {
-                            cursosPrevios.insert(nombreCurso);
+                        // imprimo nombre de los cursos previos
+                        for (string nombre : cursosHabilitados) {
+                          cout << "-" + nombre << endl;
                         }
+                        cin >> nombreCurso;
+                        cursosPrevios.insert(nombreCurso);
+                        cout << "" << endl;
                         cout << "Agregar otro? Ingrese un numero:" << endl;
                         cout << "1- Si" << endl;
                         cout << "2- No" << endl;
@@ -112,7 +112,6 @@ int main() {
                     }
                     ControladorCurso->ingresarCursosPrevios(cursosPrevios);
                 }
-
                 ControladorCurso->confirmarAltaCurso();
                 break;
             }
@@ -211,6 +210,8 @@ int main() {
                     cout
                         << "El nickname ya se encuentra registrado, elija otro!"
                         << endl;
+                }else {
+                    cout << "Usuario creado exitosamente!" << endl;
                 }
                 break;
             }
@@ -236,6 +237,8 @@ int main() {
                 }
                 break;
             }
+
+            default: cout<<"Ingrese una opción correcta..."<<endl;
         }
     }
     return 0;
