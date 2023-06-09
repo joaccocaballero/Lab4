@@ -6,11 +6,24 @@ using namespace std;
 
 void casosDeUso() {
     cout << endl;
-    cout << "Ingresar caso de uso"<< endl;
-    cout << "1: Alta de Curso" << endl;
-    cout << "2: Alta de Usuario" << endl;
+    cout << "Ingresar caso de uso" << endl;
+    cout << "1: Alta de Usuario" << endl;
+    //cout << "2: Consulta de Usuario" << endl;
     cout << "3: Alta de Idioma" << endl;
-    cout << "4: Consultar Idioma" << endl;
+    cout << "4: Consultar Idiomas" << endl;
+    cout << "5: Alta de Curso" << endl;
+    //cout << "6: Agregar Lección" << endl;
+    //cout << "7: Agregar Ejercicio" << endl;
+    //cout << "8: Habilitar Curso" << endl;
+    //cout << "9: Eliminar Curso" << endl;
+    //cout << "10: Consultar Curso" << endl;
+    //cout << "11: Inscribirse a Curso" << endl;
+    //cout << "11: Realizar Ejercicio" << endl;
+    //cout << "12: Consultar Estadísticas" << endl;
+    //cout << "13: Suscribirse a Notificaciones" << endl;
+    //cout << "14: Consulta de Notificaciones" << endl;
+    //cout << "15: Eliminar Suscripciones" << endl;
+    cout << "16: Salir" << endl;
 }
 
 int main() {
@@ -31,7 +44,7 @@ int main() {
         // armo switch
         switch (caso) {
             //AltaCurso
-            case 1: {
+            case 5: {
                 set<string> listadoProfesores = ControladorUsuario->obtenerProfesores();
                 cout << "Seleccione un profesor:" << endl;
                 string profesorSeleccionado = "";
@@ -132,7 +145,7 @@ int main() {
             }
             
             //AltaUsuario
-            case 2: {
+            case 1: {
                 string Nickname = "";
                 string Contrasenia = "";
                 string Nombre = "";
@@ -256,19 +269,28 @@ int main() {
                 }
                 break;
             }
-
-            default: cout<<"Ingrese una opción correcta..."<<endl;
-        }
-        //Consultar Idioma
-        case 4: {
-            std::set<string> idiomasDisponibles = ControladorUsuario.obtenerIdiomasDisponibles(); 
-            cout << "Los idiomas disponibles son los siguientes."<< endl;
-            std::set<string>::iterator it;
-            string elem = *it;
-            for(it.begin();it.end();++it){
-                cout<< elem <<endl;
+            
+            // Consultar Idiomas
+            case 4: {
+                std::set<string> idiomasDisponibles = ControladorUsuario->obtenerIdiomasDisponibles();
+                cout << "Los idiomas disponibles son los siguientes." << endl;
+                std::set<string>::iterator it;
+                for (it= idiomasDisponibles.begin(); it!=idiomasDisponibles.end(); ++it) {
+                    string elem = *it;
+                    cout << "-"+elem << endl;
+                }
             }
+            case 16:{
+                return 0;
+            }
+               
+            default:{
+                cout << "" << endl;
+                cout << "Ingrese una opción correcta..." << endl;
+            } 
         }
+
+
     }
     return 0;
 }
