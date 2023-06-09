@@ -1,6 +1,7 @@
 #include "include/Factory.h"
 #include <iostream>
 #include <string>
+#include <set>
 using namespace std;
 
 void casosDeUso() {
@@ -9,6 +10,7 @@ void casosDeUso() {
     cout << "1: Alta de Curso" << endl;
     cout << "2: Alta de Usuario" << endl;
     cout << "3: Alta de Idioma" << endl;
+    cout << "4: Consultar Idioma" << endl;
 }
 
 int main() {
@@ -256,6 +258,16 @@ int main() {
             }
 
             default: cout<<"Ingrese una opción correcta..."<<endl;
+        }
+        //Consultar Idioma
+        case 4: {
+            std::set<string> idiomasDisponibles = ControladorUsuario.obtenerIdiomasDisponibles(); 
+            cout << "Los idiomas disponibles son los siguientes."<< endl;
+            std::set<string>::iterator it;
+            string elem = *it;
+            for(it.begin();it.end();++it){
+                cout<< elem <<endl;
+            }
         }
     }
     return 0;
