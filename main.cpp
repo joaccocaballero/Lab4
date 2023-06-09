@@ -6,9 +6,9 @@ using namespace std;
 void casosDeUso() {
     cout << endl;
     cout << "Ingresar caso de uso"<< endl;
-    cout << "1: Alta de Curso";
-    cout << "2: Alta de Usuario";
-    cout << "3: Alta de Idioma";
+    cout << "1: Alta de Curso" << endl;
+    cout << "2: Alta de Usuario" << endl;
+    cout << "3: Alta de Idioma" << endl;
 }
 
 int main() {
@@ -114,6 +114,7 @@ int main() {
                 }
 
                 ControladorCurso->confirmarAltaCurso();
+                break;
             }
             
             //AltaUsuario
@@ -213,12 +214,13 @@ int main() {
                         << "El nickname ya se encuentra registrado, elija otro!"
                         << endl;
                 }
+                break;
             }
         
             //AltaIdioma
             case 3: {
                 bool seIngresaNuevo = false;
-                while (seIngresaNuevo = false) {
+                while (seIngresaNuevo == false) {
                     string nuevoIdioma = "";
                     bool flagNuevoIdioma = false;
                     cout << "Ingrese nuevo Idioma" << endl;
@@ -234,6 +236,7 @@ int main() {
                              << endl;
                     }
                 }
+                break;
             }
         }
     }

@@ -10,7 +10,7 @@ using namespace std;
 
 Profesor::Profesor(string Nickname, string Contrasenia, string Nombre,
                    string Descripcion, string Instituto,
-                   set<Idioma *> Especializaciones)
+                   set<Idioma*> Especializaciones)
     : Usuario(Nickname, Contrasenia, Nombre, Descripcion) {
   this->Instituto = Instituto;
   this->Especializaciones = Especializaciones;

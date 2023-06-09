@@ -22,6 +22,7 @@ class DTEstadisticaCurso {
     set<Inscripcion> Inscripciones;
     int Avance;
  public:
+    DTEstadisticaCurso();
     DTEstadisticaCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
         string Idioma, string Profesor, string Habilitacion, set<Leccion> Lecciones,
         set<Inscripcion> Inscripciones, int Avance);

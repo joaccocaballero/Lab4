@@ -29,7 +29,7 @@ class ControladorUsuario : public IControladorUsuario {
         string Instituto;
         DTFecha fechaNacimiento;
         set<string> listadoProfesores;
-        set<Idioma *> IdiomasRecordados;
+        set<Idioma*> IdiomasRecordados;
         Usuario * UsuarioRecordado;
         set<Idioma *> SuscripcionesUsuario;
         set<Idioma *> SuscripcionesPendientesUsuario;

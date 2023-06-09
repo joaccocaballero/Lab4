@@ -39,6 +39,8 @@ void ControladorCurso::seleccionarIdioma(string nomIdioma){
 
 void ControladorCurso::confirmarEliminacion(string nombre){}
 
+void ControladorCurso::seleccionarCurso(string nombre) {}
+
 void ControladorCurso::confirmarAltaCurso() {
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
@@ -62,13 +64,20 @@ set<string> ControladorCurso::obtenerCursosNoAprobados(string nombre){
     return cursosHabilitados;
 }
 
-DTEjercicio ControladorCurso::seleccionarEjercicio(int id){}
+DTEjercicio ControladorCurso::seleccionarEjercicio(int id){
+
+}
 
 bool ControladorCurso::validarEjercicio(){
     return true;
 }
 
-DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){}
+DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
+
+}
+
+set<string> ControladorCurso::obtenerEjerciciosPendientes(){}
+
 
 ControladorCurso::~ControladorCurso(){
     delete instancia;

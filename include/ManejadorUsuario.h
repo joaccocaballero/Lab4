@@ -24,7 +24,7 @@ class ManejadorUsuario {
         bool existeNickname(string Nickname);
         //void agregarUsuario(Usuario *Usuario);
         void agregarEstudiante(Estudiante* estudiante, string nickname);
-        void agregarProfesor(Profesor* profesor, string nickname);
+        void agregarProfesor(Profesor *profesor, string nickname);
         set<string> obtenerNicknamesProfesores();
         set<string> obtenerNicknamesEstudiantes();
         Profesor* obtenerProfesor(string nickname);

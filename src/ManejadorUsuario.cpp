@@ -1,5 +1,6 @@
 #include <string>
 using namespace std;
+#include <iostream>
 #include "../include/ManejadorUsuario.h"
 
 
@@ -15,12 +16,15 @@ ManejadorUsuario* ManejadorUsuario::getManejadorU() {
 }
 
 bool ManejadorUsuario::existeNickname(string Nickname){
-    if(this->ColeccionDeEstudiantes[Nickname] == NULL && this->ColeccionDeProfesores[Nickname]==NULL){
-        return true;
+    bool res = false;
+
+    if (this->ColeccionDeEstudiantes.size() != 0 || this->ColeccionDeProfesores.size() != 0){
+        if(this->ColeccionDeEstudiantes.count(Nickname) != 0 || this->ColeccionDeProfesores.count(Nickname) != 0){
+            res = true;
+        }
+
     }
-    else{
-        return false;
-    }
+    return res;
 }
 
 void ManejadorUsuario::agregarEstudiante(Estudiante *estudiante, string nickname){
@@ -28,7 +32,7 @@ void ManejadorUsuario::agregarEstudiante(Estudiante *estudiante, string nickname
 };
 
 
-void ManejadorUsuario::agregarProfesor(Profesor*profesor, string nickname){
+void ManejadorUsuario::agregarProfesor(Profesor *profesor, string nickname){
     this->ColeccionDeProfesores.insert(make_pair(nickname, profesor));
 };
 

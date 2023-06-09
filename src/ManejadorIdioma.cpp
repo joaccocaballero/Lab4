@@ -1,7 +1,7 @@
 #include <string>
 #include <set>
 #include <map>
-
+#include <iostream>
 #include "../include/ManejadorIdioma.h"
 #include "../include/Idioma.h"
 
@@ -35,7 +35,8 @@ bool ManejadorIdioma::existeNickname(string Nickname) {}
 set<string> ManejadorIdioma::obtenerNombresIdiomas(){}
 
 Idioma* ManejadorIdioma::obtenerIdioma(string nombreIdioma){
-   return this->ColeccionDeIdiomas[nombreIdioma];
+
+   return ColeccionDeIdiomas.find(nombreIdioma)->second;
 }
 
 set<string> ManejadorIdioma::obtenerIdiomas(){}

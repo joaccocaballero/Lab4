@@ -4,6 +4,7 @@
 #include "../include/DTFecha.h"
 #include "../include/ManejadorIdioma.h"
 #include "../include/ManejadorUsuario.h"
+#include <iostream>
 
 #include <set>
 #include <string>
@@ -26,6 +27,7 @@ bool ControladorUsuario::confirmarAltaProfesor(){
     if(!manejador->existeNickname(Nickname)){
         Profesor *p = new Profesor(Nickname, Contrasenia, Nombre, Descripcion,
         Instituto, IdiomasRecordados);
+
         manejadorUsuario->agregarProfesor(p,Nickname);
         return true;
     } else {
@@ -88,6 +90,7 @@ set<string> ControladorUsuario::obtenerIdiomasProfesor(string nickname){
 void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
     ManejadorIdioma *manejador = manejadorIdioma->getManejadorI();
     Idioma *i = manejador->obtenerIdioma(Nombreidioma);
+    cout << i->obtenerNombre() << endl;
     IdiomasRecordados.insert(i);
 }
 
@@ -121,5 +124,8 @@ set<DTEstadisticaProfesor> ControladorUsuario::obtenerEstadisticaProfesor(string
     set<DTEstadisticaProfesor> estadisticas;
     return estadisticas;
 }
+
+set<Idioma> ControladorUsuario::obtenerSubscripcionesPendientes(string Nickname){}
+set<DTNotificacion> ControladorUsuario::obtenerNotificaciones(string Nickname){}
 
 ControladorUsuario::~ControladorUsuario() { delete instancia; }
