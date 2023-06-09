@@ -29,12 +29,28 @@
     }
     return cursosHabilitados;
   }
-  Idioma ManejadorCurso::obtenerIdioma(string nomIdioma){
+
+  Idioma* ManejadorCurso::obtenerIdioma(string nomIdioma){}
+  
+  set<string> ManejadorCurso::obtenerCursos(){
+    set<string> retorno;
+    map<string, Curso*>::iterator it;
+    for (it = ColeccionDeCursos.begin(); it != ColeccionDeCursos.end();
+         ++it) {
+        retorno.insert(it->first);
+    }
+    return retorno;
   }
-  set<string> ManejadorCurso::obtenerCursos(){}
+
   void ManejadorCurso::eliminarCurso(string nombre){}
   set<string> ManejadorCurso::obtenerCursosNoAprobados(){}
-  Curso ManejadorCurso::seleccionarCurso(string nombre){}
+  
+  Curso* ManejadorCurso::seleccionarCurso(string nombre){
+    map<string, Curso*>::iterator it;
+    it=ColeccionDeCursos.find(nombre);
+    return it->second;
+  }
+
   set<string> ManejadorCurso::obtenerEjerciciosPendientesCurso(Curso c){}
   
   set<Curso*> ManejadorCurso::obtenerCursosPrevios(set<string> nombrePrevios){

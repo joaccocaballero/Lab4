@@ -39,6 +39,14 @@ Idioma* ManejadorIdioma::obtenerIdioma(string nombreIdioma){
    return ColeccionDeIdiomas.find(nombreIdioma)->second;
 }
 
-set<string> ManejadorIdioma::obtenerIdiomas(){}
+set<string> ManejadorIdioma::obtenerIdiomas(){
+       set<string> retorno;
+    map<string, Idioma*>::iterator it;
+    for (it = ColeccionDeIdiomas.begin(); it != ColeccionDeIdiomas.end();
+         ++it) {
+        retorno.insert(it->first);
+    }
+    return retorno;
+}
 set<string> ManejadorIdioma::obtenerEstudiantes() {}
 set<Idioma> ManejadorIdioma::obtenerSuscripcionesPendientes(string Nickname) {}

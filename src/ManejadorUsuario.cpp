@@ -55,8 +55,19 @@ set<string> ManejadorUsuario::obtenerNicknamesEstudiantes() {
     return retorno;
 };
 
-Profesor* ManejadorUsuario::obtenerProfesor(string nickname){};
-set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){};
+Profesor* ManejadorUsuario::obtenerProfesor(string nickname){
+    map<string, Profesor*>::iterator it;
+    it=ColeccionDeProfesores.find(nickname);
+    return it->second;
+};
+
+set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
+    map<string, Profesor*>::iterator it;
+    it=ColeccionDeProfesores.find(nickname);
+    Profesor* p = it->second;
+    return p->consultarIdiomasProfesor();
+};
+
 set<string> ManejadorUsuario::obtenerEstudiantes(){};
 set<DTEstadisticaEstudiante> ManejadorUsuario::obtenerEstadisticasEstudiantes(
     string Nickname){};
