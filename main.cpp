@@ -104,11 +104,24 @@ int main() {
                         }
                         cin >> nombreCurso;
                         cursosPrevios.insert(nombreCurso);
-                        cout << "" << endl;
-                        cout << "Agregar otro? Ingrese un numero:" << endl;
-                        cout << "1- Si" << endl;
-                        cout << "2- No" << endl;
-                        cin >> seguirAgregando;
+                        do{
+                          cout << "Desea Agregar otro? Ingrese un numero:"
+                               << endl;
+                          cout << "1- Si" << endl;
+                          cout << "2- No" << endl;
+                          cin >> seguirAgregando;
+                          if(seguirAgregando==1){
+                            string nombreCurso;
+                            cout << "Ingrese nombre del curso: " << endl;
+                            // imprimo nombre de los cursos previos
+                            for (string nombre : cursosHabilitados) {
+                              cout << "-" + nombre << endl;
+                            }
+                            cin >> nombreCurso;
+                            cursosPrevios.insert(nombreCurso);
+                          }
+                        }
+                        while(seguirAgregando==1);
                     }
                     ControladorCurso->ingresarCursosPrevios(cursosPrevios);
                 }
@@ -191,6 +204,10 @@ int main() {
                     while (Agregar == 1) {
                         cout << "Ingrese Idioma que desea que se especialice:"
                              << endl;
+                        // imprimo nombre de los idiomas
+                        for (string nombre : idiomasDispo) {
+                          cout << "-" + nombre << endl;
+                        }
                         cin >> iter;
                         idiomasSelec.insert(iter);
                         cout << "Desea agregar mas idiomas?" << endl;
