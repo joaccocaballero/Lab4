@@ -31,6 +31,8 @@ class IControladorUsuario {
         virtual set<Idioma> obtenerSubscripcionesPendientes(string Nickname)= 0;
         virtual set<DTNotificacion> obtenerNotificaciones(string Nickname) = 0;
         virtual bool agregarIdioma(string Nombre) = 0;
+        virtual set<string> obtenerUsuarios()= 0;
+        virtual void obtenerInfoUsuario(string Nickname)= 0;
         virtual ~IControladorUsuario() = 0;
 };
 
