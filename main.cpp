@@ -31,7 +31,7 @@ int main() {
             //AltaCurso
             case 1: {
                 set<string> listadoProfesores = ControladorUsuario->obtenerProfesores();
-                cout << "Seleccione un profesor" << endl;
+                cout << "Seleccione un profesor:" << endl;
                 string profesorSeleccionado = "";
                 // imprimo nombre de los profesores
                 for (string nombre: listadoProfesores) {
@@ -39,7 +39,7 @@ int main() {
                 }
                 cin >> profesorSeleccionado;
                 if (!(listadoProfesores.count(profesorSeleccionado))) {
-                    cout << "Seleccione un profesor valido" << endl;
+                    cout << "Seleccione un profesor valido:" << endl;
                     cin >> profesorSeleccionado;
                 }
                 string nombreCurso = "";
@@ -47,11 +47,11 @@ int main() {
                 int idDificultad = 1;
                 
                 // ingreso Datos
-                cout << "Ingrese Nombre curso" << endl;
+                cout << "Ingrese Nombre curso:" << endl;
                 cin >> nombreCurso;
-                cout << "Ingrese Descripcion curso" << endl;
+                cout << "Ingrese Descripcion curso:" << endl;
                 cin >> descripcion;
-                cout << "Seleccione Dificultad" << endl;
+                cout << "Seleccione Dificultad:" << endl;
                 cout << "1- Principiante" << endl;
                 cout << "2- Intermedio" << endl;
                 cout << "3- Avanzado" << endl;
@@ -81,14 +81,14 @@ int main() {
                 }
                 cin >> idiomaSeleccionado;
                 if (!(idiomas.count(idiomaSeleccionado))) {
-                    cout << "Seleccione un profesor valido" << endl;
+                    cout << "Seleccione un profesor valido:" << endl;
                     cin >> idiomaSeleccionado;
                 }
                 ControladorCurso->seleccionarIdioma(idiomaSeleccionado);
 
                 int agregarPrevias = 1;
 
-                cout << "Agregar cursos previos? Ingrese un numero" << endl;
+                cout << "Agregar cursos previos? Ingrese un numero:" << endl;
                 cout << "1- Si" << endl;
                 cout << "2 -No" << endl;
 
@@ -105,7 +105,7 @@ int main() {
                         if (cursosHabilitados.count(nombreCurso) && !cursosPrevios.count(nombreCurso)) {
                             cursosPrevios.insert(nombreCurso);
                         }
-                        cout << "Agregar otro? Ingrese un numero" << endl;
+                        cout << "Agregar otro? Ingrese un numero:" << endl;
                         cout << "1- Si" << endl;
                         cout << "2- No" << endl;
                         cin >> seguirAgregando;
@@ -125,13 +125,13 @@ int main() {
                 string Descripcion = "";
 
                 // ingreso datos usuario
-                cout << "Ingrese Nickname del Usuario" << endl;
+                cout << "Ingrese Nickname del Usuario:" << endl;
                 cin >> Nickname;
-                cout << "Ingrese una contraseña" << endl;
+                cout << "Ingrese una contraseña:" << endl;
                 cin >> Contrasenia;
-                cout << "Ingrese Nombre del Usuario" << endl;
+                cout << "Ingrese Nombre del Usuario:" << endl;
                 cin >> Nombre;
-                cout << "Ingrese Descripcion del Usuario" << endl;
+                cout << "Ingrese Descripcion del Usuario:" << endl;
                 cin >> Descripcion;
 
                 ControladorUsuario->ingresarDatosUsuario(Nickname, Contrasenia,
@@ -139,9 +139,9 @@ int main() {
 
                 int tipoUsuario = 0;
                 // Profesor o Estudiante
-                cout << "Seleccione Tipo de Usuario" << endl;
-                cout << "1- Estudiante" <<  endl;
-                cout << "2- Profesor" << endl;
+                cout << "Seleccione Tipo de Usuario:" << endl;
+                cout << "1- Estudiante..." <<  endl;
+                cout << "2- Profesor..." << endl;
                 cin >> tipoUsuario;
 
                 bool existeUsuario = true;
@@ -152,13 +152,13 @@ int main() {
                     int Mes = 0;
                     int Dia = 0;
                     // Ingreso Datos Estudiante
-                    cout << "Ingrese Pais de Residencia" << endl;
+                    cout << "Ingrese Pais de Residencia:" << endl;
                     cin >> paisResi;
-                    cout << "Ingrese Año de Nacimiento" << endl;
+                    cout << "Ingrese Año de Nacimiento:" << endl;
                     cin >> Anio;
-                    cout << "Ingrese Mes de Nacimiento" << endl;
+                    cout << "Ingrese Mes de Nacimiento:" << endl;
                     cin >> Mes;
-                    cout << "Ingrese Dia de Nacimiento" << endl;
+                    cout << "Ingrese Dia de Nacimiento:" << endl;
                     cin >> Dia;
                     DTFecha Fecha = DTFecha(Dia, Mes, Anio);
                     ControladorUsuario->ingresarDatosEstudiante(paisResi,
@@ -169,20 +169,18 @@ int main() {
                 } else if (tipoUsuario == 2) {
                     // Ingresa Instituto
                     string Instituto = "";
-                    cout << "Ingrese Instituto del Profesor" << endl;
+                    cout << "Ingrese Instituto del Profesor:" << endl;
                     cin >> Instituto;
                     ControladorUsuario->ingresarInstituto(Instituto);
-
+                    cout << "Ingrese Idioma que desea que se especialice:"<< endl;
                     // Obtengo Idiomas Disponibles
-                    set<string> idiomasDispo =
-                        ControladorUsuario->obtenerIdiomasDisponibles();
-                    // imprimo nombre de los profesores
+                    set<string> idiomasDispo = ControladorUsuario->obtenerIdiomasDisponibles();
+                    
+                    // imprimo nombre de los idiomas
                     set<string> idiomasSelec = {};
                     for (string nombre : idiomasDispo) {
-                        cout << nombre << endl;
+                        cout << "-"+nombre << endl;
                     }
-                    cout << "Ingrese Idioma que desea que se especialice"
-                         << endl;
                     string iter = "";
                     cin >> iter;
                     idiomasSelec.insert(iter);
@@ -192,7 +190,7 @@ int main() {
                     cout << "2- No " << endl;
                     cin >> Agregar;
                     while (Agregar == 1) {
-                        cout << "Ingrese Idioma que desea que se especialice"
+                        cout << "Ingrese Idioma que desea que se especialice:"
                              << endl;
                         cin >> iter;
                         idiomasSelec.insert(iter);
@@ -223,7 +221,7 @@ int main() {
                 while (seIngresaNuevo == false) {
                     string nuevoIdioma = "";
                     bool flagNuevoIdioma = false;
-                    cout << "Ingrese nuevo Idioma" << endl;
+                    cout << "Ingrese nuevo Idioma:" << endl;
                     cin >> nuevoIdioma;
                     // Me fijo si existe idioma
                     flagNuevoIdioma =

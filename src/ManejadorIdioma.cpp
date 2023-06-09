@@ -35,8 +35,7 @@ bool ManejadorIdioma::existeNickname(string Nickname) {}
 set<string> ManejadorIdioma::obtenerNombresIdiomas(){}
 
 Idioma* ManejadorIdioma::obtenerIdioma(string nombreIdioma){
-
-   return ColeccionDeIdiomas.find(nombreIdioma)->second;
+   return ColeccionDeIdiomas[nombreIdioma];
 }
 
 set<string> ManejadorIdioma::obtenerIdiomas(){

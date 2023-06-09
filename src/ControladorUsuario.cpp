@@ -4,7 +4,6 @@
 #include "../include/DTFecha.h"
 #include "../include/ManejadorIdioma.h"
 #include "../include/ManejadorUsuario.h"
-#include <iostream>
 
 #include <set>
 #include <string>
@@ -24,13 +23,17 @@ ControladorUsuario * ControladorUsuario::getInstancia(){
 
 bool ControladorUsuario::confirmarAltaProfesor(){
     ManejadorUsuario * manejador = manejadorUsuario->getManejadorU();
-    if(!manejador->existeNickname(Nickname)){
+    if(!manejador->existeNickname(Nickname) && !IdiomasRecordados.empty()){
         Profesor *p = new Profesor(Nickname, Contrasenia, Nombre, Descripcion,
         Instituto, IdiomasRecordados);
-
-        manejadorUsuario->agregarProfesor(p,Nickname);
+        manejador->agregarProfesor(p,Nickname);
         return true;
-    } else {
+    } else if (!manejador->existeNickname(Nickname) && IdiomasRecordados.empty()){
+        cout << "Error:El profesor debe tener al menos un idioma en el que se especializa. "
+        <<endl;
+        return true;
+    }
+    else{
         return false;
     }
 }
@@ -90,8 +93,13 @@ set<string> ControladorUsuario::obtenerIdiomasProfesor(string nickname){
 void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
     ManejadorIdioma *manejador = manejadorIdioma->getManejadorI();
     Idioma *i = manejador->obtenerIdioma(Nombreidioma);
-    cout << i->obtenerNombre() << endl;
-    IdiomasRecordados.insert(i);
+    if(i!=NULL){
+            cout << i->obtenerNombre() << endl;
+            IdiomasRecordados.insert(i);
+    }
+    else{
+        cout << "El idioma no se encuentra registrado en el sistema." << endl;
+    }
 }
 
 void ControladorUsuario::ingresarInstituto(string NombreInstituto){

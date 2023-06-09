@@ -21,11 +21,11 @@ class ManejadorCurso {
   bool existeNickname(string nickname);
   void agregarCurso(Curso *c);
   set<string> obtenerHabilitados();
-  Idioma obtenerIdioma(string nomIdioma);
+  Idioma* obtenerIdioma(string nomIdioma);
   set<string> obtenerCursos();
   void eliminarCurso(string nombre);
   set<string> obtenerCursosNoAprobados();
-  Curso seleccionarCurso(string nombre);
+  Curso* seleccionarCurso(string nombre);
   set<string> obtenerEjerciciosPendientesCurso(Curso c);
   DTEjercicio obtenerEjercicio(int id);
   bool respuestaEjercicio(string sol);

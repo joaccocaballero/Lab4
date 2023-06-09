@@ -1,3 +1,4 @@
+#include <map>
 #include <string>
 using namespace std;
 #include <iostream>
@@ -17,9 +18,8 @@ ManejadorUsuario* ManejadorUsuario::getManejadorU() {
 
 bool ManejadorUsuario::existeNickname(string Nickname){
     bool res = false;
-
-    if (this->ColeccionDeEstudiantes.size() != 0 || this->ColeccionDeProfesores.size() != 0){
-        if(this->ColeccionDeEstudiantes.count(Nickname) != 0 || this->ColeccionDeProfesores.count(Nickname) != 0){
+    if (ColeccionDeEstudiantes.size() != 0 || ColeccionDeProfesores.size() != 0){
+        if(ColeccionDeEstudiantes.count(Nickname) != 0 || ColeccionDeProfesores.count(Nickname) != 0){
             res = true;
         }
 
@@ -28,12 +28,12 @@ bool ManejadorUsuario::existeNickname(string Nickname){
 }
 
 void ManejadorUsuario::agregarEstudiante(Estudiante *estudiante, string nickname){
-    this->ColeccionDeEstudiantes.insert(make_pair(nickname, estudiante));
+    ColeccionDeEstudiantes.insert(make_pair(nickname, estudiante));
 };
 
 
 void ManejadorUsuario::agregarProfesor(Profesor *profesor, string nickname){
-    this->ColeccionDeProfesores.insert(make_pair(nickname, profesor));
+    ColeccionDeProfesores.insert(make_pair(nickname, profesor));
 };
 
 set<string> ManejadorUsuario::obtenerNicknamesProfesores(){
