@@ -29,9 +29,8 @@ set<string> Leccion::obtenerEjerciciosPendientes(){
     set<string> string;
     return string;
 }
-DTEjercicio Leccion::obtenerEjerciciosLeccion(int id, Leccion l){
-    DTEjercicio ejercicio = DTEjercicio("sa");
-    return ejercicio;
+set<Ejercicio*> Leccion::obtenerEjerciciosLeccion(){
+    return Ejercicios;
 }
 
 Leccion::~Leccion(){}

@@ -19,7 +19,7 @@ class Leccion {
         Leccion(string tema, string objetivo, bool aprobacion);
         set<Ejercicio> obtenerEjercicios();
         set<string> obtenerEjerciciosPendientes();
-        DTEjercicio obtenerEjerciciosLeccion(int id, Leccion l);
+        set<Ejercicio*> obtenerEjerciciosLeccion();
         virtual ~Leccion();
 };
 

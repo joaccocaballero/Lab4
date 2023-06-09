@@ -29,12 +29,12 @@ bool ManejadorUsuario::existeNickname(string Nickname){
 
 void ManejadorUsuario::agregarEstudiante(Estudiante *estudiante, string nickname){
     ColeccionDeEstudiantes.insert(make_pair(nickname, estudiante));
-};
+}
 
 
 void ManejadorUsuario::agregarProfesor(Profesor *profesor, string nickname){
     ColeccionDeProfesores.insert(make_pair(nickname, profesor));
-};
+}
 
 set<string> ManejadorUsuario::obtenerNicknamesProfesores(){
     set<string> retorno;
@@ -43,7 +43,7 @@ set<string> ManejadorUsuario::obtenerNicknamesProfesores(){
         retorno.insert(it->first);
     }
     return retorno;
-};
+}
 
 set<string> ManejadorUsuario::obtenerNicknamesEstudiantes() {
     set<string> retorno;
@@ -53,25 +53,25 @@ set<string> ManejadorUsuario::obtenerNicknamesEstudiantes() {
         retorno.insert(it->first);
     }
     return retorno;
-};
+}
 
 Profesor* ManejadorUsuario::obtenerProfesor(string nickname){
     map<string, Profesor*>::iterator it;
     it=ColeccionDeProfesores.find(nickname);
     return it->second;
-};
+}
 
 set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
     map<string, Profesor*>::iterator it;
     it=ColeccionDeProfesores.find(nickname);
     Profesor* p = it->second;
     return p->consultarIdiomasProfesor();
-};
+}
 
-set<string> ManejadorUsuario::obtenerEstudiantes(){};
+set<string> ManejadorUsuario::obtenerEstudiantes(){}
 set<DTEstadisticaEstudiante> ManejadorUsuario::obtenerEstadisticasEstudiantes(
-    string Nickname){};
-set<string> ManejadorUsuario::obtenerProfesores(){};
+    string Nickname){}
+set<string> ManejadorUsuario::obtenerProfesores(){}
 set<DTEstadisticaProfesor> ManejadorUsuario::obtenerEstadisticasProfesor(
-    string Nickname){};
-set<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){};
+    string Nickname){}
+set<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){}
