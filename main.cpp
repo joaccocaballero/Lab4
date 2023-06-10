@@ -339,7 +339,7 @@ int main() {
                  //Ingreso descripcion ejercicio
                  string descripcion = "";
                  cout << "Ingrese descripcion del ejercicio:";
-                 getline(cin, descripcion);
+                 getline(cin >> ws, descripcion);
                  ControladorCurso->ingresarInfoEjercicio(descripcion);
                  int tipoId;
                  //Tipo ejercicio
@@ -354,9 +354,9 @@ int main() {
                         string frase = "";
                         string solucion = "";
                         cout << "Ingrese frase a completar:";
-                        getline(cin, frase);
+                        getline(cin >> ws, frase);
                         cout << "Ingrese solución ejercicio";
-                        getline(cin, solucion);
+                        getline(cin >> ws, solucion);
                         ControladorCurso->agregarDatosCompletar(frase, solucion);
                         break;
                     }
