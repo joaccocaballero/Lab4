@@ -6,19 +6,21 @@
 
 using namespace std;
 
-enum EnumEjercicios {Traducir, CompletarFrase};
+enum EnumEjercicios {TraducirFrase, CompletarPalabras};
 
 class Ejercicio {
     private:
         int id;
         string consigna;
+        string descripcion;
         EnumEjercicios tipo;
-        bool aprobacion;
     public:
-        Ejercicio(int id, string consigna, EnumEjercicios tipo, bool aprobacion);
+        Ejercicio(int id, string consigna, string descripcion, EnumEjercicios tipo);
         string getNombre();
+        int obtenerId();
+        void setId(int identifier);
         EnumEjercicios obtenerTipo();
-        virtual bool esCorrecto();
+        virtual bool esCorrecto(string solucion);
         virtual ~Ejercicio();
 };
 

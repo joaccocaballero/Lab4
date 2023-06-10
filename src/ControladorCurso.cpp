@@ -5,6 +5,10 @@
 #include "../include/ManejadorCurso.h"
 #include "../include/ManejadorIdioma.h"
 #include "../include/Idioma.h"
+#include "../include/Ejercicio.h"
+#include "../include/CompletarFrase.h"
+#include "../include/Traducir.h"
+
 using namespace std;
 
 ControladorCurso * ControladorCurso::instancia = NULL;
@@ -27,6 +31,20 @@ void ControladorCurso::ingresarInfoCurso(string nombre, string Descripcion, Enum
 void ControladorCurso::ingresarInfoLeccion(string Tema, string Objetivo){
     this->TemaLeccion = Tema;
     this->ObjetivoLeccion = Objetivo;
+}
+
+void ControladorCurso::ingresarInfoEjercicio(string Descripcion){
+    this->DescripcionEjercicio = Descripcion;
+}
+
+void ControladorCurso::agregarDatosCompletar(string frase, string solucion){
+    this->frase = frase;
+    this->solucion = solucion;
+}
+
+void ControladorCurso::agregarDatosTraducir(string frase, string solucion) {
+    this->frase = frase;
+    this->solucion = solucion;
 }
 
 set<string> ControladorCurso::obtenerCursosHabilitados(){
@@ -58,6 +76,11 @@ void ControladorCurso::seleccionarCurso(string nomCurso) {
     CursoSeleccionado = cursoSeleccionado;
 }
 
+void ControladorCurso::seleccionarLeccion(string nomLeccion){
+    Leccion* leccionSeleccionada = CursoSeleccionado->obtenerLeccion(nomLeccion);
+    LeccionSeleccionada = leccionSeleccionada;
+}
+
 void ControladorCurso::confirmarAltaCurso() {
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
@@ -77,6 +100,24 @@ void ControladorCurso::confirmarAltaLeccion(){
     cout << "Lección creada correctamente!" << endl;
 }
 
+void ControladorCurso::confirmarAltaEjercicio(EnumEjercicios tipo){
+    if(tipo == CompletarPalabras){
+        set<Ejercicio*> col = LeccionSeleccionada-> obtenerEjerciciosLeccion();
+        int idEjercicio = col.size() + 1;
+        CompletarFrase * c = new CompletarFrase(idEjercicio, frase, DescripcionEjercicio, tipo, solucion);
+        LeccionSeleccionada->agregarEjercicio(c);
+        cout << "Ejercicio creado correctamente!" << endl;
+    }
+    else if (tipo == TraducirFrase){
+        set<Ejercicio*> col = LeccionSeleccionada->obtenerEjerciciosLeccion();
+        int idEjercicio = col.size() + 1;
+        Traducir * t = new Traducir(idEjercicio, frase, DescripcionEjercicio, tipo, solucion);
+        LeccionSeleccionada->agregarEjercicio(t);
+        cout << "Ejercicio creado correctamente!" << endl;
+    }
+
+}
+
 void ControladorCurso::asignarProfesor(string nickname) {
     ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
     Profesor* profesor = ctrlU->obtenerProfesor(nickname);
@@ -93,8 +134,18 @@ set<string> ControladorCurso::obtenerCursosNoAprobados(string nombre){
     return cursosHabilitados;
 }
 
-DTEjercicio ControladorCurso::seleccionarEjercicio(int id){
+set<string> ControladorCurso::obtenerLecciones(){
+    set<string> retorno;
+    set<Leccion*> col =  CursoSeleccionado->obtenerLecciones();
+    set<Leccion*>::iterator it;
+    for(it=col.begin(); it!=col.end(); ++it){
+        Leccion* current = *it;
+        retorno.insert(current->obtenerTema());
+    }
+    return retorno;
+}
 
+DTEjercicio ControladorCurso::seleccionarEjercicio(int id){
 }
 
 bool ControladorCurso::validarEjercicio(){

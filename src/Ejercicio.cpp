@@ -3,11 +3,11 @@
 
 using namespace std;
 
-Ejercicio::Ejercicio(int id, string consigna, EnumEjercicios tipo, bool aprobacion){
+Ejercicio::Ejercicio(int id, string consigna, string descripcion,EnumEjercicios tipo){
     this->id = id;
     this->consigna = consigna;
+    this->descripcion = descripcion;
     this->tipo = tipo;
-    this->aprobacion = aprobacion;
 }
 string Ejercicio::getNombre(){
     return this->consigna;
@@ -15,7 +15,17 @@ string Ejercicio::getNombre(){
 EnumEjercicios Ejercicio::obtenerTipo(){
     return this->tipo;
 }
-bool Ejercicio::esCorrecto(){
+
+int Ejercicio::obtenerId(){
+    return id;
+}
+
+void Ejercicio::setId(int identifier){
+   this->id = identifier;
+}
+
+
+bool Ejercicio::esCorrecto(string solucion){
     return true;
 }
 Ejercicio::~Ejercicio(){}

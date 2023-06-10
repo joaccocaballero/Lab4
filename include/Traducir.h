@@ -12,8 +12,8 @@ class Traducir: public Ejercicio {
     private: 
         string solucion;
     public:
-        Traducir(int id, string consigna, EnumEjercicios tipo, bool aprobacion, string solucion);
-        virtual bool esCorrecto(string sol);
+        Traducir(int id, string consigna,string descripcion, EnumEjercicios tipo, string solucion);
+        bool esCorrecto(string sol);
         ~Traducir();
         
 };

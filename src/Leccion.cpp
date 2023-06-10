@@ -24,6 +24,12 @@ set<Ejercicio> Leccion::obtenerEjercicios(){
     set<Ejercicio> ejercicio;
     return ejercicio;
 }
+
+void Leccion::agregarEjercicio(Ejercicio * e){
+    Ejercicios.insert(e);
+}
+
+
 set<string> Leccion::obtenerEjerciciosPendientes(){
     set<string> string;
     return string;

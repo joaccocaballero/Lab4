@@ -13,7 +13,7 @@ void casosDeUso() {
     cout << "4: Consultar Idiomas" << endl;
     cout << "5: Alta de Curso" << endl;
     cout << "6: Agregar Lección" << endl;
-    //cout << "7: Agregar Ejercicio" << endl;
+    cout << "7: Agregar Ejercicio" << endl;
     //cout << "8: Habilitar Curso" << endl;
     //cout << "9: Eliminar Curso" << endl;
     //cout << "10: Consultar Curso" << endl;
@@ -23,7 +23,7 @@ void casosDeUso() {
     //cout << "13: Suscribirse a Notificaciones" << endl;
     //cout << "14: Consulta de Notificaciones" << endl;
     //cout << "15: Eliminar Suscripciones" << endl;
-    cout << "18: Cargar datos genéricos" <<endl;
+    cout << "16: Cargar datos genéricos" <<endl;
     cout << "17: Salir" << endl;
 }
 
@@ -320,13 +320,80 @@ int main() {
                break;
             }
 
+            //AgregarEjercicio
+            case 7: {
+                 set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
+                 cout << "Seleccione un curso:" << endl;
+                 string cursoSeleccionado = "";
+                 // imprimo nombre de los cursos
+                 for (string nombre : cursosNoHabilitados) {
+                    cout << "-" + nombre << endl;
+                 }
+                 cin >> cursoSeleccionado;
+                 ControladorCurso->seleccionarCurso(cursoSeleccionado);
+
+
+                 set<string> leccionesCurso = ControladorCurso->obtenerLecciones();
+                 cout << "Seleccione una lección:" << endl;
+                 string leccionSeleccionada = "";
+                 // imprimo nombre de las lecciones
+                 for (string nombre : leccionesCurso) {
+                    cout << "-" + nombre << endl;
+                 }
+                 cin >> leccionSeleccionada;
+                 ControladorCurso->seleccionarLeccion(leccionSeleccionada);
+
+                 //Ingreso descripcion ejercicio
+                 string descripcion = "";
+                 cout << "Ingrese descripcion del ejercicio:";
+                 getline(cin, descripcion);
+                 ControladorCurso->ingresarInfoEjercicio(descripcion);
+                 int tipoId;
+                 //Tipo ejercicio
+                 cout << "Seleccione Tipo de ejercicio a agregar:" << endl;
+                 cout << "1- Completar Palabras" << endl;
+                 cout << "2- Traducir" << endl;
+                 EnumEjercicios tipo;
+                 cin >> tipoId;
+                 switch (tipoId) {
+                    case 1: {
+                        tipo = CompletarPalabras;
+                        string frase = "";
+                        string solucion = "";
+                        cout << "Ingrese frase a completar:";
+                        getline(cin, frase);
+                        cout << "Ingrese solución ejercicio";
+                        getline(cin, solucion);
+                        ControladorCurso->agregarDatosCompletar(frase, solucion);
+                        break;
+                    }
+                    case 2:{
+                        tipo = TraducirFrase;
+                        string frase = "";
+                        string traduccion = "";
+                        cout << "Ingrese frase a traducir:";
+                        getline(cin, frase);
+                        cout << "Ingrese frase traducida:";
+                        getline(cin, traduccion);
+                        ControladorCurso->agregarDatosTraducir(frase, traduccion);
+                        break;
+                    }
+                    default:
+                        cout << "Seleccione una opción correcta"
+                             << endl;
+                        break;
+                 }
+                 ControladorCurso->confirmarAltaEjercicio(tipo);
+                break;
+            }
+
            //Salida
-            case 16:{
+            case 17:{
                 return 0;
             }
 
             //carga de datos
-            case 18: {
+            case 16: {
                 set<string> col;
                 col.insert("Inglés 1");
                 ControladorUsuario->agregarIdioma("Inglés");

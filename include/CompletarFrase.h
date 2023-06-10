@@ -9,12 +9,12 @@
 using namespace std;
 
 class CompletarFrase : public Ejercicio {
- public:
-  set<string> solucion;
-
  private:
-  CompletarFrase(int id, string consigna, EnumEjercicios tipo, bool aprobacion, set<string> solucion);
-  bool esCorrecto(set<string> sol);
+  string solucion;
+
+ public:
+  CompletarFrase(int id, string consigna, string descripcion,EnumEjercicios tipo, string sol);
+  bool esCorrecto(string sol);
    ~CompletarFrase();
 };
 

@@ -36,6 +36,21 @@ set<string> Curso::obtenerEjerciciosPendientes(string nombre){
     return ejercicios;
 }
 
+Leccion* Curso::obtenerLeccion(string temaLeccion){
+    auto it = std::find_if(Lecciones.begin(), Lecciones.end(), [&](Leccion* obj) {
+      return obj->obtenerTema() == temaLeccion;
+    });
+    if (it != Lecciones.end()) {
+      // Object found
+       Leccion* leccion = *it;
+       return leccion;
+    } else {
+      // Object not found
+      std::cout << "Leccion no encontrada!" << std::endl;
+    }
+}
+
+
 void Curso::agregarLeccion(Leccion* l){
     Lecciones.insert(l);
 }

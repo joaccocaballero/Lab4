@@ -18,6 +18,7 @@ class Leccion {
         set<Ejercicio> obtenerEjercicios();
         string obtenerTema();
         string obtenerObjetivo();
+        void agregarEjercicio(Ejercicio* e);
         set<string> obtenerEjerciciosPendientes();
         set<Ejercicio*> obtenerEjerciciosLeccion();
         virtual ~Leccion();
