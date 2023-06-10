@@ -14,7 +14,7 @@ class Leccion {
         string objetivo;
         set<Ejercicio*> Ejercicios;
     public:
-        Leccion(string tema, string objetivo, set<Ejercicio*> Ejercicios);
+        Leccion(string tema, string objetivo, set<Ejercicio*> ejercicios);
         set<Ejercicio> obtenerEjercicios();
         string obtenerTema();
         string obtenerObjetivo();

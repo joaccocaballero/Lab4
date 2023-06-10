@@ -296,9 +296,10 @@ int main() {
                 }
                 cin >> cursoSeleccionado;
                 if (!(cursosNoHabilitados.count(cursoSeleccionado))) {
-                    cout << "Seleccione un profesor valido:" << endl;
+                    cout << "Seleccione un curso valido:" << endl;
                     cin >> cursoSeleccionado;
                 }
+                ControladorCurso->seleccionarCurso(cursoSeleccionado);
                 string temaLeccion = "";
                 string objetivoLeccion = "";
                 int agregar = 0;
@@ -334,13 +335,13 @@ int main() {
                 ControladorUsuario->ingresarInstituto("Fing");
                 ControladorUsuario->agregarEspecializacion("Inglés");
                 ControladorUsuario->confirmarAltaProfesor();
-                ControladorCurso->ingresarInfoCurso("Inglés 1", "cursoDesc",
+                ControladorCurso->ingresarInfoCurso("Ingles1", "cursoDesc",
                                                     Principiante);
                 ControladorCurso->asignarProfesor("joaco_");
                 ControladorCurso->seleccionarIdioma("Inglés");
                 ControladorCurso->confirmarAltaCurso();
 
-                ControladorCurso->ingresarInfoCurso("Inglés 2", "cursoDesc",
+                ControladorCurso->ingresarInfoCurso("Inglés2", "cursoDesc",
                                                     Principiante);
                 ControladorCurso->asignarProfesor("joaco_");
                 ControladorCurso->seleccionarIdioma("Inglés");

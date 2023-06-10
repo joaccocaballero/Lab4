@@ -53,9 +53,9 @@ void ControladorCurso::seleccionarIdioma(string nomIdioma){
 void ControladorCurso::confirmarEliminacion(string nombre){}
 
 void ControladorCurso::seleccionarCurso(string nomCurso) {
-    ManejadorCurso * manejador = manejadorCurso->getManejadorC();
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     Curso *cursoSeleccionado = manejador->obtenerCurso(nomCurso);
-    this->CursoSeleccionado = cursoSeleccionado;
+    CursoSeleccionado = cursoSeleccionado;
 }
 
 void ControladorCurso::confirmarAltaCurso() {
@@ -71,8 +71,7 @@ void ControladorCurso::confirmarAltaCurso() {
 
 void ControladorCurso::confirmarAltaLeccion(){
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
-    cout << "Llegué confalta!" << endl;
-    set<Ejercicio*> col{};
+    set<Ejercicio*> col;
     Leccion * l = new Leccion(TemaLeccion, ObjetivoLeccion, col);
     CursoSeleccionado->agregarLeccion(l);
     cout << "Lección creada correctamente!" << endl;

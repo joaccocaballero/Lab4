@@ -26,9 +26,8 @@ bool Curso::obtenerHabilitacion(){
     return habilitacion;
 }
 
-set<Leccion> Curso::obtenerLecciones(){
-    set<Leccion> lecciones;
-    return lecciones;
+set<Leccion*> Curso::obtenerLecciones(){
+    return Lecciones;
 }
 
 set<string> Curso::obtenerEjerciciosPendientes(string nombre){
@@ -38,7 +37,6 @@ set<string> Curso::obtenerEjerciciosPendientes(string nombre){
 }
 
 void Curso::agregarLeccion(Leccion* l){
-    cout << "llegue op curso" << endl;
     Lecciones.insert(l);
 }
 

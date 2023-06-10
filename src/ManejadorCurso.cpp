@@ -1,6 +1,7 @@
 #include <string>
 #include <map>
 #include "../include/ManejadorCurso.h"
+#include <iostream>
 
 ManejadorCurso* ManejadorCurso::instancia = NULL;
 
@@ -58,8 +59,13 @@ set<string> ManejadorCurso::obtenerCursosNoAprobados(){}
 
 Curso* ManejadorCurso::obtenerCurso(string nombre){
   map<string, Curso*>::iterator it;
+  cout << nombre << endl;
   it=ColeccionDeCursos.find(nombre);
-  return it->second;
+  if (it != ColeccionDeCursos.end()) {
+    return it->second;
+  } else {
+    return nullptr;
+  }
 }
 
 set<string> ManejadorCurso::obtenerEjerciciosPendientesCurso(Curso c){}

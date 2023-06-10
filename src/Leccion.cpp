@@ -6,10 +6,10 @@
 #include "../include/Ejercicio.h"
 
 
-Leccion::Leccion(string tema, string objetivo, set<Ejercicio*> Ejercicios){
+Leccion::Leccion(string tema, string objetivo, set<Ejercicio*> ejercicios){
     this->tema = tema;
     this->objetivo = objetivo;
-    this->Ejercicios = Ejercicios;
+    this->Ejercicios = ejercicios;
 }
 
 string Leccion::obtenerTema(){
