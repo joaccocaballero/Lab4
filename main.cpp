@@ -308,13 +308,6 @@ int main() {
                 cin >> temaLeccion;
                 cout << "Ingrese objetivo de la lección:" << endl;
                 cin >> objetivoLeccion;
-                cout << "Desea agregar ejercicios a la lección?" << endl;
-                cout << "1- Si" << endl;
-                cout << "2- No" << endl;
-                cin >> agregar;
-                while(agregar==1){
-                    //agrego ejercicios
-                }
                ControladorCurso->ingresarInfoLeccion(temaLeccion, objetivoLeccion);
                ControladorCurso->confirmarAltaLeccion();
                break;
