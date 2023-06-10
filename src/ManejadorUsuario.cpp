@@ -69,22 +69,23 @@ set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
 }
 
 DTUsuario ManejadorUsuario::obtenerUsuario(string nickname) {
-    Usuario* u;
     bool esEstudiante = false;
+    Estudiante* e;
+    Profesor* p;
     if (ColeccionDeEstudiantes.count(nickname)) {
-        u = ColeccionDeEstudiantes[nickname];
+        e = ColeccionDeEstudiantes[nickname];
         esEstudiante = true;
     } else {
-        u = ColeccionDeProfesores[nickname];
+        p = ColeccionDeProfesores[nickname];
     }
     
     if (esEstudiante) {
-        DTEstudiante dtEstudiante = DTEstudiante(u->obtenerNombre(), u->obtenerDescripcion(), u->obtenerPais());
+        DTEstudiante dtEstudiante = DTEstudiante(e->obtenerNombre(), e->obtenerDescripcion(), e->obtenerPais());
         return dtEstudiante;
     } else {
-        set<string> idiomas = obtenerIdiomasProfesor(u->obtenerNickname());
-        DTProfesor dtProfesor = DTProfesor(u->obtenerNombre, u->obtenerDescripcion, u->obtenerInstituto, idiomas);
-        return DTProfesor;
+        set<string> idiomas = obtenerIdiomasProfesor(p->obtenerNickname());
+        DTProfesor dtProfesor = DTProfesor(p->obtenerNombre(), p->obtenerDescripcion(), p->obtenerInstituto(), idiomas);
+        return dtProfesor;
     }
 
 }
