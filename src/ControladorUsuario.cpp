@@ -76,11 +76,11 @@ set<string> ControladorUsuario::obtenerIdiomasDisponibles(){
 
 set<string> ControladorUsuario::obtenerUsuarios(){
     set<string> setProf = obtenerProfesores();
-    set<string> serEstu = obtenerEstudiantes();
+    set<string> setEstu = obtenerEstudiantes();
     set<string> mergedSet;
     mergedSet.insert(setProf.begin(), setProf.end());
     mergedSet.insert(setEstu.begin(), setEstu.end());
-    return set<string>;
+    return mergedSet;
 }
 
 void ControladorUsuario::obtenerInfoUsuario(string Nickname){

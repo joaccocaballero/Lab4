@@ -8,7 +8,7 @@ void casosDeUso() {
     cout << endl;
     cout << "Ingresar caso de uso" << endl;
     cout << "1: Alta de Usuario" << endl;
-    //cout << "2: Consulta de Usuario" << endl;
+    cout << "2: Consulta de Usuario" << endl;
     cout << "3: Alta de Idioma" << endl;
     cout << "4: Consultar Idiomas" << endl;
     cout << "5: Alta de Curso" << endl;
@@ -247,7 +247,21 @@ int main() {
                 }
                 break;
             }
-        
+
+            //Consultar Usuario
+            case 2: {
+                set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                cout << "Seleccione un usuario" << endl;
+                std::set<string>::iterator it;
+                for (it= usuarios.begin(); it!=usuarios.end(); ++it) {
+                    string elem = *it;
+                    cout << "-"+elem << endl;
+                }
+                string usuarioSeleccionado = "";
+                cin >> usuarioSeleccionado;
+                ControladorUsuario->obtenerInfoUsuario()
+                break;
+            }
             //AltaIdioma
             case 3: {
                 bool seIngresaNuevo = false;
