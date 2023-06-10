@@ -3,6 +3,8 @@
 using namespace std;
 #include <iostream>
 #include "../include/ManejadorUsuario.h"
+#include "../include/DTEstudiante.h"
+#include "../include/DTProfesor.h"
 
 
 ManejadorUsuario* ManejadorUsuario::manejadorU = NULL;
@@ -45,25 +47,31 @@ set<string> ManejadorUsuario::obtenerNicknamesProfesores(){
     return retorno;
 }
 
-set<string> ManejadorUsuario::obtenerNicknamesEstudiantes() {
+set<string> ManejadorUsuario::obtenerNicknamesEstudiantes(){
     set<string> retorno;
     map<string, Estudiante*>::iterator it;
-    for (it = ColeccionDeEstudiantes.begin(); it != ColeccionDeEstudiantes.end();
-         ++it) {
+    for (it = ColeccionDeEstudiantes.begin(); it != ColeccionDeEstudiantes.end(); ++it) {
         retorno.insert(it->first);
     }
     return retorno;
 }
 
-Profesor* ManejadorUsuario::obtenerProfesor(string nickname){
-    return ColeccionDeProfesores[nickname];
+
+DTProfesor ManejadorUsuario::obtenerDTProfesor(string nickname) {
+    Profesor* p = ColeccionDeProfesores[nickname];
+    set<string> idiomas = p->consultarIdiomasProfesor();
+    DTProfesor dtProfesor = DTProfesor(p->obtenerNombre(), p->obtenerDescripcion(), p->obtenerInstituto(), idiomas);
+    return dtProfesor;
 }
 
-set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
-    map<string, Profesor*>::iterator it;
-    it=ColeccionDeProfesores.find(nickname);
-    Profesor* p = it->second;
-    return p->consultarIdiomasProfesor();
+DTEstudiante ManejadorUsuario::obtenerDTEstudiante(string nickname){
+    Estudiante* e = ColeccionDeEstudiantes[nickname];
+    DTEstudiante dtEstudiante = DTEstudiante(e->obtenerNombre(), e->obtenerDescripcion(), e->obtenerPais());
+    return dtEstudiante;
+}
+
+bool ManejadorUsuario::esEstudiante(string nickname){
+    return (ColeccionDeEstudiantes.count(nickname) == 1);
 }
 
 set<string> ManejadorUsuario::obtenerEstudiantes(){}
@@ -72,4 +80,8 @@ set<DTEstadisticaEstudiante> ManejadorUsuario::obtenerEstadisticasEstudiantes(
 set<string> ManejadorUsuario::obtenerProfesores(){}
 set<DTEstadisticaProfesor> ManejadorUsuario::obtenerEstadisticasProfesor(
     string Nickname){}
+Profesor* ManejadorUsuario::obtenerProfesor(string nickname){}
+set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
+
+}
 set<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){}

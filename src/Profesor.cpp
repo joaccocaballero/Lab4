@@ -17,6 +17,9 @@ Profesor::Profesor(string Nickname, string Contrasenia, string Nombre,
 }
 
 void Profesor::AgregarEspecializacion(Idioma idioma){}
+string Profesor::obtenerInstituto(){
+  return Instituto;
+}
 
 set<string> Profesor::consultarIdiomasProfesor(){
     set<string> nombreIdiomas;

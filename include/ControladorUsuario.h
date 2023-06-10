@@ -13,7 +13,7 @@
 #include "Estudiante.h"
 #include "ManejadorIdioma.h"
 #include "ManejadorUsuario.h"
-
+#include "DTUsuario.h"
 using namespace std;
 
 class ControladorUsuario : public IControladorUsuario {
@@ -48,10 +48,14 @@ class ControladorUsuario : public IControladorUsuario {
          void ingresarInstituto(string NombreInstituto);
          bool agregarIdioma(string Nombre);
          set<string> obtenerEstudiantes();
+         bool obtenerTipo(string nickname);
          set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname);
          set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
          set<Idioma> obtenerSubscripcionesPendientes(string Nickname);
          set<DTNotificacion> obtenerNotificaciones(string Nickname);
+         set<string> obtenerUsuarios();
+         DTEstudiante obtenerInfoEstudiante(string Nickname);
+         DTProfesor obtenerInfoProfesor(string Nickname);
          virtual ~ControladorUsuario();
     };
 

@@ -4,6 +4,8 @@
 #include "../include/DTFecha.h"
 #include "../include/ManejadorIdioma.h"
 #include "../include/ManejadorUsuario.h"
+#include "../include/DTUsuario.h"
+
 
 #include <set>
 #include <string>
@@ -74,6 +76,25 @@ set<string> ControladorUsuario::obtenerIdiomasDisponibles(){
     return retorno;
 }
 
+set<string> ControladorUsuario::obtenerUsuarios(){
+    set<string> setProf = obtenerProfesores();
+    set<string> setEstu = obtenerEstudiantes();
+    set<string> mergedSet;
+    mergedSet.insert(setProf.begin(), setProf.end());
+    mergedSet.insert(setEstu.begin(), setEstu.end());
+    return mergedSet;
+}
+
+DTProfesor ControladorUsuario::obtenerInfoProfesor(string Nickname){
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerDTProfesor(Nickname);
+}
+
+DTEstudiante ControladorUsuario::obtenerInfoEstudiante(string Nickname){
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerDTEstudiante(Nickname);
+}
+
 set<string> ControladorUsuario::obtenerProfesores() {
     ManejadorUsuario * manejador = manejadorUsuario->getManejadorU();
     return manejador->obtenerNicknamesProfesores();
@@ -118,6 +139,11 @@ bool ControladorUsuario::agregarIdioma(string Nombre) {
     else{
         return false;
     }
+}
+
+bool ControladorUsuario::obtenerTipo(string nickname) {
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->esEstudiante(nickname);
 }
 
 set<DTEstadisticaEstudiante> ControladorUsuario::obtenerEstadisticaEstudiante(string Nickname){

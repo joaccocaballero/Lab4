@@ -2,13 +2,16 @@
 #include <iostream>
 #include <string>
 #include <set>
+
+#include "include/DTProfesor.h"
+#include "./include/DTEstudiante.h"
 using namespace std;
 
 void casosDeUso() {
     cout << endl;
     cout << "Ingresar caso de uso" << endl;
     cout << "1: Alta de Usuario" << endl;
-    //cout << "2: Consulta de Usuario" << endl;
+    cout << "2: Consulta de Usuario" << endl;
     cout << "3: Alta de Idioma" << endl;
     cout << "4: Consultar Idiomas" << endl;
     cout << "5: Alta de Curso" << endl;
@@ -146,8 +149,37 @@ int main() {
                     cout << "Usuario creado exitosamente!" << endl;
                 }
                 break;
-            } 
+            }
 
+            //Consultar Usuario
+            case 2: {
+                set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                cout << "Seleccione un usuario" << endl;
+                std::set<string>::iterator it;
+                for (it= usuarios.begin(); it!=usuarios.end(); ++it) {
+                    string elem = *it;
+                    cout << "-"+elem << endl;
+                }
+                string usuarioSeleccionado = "";
+                cin >> usuarioSeleccionado;
+                bool tipoUsuario = ControladorUsuario->obtenerTipo(usuarioSeleccionado  );
+                if (tipoUsuario == true) {
+                    DTEstudiante infoEstu = ControladorUsuario->obtenerInfoEstudiante(usuarioSeleccionado);
+                    cout << "Nombre: " + infoEstu.getNombre() << endl; 
+                    cout << "Descripcion: " + infoEstu.getDescripcion() << endl; 
+                    cout << "Pais: " + infoEstu.getPaisResidencia() << endl; 
+                } else {
+                    DTProfesor infoProfe = ControladorUsuario->obtenerInfoProfesor(usuarioSeleccionado);
+                    set<string> idiomas = infoProfe.getIdiomas();
+                    cout << "Idiomas: "<< endl;
+                    for (it= idiomas.begin(); it!=idiomas.end(); ++it) {
+                        string elem = *it;
+                        cout << "-"+elem << endl;
+                    }
+                    cout << "Instituto: " + infoProfe.getInstituto() << endl; 
+                } 
+                break;
+            }
             //AltaIdioma
             case 3: {
                 bool seIngresaNuevo = false;

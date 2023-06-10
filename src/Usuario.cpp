@@ -12,6 +12,13 @@ Usuario::Usuario(string Nickname, string Contrasenia, string Nombre, string Desc
 string Usuario::obtenerNickname(){
     return Nickname;
 }
+string Usuario::obtenerNombre(){
+    return Nombre;
+}
+
+string Usuario::obtenerDescripcion(){
+    return Descripcion;
+}
 
 void Usuario::Notificar(DTNotificacion Notificacion){
     Notificaciones.push_back(Notificacion);
