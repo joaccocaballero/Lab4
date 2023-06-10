@@ -1,16 +1,4 @@
-//     public:
-//         string tema{}
-//         string objetivo;
-//         bool aprobacion;
-//         set<Ejercicio*> Ejercicios;
 
-//     private:
-//         Leccion(string tema, string objetivo, bool aprobacion);
-//         set<Ejercicio> obtenerEjercicios();
-//         set<string> obtenerEjerciciosPendientes();
-//         DTEjercicio obtenerEjerciciosLeccion(int id, l Leccion);
-//         ~Leccion()
-// }
 #include <string>
 #include <set>
 #include "../include/Leccion.h"
@@ -18,7 +6,18 @@
 #include "../include/Ejercicio.h"
 
 
-Leccion::Leccion(string tema, string objetivo, bool aprobacion):tema(tema),objetivo(objetivo),aprobacion(aprobacion){
+Leccion::Leccion(string tema, string objetivo, set<Ejercicio*> ejercicios){
+    this->tema = tema;
+    this->objetivo = objetivo;
+    this->Ejercicios = ejercicios;
+}
+
+string Leccion::obtenerTema(){
+    return tema;
+}
+
+string Leccion::obtenerObjetivo(){ 
+    return objetivo; 
 }
 
 set<Ejercicio> Leccion::obtenerEjercicios(){

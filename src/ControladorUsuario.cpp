@@ -85,9 +85,14 @@ set<string> ControladorUsuario::obtenerUsuarios(){
     return mergedSet;
 }
 
-DTUsuario ControladorUsuario::obtenerInfoUsuario(string Nickname){
+DTProfesor ControladorUsuario::obtenerInfoProfesor(string Nickname){
     ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
-    return manejador->obtenerUsuario(Nickname);
+    return manejador->obtenerDTProfesor(Nickname);
+}
+
+DTEstudiante ControladorUsuario::obtenerInfoEstudiante(string Nickname){
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerDTEstudiante(Nickname);
 }
 
 set<string> ControladorUsuario::obtenerProfesores() {
@@ -134,6 +139,11 @@ bool ControladorUsuario::agregarIdioma(string Nombre) {
     else{
         return false;
     }
+}
+
+bool ControladorUsuario::obtenerTipo(string nickname) {
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->esEstudiante(nickname);
 }
 
 set<DTEstadisticaEstudiante> ControladorUsuario::obtenerEstadisticaEstudiante(string Nickname){

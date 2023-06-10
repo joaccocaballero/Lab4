@@ -6,6 +6,8 @@
 #include <map>
 #include "Usuario.h"
 #include "DTUsuario.h"
+#include "DTEstudiante.h"
+#include "DTProfesor.h"
 #include "Estudiante.h"
 #include "Profesor.h"
 #include "DTEstadisticaEstudiante.h"
@@ -29,9 +31,11 @@ class ManejadorUsuario {
         set<string> obtenerNicknamesProfesores();
         set<string> obtenerNicknamesEstudiantes();
         Profesor* obtenerProfesor(string nickname);
-        DTUsuario obtenerUsuario(string nickname);
+        DTEstudiante obtenerDTEstudiante(string nickname);
+        DTProfesor obtenerDTProfesor(string nickname);
         set<string> obtenerIdiomasProfesor(string nickname);
         set<string> obtenerEstudiantes();
+        bool esEstudiante(string nickname);
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiantes(string Nickname);
         set<string> obtenerProfesores();
         set<DTEstadisticaProfesor> obtenerEstadisticasProfesor(string Nickname);

@@ -7,6 +7,7 @@
 #include "Curso.h"
 #include "Idioma.h"
 #include "Ejercicio.h"
+#include "Leccion.h"
 
 using namespace std;
 
@@ -25,11 +26,12 @@ class ManejadorCurso {
   set<string> obtenerCursos();
   void eliminarCurso(string nombre);
   set<string> obtenerCursosNoAprobados();
-  Curso* seleccionarCurso(string nombre);
+  Curso* obtenerCurso(string nombre);
   set<string> obtenerEjerciciosPendientesCurso(Curso c);
   DTEjercicio obtenerEjercicio(int id);
   bool respuestaEjercicio(string sol);
   set<Curso*> obtenerCursosPrevios(set<string> cursosPrevios);
+  set<string> obtenerCursosNoHabilitados();
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
 };
 

@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <set>
+
+#include "include/DTProfesor.h"
+#include "./include/DTEstudiante.h"
 using namespace std;
 
 void casosDeUso() {
@@ -12,7 +15,7 @@ void casosDeUso() {
     cout << "3: Alta de Idioma" << endl;
     cout << "4: Consultar Idiomas" << endl;
     cout << "5: Alta de Curso" << endl;
-    //cout << "6: Agregar Lección" << endl;
+    cout << "6: Agregar Lección" << endl;
     //cout << "7: Agregar Ejercicio" << endl;
     //cout << "8: Habilitar Curso" << endl;
     //cout << "9: Eliminar Curso" << endl;
@@ -23,7 +26,8 @@ void casosDeUso() {
     //cout << "13: Suscribirse a Notificaciones" << endl;
     //cout << "14: Consulta de Notificaciones" << endl;
     //cout << "15: Eliminar Suscripciones" << endl;
-    cout << "16: Salir" << endl;
+    cout << "18: Cargar datos genéricos" <<endl;
+    cout << "17: Salir" << endl;
 }
 
 int main() {
@@ -43,107 +47,6 @@ int main() {
         cin >> caso;
         // armo switch
         switch (caso) {
-            //AltaCurso
-            case 5: {
-                set<string> listadoProfesores = ControladorUsuario->obtenerProfesores();
-                cout << "Seleccione un profesor:" << endl;
-                string profesorSeleccionado = "";
-                // imprimo nombre de los profesores
-                for (string nombre: listadoProfesores) {
-                    cout << nombre << endl;
-                }
-                cin >> profesorSeleccionado;
-                if (!(listadoProfesores.count(profesorSeleccionado))) {
-                    cout << "Seleccione un profesor valido:" << endl;
-                    cin >> profesorSeleccionado;
-                }
-                string nombreCurso = "";
-                string descripcion = "";
-                int idDificultad = 1;
-                
-                // ingreso Datos
-                cout << "Ingrese Nombre curso:" << endl;
-                cin >> nombreCurso;
-                cout << "Ingrese Descripcion curso:" << endl;
-                cin >> descripcion;
-                cout << "Seleccione Dificultad:" << endl;
-                cout << "1- Principiante" << endl;
-                cout << "2- Intermedio" << endl;
-                cout << "3- Avanzado" << endl;
-                cin >> idDificultad;
-                EnumDificultad dificultad = Principiante;
-                switch (idDificultad) {
-                    case 1:
-                        dificultad = Principiante;
-                        break;
-                    case 2:
-                        dificultad = Medio;
-                        break;
-                    case 3:
-                        dificultad = Avanzado;
-                        break;
-                }
-                ControladorCurso->ingresarInfoCurso(nombreCurso, descripcion, dificultad);
-
-                //asignar profesor
-                ControladorCurso->asignarProfesor(profesorSeleccionado);
-
-                cout << "Seleccione el idioma del curso:" << endl;
-                set<string> idiomas = ControladorUsuario->obtenerIdiomasProfesor(profesorSeleccionado);
-                string idiomaSeleccionado = "";
-                // imprimo nombre de los idiomas
-                for (string nombre: idiomas) {
-                    cout << "-"+nombre << endl;
-                }
-                cin >> idiomaSeleccionado;
-                ControladorCurso->seleccionarIdioma(idiomaSeleccionado);
-
-                int agregarPrevias = 1;
-
-                cout << "Desea agregar cursos previos? Ingrese un numero:" << endl;
-                cout << "1- Si" << endl;
-                cout << "2 -No" << endl;
-
-                cin >> agregarPrevias;
-
-                if (agregarPrevias == 1) {
-                    set<string> cursosHabilitados = ControladorCurso->obtenerCursosHabilitados();
-                    int seguirAgregando = 1;
-                    set<string> cursosPrevios;
-                    while (seguirAgregando==1){
-                        string nombreCurso;
-                        cout << "Ingrese nombre del curso: " << endl;
-                        // imprimo nombre de los cursos previos
-                        for (string nombre : cursosHabilitados) {
-                          cout << "-" + nombre << endl;
-                        }
-                        cin >> nombreCurso;
-                        cursosPrevios.insert(nombreCurso);
-                        do{
-                          cout << "Desea Agregar otro? Ingrese un numero:"
-                               << endl;
-                          cout << "1- Si" << endl;
-                          cout << "2- No" << endl;
-                          cin >> seguirAgregando;
-                          if(seguirAgregando==1){
-                            string nombreCurso;
-                            cout << "Ingrese nombre del curso: " << endl;
-                            // imprimo nombre de los cursos previos
-                            for (string nombre : cursosHabilitados) {
-                              cout << "-" + nombre << endl;
-                            }
-                            cin >> nombreCurso;
-                            cursosPrevios.insert(nombreCurso);
-                          }
-                        }
-                        while(seguirAgregando==1);
-                    }
-                    ControladorCurso->ingresarCursosPrevios(cursosPrevios);
-                }
-                ControladorCurso->confirmarAltaCurso();
-                break;
-            }
-            
             //AltaUsuario
             case 1: {
                 string Nickname = "";
@@ -259,7 +162,22 @@ int main() {
                 }
                 string usuarioSeleccionado = "";
                 cin >> usuarioSeleccionado;
-                DTUsuario infoUsuario = ControladorUsuario->obtenerInfoUsuario(usuarioSeleccionado);
+                bool tipoUsuario = ControladorUsuario->obtenerTipo(usuarioSeleccionado  );
+                if (tipoUsuario == true) {
+                    DTEstudiante infoEstu = ControladorUsuario->obtenerInfoEstudiante(usuarioSeleccionado);
+                    cout << "Nombre: " + infoEstu.getNombre() << endl; 
+                    cout << "Descripcion: " + infoEstu.getDescripcion() << endl; 
+                    cout << "Pais: " + infoEstu.getPaisResidencia() << endl; 
+                } else {
+                    DTProfesor infoProfe = ControladorUsuario->obtenerInfoProfesor(usuarioSeleccionado);
+                    set<string> idiomas = infoProfe.getIdiomas();
+                    cout << "Idiomas: "<< endl;
+                    for (it= idiomas.begin(); it!=idiomas.end(); ++it) {
+                        string elem = *it;
+                        cout << "-"+elem << endl;
+                    }
+                    cout << "Instituto: " + infoProfe.getInstituto() << endl; 
+                } 
                 break;
             }
             //AltaIdioma
@@ -283,21 +201,189 @@ int main() {
                 }
                 break;
             }
-            
+
             // Consultar Idiomas
             case 4: {
-                std::set<string> idiomasDisponibles = ControladorUsuario->obtenerIdiomasDisponibles();
-                cout << "Los idiomas disponibles son los siguientes." << endl;
+                std::set<string> idiomasDisponibles =
+                    ControladorUsuario->obtenerIdiomasDisponibles();
+                cout << "Los idiomas disponibles son los siguientes:" << endl;
                 std::set<string>::iterator it;
-                for (it= idiomasDisponibles.begin(); it!=idiomasDisponibles.end(); ++it) {
+                for (it = idiomasDisponibles.begin();
+                     it != idiomasDisponibles.end(); ++it) {
                     string elem = *it;
-                    cout << "-"+elem << endl;
+                    cout << "-" + elem << endl;
                 }
+                break;
             }
+
+            // AltaCurso
+            case 5: {
+                set<string> listadoProfesores = ControladorUsuario->obtenerProfesores();
+                cout << "Seleccione un profesor:" << endl;
+                string profesorSeleccionado = "";
+                // imprimo nombre de los profesores
+                for (string nombre: listadoProfesores) {
+                    cout << nombre << endl;
+                }
+                cin >> profesorSeleccionado;
+                if (!(listadoProfesores.count(profesorSeleccionado))) {
+                    cout << "Seleccione un profesor valido:" << endl;
+                    cin >> profesorSeleccionado;
+                }
+                string nombreCurso = "";
+                string descripcion = "";
+                int idDificultad = 1;
+                
+                // ingreso Datos
+                cout << "Ingrese Nombre curso:" << endl;
+                cin >> nombreCurso;
+                cout << "Ingrese Descripcion curso:" << endl;
+                cin >> descripcion;
+                cout << "Seleccione Dificultad:" << endl;
+                cout << "1- Principiante" << endl;
+                cout << "2- Intermedio" << endl;
+                cout << "3- Avanzado" << endl;
+                cin >> idDificultad;
+                EnumDificultad dificultad = Principiante;
+                switch (idDificultad) {
+                    case 1:
+                        dificultad = Principiante;
+                        break;
+                    case 2:
+                        dificultad = Medio;
+                        break;
+                    case 3:
+                        dificultad = Avanzado;
+                        break;
+                }
+                ControladorCurso->ingresarInfoCurso(nombreCurso, descripcion, dificultad);
+
+                //asignar profesor
+                ControladorCurso->asignarProfesor(profesorSeleccionado);
+
+                cout << "Seleccione el idioma del curso:" << endl;
+                set<string> idiomas = ControladorUsuario->obtenerIdiomasProfesor(profesorSeleccionado);
+                string idiomaSeleccionado = "";
+                // imprimo nombre de los idiomas
+                for (string nombre: idiomas) {
+                    cout << "-"+nombre << endl;
+                }
+                cin >> idiomaSeleccionado;
+                ControladorCurso->seleccionarIdioma(idiomaSeleccionado);
+
+                int agregarPrevias = 1;
+
+                cout << "Desea agregar cursos previos? Ingrese un numero:" << endl;
+                cout << "1- Si" << endl;
+                cout << "2 -No" << endl;
+
+                cin >> agregarPrevias;
+
+                if (agregarPrevias == 1) {
+                    set<string> cursosHabilitados = ControladorCurso->obtenerCursosHabilitados();
+                    int seguirAgregando = 1;
+                    set<string> cursosPrevios;
+                    while (seguirAgregando==1){
+                        string nombreCurso;
+                        cout << "Ingrese nombre del curso: " << endl;
+                        // imprimo nombre de los cursos previos
+                        for (string nombre : cursosHabilitados) {
+                          cout << "-" + nombre << endl;
+                        }
+                        cin >> nombreCurso;
+                        cursosPrevios.insert(nombreCurso);
+                        do{
+                          cout << "Desea Agregar otro? Ingrese un numero:"
+                               << endl;
+                          cout << "1- Si" << endl;
+                          cout << "2- No" << endl;
+                          cin >> seguirAgregando;
+                          if(seguirAgregando==1){
+                            string nombreCurso;
+                            cout << "Ingrese nombre del curso: " << endl;
+                            // imprimo nombre de los cursos previos
+                            for (string nombre : cursosHabilitados) {
+                              cout << "-" + nombre << endl;
+                            }
+                            cin >> nombreCurso;
+                            cursosPrevios.insert(nombreCurso);
+                          }
+                        }
+                        while(seguirAgregando==1);
+                    }
+                    ControladorCurso->ingresarCursosPrevios(cursosPrevios);
+                }
+                ControladorCurso->confirmarAltaCurso();
+                break;
+            }
+
+            //AgregarLeccion
+            case 6: {
+                set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
+                cout << "Seleccione un curso:" << endl;
+                string cursoSeleccionado = "";
+                //imprimo nombre de los cursos
+                for (string nombre : cursosNoHabilitados) {
+                    cout << "-"+nombre << endl;
+                }
+                cin >> cursoSeleccionado;
+                if (!(cursosNoHabilitados.count(cursoSeleccionado))) {
+                    cout << "Seleccione un curso valido:" << endl;
+                    cin >> cursoSeleccionado;
+                }
+                ControladorCurso->seleccionarCurso(cursoSeleccionado);
+                string temaLeccion = "";
+                string objetivoLeccion = "";
+                int agregar = 0;
+                // ingreso Datos
+                cout << "Ingrese tema de la lección:" << endl;
+                cin >> temaLeccion;
+                cout << "Ingrese objetivo de la lección:" << endl;
+                cin >> objetivoLeccion;
+                cout << "Desea agregar ejercicios a la lección?" << endl;
+                cout << "1- Si" << endl;
+                cout << "2- No" << endl;
+                cin >> agregar;
+                while(agregar==1){
+                    //agrego ejercicios
+                }
+               ControladorCurso->ingresarInfoLeccion(temaLeccion, objetivoLeccion);
+               ControladorCurso->confirmarAltaLeccion();
+               break;
+            }
+
+           //Salida
             case 16:{
                 return 0;
             }
-               
+
+            //carga de datos
+            case 18: {
+                set<string> col;
+                col.insert("Inglés 1");
+                ControladorUsuario->agregarIdioma("Inglés");
+                ControladorUsuario->ingresarDatosUsuario("joaco_", "joaco123",
+                                                         "Joaquín", "ProfUser");
+                ControladorUsuario->ingresarInstituto("Fing");
+                ControladorUsuario->agregarEspecializacion("Inglés");
+                ControladorUsuario->confirmarAltaProfesor();
+                ControladorCurso->ingresarInfoCurso("Ingles1", "cursoDesc",
+                                                    Principiante);
+                ControladorCurso->asignarProfesor("joaco_");
+                ControladorCurso->seleccionarIdioma("Inglés");
+                ControladorCurso->confirmarAltaCurso();
+
+                ControladorCurso->ingresarInfoCurso("Inglés2", "cursoDesc",
+                                                    Principiante);
+                ControladorCurso->asignarProfesor("joaco_");
+                ControladorCurso->seleccionarIdioma("Inglés");
+                ControladorCurso->ingresarCursosPrevios(col);
+                ControladorCurso->confirmarAltaCurso();
+
+                break;
+            }
+
+            //Default   
             default:{
                 cout << "" << endl;
                 cout << "Ingrese una opción correcta..." << endl;
