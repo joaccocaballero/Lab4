@@ -56,9 +56,7 @@ set<string> ManejadorUsuario::obtenerNicknamesEstudiantes() {
 }
 
 Profesor* ManejadorUsuario::obtenerProfesor(string nickname){
-    map<string, Profesor*>::iterator it;
-    it=ColeccionDeProfesores.find(nickname);
-    return it->second;
+    return ColeccionDeProfesores[nickname];
 }
 
 set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){

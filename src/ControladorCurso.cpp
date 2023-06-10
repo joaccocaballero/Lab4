@@ -1,5 +1,7 @@
 #include <string>
+#include <iostream>
 #include "../include/ControladorCurso.h"
+#include "../include/ControladorUsuario.h"
 #include "../include/ManejadorCurso.h"
 #include "../include/ManejadorIdioma.h"
 #include "../include/Idioma.h"
@@ -47,10 +49,12 @@ void ControladorCurso::confirmarAltaCurso() {
     Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado);
     // si hay lecciones agregarlas, supongo que llamo a caso de uso desde main si usuario quiere meterle
     manejador->agregarCurso(c);
+    cout << "Curso creado correctamente!" << endl;
 }
 
 void ControladorCurso::asignarProfesor(string nickname) {
-    Profesor* profesor = controladorUsuario->obtenerProfesor(nickname);
+    ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
+    Profesor* profesor = ctrlU->obtenerProfesor(nickname);
     ProfesorSeleccionado = profesor;
 }
 

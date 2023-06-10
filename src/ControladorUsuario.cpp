@@ -29,7 +29,7 @@ bool ControladorUsuario::confirmarAltaProfesor(){
         manejador->agregarProfesor(p,Nickname);
         return true;
     } else if (!manejador->existeNickname(Nickname) && IdiomasRecordados.empty()){
-        cout << "Error:El profesor debe tener al menos un idioma en el que se especializa. "
+        cout << "Error:El profesor debe tener al menos un idioma en el que se especializa."
         <<endl;
         return true;
     }
@@ -107,7 +107,6 @@ void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
     ManejadorIdioma *manejador = manejadorIdioma->getManejadorI();
     Idioma *i = manejador->obtenerIdioma(Nombreidioma);
     if(i!=NULL){
-            cout << i->obtenerNombre() << endl;
             IdiomasRecordados.insert(i);
     }
     else{
