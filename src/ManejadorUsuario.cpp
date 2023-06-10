@@ -3,6 +3,8 @@
 using namespace std;
 #include <iostream>
 #include "../include/ManejadorUsuario.h"
+#include "../include/DTEstudiante.h"
+#include "../include/DTProfesor.h"
 
 
 ManejadorUsuario* ManejadorUsuario::manejadorU = NULL;
@@ -64,6 +66,27 @@ set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
     it=ColeccionDeProfesores.find(nickname);
     Profesor* p = it->second;
     return p->consultarIdiomasProfesor();
+}
+
+DTUsuario ManejadorUsuario::obtenerUsuario(string nickname) {
+    Usuario* u;
+    bool esEstudiante = false;
+    if (ColeccionDeEstudiantes.count(nickname)) {
+        u = ColeccionDeEstudiantes[nickname];
+        esEstudiante = true;
+    } else {
+        u = ColeccionDeProfesores[nickname];
+    }
+    
+    if (esEstudiante) {
+        DTEstudiante dtEstudiante = DTEstudiante(u->obtenerNombre(), u->obtenerDescripcion(), u->obtenerPais());
+        return dtEstudiante;
+    } else {
+        set<string> idiomas = obtenerIdiomasProfesor(u->obtenerNickname());
+        DTProfesor dtProfesor = DTProfesor(u->obtenerNombre, u->obtenerDescripcion, u->obtenerInstituto, idiomas);
+        return DTProfesor;
+    }
+
 }
 
 set<string> ManejadorUsuario::obtenerEstudiantes(){}

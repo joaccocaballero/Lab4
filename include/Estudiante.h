@@ -18,6 +18,7 @@ class Estudiante: public Usuario {
         Estudiante(string Nickname, string Contrasenia, string Nombre, string Descripcion, string PaisResidencia, DTFecha FechaNacimiento);
         void obtenerInscripciones();
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string nickname);
+        string obtenerPais();
         ~Estudiante();
 };
 

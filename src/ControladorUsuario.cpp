@@ -86,7 +86,8 @@ set<string> ControladorUsuario::obtenerUsuarios(){
 }
 
 DTUsuario ControladorUsuario::obtenerInfoUsuario(string Nickname){
-    
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerUsuario(Nickname);
 }
 
 set<string> ControladorUsuario::obtenerProfesores() {

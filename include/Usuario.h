@@ -16,6 +16,8 @@ class Usuario : public IObserver {
     public:
         Usuario(string Nickname, string Contrasenia, string Nombre, string Descripcion);
         string obtenerNickname();
+        string obtenerNombre();
+        string obtenerDescripcion();
         void Notificar(DTNotificacion Notificacion);
         vector<DTNotificacion> obtenerNotificaciones(string Nickname);
         virtual ~Usuario();

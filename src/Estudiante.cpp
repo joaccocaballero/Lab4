@@ -14,6 +14,10 @@ Estudiante::Estudiante(string Nickname, string Contrasenia, string Nombre,
   this->FechaNacimiento = FechaNacimiento;
 }
 
+string Estudiante::obtenerPais(){
+  return PaisResidencia;
+}
+
 void obtenerInscripciones(){}
 
 set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string Nickname){}
