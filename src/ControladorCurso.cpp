@@ -24,9 +24,20 @@ void ControladorCurso::ingresarInfoCurso(string nombre, string Descripcion, Enum
     this->Dificultad = Dificultad;
 }
 
+void ControladorCurso::ingresarInfoLeccion(string Tema, string Objetivo){
+    this->TemaLeccion = Tema;
+    this->ObjetivoLeccion = Objetivo;
+}
+
 set<string> ControladorCurso::obtenerCursosHabilitados(){
     ManejadorCurso * manejador = manejadorCurso->getManejadorC();
     return manejador->obtenerHabilitados();
+}
+
+set<string> ControladorCurso::obtenerCursosNoHabilitados(){
+    ManejadorCurso * manejador = manejadorCurso->getManejadorC();
+    set<string> col = manejador->obtenerCursosNoHabilitados();
+    return col;
 }
 
 void ControladorCurso::ingresarCursosPrevios(set<string> nombresCursosPrevios){
@@ -41,15 +52,28 @@ void ControladorCurso::seleccionarIdioma(string nomIdioma){
 
 void ControladorCurso::confirmarEliminacion(string nombre){}
 
-void ControladorCurso::seleccionarCurso(string nombre) {}
+void ControladorCurso::seleccionarCurso(string nomCurso) {
+    ManejadorCurso * manejador = manejadorCurso->getManejadorC();
+    Curso *cursoSeleccionado = manejador->obtenerCurso(nomCurso);
+    this->CursoSeleccionado = cursoSeleccionado;
+}
 
 void ControladorCurso::confirmarAltaCurso() {
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
-    Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado);
+    //set<Leccion*> col;
+    Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col);
     // si hay lecciones agregarlas, supongo que llamo a caso de uso desde main si usuario quiere meterle
     manejador->agregarCurso(c);
     cout << "Curso creado correctamente!" << endl;
+}
+
+void ControladorCurso::confirmarAltaLeccion(){
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    cout << "Llegué confalta!" << endl;
+    Leccion * l = new Leccion(TemaLeccion, ObjetivoLeccion, ColeccionEjerciciosLeccion);
+    CursoSeleccionado->agregarLeccion(l);
+    cout << "Lección creada correctamente!" << endl;
 }
 
 void ControladorCurso::asignarProfesor(string nickname) {
@@ -81,7 +105,6 @@ DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
 }
 
 set<string> ControladorCurso::obtenerEjerciciosPendientes(){}
-
 
 ControladorCurso::~ControladorCurso(){
     delete instancia;

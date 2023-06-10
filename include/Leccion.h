@@ -12,11 +12,9 @@ class Leccion {
     private:
         string tema;
         string objetivo;
-        bool aprobacion;
         set<Ejercicio*> Ejercicios;
-
     public:
-        Leccion(string tema, string objetivo, bool aprobacion);
+        Leccion(string tema, string objetivo, set<Ejercicio*> Ejercicios);
         set<Ejercicio> obtenerEjercicios();
         set<string> obtenerEjerciciosPendientes();
         set<Ejercicio*> obtenerEjerciciosLeccion();

@@ -7,6 +7,7 @@
 #include "Idioma.h"
 #include "Curso.h"
 #include "Profesor.h"
+#include "Ejercicio.h"
 #include "DTEstadisticaCurso.h"
 #include "IControladorCurso.h"
 #include "ControladorUsuario.h"
@@ -34,19 +35,27 @@ class ControladorCurso : public IControladorCurso {
         set<string> ListadoProfesores;
         set<string> ListadoIdiomasProfesor;
         set<Curso*> ColeccionCursosPrevios;
+        Curso* CursoSeleccionado;
+        string TemaLeccion;
+        string ObjetivoLeccion;
+        set<Leccion*> leccionesRecordadas;
+        set<Ejercicio*> ColeccionEjerciciosLeccion;
         ControladorCurso();
     public:
         static ControladorCurso * getInstancia();
         void ingresarInfoCurso(string nombre, string Descripcion, EnumDificultad Dificultad);
+        void ingresarInfoLeccion(string Tema, string Objetivo);
         void asignarProfesor(string nickname);
         set<string> obtenerCursosHabilitados();
         void ingresarCursosPrevios(set<string> nombresCursosPrevios);
         void seleccionarIdioma(string nomIdioma);
+        void seleccionarCurso(string nomCurso);
         void confirmarEliminacion(string nombre);
         void confirmarAltaCurso();
+        void confirmarAltaLeccion();
         set<string> obtenerCursos();
         set<string> obtenerCursosNoAprobados(string nombre);
-        void seleccionarCurso(string nombre);
+        set<string> obtenerCursosNoHabilitados();
         set<string> obtenerEjerciciosPendientes();
         DTEjercicio seleccionarEjercicio(int id);
         bool validarEjercicio();
