@@ -4,6 +4,7 @@
 
 #include <string>
 #include <set>
+#include <vector>
 #include "Leccion.h"
 #include "Idioma.h"
 using namespace std;

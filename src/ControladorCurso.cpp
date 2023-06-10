@@ -61,9 +61,10 @@ void ControladorCurso::seleccionarCurso(string nomCurso) {
 void ControladorCurso::confirmarAltaCurso() {
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
-    //set<Leccion*> col;
+    set<Leccion*> col;
     Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col);
     // si hay lecciones agregarlas, supongo que llamo a caso de uso desde main si usuario quiere meterle
+
     manejador->agregarCurso(c);
     cout << "Curso creado correctamente!" << endl;
 }
@@ -71,7 +72,8 @@ void ControladorCurso::confirmarAltaCurso() {
 void ControladorCurso::confirmarAltaLeccion(){
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     cout << "Llegué confalta!" << endl;
-    Leccion * l = new Leccion(TemaLeccion, ObjetivoLeccion, ColeccionEjerciciosLeccion);
+    set<Ejercicio*> col{};
+    Leccion * l = new Leccion(TemaLeccion, ObjetivoLeccion, col);
     CursoSeleccionado->agregarLeccion(l);
     cout << "Lección creada correctamente!" << endl;
 }

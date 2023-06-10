@@ -12,6 +12,14 @@ Leccion::Leccion(string tema, string objetivo, set<Ejercicio*> Ejercicios){
     this->Ejercicios = Ejercicios;
 }
 
+string Leccion::obtenerTema(){
+    return tema;
+}
+
+string Leccion::obtenerObjetivo(){ 
+    return objetivo; 
+}
+
 set<Ejercicio> Leccion::obtenerEjercicios(){
     set<Ejercicio> ejercicio;
     return ejercicio;

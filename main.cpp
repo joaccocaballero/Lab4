@@ -23,7 +23,8 @@ void casosDeUso() {
     //cout << "13: Suscribirse a Notificaciones" << endl;
     //cout << "14: Consulta de Notificaciones" << endl;
     //cout << "15: Eliminar Suscripciones" << endl;
-    cout << "16: Salir" << endl;
+    cout << "18: Cargar datos genéricos" <<endl;
+    cout << "17: Salir" << endl;
 }
 
 int main() {
@@ -173,13 +174,14 @@ int main() {
             case 4: {
                 std::set<string> idiomasDisponibles =
                     ControladorUsuario->obtenerIdiomasDisponibles();
-                cout << "Los idiomas disponibles son los siguientes." << endl;
+                cout << "Los idiomas disponibles son los siguientes:" << endl;
                 std::set<string>::iterator it;
                 for (it = idiomasDisponibles.begin();
                      it != idiomasDisponibles.end(); ++it) {
                     string elem = *it;
                     cout << "-" + elem << endl;
                 }
+                break;
             }
 
             // AltaCurso
@@ -314,11 +316,38 @@ int main() {
                 }
                ControladorCurso->ingresarInfoLeccion(temaLeccion, objetivoLeccion);
                ControladorCurso->confirmarAltaLeccion();
+               break;
             }
 
            //Salida
             case 16:{
                 return 0;
+            }
+
+            //carga de datos
+            case 18: {
+                set<string> col;
+                col.insert("Inglés 1");
+                ControladorUsuario->agregarIdioma("Inglés");
+                ControladorUsuario->ingresarDatosUsuario("joaco_", "joaco123",
+                                                         "Joaquín", "ProfUser");
+                ControladorUsuario->ingresarInstituto("Fing");
+                ControladorUsuario->agregarEspecializacion("Inglés");
+                ControladorUsuario->confirmarAltaProfesor();
+                ControladorCurso->ingresarInfoCurso("Inglés 1", "cursoDesc",
+                                                    Principiante);
+                ControladorCurso->asignarProfesor("joaco_");
+                ControladorCurso->seleccionarIdioma("Inglés");
+                ControladorCurso->confirmarAltaCurso();
+
+                ControladorCurso->ingresarInfoCurso("Inglés 2", "cursoDesc",
+                                                    Principiante);
+                ControladorCurso->asignarProfesor("joaco_");
+                ControladorCurso->seleccionarIdioma("Inglés");
+                ControladorCurso->ingresarCursosPrevios(col);
+                ControladorCurso->confirmarAltaCurso();
+
+                break;
             }
 
             //Default   

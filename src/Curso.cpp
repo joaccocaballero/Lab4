@@ -29,7 +29,7 @@ bool Curso::obtenerHabilitacion(){
 set<Leccion> Curso::obtenerLecciones(){
     set<Leccion> lecciones;
     return lecciones;
- }
+}
 
 set<string> Curso::obtenerEjerciciosPendientes(string nombre){
     nombre= "";
@@ -43,12 +43,12 @@ void Curso::agregarLeccion(Leccion* l){
 }
 
 DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){
-    nombre= "";
+    /*nombre= "";
     set<Inscripcion> inscriptos;
-    set<Leccion> lecciones = this->obtenerLecciones();
+    set<Leccion*> lecciones = obtenerLecciones();
     int avance = 10;
     DTEstadisticaCurso* estadisticas = new DTEstadisticaCurso("a","a",Principiante,"idioma", "profe", "false", lecciones, inscriptos, avance);
-    return estadisticas;
+    return estadisticas;*/
 }
 
 Curso::~Curso(){

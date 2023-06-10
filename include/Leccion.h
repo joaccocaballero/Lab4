@@ -16,6 +16,8 @@ class Leccion {
     public:
         Leccion(string tema, string objetivo, set<Ejercicio*> Ejercicios);
         set<Ejercicio> obtenerEjercicios();
+        string obtenerTema();
+        string obtenerObjetivo();
         set<string> obtenerEjerciciosPendientes();
         set<Ejercicio*> obtenerEjerciciosLeccion();
         virtual ~Leccion();
