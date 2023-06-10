@@ -9,6 +9,7 @@ using namespace std;
 #include "DTNotificacion.h"
 #include "DTFecha.h"
 #include "Usuario.h"
+#include "DTUsuario.h"
 #include "Profesor.h"
 #include "Estudiante.h"
 #include "Idioma.h"
@@ -32,7 +33,7 @@ class IControladorUsuario {
         virtual set<DTNotificacion> obtenerNotificaciones(string Nickname) = 0;
         virtual bool agregarIdioma(string Nombre) = 0;
         virtual set<string> obtenerUsuarios()= 0;
-        virtual void obtenerInfoUsuario(string Nickname)= 0;
+        virtual DTUsuario obtenerInfoUsuario(string Nickname)= 0;
         virtual ~IControladorUsuario() = 0;
 };
 

@@ -259,7 +259,7 @@ int main() {
                 }
                 string usuarioSeleccionado = "";
                 cin >> usuarioSeleccionado;
-                ControladorUsuario->obtenerInfoUsuario()
+                ControladorUsuario->obtenerInfoUsuario(usuarioSeleccionado);
                 break;
             }
             //AltaIdioma

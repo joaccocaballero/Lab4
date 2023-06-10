@@ -4,6 +4,8 @@
 #include "../include/DTFecha.h"
 #include "../include/ManejadorIdioma.h"
 #include "../include/ManejadorUsuario.h"
+#include "../include/DTUsuario.h"
+
 
 #include <set>
 #include <string>
@@ -83,7 +85,7 @@ set<string> ControladorUsuario::obtenerUsuarios(){
     return mergedSet;
 }
 
-void ControladorUsuario::obtenerInfoUsuario(string Nickname){
+DTUsuario ControladorUsuario::obtenerInfoUsuario(string Nickname){
     
 }
 

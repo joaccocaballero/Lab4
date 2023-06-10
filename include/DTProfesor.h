@@ -16,10 +16,10 @@ class DTProfesor: public DTUsuario{
     public:
         DTProfesor();
         DTProfesor(string nombre, string descripcion, string nombreInstituto, set<string> listaIdiomas);
-        string getNombre();
-        string getDescripcion();
+        string getNombreString();
+        string getDescripcionString();
         string getInstituto();
-        string getIdiomas();
+        set<string> getIdiomas();
 
 };
 

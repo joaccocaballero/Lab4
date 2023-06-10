@@ -15,9 +15,9 @@ class DTEstudiante: public DTUsuario{
     public:
         DTEstudiante();
         DTEstudiante(string nombre, string descripcion, string paisResidencia);
-        string getNombre();
+        string getNombreString();
         string getPaisResidencia();
-        string getDescripcion();
+        string getDescripcionString();
 
 };
 

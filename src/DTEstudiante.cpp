@@ -8,12 +8,12 @@ DTEstudiante::DTEstudiante(string nombre, string descripcion, string paisResiden
     this->paisResidencia = paisResidencia;
 }
 
-string DTEstudiante::getDescripcion() {
-    return this->descripcion;
+string DTEstudiante::getDescripcionString() {
+    return this->getDescripcion();
 }
 string DTEstudiante::getPaisResidencia() {
     return this->paisResidencia;
 }
-string DTEstudiante::getNombre() {
-    return this->nombre;
+string DTEstudiante::getNombreString() {
+    return this->getNombre();
 }

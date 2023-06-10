@@ -5,20 +5,20 @@
 #include <string>
 using namespace std;
 
-DTProfesor::DTProfesor(string nombre, string descripcion, string instituto, set<string> idiomas): DTUsuario(string nombre, string descripcion) {
+DTProfesor::DTProfesor(string nombre, string descripcion, string instituto, set<string> idiomas): DTUsuario(nombre, descripcion) {
     this->nombreInstituto = instituto;
     this->listaIdiomas = idiomas;
 }
 
-string DTProfesor::getDescripcion() {
-    return this->descripcion;
+string DTProfesor::getDescripcionString() {
+    return this->getDescripcion();
 }
 set<string> DTProfesor::getIdiomas() {
     return this->listaIdiomas;
 }
-string DTProfesor::getNombre() {
-    return this->nombre;
+string DTProfesor::getNombreString() {
+    return this->getNombre();
 }
-string DTProfesor::getDInstituto() {
-    return this->dnombreInstituto;
+string DTProfesor::getInstituto() {
+    return this->nombreInstituto;
 }
