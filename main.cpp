@@ -60,9 +60,9 @@ int main() {
                 cout << "Ingrese una contraseña:" << endl;
                 cin >> Contrasenia;
                 cout << "Ingrese Nombre del Usuario:" << endl;
-                cin >> Nombre;
+                getline(cin >> ws, Nombre);
                 cout << "Ingrese Descripcion del Usuario:" << endl;
-                cin >> Descripcion;
+                getline(cin >> ws, Descripcion);
 
                 ControladorUsuario->ingresarDatosUsuario(Nickname, Contrasenia,
                                                          Nombre, Descripcion);
@@ -162,7 +162,7 @@ int main() {
                 }
                 string usuarioSeleccionado = "";
                 cin >> usuarioSeleccionado;
-                bool tipoUsuario = ControladorUsuario->obtenerTipo(usuarioSeleccionado  );
+                bool tipoUsuario = ControladorUsuario->obtenerTipo(usuarioSeleccionado );
                 if (tipoUsuario == true) {
                     DTEstudiante infoEstu = ControladorUsuario->obtenerInfoEstudiante(usuarioSeleccionado);
                     cout << "Nombre: " + infoEstu.getNombre() << endl; 
@@ -236,9 +236,9 @@ int main() {
                 
                 // ingreso Datos
                 cout << "Ingrese Nombre curso:" << endl;
-                cin >> nombreCurso;
+                getline(cin >> ws, nombreCurso);
                 cout << "Ingrese Descripcion curso:" << endl;
-                cin >> descripcion;
+                getline(cin >> ws, descripcion);
                 cout << "Seleccione Dificultad:" << endl;
                 cout << "1- Principiante" << endl;
                 cout << "2- Intermedio" << endl;
@@ -290,7 +290,7 @@ int main() {
                         for (string nombre : cursosHabilitados) {
                           cout << "-" + nombre << endl;
                         }
-                        cin >> nombreCurso;
+                        getline(cin >> ws, nombreCurso);
                         cursosPrevios.insert(nombreCurso);
                         do{
                           cout << "Desea Agregar otro? Ingrese un numero:"
@@ -305,7 +305,7 @@ int main() {
                             for (string nombre : cursosHabilitados) {
                               cout << "-" + nombre << endl;
                             }
-                            cin >> nombreCurso;
+                            getline(cin >> ws, nombreCurso);
                             cursosPrevios.insert(nombreCurso);
                           }
                         }
@@ -326,10 +326,10 @@ int main() {
                 for (string nombre : cursosNoHabilitados) {
                     cout << "-"+nombre << endl;
                 }
-                cin >> cursoSeleccionado;
+                getline(cin >> ws, cursoSeleccionado);
                 if (!(cursosNoHabilitados.count(cursoSeleccionado))) {
                     cout << "Seleccione un curso valido:" << endl;
-                    cin >> cursoSeleccionado;
+                    getline(cin >> ws, cursoSeleccionado);
                 }
                 ControladorCurso->seleccionarCurso(cursoSeleccionado);
                 string temaLeccion = "";
@@ -337,16 +337,18 @@ int main() {
                 int agregar = 0;
                 // ingreso Datos
                 cout << "Ingrese tema de la lección:" << endl;
-                cin >> temaLeccion;
+                getline(cin >> ws, temaLeccion);
                 cout << "Ingrese objetivo de la lección:" << endl;
-                cin >> objetivoLeccion;
-               ControladorCurso->ingresarInfoLeccion(temaLeccion, objetivoLeccion);
-               ControladorCurso->confirmarAltaLeccion();
-               break;
+                getline(cin >> ws, objetivoLeccion);
+                ControladorCurso->ingresarInfoLeccion(temaLeccion,
+                                                      objetivoLeccion);
+                ControladorCurso->confirmarAltaLeccion();
+                break;
             }
 
             //AgregarEjercicio
             case 7: {
+                //Obtengo Cursos No Habilitados
                  set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
                  cout << "Seleccione un curso:" << endl;
                  string cursoSeleccionado = "";
@@ -354,10 +356,14 @@ int main() {
                  for (string nombre : cursosNoHabilitados) {
                     cout << "-" + nombre << endl;
                  }
-                 cin >> cursoSeleccionado;
+                 getline(cin >> ws, cursoSeleccionado);
+                 while(!cursosNoHabilitados.count(cursoSeleccionado)){
+                    cout << "Seleccione un curso válido:" << endl;
+                    getline(cin >> ws, cursoSeleccionado);
+                 }
                  ControladorCurso->seleccionarCurso(cursoSeleccionado);
 
-
+                //Obtengo lecciones
                  set<string> leccionesCurso = ControladorCurso->obtenerLecciones();
                  cout << "Seleccione una lección:" << endl;
                  string leccionSeleccionada = "";
@@ -365,17 +371,22 @@ int main() {
                  for (string nombre : leccionesCurso) {
                     cout << "-" + nombre << endl;
                  }
-                 cin >> leccionSeleccionada;
+                 getline(cin >> ws, leccionSeleccionada);
+                 while (!leccionesCurso.count(leccionSeleccionada)) {
+                    cout << "Seleccione un curso válido:" << endl;
+                    getline(cin >> ws, leccionSeleccionada);
+                 }
                  ControladorCurso->seleccionarLeccion(leccionSeleccionada);
 
                  //Ingreso descripcion ejercicio
                  string descripcion = "";
-                 cout << "Ingrese descripcion del ejercicio:";
+                 cout << "Ingrese descripción del ejercicio:";
                  getline(cin >> ws, descripcion);
                  ControladorCurso->ingresarInfoEjercicio(descripcion);
                  int tipoId;
-                 //Tipo ejercicio
-                 cout << "Seleccione Tipo de ejercicio a agregar:" << endl;
+                 
+                 //Selecciono Tipo ejercicio
+                 cout << "Seleccione el tipo de ejercicio a agregar:" << endl;
                  cout << "1- Completar Palabras" << endl;
                  cout << "2- Traducir" << endl;
                  EnumEjercicios tipo;
@@ -385,7 +396,7 @@ int main() {
                         tipo = CompletarPalabras;
                         string frase = "";
                         string solucion = "";
-                        cout << "Ingrese frase a completar:";
+                        cout << "Ingrese frase a completar:" << endl;
                         getline(cin >> ws, frase);
                         cout << "Ingrese solución ejercicio";
                         getline(cin >> ws, solucion);
@@ -396,10 +407,10 @@ int main() {
                         tipo = TraducirFrase;
                         string frase = "";
                         string traduccion = "";
-                        cout << "Ingrese frase a traducir:";
-                        getline(cin, frase);
+                        cout << "Ingrese frase a traducir:" << endl;
+                        getline(cin >> ws, frase);
                         cout << "Ingrese frase traducida:";
-                        getline(cin, traduccion);
+                        getline(cin >> ws, traduccion);
                         ControladorCurso->agregarDatosTraducir(frase, traduccion);
                         break;
                     }
