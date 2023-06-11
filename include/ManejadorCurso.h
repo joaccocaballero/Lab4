@@ -33,6 +33,7 @@ class ManejadorCurso {
   set<Curso*> obtenerCursosPrevios(set<string> cursosPrevios);
   set<string> obtenerCursosNoHabilitados();
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
+  bool confirmarHabilitacion(string nombre);
 };
 
 #endif

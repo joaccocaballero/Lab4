@@ -423,6 +423,25 @@ int main() {
                 break;
             }
 
+            //Habilitar Curso
+            case 8: {
+                //se lista todos los cursos no habilitados
+                set<string> noHabilitados = ControladorCuro->obtenerCursosNoHabilitados();
+                string crusoSeleccionado = "";
+                for (string curso: noHabilitados){
+                    cout << curso << endl;
+                }
+                cin >> cursoSeleccionado;
+                bool fueHabilitado = ControladorCurso->confirmarHabilitacion(cursoSeleccionado);
+                // se avisa si el curso fue habilitado 
+                if( fueHabilitado == true){
+                    cout << "El curso fue habilitadl" << endl;
+                }else{
+                    coud << "El curso no pudo ser habilitado" < endl;
+                }
+
+            }
+
            //Salida
             case 17:{
                 return 0;
