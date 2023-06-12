@@ -45,6 +45,7 @@ class ControladorCurso : public IControladorCurso {
         set<Ejercicio*> ColeccionEjerciciosLeccion;
         string frase;
         string solucion;
+        set<DTCurso*> ColeccionDTCurso;
         ControladorCurso();
     public:
         static ControladorCurso * getInstancia();
