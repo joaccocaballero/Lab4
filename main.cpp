@@ -17,7 +17,7 @@ void casosDeUso() {
     cout << "5: Alta de Curso" << endl;
     cout << "6: Agregar Lección" << endl;
     cout << "7: Agregar Ejercicio" << endl;
-    //cout << "8: Habilitar Curso" << endl;
+    cout << "8: Habilitar Curso" << endl;
     //cout << "9: Eliminar Curso" << endl;
     //cout << "10: Consultar Curso" << endl;
     //cout << "11: Inscribirse a Curso" << endl;
