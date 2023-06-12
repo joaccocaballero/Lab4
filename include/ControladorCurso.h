@@ -70,6 +70,7 @@ class ControladorCurso : public IControladorCurso {
         DTEjercicio seleccionarEjercicio(int id);
         bool validarEjercicio();
         DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
+        bool confirmarHabilitacion(string nombre);
         virtual ~ControladorCurso();
 };
 

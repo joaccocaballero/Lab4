@@ -26,6 +26,10 @@ bool Curso::obtenerHabilitacion(){
     return habilitacion;
 }
 
+void Curso::setHabilitacion(bool h){
+    habilitacion=h;
+}
+
 set<Leccion*> Curso::obtenerLecciones(){
     return Lecciones;
 }

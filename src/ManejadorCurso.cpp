@@ -54,6 +54,30 @@ set<string> ManejadorCurso::obtenerCursos(){
   return retorno;
 }
 
+bool ManejadorCurso::confirmarHabilitacion(string nombre){
+  bool confirmado = false;
+  Curso * c =ColeccionDeCursos[nombre];
+  if (c != NULL) {
+    set<Leccion*> setLec= c->obtenerLecciones();
+    set<Leccion*>::iterator it2;
+    for(it2= setLec.begin();it2 != setLec.end(); ++it2){
+      Leccion *current = *it2;
+      set<Ejercicio*> setEj = current->obtenerEjerciciosLeccion();
+      if(!setLec.empty() || !setEj.empty()){
+        //ninguno esta vacio
+        c->setHabilitacion(true);
+        confirmado = true;
+      }else{
+        confirmado = false;
+      }
+    }
+    return confirmado;
+  } else {
+    cout << "Curso no encontrado" << endl;
+    return confirmado;
+  }
+}
+
 void ManejadorCurso::eliminarCurso(string nombre){}
 set<string> ManejadorCurso::obtenerCursosNoAprobados(){}
 

@@ -58,6 +58,12 @@ set<string> ControladorCurso::obtenerCursosNoHabilitados(){
     return col;
 }
 
+bool ControladorCurso::confirmarHabilitacion(string nombre){
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    bool fueHabilitado =  manejador->confirmarHabilitacion(nombre);
+    return fueHabilitado;
+}
+
 void ControladorCurso::ingresarCursosPrevios(set<string> nombresCursosPrevios){
     CursosPrevios = nombresCursosPrevios;
 }
