@@ -56,16 +56,16 @@ set<string> ManejadorCurso::obtenerCursos(){
 
 bool ManejadorCurso::confirmarHabilitacion(string nombre){
   bool confirmado = false;
-  map<string, Curso*>::iterator it;
-  it=ColeccionDeCursos.find(nombre);
-  if (it != ColeccionDeCursos.end()) {
-    set<Leccion*> setLec= it->second->obtenerLecciones();
+  Curso * c =ColeccionDeCursos[nombre];
+  if (c != NULL) {
+    set<Leccion*> setLec= c->obtenerLecciones();
     set<Leccion*>::iterator it2;
-    For(it2= setLec.begin();it2 != serLec.end(); it++){
-      set<Ejercicio*> setEj = setLec->obtenerEjerciciosLeccion();
-      if(!setLec.empty() || !setEj.epty()){
+    for(it2= setLec.begin();it2 != setLec.end(); ++it2){
+      Leccion *current = *it2;
+      set<Ejercicio*> setEj = current->obtenerEjerciciosLeccion();
+      if(!setLec.empty() || !setEj.empty()){
         //ninguno esta vacio
-        it->habilitacion= true;
+        c->setHabilitacion(true);
         confirmado = true;
       }else{
         confirmado = false;
@@ -73,8 +73,8 @@ bool ManejadorCurso::confirmarHabilitacion(string nombre){
     }
     return confirmado;
   } else {
-    cout << "curso no encontrado" << endl;
-    return confirmado
+    cout << "Curso no encontrado" << endl;
+    return confirmado;
   }
 }
 

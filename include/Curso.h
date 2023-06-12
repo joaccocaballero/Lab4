@@ -31,6 +31,7 @@ class Curso {
         Leccion* obtenerLeccion(string nomLeccion);
         set<string> obtenerEjerciciosPendientes(string nombre);
         bool obtenerHabilitacion();
+        void setHabilitacion(bool h);
         void agregarLeccion(Leccion *l);
         DTEstadisticaCurso* obtenerEstadisticaCurso(string nombre);
         ~Curso();

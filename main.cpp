@@ -17,7 +17,7 @@ void casosDeUso() {
     cout << "5: Alta de Curso" << endl;
     cout << "6: Agregar Lección" << endl;
     cout << "7: Agregar Ejercicio" << endl;
-    //cout << "8: Habilitar Curso" << endl;
+    cout << "8: Habilitar Curso" << endl;
     //cout << "9: Eliminar Curso" << endl;
     //cout << "10: Consultar Curso" << endl;
     //cout << "11: Inscribirse a Curso" << endl;
@@ -426,20 +426,20 @@ int main() {
             //Habilitar Curso
             case 8: {
                 //se lista todos los cursos no habilitados
-                set<string> noHabilitados = ControladorCuro->obtenerCursosNoHabilitados();
-                string crusoSeleccionado = "";
+                set<string> noHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
+                string cursoSeleccionado = "";
                 for (string curso: noHabilitados){
                     cout << curso << endl;
                 }
-                cin >> cursoSeleccionado;
+                getline(cin >> ws, cursoSeleccionado);
                 bool fueHabilitado = ControladorCurso->confirmarHabilitacion(cursoSeleccionado);
                 // se avisa si el curso fue habilitado 
                 if( fueHabilitado == true){
-                    cout << "El curso fue habilitadl" << endl;
+                    cout << "El curso fue habilitado" << endl;
                 }else{
-                    coud << "El curso no pudo ser habilitado" < endl;
+                    cout << "El curso no pudo ser habilitado" << endl;
                 }
-
+                break;
             }
 
            //Salida
