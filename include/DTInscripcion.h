@@ -1,13 +1,13 @@
 #pragma once
-#ifndef _INSCRIPCION
-#define _INSCRIPCION
+#ifndef _DTINSCRIPCION
+#define _DTINSCRIPCION
 
 #include "DTFecha.h"
 #include "Curso.h"
 
 class Estudiante;
 
-class Inscripcion {
+class DTInscripcion {
     private:
         int id;
         DTFecha Fecha;
@@ -15,13 +15,13 @@ class Inscripcion {
         Curso * CursoInscripcion;
         Estudiante * EstudianteInscrito;
     public:
-        Inscripcion(int id, DTFecha fecha, bool Aprobacion, Curso * CursoInscripcion, EStudiante * EstudianteInscrito);
+        DTInscripcion(int id, DTFecha fecha, bool Aprobacion, Curso * CursoInscripcion, Estudiante * EstudianteInscrito);
         int obtenerIdInscripcion();
         DTFecha obtenerFecha();
         bool obtenerAprobacion();
-        Curso * obtenerCurso();
-        Estudiante *obtenerEstudiante();
-        ~Inscripcion();
+        Curso * obtenerCursoInscripcion();
+        Estudiante *obtenerEstudianteInscripto();
+        ~DTInscripcion();
 };
 
 #include "../include/Estudiante.h"

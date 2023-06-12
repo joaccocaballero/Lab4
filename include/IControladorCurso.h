@@ -35,6 +35,7 @@ class IControladorCurso {
         virtual bool validarEjercicio() = 0;
         virtual DTEstadisticaCurso obtenerEstadisticaCurso(string nombre) = 0;
         virtual bool confirmarHabilitacion(string nombre)= 0;
+        virtual DTCurso obtenerInfoCurso(string nombre) = 0;
         virtual ~IControladorCurso() = 0;
 };
 

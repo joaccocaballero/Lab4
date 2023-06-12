@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _DTESTADISTICACURSO
-#define _DTESTADISTICACURSO
+#ifndef _DTCURSO
+#define _DTCURSO
 
 #include <string>
 #include "Curso.h"
@@ -10,7 +10,7 @@ using namespace std;
 class Leccion;
 class Inscripcion;
 
-class DTEstadisticaCurso {
+class DTCurso {
  private:
     string Nombre;
     string Descripcion;
@@ -18,23 +18,21 @@ class DTEstadisticaCurso {
     string Idioma;
     string Profesor;
     string Habilitacion;
-    set<Leccion> Lecciones;
-    set<Inscripcion> Inscripciones;
-    int Avance;
+    set<DTLeccion> Lecciones;
+    set<DTInscripcion> Inscripciones;
  public:
-    DTEstadisticaCurso();
-    DTEstadisticaCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
-    string Idioma, string Profesor, string Habilitacion, set<Leccion> Lecciones,
-    set<Inscripcion> Inscripciones, int Avance);
+    DTCurso();
+    DTCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
+    string Idioma, string Profesor, string Habilitacion, set<DTLeccion> Lecciones,
+    set<DTInscripcion> Inscripciones);
     string getNombreCurso();
     string getDescripcionCurso();
     EnumDificultad getDificultad();
     string getIdioma();
     string getProfesor();
     string getHabilitacion();
-    set<Leccion> getLecciones();
-    set<Inscripcion> getInscripciones();
-    int getAvance();
+    set<DTLeccion> getLecciones();
+    set<DTInscripcion> getInscripciones();
 };
 
 #include "Leccion.h"

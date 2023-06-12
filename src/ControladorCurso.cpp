@@ -151,6 +151,10 @@ set<string> ControladorCurso::obtenerLecciones(){
     return retorno;
 }
 
+DTCurso ControladorCurso::obtenerInfoCurso(string nombre){
+    
+}
+
 DTEjercicio ControladorCurso::seleccionarEjercicio(int id){
 }
 
@@ -158,7 +162,7 @@ bool ControladorCurso::validarEjercicio(){
     return true;
 }
 
-DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
+DTEstadisticCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
 
 }
 

@@ -442,6 +442,20 @@ int main() {
                 break;
             }
 
+            //Consultar curso
+            case(10): {
+                //se lista todos los cursos
+                set<string> Cursos = ControladorCurso->obtenerCursos();
+                string cursoSelec = "";
+                for (string curso: Cursos){
+                    cout << curso << endl;
+                }
+                getline(cin >> ws, cursoSelec);
+                //se buscan la informacion del curso
+                DTEstadisticaCurso infoCurso = ControladorCurso->obtenerInfoCurso(cursoSelec);
+
+            }
+
            //Salida
             case 17:{
                 return 0;
