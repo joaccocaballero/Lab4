@@ -49,53 +49,52 @@ int main() {
         switch (caso) {
             //AltaUsuario
             case 1: {
-                string Nickname = "";
-                string Contrasenia = "";
-                string Nombre = "";
-                string Descripcion = "";
+              system("clear");
+              string Nickname = "";
+              string Contrasenia = "";
+              string Nombre = "";
+              string Descripcion = "";
 
-                // ingreso datos usuario
-                cout << "Ingrese Nickname del Usuario:" << endl;
-                cin >> Nickname;
-                cout << "Ingrese una contraseña:" << endl;
-                cin >> Contrasenia;
-                cout << "Ingrese Nombre del Usuario:" << endl;
-                getline(cin >> ws, Nombre);
-                cout << "Ingrese Descripcion del Usuario:" << endl;
-                getline(cin >> ws, Descripcion);
+              // ingreso datos usuario
+              cout << "Ingrese Nickname del Usuario:" << endl;
+              cin >> Nickname;
+              cout << "Ingrese una contraseña:" << endl;
+              cin >> Contrasenia;
+              cout << "Ingrese Nombre del Usuario:" << endl;
+              getline(cin >> ws, Nombre);
+              cout << "Ingrese Descripcion del Usuario:" << endl;
+              getline(cin >> ws, Descripcion);
 
-                ControladorUsuario->ingresarDatosUsuario(Nickname, Contrasenia,
-                                                         Nombre, Descripcion);
+              ControladorUsuario->ingresarDatosUsuario(Nickname, Contrasenia,
+                                                       Nombre, Descripcion);
 
-                int tipoUsuario = 0;
-                // Profesor o Estudiante
-                cout << "Seleccione Tipo de Usuario:" << endl;
-                cout << "1- Estudiante..." <<  endl;
-                cout << "2- Profesor..." << endl;
-                cin >> tipoUsuario;
+              int tipoUsuario = 0;
+              // Profesor o Estudiante
+              cout << "Seleccione Tipo de Usuario:" << endl;
+              cout << "1- Estudiante..." << endl;
+              cout << "2- Profesor..." << endl;
+              cin >> tipoUsuario;
 
-                bool existeUsuario = true;
+              bool existeUsuario = true;
 
-                if (tipoUsuario == 1) {
-                    string paisResi = "";
-                    int Anio = 0;
-                    int Mes = 0;
-                    int Dia = 0;
-                    // Ingreso Datos Estudiante
-                    cout << "Ingrese Pais de Residencia:" << endl;
-                    cin >> paisResi;
-                    cout << "Ingrese Año de Nacimiento:" << endl;
-                    cin >> Anio;
-                    cout << "Ingrese Mes de Nacimiento:" << endl;
-                    cin >> Mes;
-                    cout << "Ingrese Dia de Nacimiento:" << endl;
-                    cin >> Dia;
-                    DTFecha Fecha = DTFecha(Dia, Mes, Anio);
-                    ControladorUsuario->ingresarDatosEstudiante(paisResi,
-                                                                Fecha);
-                    // confirmo alta
-                    existeUsuario =
-                        ControladorUsuario->confirmarAltaEstudiante();
+              if (tipoUsuario == 1) {
+                string paisResi = "";
+                int Anio = 0;
+                int Mes = 0;
+                int Dia = 0;
+                // Ingreso Datos Estudiante
+                cout << "Ingrese Pais de Residencia:" << endl;
+                cin >> paisResi;
+                cout << "Ingrese Año de Nacimiento:" << endl;
+                cin >> Anio;
+                cout << "Ingrese Mes de Nacimiento:" << endl;
+                cin >> Mes;
+                cout << "Ingrese Dia de Nacimiento:" << endl;
+                cin >> Dia;
+                DTFecha Fecha = DTFecha(Dia, Mes, Anio);
+                ControladorUsuario->ingresarDatosEstudiante(paisResi, Fecha);
+                // confirmo alta
+                existeUsuario = ControladorUsuario->confirmarAltaEstudiante();
                 } else if (tipoUsuario == 2) {
                     // Ingresa Instituto
                     string Instituto = "";
@@ -153,6 +152,7 @@ int main() {
 
             //Consultar Usuario
             case 2: {
+                system("clear");
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();
                 cout << "Seleccione un usuario" << endl;
                 std::set<string>::iterator it;
@@ -170,6 +170,8 @@ int main() {
                     cout << "Pais: " + infoEstu.getPaisResidencia() << endl; 
                 } else {
                     DTProfesor infoProfe = ControladorUsuario->obtenerInfoProfesor(usuarioSeleccionado);
+                    cout << "Nombre: " + infoProfe.getNombre() << endl;
+                    cout << "Descripcion: " + infoProfe.getDescripcion() << endl;
                     set<string> idiomas = infoProfe.getIdiomas();
                     cout << "Idiomas: "<< endl;
                     for (it= idiomas.begin(); it!=idiomas.end(); ++it) {
@@ -182,6 +184,7 @@ int main() {
             }
             //AltaIdioma
             case 3: {
+                system("clear");
                 bool seIngresaNuevo = false;
                 while (seIngresaNuevo == false) {
                     string nuevoIdioma = "";
@@ -204,6 +207,7 @@ int main() {
 
             // Consultar Idiomas
             case 4: {
+                system("clear");
                 std::set<string> idiomasDisponibles =
                     ControladorUsuario->obtenerIdiomasDisponibles();
                 cout << "Los idiomas disponibles son los siguientes:" << endl;
@@ -218,6 +222,7 @@ int main() {
 
             // AltaCurso
             case 5: {
+                system("clear");
                 set<string> listadoProfesores = ControladorUsuario->obtenerProfesores();
                 cout << "Seleccione un profesor:" << endl;
                 string profesorSeleccionado = "";
@@ -319,6 +324,7 @@ int main() {
 
             //AgregarLeccion
             case 6: {
+                system("clear");
                 set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
                 cout << "Seleccione un curso:" << endl;
                 string cursoSeleccionado = "";
@@ -348,6 +354,7 @@ int main() {
 
             //AgregarEjercicio
             case 7: {
+                system("clear");
                 //Obtengo Cursos No Habilitados
                  set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
                  cout << "Seleccione un curso:" << endl;
@@ -425,11 +432,13 @@ int main() {
 
             //Habilitar Curso
             case 8: {
+                system("clear");
                 //se lista todos los cursos no habilitados
+                cout << "Seleccione un curso:" << endl;
                 set<string> noHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
                 string cursoSeleccionado = "";
                 for (string curso: noHabilitados){
-                    cout << curso << endl;
+                    cout << "-"+curso << endl;
                 }
                 getline(cin >> ws, cursoSeleccionado);
                 bool fueHabilitado = ControladorCurso->confirmarHabilitacion(cursoSeleccionado);
@@ -449,6 +458,7 @@ int main() {
 
             //carga de datos
             case 16: {
+                system("clear");
                 set<string> col;
                 col.insert("Inglés 1");
                 ControladorUsuario->agregarIdioma("Inglés");

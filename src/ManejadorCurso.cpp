@@ -56,7 +56,7 @@ set<string> ManejadorCurso::obtenerCursos(){
 
 bool ManejadorCurso::confirmarHabilitacion(string nombre){
   bool confirmado = false;
-  Curso * c =ColeccionDeCursos[nombre];
+  Curso * c = ColeccionDeCursos[nombre];
   if (c != NULL) {
     set<Leccion*> setLec= c->obtenerLecciones();
     set<Leccion*>::iterator it2;
