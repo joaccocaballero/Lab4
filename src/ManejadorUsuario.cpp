@@ -87,13 +87,20 @@ void ManejadorUsuario::agregarInscripcion(Estudiante* e, Inscripcion* i){
 }
 
 set<string> ManejadorUsuario::obtenerEstudiantes(){}
+
 set<DTEstadisticaEstudiante> ManejadorUsuario::obtenerEstadisticasEstudiantes(
     string Nickname){}
+
 set<string> ManejadorUsuario::obtenerProfesores(){}
+
 set<DTEstadisticaProfesor> ManejadorUsuario::obtenerEstadisticasProfesor(
     string Nickname){}
-Profesor* ManejadorUsuario::obtenerProfesor(string nickname){}
-set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
 
+Profesor* ManejadorUsuario::obtenerProfesor(string nickname){
+    return ColeccionDeProfesores[nickname];
 }
+set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
+    return ColeccionDeProfesores[nickname]->consultarIdiomasProfesor();
+}
+
 set<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){}

@@ -30,6 +30,21 @@ void casosDeUso() {
     cout << "17: Salir" << endl;
 }
 
+string obtenerDificultad(EnumDificultad d){
+    switch (d){
+    case 0:
+        return "Principiante";
+        break;
+    case 1:
+        return "Medio";
+        break;
+    case 2:
+        return "Avanzado";
+        break;
+    }
+}
+
+
 int main() {
    // instancio Fabrica
     Factory * fabrica = fabrica->getInstancia();
@@ -84,7 +99,7 @@ int main() {
                 int Dia = 0;
                 // Ingreso Datos Estudiante
                 cout << "Ingrese Pais de Residencia:" << endl;
-                cin >> paisResi;
+                getline(cin >> ws, paisResi);
                 cout << "Ingrese Año de Nacimiento:" << endl;
                 cin >> Anio;
                 cout << "Ingrese Mes de Nacimiento:" << endl;
@@ -99,7 +114,7 @@ int main() {
                     // Ingresa Instituto
                     string Instituto = "";
                     cout << "Ingrese Instituto del Profesor:" << endl;
-                    cin >> Instituto;
+                    getline(cin >> ws, Instituto);
                     ControladorUsuario->ingresarInstituto(Instituto);
                     cout << "Ingrese Idioma que desea que se especialice:"<< endl;
                     // Obtengo Idiomas Disponibles
@@ -107,11 +122,15 @@ int main() {
                     
                     // imprimo nombre de los idiomas
                     set<string> idiomasSelec = {};
-                    for (string nombre : idiomasDispo) {
-                        cout << "-"+nombre << endl;
-                    }
                     string iter = "";
-                    cin >> iter;
+                    for (string nombre : idiomasDispo) {
+                      cout << "-" + nombre << endl;
+                    }
+                    getline(cin >> ws, iter);
+                    while (!idiomasDispo.count(iter)) {
+                      cout << "Seleccione un idioma válido:" << endl;
+                      getline(cin >> ws, iter);
+                    }
                     idiomasSelec.insert(iter);
                     int Agregar = 0;
                     cout << "Desea agregar mas idiomas?" << endl;
@@ -125,7 +144,12 @@ int main() {
                         for (string nombre : idiomasDispo) {
                           cout << "-" + nombre << endl;
                         }
-                        cin >> iter;
+                        getline(cin >> ws,iter);
+                        while (!idiomasDispo.count(iter)) {
+                          cout << "Seleccione un curso valido:" << endl;
+                          getline(cin >> ws, iter);
+                        }
+                        
                         idiomasSelec.insert(iter);
                         cout << "Desea agregar mas idiomas?" << endl;
                         cout << "1- Si " << endl;
@@ -472,9 +496,9 @@ int main() {
                     int cantEjer = curso.getEjercicios();
                     cout << "- Nombre: " + curso.getNombre() << endl;
                     cout << "   * Descripción: " + curso.getDescripcion() << endl;
-                    cout << "   * Dificultad: " + curso.getDificultad() << endl;
+                    cout << "   * Dificultad: " << obtenerDificultad(curso.getDificultad()) << endl;
                     cout << "   * Idioma: " + curso.getIdioma() << endl;
-                    cout << "   * Profesor: " + curso.getProfesor() << endl;
+                    cout << "   * Profesor: " << curso.getProfesor() << endl;
                     cout << "   * Cant. de Lecciones: " << cantLecc <<  endl;
                     cout << "   * Cant. de Ejercicios: " << cantEjer << endl;
                 }
@@ -505,12 +529,20 @@ int main() {
                 col.insert("Ingles1");
                 //AltaIdioma
                 ControladorUsuario->agregarIdioma("Inglés");
+                ControladorUsuario->agregarIdioma("Chino");
                 //Alta profesor
                 ControladorUsuario->ingresarDatosUsuario("joaco_", "joaco123",
                                                          "Joaquín", "ProfUser");
                 ControladorUsuario->ingresarInstituto("Fing");
                 ControladorUsuario->agregarEspecializacion("Inglés");
                 ControladorUsuario->confirmarAltaProfesor();
+
+                ControladorUsuario->ingresarDatosUsuario("profe_", "joaco123",
+                                                        "Joaquín", "ProfUser");
+                ControladorUsuario->ingresarInstituto("Fing");
+                ControladorUsuario->agregarEspecializacion("Inglés");
+                ControladorUsuario->confirmarAltaProfesor();
+
                 //Alta cursoIngles1
                 ControladorCurso->ingresarInfoCurso("Ingles1", "cursoDesc",
                                                     Principiante);
@@ -531,6 +563,26 @@ int main() {
 
                 //Habilito Curso Inglés 1
                 ControladorCurso->confirmarHabilitacion("Ingles1");
+
+                // Alta curso Chino
+                ControladorCurso->ingresarInfoCurso("Chino", "cursoDesc",
+                                                    Principiante);
+                ControladorCurso->asignarProfesor("profe_");
+                ControladorCurso->seleccionarIdioma("Chino");
+                ControladorCurso->confirmarAltaCurso();
+
+                // agrego 1 leccion y 1 ejercicio a Chino
+                ControladorCurso->seleccionarCurso("Chino");
+                ControladorCurso->ingresarInfoLeccion("Tema1", "Objetivo1");
+                ControladorCurso->confirmarAltaLeccion();
+                ControladorCurso->seleccionarCurso("Chino");
+                ControladorCurso->seleccionarLeccion("Tema1");
+                ControladorCurso->ingresarInfoEjercicio("Traduzca");
+                ControladorCurso->agregarDatosTraducir("frase", "phrase");
+                ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+
+                // Habilito Curso Chino
+                ControladorCurso->confirmarHabilitacion("Chino");
 
                 //Alta Curso Ingles2
                 ControladorCurso->ingresarInfoCurso("Ingles2", "cursoDesc",

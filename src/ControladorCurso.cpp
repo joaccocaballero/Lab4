@@ -128,6 +128,7 @@ void ControladorCurso::confirmarAltaEjercicio(EnumEjercicios tipo){
 void ControladorCurso::asignarProfesor(string nickname) {
     ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
     Profesor* profesor = ctrlU->obtenerProfesor(nickname);
+    NicknameProfesor = nickname;
     ProfesorSeleccionado = profesor;
 }
 

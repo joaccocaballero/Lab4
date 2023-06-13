@@ -117,9 +117,6 @@ void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
     if(i!=NULL){
             IdiomasRecordados.insert(i);
     }
-    else{
-        cout << "El idioma no se encuentra registrado en el sistema." << endl;
-    }
 }
 
 void ControladorUsuario::ingresarInstituto(string NombreInstituto){
