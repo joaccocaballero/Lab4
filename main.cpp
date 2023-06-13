@@ -20,7 +20,7 @@ void casosDeUso() {
     cout << "8: Habilitar Curso" << endl;
     //cout << "9: Eliminar Curso" << endl;
     //cout << "10: Consultar Curso" << endl;
-    //cout << "11: Inscribirse a Curso" << endl;
+    cout << "11: Inscribirse a Curso" << endl;
     //cout << "11: Realizar Ejercicio" << endl;
     //cout << "12: Consultar Estadísticas" << endl;
     //cout << "13: Suscribirse a Notificaciones" << endl;
@@ -29,6 +29,21 @@ void casosDeUso() {
     cout << "16: Cargar datos genéricos" <<endl;
     cout << "17: Salir" << endl;
 }
+
+string obtenerDificultad(EnumDificultad d){
+    switch (d){
+    case 0:
+        return "Principiante";
+        break;
+    case 1:
+        return "Medio";
+        break;
+    case 2:
+        return "Avanzado";
+        break;
+    }
+}
+
 
 int main() {
    // instancio Fabrica
@@ -49,58 +64,57 @@ int main() {
         switch (caso) {
             //AltaUsuario
             case 1: {
-                string Nickname = "";
-                string Contrasenia = "";
-                string Nombre = "";
-                string Descripcion = "";
+              system("clear");
+              string Nickname = "";
+              string Contrasenia = "";
+              string Nombre = "";
+              string Descripcion = "";
 
-                // ingreso datos usuario
-                cout << "Ingrese Nickname del Usuario:" << endl;
-                cin >> Nickname;
-                cout << "Ingrese una contraseña:" << endl;
-                cin >> Contrasenia;
-                cout << "Ingrese Nombre del Usuario:" << endl;
-                getline(cin >> ws, Nombre);
-                cout << "Ingrese Descripcion del Usuario:" << endl;
-                getline(cin >> ws, Descripcion);
+              // ingreso datos usuario
+              cout << "Ingrese Nickname del Usuario:" << endl;
+              cin >> Nickname;
+              cout << "Ingrese una contraseña:" << endl;
+              cin >> Contrasenia;
+              cout << "Ingrese Nombre del Usuario:" << endl;
+              getline(cin >> ws, Nombre);
+              cout << "Ingrese Descripcion del Usuario:" << endl;
+              getline(cin >> ws, Descripcion);
 
-                ControladorUsuario->ingresarDatosUsuario(Nickname, Contrasenia,
-                                                         Nombre, Descripcion);
+              ControladorUsuario->ingresarDatosUsuario(Nickname, Contrasenia,
+                                                       Nombre, Descripcion);
 
-                int tipoUsuario = 0;
-                // Profesor o Estudiante
-                cout << "Seleccione Tipo de Usuario:" << endl;
-                cout << "1- Estudiante..." <<  endl;
-                cout << "2- Profesor..." << endl;
-                cin >> tipoUsuario;
+              int tipoUsuario = 0;
+              // Profesor o Estudiante
+              cout << "Seleccione Tipo de Usuario:" << endl;
+              cout << "1- Estudiante..." << endl;
+              cout << "2- Profesor..." << endl;
+              cin >> tipoUsuario;
 
-                bool existeUsuario = true;
+              bool existeUsuario = true;
 
-                if (tipoUsuario == 1) {
-                    string paisResi = "";
-                    int Anio = 0;
-                    int Mes = 0;
-                    int Dia = 0;
-                    // Ingreso Datos Estudiante
-                    cout << "Ingrese Pais de Residencia:" << endl;
-                    cin >> paisResi;
-                    cout << "Ingrese Año de Nacimiento:" << endl;
-                    cin >> Anio;
-                    cout << "Ingrese Mes de Nacimiento:" << endl;
-                    cin >> Mes;
-                    cout << "Ingrese Dia de Nacimiento:" << endl;
-                    cin >> Dia;
-                    DTFecha Fecha = DTFecha(Dia, Mes, Anio);
-                    ControladorUsuario->ingresarDatosEstudiante(paisResi,
-                                                                Fecha);
-                    // confirmo alta
-                    existeUsuario =
-                        ControladorUsuario->confirmarAltaEstudiante();
+              if (tipoUsuario == 1) {
+                string paisResi = "";
+                int Anio = 0;
+                int Mes = 0;
+                int Dia = 0;
+                // Ingreso Datos Estudiante
+                cout << "Ingrese Pais de Residencia:" << endl;
+                getline(cin >> ws, paisResi);
+                cout << "Ingrese Año de Nacimiento:" << endl;
+                cin >> Anio;
+                cout << "Ingrese Mes de Nacimiento:" << endl;
+                cin >> Mes;
+                cout << "Ingrese Dia de Nacimiento:" << endl;
+                cin >> Dia;
+                DTFecha Fecha = DTFecha(Dia, Mes, Anio);
+                ControladorUsuario->ingresarDatosEstudiante(paisResi, Fecha);
+                // confirmo alta
+                existeUsuario = ControladorUsuario->confirmarAltaEstudiante();
                 } else if (tipoUsuario == 2) {
                     // Ingresa Instituto
                     string Instituto = "";
                     cout << "Ingrese Instituto del Profesor:" << endl;
-                    cin >> Instituto;
+                    getline(cin >> ws, Instituto);
                     ControladorUsuario->ingresarInstituto(Instituto);
                     cout << "Ingrese Idioma que desea que se especialice:"<< endl;
                     // Obtengo Idiomas Disponibles
@@ -108,11 +122,15 @@ int main() {
                     
                     // imprimo nombre de los idiomas
                     set<string> idiomasSelec = {};
-                    for (string nombre : idiomasDispo) {
-                        cout << "-"+nombre << endl;
-                    }
                     string iter = "";
-                    cin >> iter;
+                    for (string nombre : idiomasDispo) {
+                      cout << "-" + nombre << endl;
+                    }
+                    getline(cin >> ws, iter);
+                    while (!idiomasDispo.count(iter)) {
+                      cout << "Seleccione un idioma válido:" << endl;
+                      getline(cin >> ws, iter);
+                    }
                     idiomasSelec.insert(iter);
                     int Agregar = 0;
                     cout << "Desea agregar mas idiomas?" << endl;
@@ -126,7 +144,12 @@ int main() {
                         for (string nombre : idiomasDispo) {
                           cout << "-" + nombre << endl;
                         }
-                        cin >> iter;
+                        getline(cin >> ws,iter);
+                        while (!idiomasDispo.count(iter)) {
+                          cout << "Seleccione un curso valido:" << endl;
+                          getline(cin >> ws, iter);
+                        }
+                        
                         idiomasSelec.insert(iter);
                         cout << "Desea agregar mas idiomas?" << endl;
                         cout << "1- Si " << endl;
@@ -153,6 +176,7 @@ int main() {
 
             //Consultar Usuario
             case 2: {
+                system("clear");
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();
                 cout << "Seleccione un usuario" << endl;
                 std::set<string>::iterator it;
@@ -170,6 +194,8 @@ int main() {
                     cout << "Pais: " + infoEstu.getPaisResidencia() << endl; 
                 } else {
                     DTProfesor infoProfe = ControladorUsuario->obtenerInfoProfesor(usuarioSeleccionado);
+                    cout << "Nombre: " + infoProfe.getNombre() << endl;
+                    cout << "Descripcion: " + infoProfe.getDescripcion() << endl;
                     set<string> idiomas = infoProfe.getIdiomas();
                     cout << "Idiomas: "<< endl;
                     for (it= idiomas.begin(); it!=idiomas.end(); ++it) {
@@ -182,6 +208,7 @@ int main() {
             }
             //AltaIdioma
             case 3: {
+                system("clear");
                 bool seIngresaNuevo = false;
                 while (seIngresaNuevo == false) {
                     string nuevoIdioma = "";
@@ -204,6 +231,7 @@ int main() {
 
             // Consultar Idiomas
             case 4: {
+                system("clear");
                 std::set<string> idiomasDisponibles =
                     ControladorUsuario->obtenerIdiomasDisponibles();
                 cout << "Los idiomas disponibles son los siguientes:" << endl;
@@ -218,6 +246,7 @@ int main() {
 
             // AltaCurso
             case 5: {
+                system("clear");
                 set<string> listadoProfesores = ControladorUsuario->obtenerProfesores();
                 cout << "Seleccione un profesor:" << endl;
                 string profesorSeleccionado = "";
@@ -319,6 +348,7 @@ int main() {
 
             //AgregarLeccion
             case 6: {
+                system("clear");
                 set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
                 cout << "Seleccione un curso:" << endl;
                 string cursoSeleccionado = "";
@@ -327,7 +357,7 @@ int main() {
                     cout << "-"+nombre << endl;
                 }
                 getline(cin >> ws, cursoSeleccionado);
-                if (!(cursosNoHabilitados.count(cursoSeleccionado))) {
+                while(!cursosNoHabilitados.count(cursoSeleccionado)) {
                     cout << "Seleccione un curso valido:" << endl;
                     getline(cin >> ws, cursoSeleccionado);
                 }
@@ -348,6 +378,7 @@ int main() {
 
             //AgregarEjercicio
             case 7: {
+                system("clear");
                 //Obtengo Cursos No Habilitados
                  set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
                  cout << "Seleccione un curso:" << endl;
@@ -425,11 +456,13 @@ int main() {
 
             //Habilitar Curso
             case 8: {
+                system("clear");
                 //se lista todos los cursos no habilitados
+                cout << "Seleccione un curso:" << endl;
                 set<string> noHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
                 string cursoSeleccionado = "";
                 for (string curso: noHabilitados){
-                    cout << curso << endl;
+                    cout << "-"+curso << endl;
                 }
                 getline(cin >> ws, cursoSeleccionado);
                 bool fueHabilitado = ControladorCurso->confirmarHabilitacion(cursoSeleccionado);
@@ -455,6 +488,57 @@ int main() {
                 //se buscan la informacion del curso
                 DTEstadisticaCurso infoCurso = ControladorCurso->obtenerInfoCurso(cursoSelec);
 
+            //Inscribirse A Curso
+            case 11: {
+                system("clear");
+                set<string> estudiantesDisponibles = ControladorUsuario->obtenerEstudiantes();
+                string estudiante = "";
+                cout << "Ingrese nickname estudiante: " << endl;
+                getline(cin >> ws, estudiante);
+                while (!estudiantesDisponibles.count(estudiante)) {
+                    cout << "Seleccione un nickname existente:" <<endl;
+                    getline(cin >> ws, estudiante);
+                }
+                set<DTCursoDisponible> cursosDisponibles = ControladorCurso->obtenerCursosDisponibles(estudiante);
+                set<string> nombresCursos;
+                string cursoSeleccionado = "";
+                if(!cursosDisponibles.empty()){
+                    cout << "Seleccione nombre del curso: " << endl;
+                    for (DTCursoDisponible curso : cursosDisponibles) {
+                        nombresCursos.insert(curso.getNombre());
+                        int cantLecc = curso.getLecciones();
+                        int cantEjer = curso.getEjercicios();
+                        cout << "- Nombre: " + curso.getNombre() << endl;
+                        cout << "   * Descripción: " + curso.getDescripcion()
+                             << endl;
+                        cout << "   * Dificultad: "
+                             << obtenerDificultad(curso.getDificultad())
+                             << endl;
+                        cout << "   * Idioma: " + curso.getIdioma() << endl;
+                        cout << "   * Profesor: " << curso.getProfesor()
+                             << endl;
+                        cout << "   * Cant. de Lecciones: " << cantLecc << endl;
+                        cout << "   * Cant. de Ejercicios: " << cantEjer
+                             << endl;
+                    }
+                    getline(cin >> ws, cursoSeleccionado);
+                    while (!nombresCursos.count(cursoSeleccionado)) {
+                        cout << "Seleccione un curso valido:" << endl;
+                        getline(cin >> ws, cursoSeleccionado);
+                    }
+                    bool fueInscripto = ControladorCurso->confirmarInscripcion(
+                        estudiante, cursoSeleccionado);
+                    if (fueInscripto) {
+                        cout << "Inscripcion realizada con éxito." << endl;
+                    } else {
+                        cout << "No se ha podido realizar la inscripción."
+                             << endl;
+                    }
+                } 
+                else{
+                    cout << "No hay cursos disponibles para inscripción." << endl;
+                }
+               break;
             }
 
            //Salida
@@ -464,27 +548,80 @@ int main() {
 
             //carga de datos
             case 16: {
+                system("clear");
                 set<string> col;
-                col.insert("Inglés 1");
+                col.insert("Ingles1");
+                //AltaIdioma
                 ControladorUsuario->agregarIdioma("Inglés");
+                ControladorUsuario->agregarIdioma("Chino");
+                //Alta profesor
                 ControladorUsuario->ingresarDatosUsuario("joaco_", "joaco123",
                                                          "Joaquín", "ProfUser");
                 ControladorUsuario->ingresarInstituto("Fing");
                 ControladorUsuario->agregarEspecializacion("Inglés");
                 ControladorUsuario->confirmarAltaProfesor();
+
+                ControladorUsuario->ingresarDatosUsuario("profe_", "joaco123",
+                                                        "Joaquín", "ProfUser");
+                ControladorUsuario->ingresarInstituto("Fing");
+                ControladorUsuario->agregarEspecializacion("Inglés");
+                ControladorUsuario->confirmarAltaProfesor();
+
+                //Alta cursoIngles1
                 ControladorCurso->ingresarInfoCurso("Ingles1", "cursoDesc",
                                                     Principiante);
                 ControladorCurso->asignarProfesor("joaco_");
                 ControladorCurso->seleccionarIdioma("Inglés");
                 ControladorCurso->confirmarAltaCurso();
 
-                ControladorCurso->ingresarInfoCurso("Inglés2", "cursoDesc",
+                //agrego 1 leccion y 1 ejercicio a Ingles1.
+                ControladorCurso->seleccionarCurso("Ingles1");
+                ControladorCurso->ingresarInfoLeccion("Tema1",
+                                                      "Objetivo1");
+                ControladorCurso->confirmarAltaLeccion();
+                ControladorCurso->seleccionarCurso("Ingles1");
+                ControladorCurso->seleccionarLeccion("Tema1");
+                ControladorCurso->ingresarInfoEjercicio("Traduzca");
+                ControladorCurso->agregarDatosTraducir("frase", "phrase");
+                ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+
+                //Habilito Curso Inglés 1
+                ControladorCurso->confirmarHabilitacion("Ingles1");
+
+                // Alta curso Chino
+                ControladorCurso->ingresarInfoCurso("Chino", "cursoDesc",
+                                                    Principiante);
+                ControladorCurso->asignarProfesor("profe_");
+                ControladorCurso->seleccionarIdioma("Chino");
+                ControladorCurso->confirmarAltaCurso();
+
+                // agrego 1 leccion y 1 ejercicio a Chino
+                ControladorCurso->seleccionarCurso("Chino");
+                ControladorCurso->ingresarInfoLeccion("Tema1", "Objetivo1");
+                ControladorCurso->confirmarAltaLeccion();
+                ControladorCurso->seleccionarCurso("Chino");
+                ControladorCurso->seleccionarLeccion("Tema1");
+                ControladorCurso->ingresarInfoEjercicio("Traduzca");
+                ControladorCurso->agregarDatosTraducir("frase", "phrase");
+                ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+
+                // Habilito Curso Chino
+                ControladorCurso->confirmarHabilitacion("Chino");
+
+                //Alta Curso Ingles2
+                ControladorCurso->ingresarInfoCurso("Ingles2", "cursoDesc",
                                                     Principiante);
                 ControladorCurso->asignarProfesor("joaco_");
                 ControladorCurso->seleccionarIdioma("Inglés");
                 ControladorCurso->ingresarCursosPrevios(col);
                 ControladorCurso->confirmarAltaCurso();
 
+                //alta de estudiante
+                ControladorUsuario->ingresarDatosUsuario("estudiante", "joaco123",
+                                                         "Joaquín", "EstudianteDesc");
+                DTFecha Fecha = DTFecha(10, 12, 2002);
+                ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha);
+                ControladorUsuario->confirmarAltaEstudiante();
                 break;
             }
 

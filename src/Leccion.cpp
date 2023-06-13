@@ -20,11 +20,6 @@ string Leccion::obtenerObjetivo(){
     return objetivo; 
 }
 
-set<Ejercicio> Leccion::obtenerEjercicios(){
-    set<Ejercicio> ejercicio;
-    return ejercicio;
-}
-
 void Leccion::agregarEjercicio(Ejercicio * e){
     Ejercicios.insert(e);
 }

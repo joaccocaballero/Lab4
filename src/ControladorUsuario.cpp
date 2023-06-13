@@ -117,18 +117,31 @@ void ControladorUsuario::agregarEspecializacion(string Nombreidioma){
     if(i!=NULL){
             IdiomasRecordados.insert(i);
     }
-    else{
-        cout << "El idioma no se encuentra registrado en el sistema." << endl;
-    }
 }
 
 void ControladorUsuario::ingresarInstituto(string NombreInstituto){
     this->Instituto = NombreInstituto;
 }
 
+bool ControladorUsuario::confirmarAltaInscripcion(Estudiante* e, Inscripcion* i){
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    manejador->agregarInscripcion(e, i);
+    return true;
+}
+
+set<Inscripcion*> ControladorUsuario::obtenerInscripcionesEstudiante(string nickname) {
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerInscripcionesEstudiante(nickname);
+}
+
 set<string> ControladorUsuario::obtenerEstudiantes(){
     ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
     return manejador->obtenerNicknamesEstudiantes();
+}
+
+Estudiante* ControladorUsuario::obtenerEstudiante(string nickname) {
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerEstudiante(nickname);
 }
 
 bool ControladorUsuario::agregarIdioma(string Nombre) {

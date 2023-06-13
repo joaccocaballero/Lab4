@@ -15,12 +15,11 @@ class Inscripcion {
         Curso * CursoInscripcion;
         Estudiante * EstudianteInscrito;
     public:
-        Inscripcion(int id, DTFecha fecha, bool Aprobacion, Curso * CursoInscripcion, EStudiante * EstudianteInscrito);
+        Inscripcion();
+        Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante);
         int obtenerIdInscripcion();
-        DTFecha obtenerFecha();
         bool obtenerAprobacion();
-        Curso * obtenerCurso();
-        Estudiante *obtenerEstudiante();
+        Curso* obtenerCurso();
         ~Inscripcion();
 };
 

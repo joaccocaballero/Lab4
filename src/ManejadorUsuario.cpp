@@ -33,6 +33,14 @@ void ManejadorUsuario::agregarEstudiante(Estudiante *estudiante, string nickname
     ColeccionDeEstudiantes.insert(make_pair(nickname, estudiante));
 }
 
+Estudiante* ManejadorUsuario::obtenerEstudiante(string nickname) {
+    return ColeccionDeEstudiantes[nickname];
+}
+
+set<Inscripcion*> ManejadorUsuario::obtenerInscripcionesEstudiante(string nickname) {
+    Estudiante *e = obtenerEstudiante(nickname);
+    return e->obtenerInscripciones();
+}
 
 void ManejadorUsuario::agregarProfesor(Profesor *profesor, string nickname){
     ColeccionDeProfesores.insert(make_pair(nickname, profesor));
@@ -74,14 +82,25 @@ bool ManejadorUsuario::esEstudiante(string nickname){
     return (ColeccionDeEstudiantes.count(nickname) == 1);
 }
 
+void ManejadorUsuario::agregarInscripcion(Estudiante* e, Inscripcion* i){
+    e->agregarInscripcion(i);
+}
+
 set<string> ManejadorUsuario::obtenerEstudiantes(){}
+
 set<DTEstadisticaEstudiante> ManejadorUsuario::obtenerEstadisticasEstudiantes(
     string Nickname){}
+
 set<string> ManejadorUsuario::obtenerProfesores(){}
+
 set<DTEstadisticaProfesor> ManejadorUsuario::obtenerEstadisticasProfesor(
     string Nickname){}
-Profesor* ManejadorUsuario::obtenerProfesor(string nickname){}
-set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
 
+Profesor* ManejadorUsuario::obtenerProfesor(string nickname){
+    return ColeccionDeProfesores[nickname];
 }
+set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
+    return ColeccionDeProfesores[nickname]->consultarIdiomasProfesor();
+}
+
 set<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){}

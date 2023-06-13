@@ -14,6 +14,7 @@
 #include "ManejadorCurso.h"
 #include "ManejadorIdioma.h"
 #include "DTCurso.h"
+#include "DTCursoDisponible.h"
 
 using namespace std;
 
@@ -62,6 +63,8 @@ class ControladorCurso : public IControladorCurso {
         void seleccionarLeccion(string nomLeccion);
         void confirmarEliminacion(string nombre);
         void confirmarAltaCurso();
+        set<DTCursoDisponible> obtenerCursosDisponibles(string nickname);
+        bool confirmarInscripcion(string nickname, string nombreCurso);
         void confirmarAltaLeccion();
         void confirmarAltaEjercicio(EnumEjercicios tipo);
         set<string> obtenerCursos();

@@ -1,27 +1,26 @@
 #include "../include/Inscripcion.h"
 
-Inscripcion::Inscripcion(int id, DTFecha fecha, bool Aprobacion, Curso * CursoInscripcion, Estudiante * EstudianteInscrito){
-    this->id = id;
-    this->fecha = fecha;
-    this->Aprobacion = Aprobacion;
-    this->CursoInscripcion = CursoInscripcion;
-    this->EstudianteInscrito = EstudianteInscrito;
+Inscripcion::Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante) {
+    this->CursoInscripcion = curso;
+    this->EstudianteInscrito = estudiante;
+    this->Fecha = fecha;
+    this->Aprobacion= false;
 }
 
 int Inscripcion::obtenerIdInscripcion(){
     return id;
 }
-DTFecha Inscripcion::obtenerFecha(){
-    return fecha;
-}
+
 bool Inscripcion::obtenerAprobacion(){
     return Aprobacion;
 }
-Curso* Inscripcion::obtenerCursoInscripcion(){
+
+Curso* Inscripcion::obtenerCurso(){
     return CursoInscripcion;
 }
-Estudiante* Inscripcion::obtenerEstudianteInscripto(){
-    return EstudianteInscrito;
+
+Inscripcion::~Inscripcion(){
+    delete CursoInscripcion;
+    delete EstudianteInscrito;
 }
 
-Inscripcion::~Inscripcion(){}
