@@ -151,8 +151,9 @@ set<string> ControladorCurso::obtenerLecciones(){
     return retorno;
 }
 
-DTCurso ControladorCurso::obtenerInfoCurso(string nombre){
-    
+DTCurso* ControladorCurso::obtenerInfoCurso(string nombre){
+    DTCurso Curso* = ColeccionDTCurso.find(nombre);
+    return Curso;
 }
 
 DTEjercicio ControladorCurso::seleccionarEjercicio(int id){

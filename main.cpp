@@ -450,6 +450,7 @@ int main() {
                 for (string curso: Cursos){
                     cout << curso << endl;
                 }
+                cout << "Seleccione un Curso" << endl;
                 getline(cin >> ws, cursoSelec);
                 //se buscan la informacion del curso
                 DTEstadisticaCurso infoCurso = ControladorCurso->obtenerInfoCurso(cursoSelec);
