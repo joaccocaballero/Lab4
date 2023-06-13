@@ -16,7 +16,7 @@ Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificulta
     this->IdiomaEnseniado = idioma;
     this->cursosPrevios = cursosPrevios;
     this->Lecciones = lecciones;
-    this->nombreProf = nombreProf
+    this->nombreProf = nombreProf;
 }
 
 string Curso::obtenerNombre(){
@@ -37,6 +37,14 @@ void Curso::setHabilitacion(bool h){
 
 set<Leccion*> Curso::obtenerLecciones(){
     return Lecciones;
+}
+
+string Curso::obtenerNombreProf(){
+    return nombreProf;
+}
+
+string Curso::obtenerDescripcion(){
+    return descripcion;
 }
 
 set<string> Curso::obtenerEjerciciosPendientes(string nombre){
@@ -62,6 +70,14 @@ Leccion* Curso::obtenerLeccion(string temaLeccion){
 
 void Curso::agregarLeccion(Leccion* l){
     Lecciones.insert(l);
+}
+
+EnumDificultad Curso::obtenerDificultad(){
+    return dificultad;
+}
+
+set<Curso*> Curso::obtenerPrevias(){
+    return cursosPrevios;
 }
 
 DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){

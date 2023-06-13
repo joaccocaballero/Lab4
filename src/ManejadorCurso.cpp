@@ -94,19 +94,28 @@ Curso* ManejadorCurso::obtenerCurso(string nombre){
 
 set<string> ManejadorCurso::obtenerEjerciciosPendientesCurso(Curso c){}
 
-set<DTCursoDisponible> ManejadorCurso::obtenerCursosDisponibles(set<Curso*> cursos, set<Curso*> cursosAprobados) {
-  set<DTCursoDiponible> cursosDisponibles;
+set<DTCursoDisponible> ManejadorCurso::obtenerCursosDisponibles(set<Curso*> cursosYaInscriptos, set<Curso*> cursosAprobados) {
+  set<DTCursoDisponible> cursosDisponibles;
   map<string, Curso*>::iterator it;
   for (it = ColeccionDeCursos.begin(); it!=ColeccionDeCursos.end(); ++it){
     Curso* current = it->second;
-    bool cumplePrevias = cursosAprobados.includes(current->obtenerPrevias())
+    bool cumplePrevias = true;
+    for (const auto& puntero : current->obtenerPrevias()) {
+      if (cursosAprobados.find(puntero) == cursosAprobados.end()) {
+        cumplePrevias = false;
+        break;
+      }
+    }
     if (!cumplePrevias) {
       continue;
     }
-    if(current->obtenerHabilitacion() && !cursos.count(it->first)) {
-      string idioma = current->getIdioma()->getNombre();
+    bool estaInscripto = cursosYaInscriptos.find(it->second) != cursosYaInscriptos.end();
+    if(current->obtenerHabilitacion() && !estaInscripto) {
+      string idioma = current->getIdioma()->obtenerNombre();
       int ctdEjercicios = cantidadEjercicios(current->obtenerLecciones());
-      DTCursoDisponible toPush = DtCursoDisponible(current->obtenerNombre(), current->obtenerDescripcion(),idioma, current->obtenerNombreProf(), current->obtenerLecciones().size(), ctdEjercicios, current->obtenerDificultad); //poner datos
+      int ctdLecciones = current->obtenerLecciones().size();
+      DTCursoDisponible toPush = DTCursoDisponible(current->obtenerNombre(), current->obtenerDescripcion(),idioma, 
+      current->obtenerNombreProf(), ctdLecciones, ctdEjercicios, current->obtenerDificultad()); //poner datos
     }
   }
   return cursosDisponibles;
@@ -117,7 +126,8 @@ int ManejadorCurso::cantidadEjercicios(set<Leccion*> leccs) {
   int res = 0;
   set<Leccion*>::iterator it;
   for (it = leccs.begin(); it!=leccs.end(); ++it){
-    res = res + it->obtenerEjercicios().size();
+    Leccion*current = *it;
+    res = res + current->obtenerEjerciciosLeccion().size();
   }
   return res;
 }

@@ -18,6 +18,7 @@ class Inscripcion {
         Inscripcion();
         Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante);
         int obtenerIdInscripcion();
+        bool obtenerAprobacion();
         Curso* obtenerCurso();
         ~Inscripcion();
 };

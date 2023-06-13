@@ -61,7 +61,7 @@ class ControladorCurso : public IControladorCurso {
         void seleccionarLeccion(string nomLeccion);
         void confirmarEliminacion(string nombre);
         void confirmarAltaCurso();
-        set<DTCursoDiponible> obtenerCursosDisponibles(string nickname);
+        set<DTCursoDisponible> obtenerCursosDisponibles(string nickname);
         bool confirmarInscripcion(string nickname, string nombreCurso);
         void confirmarAltaLeccion();
         void confirmarAltaEjercicio(EnumEjercicios tipo);

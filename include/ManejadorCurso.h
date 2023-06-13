@@ -34,7 +34,8 @@ class ManejadorCurso {
   set<Curso*> obtenerCursosPrevios(set<string> cursosPrevios);
   set<string> obtenerCursosNoHabilitados();
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
-  set<DTCursoDisponible> obtenerCursosDisponibles(set<Curso*> cursos);
+  int cantidadEjercicios(set<Leccion*> lecs);
+  set<DTCursoDisponible> obtenerCursosDisponibles(set<Curso*> cursos, set<Curso*> cursosAprobados);
   bool confirmarHabilitacion(string nombre);
 };
 

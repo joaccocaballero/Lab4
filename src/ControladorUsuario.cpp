@@ -132,7 +132,7 @@ bool ControladorUsuario::confirmarAltaInscripcion(Estudiante* e, Inscripcion* i)
     return true;
 }
 
-set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname) {
+set<Inscripcion*> ControladorUsuario::obtenerInscripcionesEstudiante(string nickname) {
     ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
     return manejador->obtenerInscripcionesEstudiante(nickname);
 }
@@ -142,7 +142,7 @@ set<string> ControladorUsuario::obtenerEstudiantes(){
     return manejador->obtenerNicknamesEstudiantes();
 }
 
-Estudiante* ControladorUsuario::obtenerEstudiante() {
+Estudiante* ControladorUsuario::obtenerEstudiante(string nickname) {
     ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
     return manejador->obtenerEstudiante(nickname);
 }

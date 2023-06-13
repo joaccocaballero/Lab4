@@ -152,27 +152,27 @@ set<string> ControladorCurso::obtenerLecciones(){
     return retorno;
 }
 
-DTCursoDisponible ControladorCurso::obtenerCursosDisponibles(string nickname) {
+set<DTCursoDisponible> ControladorCurso::obtenerCursosDisponibles(string nickname) {
     // traigo inscripciones del estudiante, paso nombre de curso a set, y armo set de cursos que no esten en ese set y esten habilitados
     ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
-    ManejadorCurso *maneC = manejadorCurso->getInstancia();
+    ManejadorCurso *maneC = manejadorCurso->getManejadorC();
     set<Inscripcion*> inscripciones = ctrlU->obtenerInscripcionesEstudiante(nickname);
-    set<Curso*> cursosNoDisponibles;
+    set<Curso*> cursosYaInscriptos;
     set<Curso*> cursosAprobados;
     set<Inscripcion*>::iterator it;
     for(it=inscripciones.begin(); it!=inscripciones.end(); ++it){
         Inscripcion* current = *it;
-        cursosNoDisponibles.insert(current->obtenerCurso());
-        if (current->obtenerCurso()->obtenerHabilitacion() == true) {
+        cursosYaInscriptos.insert(current->obtenerCurso());
+        if (current->obtenerAprobacion() == true) {
             cursosAprobados.insert(current->obtenerCurso());
         }
     }
-    return maneC->obtenerCursosDisponibles(cursosNoDisponibles, cursosAprobados);
+    return maneC->obtenerCursosDisponibles(cursosYaInscriptos, cursosAprobados);
 }
 
 bool ControladorCurso::confirmarInscripcion(string nickname, string nombreCurso) {
     ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
-    ManejadorCurso *manejador = manejadorCurso->getInstancia();
+    ManejadorCurso *manejador = manejadorCurso->getManejadorC();
     Estudiante* e = ctrlU->obtenerEstudiante(nickname);
     Curso* c = manejador->obtenerCurso(nombreCurso);
     DTFecha aCambiar = DTFecha(1,1,1);

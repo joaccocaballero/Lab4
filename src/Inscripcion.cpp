@@ -6,4 +6,21 @@ Inscripcion::Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante) {
     this->Fecha = fecha;
     this->Aprobacion= false;
 }
-Inscripcion::~Inscripcion(){}
+
+int Inscripcion::obtenerIdInscripcion(){
+    return id;
+}
+
+bool Inscripcion::obtenerAprobacion(){
+    return Aprobacion;
+}
+
+Curso* Inscripcion::obtenerCurso(){
+    return CursoInscripcion;
+}
+
+Inscripcion::~Inscripcion(){
+    delete CursoInscripcion;
+    delete EstudianteInscrito;
+}
+

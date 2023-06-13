@@ -35,7 +35,7 @@ class ManejadorUsuario {
         DTProfesor obtenerDTProfesor(string nickname);
         set<string> obtenerIdiomasProfesor(string nickname);
         set<string> obtenerEstudiantes();
-        set<string> obtenerEstudiante(string nickname);
+        Estudiante* obtenerEstudiante(string nickname);
         bool esEstudiante(string nickname);
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiantes(string Nickname);
         set<string> obtenerProfesores();

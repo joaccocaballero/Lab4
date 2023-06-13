@@ -37,7 +37,7 @@ Estudiante* ManejadorUsuario::obtenerEstudiante(string nickname) {
     return ColeccionDeEstudiantes[nickname];
 }
 
-set<Inscripcion*> ManejadorUsuario(string nickname) {
+set<Inscripcion*> ManejadorUsuario::obtenerInscripcionesEstudiante(string nickname) {
     Estudiante *e = obtenerEstudiante(nickname);
     return e->obtenerInscripciones();
 }

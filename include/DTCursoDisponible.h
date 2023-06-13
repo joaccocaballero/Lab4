@@ -3,6 +3,10 @@
 #define DTCURSODISPONIBLE
 
 #include <string>
+#include "Curso.h"
+
+using namespace std;
+
 
 class DTCursoDisponible {
     private:
@@ -23,6 +27,6 @@ class DTCursoDisponible {
         int getLecciones();
         int getEjercicios();
         EnumDificultad getDificultad();
-}
+};
 
 #endif

@@ -36,8 +36,9 @@ class Curso {
         void setHabilitacion(bool h);
         void agregarLeccion(Leccion *l);
         string obtenerDescripcion();
-        string obtenerDificultad();
+        EnumDificultad obtenerDificultad();
         string obtenerNombreProf();
+        set<Curso*> obtenerPrevias();
         DTEstadisticaCurso* obtenerEstadisticaCurso(string nombre);
         ~Curso();
 };
