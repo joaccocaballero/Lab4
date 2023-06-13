@@ -151,8 +151,11 @@ set<string> ControladorCurso::obtenerLecciones(){
     return retorno;
 }
 
-DTCurso* ControladorCurso::obtenerInfoCurso(string nombre){
-    DTCurso Curso* = ColeccionDTCurso.find(nombre);
+DTCurso ControladorCurso::obtenerInfoCurso(string nombre){
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    Curso * c = manejador->obtenerCurso(nombre);
+    DTCurso retorno = DTCurso(c->obtenerNombre(), c->obte)
+
     return Curso;
 }
 
@@ -163,8 +166,7 @@ bool ControladorCurso::validarEjercicio(){
     return true;
 }
 
-DTEstadisticCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
-
+DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
 }
 
 set<string> ControladorCurso::obtenerEjerciciosPendientes(){}

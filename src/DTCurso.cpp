@@ -1,11 +1,11 @@
 #include <string>
-#include "../include/DTEstadisticaCurso.h"
+#include "../include/DTCurso.h"
 #include "../include/Leccion.h"
 #include "../include/Inscripcion.h"
 
 using namespace std;
 
-DTEstadisticaCurso::DTEstadisticaCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
+DTCurso::DTCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
         string Idioma, string Profesor, string Habilitacion, set<DTLeccion> Lecciones,
         set<DTInscripcion> Inscripciones){
     this->Nombre = Nombre;
@@ -13,31 +13,31 @@ DTEstadisticaCurso::DTEstadisticaCurso(string Nombre, string Descripcion, EnumDi
     this->Dificultad = Dificultad;
     this->Idioma = Idioma;
     this->Profesor = Profesor;
-    this->Habilitacion = Habilitacion,
-    this->Lecciones = Lecciones,
-    this->Inscripciones = Inscripciones
+    this->Habilitacion = Habilitacion;
+    this->Lecciones = Lecciones;
+    this->Inscripciones = Inscripciones;
 }
-string DTEstadisticaCurso::getNombreCurso(){
+string DTCurso::getNombreCurso(){
     return Nombre;
 }
-string DTEstadisticaCurso::getDescripcionCurso(){
+string DTCurso::getDescripcionCurso(){
     return Descripcion;
 }
-EnumDificultad DTEstadisticaCurso::getDificultad(){
+EnumDificultad DTCurso::getDificultad(){
     return Dificultad;
 }
-string DTEstadisticaCurso::getIdioma(){
+string DTCurso::getIdioma(){
     return Idioma;
 }
-string DTEstadisticaCurso::getProfesor(){
+string DTCurso::getProfesor(){
     return Profesor;
 }
-string DTEstadisticaCurso::getHabilitacion(){
+string DTCurso::getHabilitacion(){
     return Habilitacion;
 }
-set<DTLeccion> DTEstadisticaCurso::getLecciones(){
+set<DTLeccion> DTCurso::getLecciones(){
     return Lecciones;
 }
-set<DTInscripcion> DTEstadisticaCurso::getInscripciones(){
+set<DTInscripcion> DTCurso::getInscripciones(){
     return Inscripciones;
 }

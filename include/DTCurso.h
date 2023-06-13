@@ -4,6 +4,8 @@
 
 #include <string>
 #include "Curso.h"
+#include "DTLeccion.h"
+#include  "DTInscripcion.h"
 
 using namespace std;
 
