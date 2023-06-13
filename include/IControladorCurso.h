@@ -34,6 +34,8 @@ class IControladorCurso {
         virtual DTEjercicio seleccionarEjercicio(int id) = 0;
         virtual bool validarEjercicio() = 0;
         virtual DTEstadisticaCurso obtenerEstadisticaCurso(string nombre) = 0;
+        virtual set<DTCursoDiponible> obtenerCursosDisponibles(string nickname)=0;
+        virtual bool confirmarInscripcion()=0;
         virtual bool confirmarHabilitacion(string nombre)= 0;
         virtual ~IControladorCurso() = 0;
 };

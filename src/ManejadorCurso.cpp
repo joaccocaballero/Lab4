@@ -94,6 +94,34 @@ Curso* ManejadorCurso::obtenerCurso(string nombre){
 
 set<string> ManejadorCurso::obtenerEjerciciosPendientesCurso(Curso c){}
 
+set<DTCursoDisponible> ManejadorCurso::obtenerCursosDisponibles(set<Curso*> cursos, set<Curso*> cursosAprobados) {
+  set<DTCursoDiponible> cursosDisponibles;
+  map<string, Curso*>::iterator it;
+  for (it = ColeccionDeCursos.begin(); it!=ColeccionDeCursos.end(); ++it){
+    Curso* current = it->second;
+    bool cumplePrevias = cursosAprobados.includes(current->obtenerPrevias())
+    if (!cumplePrevias) {
+      continue;
+    }
+    if(current->obtenerHabilitacion() && !cursos.count(it->first)) {
+      string idioma = current->getIdioma()->getNombre();
+      int ctdEjercicios = cantidadEjercicios(current->obtenerLecciones());
+      DTCursoDisponible toPush = DtCursoDisponible(current->obtenerNombre(), current->obtenerDescripcion(),idioma, current->obtenerNombreProf(), current->obtenerLecciones().size(), ctdEjercicios, current->obtenerDificultad); //poner datos
+    }
+  }
+  return cursosDisponibles;
+}
+
+int ManejadorCurso::cantidadEjercicios(set<Leccion*> leccs) {
+  //itero y sumo ejercicios.length a variable
+  int res = 0;
+  set<Leccion*>::iterator it;
+  for (it = leccs.begin(); it!=leccs.end(); ++it){
+    res = res + it->obtenerEjercicios().size();
+  }
+  return res;
+}
+
 set<Curso*> ManejadorCurso::obtenerCursosPrevios(set<string> nombrePrevios){
   set<Curso*> cursosPrevios;
   map<string, Curso*>::iterator it;

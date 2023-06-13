@@ -16,8 +16,9 @@ class Estudiante: public Usuario {
         set<Inscripcion*> InscripcionesCursos;
     public:
         Estudiante(string Nickname, string Contrasenia, string Nombre, string Descripcion, string PaisResidencia, DTFecha FechaNacimiento);
-        void obtenerInscripciones();
+        set<Inscripcion*> obtenerInscripciones();
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string nickname);
+        void agregarInscripcion(Inscripcion* i);
         string obtenerPais();
         ~Estudiante();
 };

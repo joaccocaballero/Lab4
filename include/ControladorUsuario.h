@@ -38,6 +38,7 @@ class ControladorUsuario : public IControladorUsuario {
          static ControladorUsuario * getInstancia();
          bool confirmarAltaProfesor();
          bool confirmarAltaEstudiante();
+         bool confirmarAltaInscripcion(Estudiante* e, Inscripcion* i);
          void ingresarDatosUsuario(string Nickname, string Contrasenia, string Nombre, string Descripcion);
          void ingresarDatosEstudiante(string paisResidencia, DTFecha fechaNacimiento);
          set<string> obtenerIdiomasDisponibles();
@@ -48,6 +49,7 @@ class ControladorUsuario : public IControladorUsuario {
          void ingresarInstituto(string NombreInstituto);
          bool agregarIdioma(string Nombre);
          set<string> obtenerEstudiantes();
+         Estudiante* obtenerEstudiante(string nickname);
          bool obtenerTipo(string nickname);
          set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname);
          set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
@@ -56,6 +58,7 @@ class ControladorUsuario : public IControladorUsuario {
          set<string> obtenerUsuarios();
          DTEstudiante obtenerInfoEstudiante(string Nickname);
          DTProfesor obtenerInfoProfesor(string Nickname);
+         set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname);
          virtual ~ControladorUsuario();
     };
 

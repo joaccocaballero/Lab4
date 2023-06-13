@@ -15,7 +15,10 @@ class Inscripcion {
         Curso * CursoInscripcion;
         Estudiante * EstudianteInscrito;
     public:
+        Inscripcion();
+        Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante);
         int obtenerIdInscripcion();
+        Curso* obtenerCurso();
         ~Inscripcion();
 };
 

@@ -8,7 +8,7 @@
 using namespace std;
 
 
-Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad,set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones){
+Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad,set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf){
     this->habilitacion = habilitacion;
     this->nombre = nombre;
     this->descripcion = descripcion;
@@ -16,6 +16,7 @@ Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificulta
     this->IdiomaEnseniado = idioma;
     this->cursosPrevios = cursosPrevios;
     this->Lecciones = lecciones;
+    this->nombreProf = nombreProf
 }
 
 string Curso::obtenerNombre(){
@@ -24,6 +25,10 @@ string Curso::obtenerNombre(){
 
 bool Curso::obtenerHabilitacion(){
     return habilitacion;
+}
+
+Idioma* Curso::getIdioma(){
+    return IdiomaEnseniado;
 }
 
 void Curso::setHabilitacion(bool h){

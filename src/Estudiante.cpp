@@ -18,7 +18,9 @@ string Estudiante::obtenerPais(){
   return PaisResidencia;
 }
 
-void obtenerInscripciones(){}
+set<Inscripcion*> Estudiante::obtenerInscripciones(){
+  return InscripcionesCursos;
+}
 
 set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string Nickname){}
 

@@ -24,15 +24,20 @@ class Curso {
         Idioma* IdiomaEnseniado;
         set<Leccion*> Lecciones;
         set<Curso*> cursosPrevios;
+        string nombreProf;
     public:
-        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones);
+        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf);
         string obtenerNombre();
         set<Leccion*> obtenerLecciones();
         Leccion* obtenerLeccion(string nomLeccion);
         set<string> obtenerEjerciciosPendientes(string nombre);
+        Idioma* getIdioma();
         bool obtenerHabilitacion();
         void setHabilitacion(bool h);
         void agregarLeccion(Leccion *l);
+        string obtenerDescripcion();
+        string obtenerDificultad();
+        string obtenerNombreProf();
         DTEstadisticaCurso* obtenerEstadisticaCurso(string nombre);
         ~Curso();
 };

@@ -15,7 +15,7 @@ class Leccion {
         set<Ejercicio*> Ejercicios;
     public:
         Leccion(string tema, string objetivo, set<Ejercicio*> ejercicios);
-        set<Ejercicio> obtenerEjercicios();
+        set<Ejercicio*> obtenerEjercicios();
         string obtenerTema();
         string obtenerObjetivo();
         void agregarEjercicio(Ejercicio* e);

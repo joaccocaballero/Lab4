@@ -8,6 +8,7 @@
 #include "../include/Ejercicio.h"
 #include "../include/CompletarFrase.h"
 #include "../include/Traducir.h"
+#include "../include/Inscripcion.h"
 
 using namespace std;
 
@@ -91,7 +92,7 @@ void ControladorCurso::confirmarAltaCurso() {
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
     set<Leccion*> col;
-    Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col);
+    Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col, NicknameProfesor);
     // si hay lecciones agregarlas, supongo que llamo a caso de uso desde main si usuario quiere meterle
 
     manejador->agregarCurso(c);
@@ -149,6 +150,34 @@ set<string> ControladorCurso::obtenerLecciones(){
         retorno.insert(current->obtenerTema());
     }
     return retorno;
+}
+
+DTCursoDisponible ControladorCurso::obtenerCursosDisponibles(string nickname) {
+    // traigo inscripciones del estudiante, paso nombre de curso a set, y armo set de cursos que no esten en ese set y esten habilitados
+    ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
+    ManejadorCurso *maneC = manejadorCurso->getInstancia();
+    set<Inscripcion*> inscripciones = ctrlU->obtenerInscripcionesEstudiante(nickname);
+    set<Curso*> cursosNoDisponibles;
+    set<Curso*> cursosAprobados;
+    set<Inscripcion*>::iterator it;
+    for(it=inscripciones.begin(); it!=inscripciones.end(); ++it){
+        Inscripcion* current = *it;
+        cursosNoDisponibles.insert(current->obtenerCurso());
+        if (current->obtenerCurso()->obtenerHabilitacion() == true) {
+            cursosAprobados.insert(current->obtenerCurso());
+        }
+    }
+    return maneC->obtenerCursosDisponibles(cursosNoDisponibles, cursosAprobados);
+}
+
+bool ControladorCurso::confirmarInscripcion(string nickname, string nombreCurso) {
+    ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
+    ManejadorCurso *manejador = manejadorCurso->getInstancia();
+    Estudiante* e = ctrlU->obtenerEstudiante(nickname);
+    Curso* c = manejador->obtenerCurso(nombreCurso);
+    DTFecha aCambiar = DTFecha(1,1,1);
+    Inscripcion* inscripcion = new Inscripcion(aCambiar, c, e);
+    return ctrlU->confirmarAltaInscripcion(e, inscripcion);
 }
 
 DTEjercicio ControladorCurso::seleccionarEjercicio(int id){

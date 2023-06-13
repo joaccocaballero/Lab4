@@ -8,6 +8,7 @@
 #include "Idioma.h"
 #include "Ejercicio.h"
 #include "Leccion.h"
+#include "DTCursoDisponible.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ class ManejadorCurso {
   set<Curso*> obtenerCursosPrevios(set<string> cursosPrevios);
   set<string> obtenerCursosNoHabilitados();
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
+  set<DTCursoDisponible> obtenerCursosDisponibles(set<Curso*> cursos);
   bool confirmarHabilitacion(string nombre);
 };
 

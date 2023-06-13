@@ -451,6 +451,30 @@ int main() {
                 break;
             }
 
+            case 11: {
+                system('clear');
+                set<string> estudiantesDisponibles = ControladorUsuario->obtenerEstudiantes();
+                string estudiante = "";
+                cout << "Ingrese nickname estudiante: " << cin;
+                getLine(cin >> ws, estudiante);
+                while(estudiantesDisponibles.count(estudiante)) {
+                    cout << "Seleccione un nickname existente:" <<endl;
+                    getLine(cin >> ws, estudiante);
+                }
+                set<string> cursosDisponibles = ControladorCurso->obtenerCursosDisponibles(estudiante);
+                string cursoSeleccionado = "";
+                cout << "Seleccione nombre del curso: " << endl;
+                for (string curso: cursosDisponibles){
+                    cout << "- " + curso << endl;
+                }
+                getLine(cin >> ws, cursoSeleccionado);
+                while(cursosDisponibles.count(cursoSeleccionado)) {
+                    cout << "Seleccione un curso valido:" <<endl;
+                    getLine(cin >> ws, cursoSeleccionado);
+                }
+                bool fueInscripto = ControladorCurso->confirmarInscripcion(estudiante, cursoSeleccionado);
+            }
+
            //Salida
             case 17:{
                 return 0;

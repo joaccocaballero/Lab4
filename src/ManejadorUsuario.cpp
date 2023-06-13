@@ -33,6 +33,14 @@ void ManejadorUsuario::agregarEstudiante(Estudiante *estudiante, string nickname
     ColeccionDeEstudiantes.insert(make_pair(nickname, estudiante));
 }
 
+Estudiante* ManejadorUsuario::obtenerEstudiante(string nickname) {
+    return ColeccionDeEstudiantes[nickname];
+}
+
+set<Inscripcion*> ManejadorUsuario(string nickname) {
+    Estudiante *e = obtenerEstudiante(nickname);
+    return e->obtenerInscripciones();
+}
 
 void ManejadorUsuario::agregarProfesor(Profesor *profesor, string nickname){
     ColeccionDeProfesores.insert(make_pair(nickname, profesor));
@@ -72,6 +80,10 @@ DTEstudiante ManejadorUsuario::obtenerDTEstudiante(string nickname){
 
 bool ManejadorUsuario::esEstudiante(string nickname){
     return (ColeccionDeEstudiantes.count(nickname) == 1);
+}
+
+void ManejadorUsuario::agregarInscripcion(Estudiante* e, Inscripcion* i){
+    e->agregarInscripcion(i);
 }
 
 set<string> ManejadorUsuario::obtenerEstudiantes(){}

@@ -126,9 +126,25 @@ void ControladorUsuario::ingresarInstituto(string NombreInstituto){
     this->Instituto = NombreInstituto;
 }
 
+bool ControladorUsuario::confirmarAltaInscripcion(Estudiante* e, Inscripcion* i){
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    manejador->agregarInscripcion(e, i);
+    return true;
+}
+
+set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname) {
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerInscripcionesEstudiante(nickname);
+}
+
 set<string> ControladorUsuario::obtenerEstudiantes(){
     ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
     return manejador->obtenerNicknamesEstudiantes();
+}
+
+Estudiante* ControladorUsuario::obtenerEstudiante() {
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerEstudiante(nickname);
 }
 
 bool ControladorUsuario::agregarIdioma(string Nombre) {
