@@ -16,10 +16,11 @@ class Ejercicio {
         EnumEjercicios tipo;
     public:
         Ejercicio(int id, string consigna, string descripcion, EnumEjercicios tipo);
-        string getNombre();
+        string getConsigna();
         int obtenerId();
         void setId(int identifier);
         EnumEjercicios obtenerTipo();
+        string obtenerDescripcion();
         virtual bool esCorrecto(string solucion);
         virtual ~Ejercicio();
 };

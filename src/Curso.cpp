@@ -4,11 +4,14 @@
 #include "../include/Leccion.h"
 #include "../include/DTEstadisticaCurso.h"
 #include "../include/Curso.h"
+#include "../include/DTLeccion.h"
+#include "../include/DTInscripcion.h"
 
 using namespace std;
 
 
-Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad,set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf){
+Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad,set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf,
+set<Inscripcion*> colInscripciones){
     this->habilitacion = habilitacion;
     this->nombre = nombre;
     this->descripcion = descripcion;
@@ -17,6 +20,7 @@ Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificulta
     this->cursosPrevios = cursosPrevios;
     this->Lecciones = lecciones;
     this->nombreProf = nombreProf;
+    this->inscripciones = inscripciones;
 }
 
 string Curso::obtenerNombre(){
@@ -67,9 +71,17 @@ Leccion* Curso::obtenerLeccion(string temaLeccion){
     }
 }
 
+set<Inscripcion*> Curso::obtenerInscripciones(){
+    return inscripciones;
+}
+
 
 void Curso::agregarLeccion(Leccion* l){
     Lecciones.insert(l);
+}
+
+void Curso::agregarInscripcion(Inscripcion *i){
+    inscripciones.insert(i);
 }
 
 EnumDificultad Curso::obtenerDificultad(){
@@ -78,6 +90,31 @@ EnumDificultad Curso::obtenerDificultad(){
 
 set<Curso*> Curso::obtenerPrevias(){
     return cursosPrevios;
+}
+
+set<DTLeccion> Curso::obtenerSetDTLeccion(){
+    set<DTLeccion> retorno;
+    set<Leccion*> col = obtenerLecciones();
+    set<Leccion*>::iterator it;
+    for (it=col.begin(); it!=col.end(); ++it){
+        Leccion * current = *it;
+        DTLeccion l = DTLeccion(current->obtenerTema(), current->obtenerObjetivo(), current->obtenerSetDTEjercicio());
+        retorno.insert(l);
+    }
+    return retorno;
+}
+
+set<DTInscripcion> Curso::obtenerSetDTInscripcion(){
+    set<DTInscripcion> retorno;
+    set<Inscripcion*> col = obtenerInscripciones();
+    set<Inscripcion*>::iterator it;
+    for (it = col.begin(); it != col.end(); ++it) {
+        Inscripcion* current = *it;
+        DTInscripcion ins = DTInscripcion(current->obtenerIdInscripcion(), current->obtenerFecha(),
+        current->obtenerEstudiante()->obtenerNombre());
+        retorno.insert(ins);
+    }
+    return retorno;
 }
 
 DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){

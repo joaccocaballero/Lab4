@@ -18,6 +18,13 @@ bool Inscripcion::obtenerAprobacion(){
 Curso* Inscripcion::obtenerCurso(){
     return CursoInscripcion;
 }
+Estudiante* Inscripcion::obtenerEstudiante() { 
+    return EstudianteInscrito; 
+}
+
+DTFecha Inscripcion::obtenerFecha() { 
+    return Fecha; 
+}
 
 Inscripcion::~Inscripcion(){
     delete CursoInscripcion;

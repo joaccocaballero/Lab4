@@ -92,7 +92,8 @@ void ControladorCurso::confirmarAltaCurso() {
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
     set<Leccion*> col;
-    Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col, NicknameProfesor);
+    set<Inscripcion*> colIns;
+    Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col, NicknameProfesor, colIns);
     // si hay lecciones agregarlas, supongo que llamo a caso de uso desde main si usuario quiere meterle
 
     manejador->agregarCurso(c);
@@ -156,9 +157,11 @@ set<string> ControladorCurso::obtenerLecciones(){
 DTCurso ControladorCurso::obtenerInfoCurso(string nombre){
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     Curso * c = manejador->obtenerCurso(nombre);
-    DTCurso retorno = DTCurso(c->obtenerNombre(), c->obte)
+    DTCurso retorno = DTCurso(c->obtenerNombre(), c->obtenerDescripcion(),c->obtenerDificultad(),
+    c->getIdioma()->obtenerNombre(), c->obtenerNombreProf(),c->obtenerHabilitacion(), c->obtenerSetDTLeccion(),
+    c->obtenerSetDTInscripcion());
 
-    return Curso;
+    return retorno;
 }
 set<DTCursoDisponible> ControladorCurso::obtenerCursosDisponibles(string nickname) {
     // traigo inscripciones del estudiante, paso nombre de curso a set, y armo set de cursos que no esten en ese set y esten habilitados
@@ -185,6 +188,7 @@ bool ControladorCurso::confirmarInscripcion(string nickname, string nombreCurso)
     Curso* c = manejador->obtenerCurso(nombreCurso);
     DTFecha aCambiar = DTFecha(1,1,1);
     Inscripcion* inscripcion = new Inscripcion(aCambiar, c, e);
+    c->agregarInscripcion(inscripcion);
     return ctrlU->confirmarAltaInscripcion(e, inscripcion);
 }
 

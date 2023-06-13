@@ -24,6 +24,18 @@ void Leccion::agregarEjercicio(Ejercicio * e){
     Ejercicios.insert(e);
 }
 
+set<DTEjercicio> Leccion::obtenerSetDTEjercicio(){
+    set<DTEjercicio> retorno;
+    set<Ejercicio*> col = obtenerEjerciciosLeccion();
+    set<Ejercicio*>::iterator it;
+    for (it = col.begin(); it != col.end(); ++it) {
+      Ejercicio* current = *it;
+      DTEjercicio e = DTEjercicio(current->obtenerId(), current->obtenerDescripcion(),
+      current->obtenerTipo());
+      retorno.insert(e);
+    }
+    return retorno;
+}
 
 set<string> Leccion::obtenerEjerciciosPendientes(){
     set<string> string;

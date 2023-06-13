@@ -6,7 +6,7 @@
 using namespace std;
 
 DTCurso::DTCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
-        string Idioma, string Profesor, string Habilitacion, set<DTLeccion> Lecciones,
+        string Idioma, string Profesor, bool Habilitacion, set<DTLeccion> Lecciones,
         set<DTInscripcion> Inscripciones){
     this->Nombre = Nombre;
     this->Descripcion = Descripcion;
@@ -32,7 +32,7 @@ string DTCurso::getIdioma(){
 string DTCurso::getProfesor(){
     return Profesor;
 }
-string DTCurso::getHabilitacion(){
+bool DTCurso::getHabilitacion(){
     return Habilitacion;
 }
 set<DTLeccion> DTCurso::getLecciones(){

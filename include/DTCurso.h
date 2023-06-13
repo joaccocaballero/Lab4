@@ -19,20 +19,20 @@ class DTCurso {
     EnumDificultad Dificultad;
     string Idioma;
     string Profesor;
-    string Habilitacion;
+    bool Habilitacion;
     set<DTLeccion> Lecciones;
     set<DTInscripcion> Inscripciones;
  public:
     DTCurso();
     DTCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
-    string Idioma, string Profesor, string Habilitacion, set<DTLeccion> Lecciones,
+    string Idioma, string Profesor, bool Habilitacion, set<DTLeccion> Lecciones,
     set<DTInscripcion> Inscripciones);
     string getNombreCurso();
     string getDescripcionCurso();
     EnumDificultad getDificultad();
     string getIdioma();
     string getProfesor();
-    string getHabilitacion();
+    bool getHabilitacion();
     set<DTLeccion> getLecciones();
     set<DTInscripcion> getInscripciones();
 };
