@@ -489,30 +489,41 @@ int main() {
                 set<DTCursoDisponible> cursosDisponibles = ControladorCurso->obtenerCursosDisponibles(estudiante);
                 set<string> nombresCursos;
                 string cursoSeleccionado = "";
-                cout << "Seleccione nombre del curso: " << endl;
-                for (DTCursoDisponible curso : cursosDisponibles){
-                    nombresCursos.insert(curso.getNombre());
-                    int cantLecc = curso.getLecciones();
-                    int cantEjer = curso.getEjercicios();
-                    cout << "- Nombre: " + curso.getNombre() << endl;
-                    cout << "   * Descripción: " + curso.getDescripcion() << endl;
-                    cout << "   * Dificultad: " << obtenerDificultad(curso.getDificultad()) << endl;
-                    cout << "   * Idioma: " + curso.getIdioma() << endl;
-                    cout << "   * Profesor: " << curso.getProfesor() << endl;
-                    cout << "   * Cant. de Lecciones: " << cantLecc <<  endl;
-                    cout << "   * Cant. de Ejercicios: " << cantEjer << endl;
-                }
-                getline(cin >> ws, cursoSeleccionado);
-                while(!nombresCursos.count(cursoSeleccionado)) {
-                    cout << "Seleccione un curso valido:" <<endl;
+                if(!cursosDisponibles.empty()){
+                    cout << "Seleccione nombre del curso: " << endl;
+                    for (DTCursoDisponible curso : cursosDisponibles) {
+                        nombresCursos.insert(curso.getNombre());
+                        int cantLecc = curso.getLecciones();
+                        int cantEjer = curso.getEjercicios();
+                        cout << "- Nombre: " + curso.getNombre() << endl;
+                        cout << "   * Descripción: " + curso.getDescripcion()
+                             << endl;
+                        cout << "   * Dificultad: "
+                             << obtenerDificultad(curso.getDificultad())
+                             << endl;
+                        cout << "   * Idioma: " + curso.getIdioma() << endl;
+                        cout << "   * Profesor: " << curso.getProfesor()
+                             << endl;
+                        cout << "   * Cant. de Lecciones: " << cantLecc << endl;
+                        cout << "   * Cant. de Ejercicios: " << cantEjer
+                             << endl;
+                    }
                     getline(cin >> ws, cursoSeleccionado);
-                }
-                bool fueInscripto = ControladorCurso->confirmarInscripcion(estudiante, cursoSeleccionado);
-                if(fueInscripto){
-                    cout << "Inscripcion realizada con éxito." << endl;
-                }
+                    while (!nombresCursos.count(cursoSeleccionado)) {
+                        cout << "Seleccione un curso valido:" << endl;
+                        getline(cin >> ws, cursoSeleccionado);
+                    }
+                    bool fueInscripto = ControladorCurso->confirmarInscripcion(
+                        estudiante, cursoSeleccionado);
+                    if (fueInscripto) {
+                        cout << "Inscripcion realizada con éxito." << endl;
+                    } else {
+                        cout << "No se ha podido realizar la inscripción."
+                             << endl;
+                    }
+                } 
                 else{
-                    cout << "No se ha podido realizar la inscripción." << endl;
+                    cout << "No hay cursos disponibles para inscripción." << endl;
                 }
                break;
             }
