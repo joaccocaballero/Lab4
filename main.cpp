@@ -490,7 +490,7 @@ int main() {
                 set<string> nombresCursos;
                 string cursoSeleccionado = "";
                 cout << "Seleccione nombre del curso: " << endl;
-                for (DTCursoDisponible curso: cursosDisponibles){
+                for (DTCursoDisponible curso : cursosDisponibles){
                     nombresCursos.insert(curso.getNombre());
                     int cantLecc = curso.getLecciones();
                     int cantEjer = curso.getEjercicios();

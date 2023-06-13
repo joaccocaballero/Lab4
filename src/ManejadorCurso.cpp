@@ -104,30 +104,26 @@ set<DTCursoDisponible> ManejadorCurso::obtenerCursosDisponibles(set<Curso*> curs
       if(!current->obtenerPrevias().empty()){
         //Recorro conjunto de previas y chequeo si están cada previa pertenece a conjunto de aprobados
         for (const auto puntero : current->obtenerPrevias()) {
-          if (cursosAprobados.find(puntero) != cursosAprobados.end()) {
+          if (cursosAprobados.find(puntero) == cursosAprobados.end()) {
             cumplePrevias = false; //previa no pertenece
             break;
           }
         }
       }
       if (!cumplePrevias) { //las previas no se cumplen
-        cout << "no cumpli previa de " << current->obtenerNombre() <<endl; 
         continue;
       }
       else{
         bool estaInscripto = cursosYaInscriptos.find(it->second) != cursosYaInscriptos.end();
         if(current->obtenerHabilitacion() && !estaInscripto) { //Chequeo si el curso está habilitado y no estoy inscrito
-          
           string idioma = current->getIdioma()->obtenerNombre();
           int ctdEjercicios = cantidadEjercicios(current->obtenerLecciones());
           int ctdLecciones = current->obtenerLecciones().size();
           DTCursoDisponible toPush = DTCursoDisponible(current->obtenerNombre(), current->obtenerDescripcion(),idioma, 
           current->obtenerNombreProf(), ctdLecciones, ctdEjercicios, current->obtenerDificultad());
           cursosDisponibles.insert(toPush); 
-          cout << "pusheoDTCursoDisponible" << endl;
         }
-
-    }
+      }
   }
   return cursosDisponibles;
 }
