@@ -333,7 +333,7 @@ int main() {
                     cout << "-"+nombre << endl;
                 }
                 getline(cin >> ws, cursoSeleccionado);
-                if (!(cursosNoHabilitados.count(cursoSeleccionado))) {
+                while(!cursosNoHabilitados.count(cursoSeleccionado)) {
                     cout << "Seleccione un curso valido:" << endl;
                     getline(cin >> ws, cursoSeleccionado);
                 }
@@ -468,13 +468,15 @@ int main() {
                 cout << "Seleccione nombre del curso: " << endl;
                 for (DTCursoDisponible curso: cursosDisponibles){
                     nombresCursos.insert(curso.getNombre());
+                    int cantLecc = curso.getLecciones();
+                    int cantEjer = curso.getEjercicios();
                     cout << "- Nombre: " + curso.getNombre() << endl;
                     cout << "   * Descripción: " + curso.getDescripcion() << endl;
                     cout << "   * Dificultad: " + curso.getDificultad() << endl;
                     cout << "   * Idioma: " + curso.getIdioma() << endl;
                     cout << "   * Profesor: " + curso.getProfesor() << endl;
-                    cout << "   * Cant. de Lecciones: " + curso.getLecciones() << endl;
-                    cout << "   * Cant. de Ejercicios: " + curso.getEjercicios() << endl;
+                    cout << "   * Cant. de Lecciones: " << cantLecc <<  endl;
+                    cout << "   * Cant. de Ejercicios: " << cantEjer << endl;
                 }
                 getline(cin >> ws, cursoSeleccionado);
                 while(!nombresCursos.count(cursoSeleccionado)) {
@@ -500,20 +502,38 @@ int main() {
             case 16: {
                 system("clear");
                 set<string> col;
-                col.insert("Inglés 1");
+                col.insert("Ingles1");
+                //AltaIdioma
                 ControladorUsuario->agregarIdioma("Inglés");
+                //Alta profesor
                 ControladorUsuario->ingresarDatosUsuario("joaco_", "joaco123",
                                                          "Joaquín", "ProfUser");
                 ControladorUsuario->ingresarInstituto("Fing");
                 ControladorUsuario->agregarEspecializacion("Inglés");
                 ControladorUsuario->confirmarAltaProfesor();
+                //Alta cursoIngles1
                 ControladorCurso->ingresarInfoCurso("Ingles1", "cursoDesc",
                                                     Principiante);
                 ControladorCurso->asignarProfesor("joaco_");
                 ControladorCurso->seleccionarIdioma("Inglés");
                 ControladorCurso->confirmarAltaCurso();
 
-                ControladorCurso->ingresarInfoCurso("Inglés2", "cursoDesc",
+                //agrego 1 leccion y 1 ejercicio a Ingles1.
+                ControladorCurso->seleccionarCurso("Ingles1");
+                ControladorCurso->ingresarInfoLeccion("Tema1",
+                                                      "Objetivo1");
+                ControladorCurso->confirmarAltaLeccion();
+                ControladorCurso->seleccionarCurso("Ingles1");
+                ControladorCurso->seleccionarLeccion("Tema1");
+                ControladorCurso->ingresarInfoEjercicio("Traduzca");
+                ControladorCurso->agregarDatosTraducir("frase", "phrase");
+                ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+
+                //Habilito Curso Inglés 1
+                ControladorCurso->confirmarHabilitacion("Ingles1");
+
+                //Alta Curso Ingles2
+                ControladorCurso->ingresarInfoCurso("Ingles2", "cursoDesc",
                                                     Principiante);
                 ControladorCurso->asignarProfesor("joaco_");
                 ControladorCurso->seleccionarIdioma("Inglés");
@@ -526,7 +546,7 @@ int main() {
                 DTFecha Fecha = DTFecha(10, 12, 2002);
                 ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha);
                 ControladorUsuario->confirmarAltaEstudiante();
-                    break;
+                break;
             }
 
             //Default   

@@ -109,13 +109,16 @@ set<DTCursoDisponible> ManejadorCurso::obtenerCursosDisponibles(set<Curso*> curs
     if (!cumplePrevias) {
       continue;
     }
-    bool estaInscripto = cursosYaInscriptos.find(it->second) != cursosYaInscriptos.end();
-    if(current->obtenerHabilitacion() && !estaInscripto) {
-      string idioma = current->getIdioma()->obtenerNombre();
-      int ctdEjercicios = cantidadEjercicios(current->obtenerLecciones());
-      int ctdLecciones = current->obtenerLecciones().size();
-      DTCursoDisponible toPush = DTCursoDisponible(current->obtenerNombre(), current->obtenerDescripcion(),idioma, 
-      current->obtenerNombreProf(), ctdLecciones, ctdEjercicios, current->obtenerDificultad()); //poner datos
+    else{
+      bool estaInscripto = cursosYaInscriptos.find(it->second) != cursosYaInscriptos.end();
+      if(current->obtenerHabilitacion() && !estaInscripto) {
+        string idioma = current->getIdioma()->obtenerNombre();
+        int ctdEjercicios = cantidadEjercicios(current->obtenerLecciones());
+        int ctdLecciones = current->obtenerLecciones().size();
+        DTCursoDisponible toPush = DTCursoDisponible(current->obtenerNombre(), current->obtenerDescripcion(),idioma, 
+        current->obtenerNombreProf(), ctdLecciones, ctdEjercicios, current->obtenerDificultad()); //poner datos
+        cursosDisponibles.insert(toPush);
+      }
     }
   }
   return cursosDisponibles;

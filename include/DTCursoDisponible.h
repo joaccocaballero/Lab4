@@ -27,6 +27,10 @@ class DTCursoDisponible {
         int getLecciones();
         int getEjercicios();
         EnumDificultad getDificultad();
+        bool operator<(const DTCursoDisponible& dt) const {
+          // Define la lógica de comparación basada en los atributos de la clase
+          return dificultad < dt.dificultad;  // Por ejemplo, compara por el atributo 'id'
+        }
 };
 
 #endif
