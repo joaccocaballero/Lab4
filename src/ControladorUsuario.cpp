@@ -200,6 +200,9 @@ set<string> ControladorUsuario::obtenerSubscripcionesPendientes(string Nickname)
     ManejadorIdioma *manejador = manejadorIdioma->getManejadorI();
     return manejador->obtenerSuscripcionesPendientes(Nickname);
 }
-set<DTNotificacion> ControladorUsuario::obtenerNotificaciones(string Nickname){}
+vector<DTNotificacion> ControladorUsuario::obtenerNotificaciones(string Nickname){
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerNotificaciones(Nickname);
+}
 
 ControladorUsuario::~ControladorUsuario() { delete instancia; }

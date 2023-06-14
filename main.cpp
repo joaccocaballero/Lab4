@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <set>
+#include <vector>
+
 
 #include "include/DTProfesor.h"
 #include "./include/DTEstudiante.h"
@@ -24,7 +26,7 @@ void casosDeUso() {
     //cout << "11: Realizar Ejercicio" << endl;
     //cout << "12: Consultar Estadísticas" << endl;
     cout << "13: Suscribirse a Notificaciones" << endl;
-    //cout << "14: Consulta de Notificaciones" << endl;
+    cout << "14: Consulta de Notificaciones" << endl;
     //cout << "15: Eliminar Suscripciones" << endl;
     cout << "16: Cargar datos genéricos" <<endl;
     cout << "17: Salir" << endl;
@@ -646,6 +648,31 @@ int main() {
                     cout << "Suscripciones realizadas con exito" << endl;
                 }else {
                     cout << "Error al suscribirse" << endl;
+                }
+                break;
+            }
+            case 14: {
+                set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                string nicknameUsuario;
+                cout << "Seleccione un nickname:" <<endl;
+                for (string nickname: usuarios){
+                    cout << "-"+nickname << endl;
+                }
+                getline(cin >> ws, nicknameUsuario);
+                while (!usuarios.count(nicknameUsuario)) {
+                    cout << "Seleccione un nickname existente:" <<endl;
+                    getline(cin >> ws, nicknameUsuario);
+                }
+                vector<DTNotificacion> notificaciones = ControladorUsuario->obtenerNotificaciones(nicknameUsuario);
+                if (notificaciones.size() > 0) {
+                    cout << "Notificaciones" << endl;
+                    for (DTNotificacion notificacion: notificaciones){
+                        cout << "Curso: "+ notificacion.getNombreCurso() << endl;
+                        cout << "Idioma: "+ notificacion.getNombreIdioma() << endl;
+                        cout << "--------------"<< endl;
+                    } 
+                }else {
+                    cout << "No hay notificaciones" << endl;
                 }
                 break;
             }

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <set>
+#include <vector>
 #include "IControladorUsuario.h"
 #include "DTEstadisticaEstudiante.h"
 #include "DTEstadisticaProfesor.h"
@@ -54,7 +55,7 @@ class ControladorUsuario : public IControladorUsuario {
          set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname);
          set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
          set<string> obtenerSubscripcionesPendientes(string Nickname);
-         set<DTNotificacion> obtenerNotificaciones(string Nickname);
+         vector<DTNotificacion> obtenerNotificaciones(string Nickname);
          set<string> obtenerUsuarios();
          DTEstudiante obtenerInfoEstudiante(string Nickname);
          DTProfesor obtenerInfoProfesor(string Nickname);

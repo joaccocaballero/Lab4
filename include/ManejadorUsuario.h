@@ -40,7 +40,7 @@ class ManejadorUsuario {
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiantes(string Nickname);
         set<string> obtenerProfesores();
         set<DTEstadisticaProfesor> obtenerEstadisticasProfesor(string Nickname);
-        set<DTNotificacion> obtenerNotificaciones(string Nickname);
+        vector<DTNotificacion> obtenerNotificaciones(string Nickname);
         set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname);
         void agregarInscripcion(Estudiante *e, Inscripcion *i);
 };
