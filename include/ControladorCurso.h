@@ -13,6 +13,7 @@
 #include "ControladorUsuario.h"
 #include "ManejadorCurso.h"
 #include "ManejadorIdioma.h"
+#include "DTCurso.h"
 #include "DTCursoDisponible.h"
 
 using namespace std;
@@ -45,6 +46,7 @@ class ControladorCurso : public IControladorCurso {
         set<Ejercicio*> ColeccionEjerciciosLeccion;
         string frase;
         string solucion;
+        set<DTCurso*> ColeccionDTCurso;
         ControladorCurso();
     public:
         static ControladorCurso * getInstancia();
@@ -74,6 +76,7 @@ class ControladorCurso : public IControladorCurso {
         bool validarEjercicio();
         DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
         bool confirmarHabilitacion(string nombre);
+        DTCurso obtenerInfoCurso(string nombre);
         virtual ~ControladorCurso();
 };
 

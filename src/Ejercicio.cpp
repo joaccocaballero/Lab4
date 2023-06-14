@@ -9,7 +9,7 @@ Ejercicio::Ejercicio(int id, string consigna, string descripcion,EnumEjercicios 
     this->descripcion = descripcion;
     this->tipo = tipo;
 }
-string Ejercicio::getNombre(){
+string Ejercicio::getConsigna(){
     return this->consigna;
 }
 EnumEjercicios Ejercicio::obtenerTipo(){
@@ -18,6 +18,10 @@ EnumEjercicios Ejercicio::obtenerTipo(){
 
 int Ejercicio::obtenerId(){
     return id;
+}
+
+string Ejercicio::obtenerDescripcion(){
+    return descripcion;
 }
 
 void Ejercicio::setId(int identifier){

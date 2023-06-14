@@ -1,5 +1,8 @@
 #include <string>
 #include <iostream>
+#include <ctime>
+#include <chrono>
+
 #include "../include/ControladorCurso.h"
 #include "../include/ControladorUsuario.h"
 #include "../include/ManejadorCurso.h"
@@ -92,7 +95,8 @@ void ControladorCurso::confirmarAltaCurso() {
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
     set<Leccion*> col;
-    Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col, NicknameProfesor);
+    set<Inscripcion*> colIns;
+    Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col, NicknameProfesor, colIns);
     // si hay lecciones agregarlas, supongo que llamo a caso de uso desde main si usuario quiere meterle
 
     manejador->agregarCurso(c);
@@ -133,8 +137,8 @@ void ControladorCurso::asignarProfesor(string nickname) {
 }
 
 set<string> ControladorCurso::obtenerCursos(){
-    set<string> cursosHabilitados;
-    return cursosHabilitados;
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    return manejador->obtenerCursos();
 }
 
 set<string> ControladorCurso::obtenerCursosNoAprobados(string nombre){
@@ -153,6 +157,15 @@ set<string> ControladorCurso::obtenerLecciones(){
     return retorno;
 }
 
+DTCurso ControladorCurso::obtenerInfoCurso(string nombre){
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    Curso * c = manejador->obtenerCurso(nombre);
+    DTCurso retorno = DTCurso(c->obtenerNombre(), c->obtenerDescripcion(),c->obtenerDificultad(),
+    c->getIdioma()->obtenerNombre(), c->obtenerNombreProf(),c->obtenerHabilitacion(), c->obtenerSetDTLeccion(),
+    c->obtenerSetDTInscripcion());
+
+    return retorno;
+}
 set<DTCursoDisponible> ControladorCurso::obtenerCursosDisponibles(string nickname) {
     // traigo inscripciones del estudiante, paso nombre de curso a set, y armo set de cursos que no esten en ese set y esten habilitados
     ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
@@ -176,8 +189,21 @@ bool ControladorCurso::confirmarInscripcion(string nickname, string nombreCurso)
     ManejadorCurso *manejador = manejadorCurso->getManejadorC();
     Estudiante* e = ctrlU->obtenerEstudiante(nickname);
     Curso* c = manejador->obtenerCurso(nombreCurso);
-    DTFecha aCambiar = DTFecha(1,1,1);
+    //obtengo fecha
+    auto ahora = std::chrono::system_clock::now();
+    std::time_t tiempoActual = std::chrono::system_clock::to_time_t(ahora);
+
+    // Convierte la fecha y hora en una estructura tm
+    std::tm* fecha = std::localtime(&tiempoActual);
+
+    // Obtiene el día, el mes y el año de la estructura tm
+    int dia = fecha->tm_mday;
+    int mes = fecha->tm_mon + 1;  // Se suma 1 porque los meses comienzan desde 0
+    int anio = 23;
+
+    DTFecha aCambiar = DTFecha(dia,mes,anio);
     Inscripcion* inscripcion = new Inscripcion(aCambiar, c, e);
+    c->agregarInscripcion(inscripcion);
     return ctrlU->confirmarAltaInscripcion(e, inscripcion);
 }
 
@@ -189,7 +215,6 @@ bool ControladorCurso::validarEjercicio(){
 }
 
 DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
-
 }
 
 set<string> ControladorCurso::obtenerEjerciciosPendientes(){}

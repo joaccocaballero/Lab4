@@ -3,9 +3,20 @@
 
 using namespace std;
 
-DTEjercicio::DTEjercicio(string NombreEjercicio){
-    this->NombreEjercicio = NombreEjercicio;
+
+DTEjercicio::DTEjercicio(int id, string descripcion, EnumEjercicios tipo){
+    this->id = id;
+    this->descripcion = descripcion;
+    this->tipo = tipo;
 }
-string DTEjercicio::getNombreEjercicio(){
-    return NombreEjercicio;
+string DTEjercicio::getDescripcionEjercicio(){
+    return descripcion;
+}
+
+EnumEjercicios DTEjercicio::getTipoEjercicio(){
+    return tipo;
+}
+
+int DTEjercicio::getId(){
+    return id;
 }

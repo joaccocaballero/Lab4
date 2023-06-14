@@ -19,7 +19,7 @@ void casosDeUso() {
     cout << "7: Agregar Ejercicio" << endl;
     cout << "8: Habilitar Curso" << endl;
     //cout << "9: Eliminar Curso" << endl;
-    //cout << "10: Consultar Curso" << endl;
+    cout << "10: Consultar Curso" << endl;
     cout << "11: Inscribirse a Curso" << endl;
     //cout << "11: Realizar Ejercicio" << endl;
     //cout << "12: Consultar Estadísticas" << endl;
@@ -44,6 +44,16 @@ string obtenerDificultad(EnumDificultad d){
     }
 }
 
+string obtenerTipoEjercicio(EnumEjercicios e) {
+    switch (e) {
+    case 0:
+        return "Traducir";
+        break;
+    case 1:
+        return "Completar Palabras";
+        break;
+    }
+}
 
 int main() {
    // instancio Fabrica
@@ -475,6 +485,73 @@ int main() {
                 break;
             }
 
+            //Consultar curso
+            case(10): {
+                // Obtengo Cursos
+                set<string> cursos = ControladorCurso->obtenerCursos();
+                cout << "Seleccione un curso:" << cursos.size() << endl;
+                string cursoSeleccionado = "";
+                // imprimo nombre de los cursos
+                for (string nombre : cursos) {
+                    cout << "-" + nombre << endl;
+                }
+                getline(cin >> ws, cursoSeleccionado);
+                while (!cursos.count(cursoSeleccionado)) {
+                    cout << "Seleccione un curso válido:" << endl;
+                    getline(cin >> ws, cursoSeleccionado);
+                }
+                DTCurso infocurso = ControladorCurso->obtenerInfoCurso(cursoSeleccionado);
+
+                //imprimo datos del curso
+                cout << "INFORMACION DEL CURSO:" << endl;
+                cout << "   *Nombre: " << infocurso.getNombreCurso() << endl;
+                cout << "   *Descripción: " << infocurso.getDescripcionCurso() << endl;
+                cout << "   *Dificultad: " << obtenerDificultad(infocurso.getDificultad()) << endl;
+                cout << "   *Idioma: " << infocurso.getIdioma() << endl;
+                cout << "   *Profesor: " << infocurso.getProfesor() << endl;
+                std::string hab = (infocurso.getHabilitacion()) ? "Habilitado" : "No Habilitado";
+                cout << "   *Habilitación: " << hab << endl;
+                cout << "   *Lecciones: " << endl;
+                if (!infocurso.getLecciones().empty()){
+                    for (DTLeccion leccion : infocurso.getLecciones()) {
+                        cout << "   + Tema: " << leccion.obtenerTema() << endl;
+                        cout << "       + Objetivo: " << leccion.obtenerObjetivo()
+                             << endl;
+                        cout << "   *Ejercicios: " << endl;
+                        if (!leccion.obtenerEjercicios().empty()){
+                          for (DTEjercicio ej : leccion.obtenerEjercicios()) {
+                            cout << "       + ID: " << ej.getId() << endl;
+                            cout << "           + Descripcion: "
+                                 << ej.getDescripcionEjercicio() << endl;
+                            cout << "           + Tipo: "
+                                 << obtenerTipoEjercicio(ej.getTipoEjercicio())
+                                 << endl;
+                          }
+                        }
+                        else{
+                          cout << "Sin Ejercicios. " << endl;
+                        }
+                    }
+                }
+                else{
+                    cout << "Sin Lecciones. " << endl;
+                }
+                    
+                cout << "   *Inscripciones: " << endl;
+                if(!infocurso.getInscripciones().empty()){
+                    for (DTInscripcion ins : infocurso.getInscripciones()) {
+                        cout << "   -Nombre: " << ins.obtenerNombre() << endl;
+                        cout << "   -Fecha : " << ins.obtenerFecha().getDia()
+                             << "/" << ins.obtenerFecha().getMes() <<
+                            "/"<< ins.obtenerFecha().getAnio() << endl;
+                    }
+                }
+                else{
+                    cout << "       Sin Inscripciones." << endl;
+                }
+            
+                break;
+            }
             //Inscribirse A Curso
             case 11: {
                 system("clear");

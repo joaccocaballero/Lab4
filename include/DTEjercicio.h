@@ -3,14 +3,24 @@
 #define _DTEJERCICIO
 
 #include <string>
+#include "Ejercicio.h"
 using namespace std;
 
 class DTEjercicio{
     private:
-        string NombreEjercicio;
+        int id;
+        string descripcion;
+        EnumEjercicios tipo;
     public:
-        DTEjercicio(string NombreEjercicio);
-        string getNombreEjercicio();
+        DTEjercicio(int id, string descripcion, EnumEjercicios tipo);
+        string getDescripcionEjercicio();
+        EnumEjercicios getTipoEjercicio();
+        int getId();
+        bool operator<(const DTEjercicio& dt) const {
+          // Define la lógica de comparación basada en los atributos de la clase
+          return id <=
+                 dt.id;  // Por ejemplo, compara por el atributo 'id'
+        }
 };
 
 #endif
