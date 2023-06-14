@@ -19,7 +19,7 @@ void casosDeUso() {
     cout << "7: Agregar Ejercicio" << endl;
     cout << "8: Habilitar Curso" << endl;
     //cout << "9: Eliminar Curso" << endl;
-    //cout << "10: Consultar Curso" << endl;
+    cout << "10: Consultar Curso" << endl;
     cout << "11: Inscribirse a Curso" << endl;
     //cout << "11: Realizar Ejercicio" << endl;
     //cout << "12: Consultar Estadísticas" << endl;
@@ -489,7 +489,7 @@ int main() {
             case(10): {
                 // Obtengo Cursos
                 set<string> cursos = ControladorCurso->obtenerCursos();
-                cout << "Seleccione un curso:" << endl;
+                cout << "Seleccione un curso:" << cursos.size() << endl;
                 string cursoSeleccionado = "";
                 // imprimo nombre de los cursos
                 for (string nombre : cursos) {
@@ -511,13 +511,13 @@ int main() {
                 cout << "   *Profesor: " << infocurso.getProfesor() << endl;
                 std::string hab = (infocurso.getHabilitacion()) ? "Habilitado" : "No Habilitado";
                 cout << "   *Habilitación: " << hab << endl;
-                cout << "   *Lecciones: " << hab << endl;
+                cout << "   *Lecciones: " << endl;
                 if (!infocurso.getLecciones().empty()){
                     for (DTLeccion leccion : infocurso.getLecciones()) {
                         cout << "   + Tema: " << leccion.obtenerTema() << endl;
                         cout << "   + Objetivo: " << leccion.obtenerObjetivo()
                              << endl;
-                        cout << "   *Ejercicios: " << hab << endl;
+                        cout << "   *Ejercicios: " << endl;
                         if (!leccion.obtenerEjercicios().empty()){
                           for (DTEjercicio ej : leccion.obtenerEjercicios()) {
                             cout << "       + ID: " << ej.getId() << endl;
@@ -547,7 +547,7 @@ int main() {
                     }
                 }
                 else{
-                    cout << "Sin Inscripciones." << endl;
+                    cout << "       Sin Inscripciones." << endl;
                 }
             
                 break;

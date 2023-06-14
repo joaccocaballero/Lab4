@@ -23,7 +23,6 @@ class DTInscripcion {
           return id <=
                  dt.id;  // Por ejemplo, compara por el atributo 'id'
         }
-        ~DTInscripcion();
 };
 
 #include "../include/Estudiante.h"

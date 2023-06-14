@@ -15,5 +15,3 @@ DTFecha DTInscripcion::obtenerFecha(){
 string DTInscripcion::obtenerNombre(){
     return Nombre;
 }
-
-Inscripcion::~Inscripcion(){}

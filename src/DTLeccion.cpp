@@ -3,10 +3,10 @@
 #include <set>
 #include "../include/Leccion.h"
 #include "../include/DTEjercicio.h"
-#include "../include/Ejercicio.h"
+#include "../include/DTLeccion.h"
 
 
-Leccion::DTLeccion(string tema, string objetivo, set<DTEjercicio*> ejercicios){
+DTLeccion::DTLeccion(string tema, string objetivo, set<DTEjercicio> ejercicios){
     this->tema = tema;
     this->objetivo = objetivo;
     this->Ejercicios = ejercicios;
@@ -20,10 +20,6 @@ string DTLeccion::obtenerObjetivo(){
     return objetivo; 
 }
 
-set<Ejercicio> DTLeccion::obtenerDTEjercicios(){
-    set<Ejercicio> ejercicio;
-    return ejercicio;
+set<DTEjercicio> DTLeccion::obtenerEjercicios(){
+    return Ejercicios;
 }
-
-
-Leccion::~DTLeccion(){}

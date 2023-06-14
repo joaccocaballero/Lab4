@@ -7,7 +7,9 @@
 #include "DTFecha.h"
 #include "DTEstadisticaEstudiante.h"
 #include "Inscripcion.h"
+
 using namespace std;
+class Inscripcion;
 
 class Estudiante: public Usuario {
     private:

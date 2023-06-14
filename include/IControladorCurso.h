@@ -8,6 +8,7 @@
 #include "Profesor.h"
 #include "DTEstadisticaCurso.h"
 #include "DTCursoDisponible.h"
+#include "DTCurso.h"
 
 using namespace std;
 class IControladorCurso {

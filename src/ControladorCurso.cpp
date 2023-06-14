@@ -134,8 +134,8 @@ void ControladorCurso::asignarProfesor(string nickname) {
 }
 
 set<string> ControladorCurso::obtenerCursos(){
-    set<string> cursosHabilitados;
-    return cursosHabilitados;
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    return manejador->obtenerCursos();
 }
 
 set<string> ControladorCurso::obtenerCursosNoAprobados(string nombre){

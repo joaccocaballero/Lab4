@@ -16,6 +16,7 @@
 using namespace std;
 
 class DTEstadisticaCurso;
+class Inscripcion;
 
 enum EnumDificultad { Principiante, Medio, Avanzado };
 

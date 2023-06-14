@@ -3,6 +3,7 @@
 #define _DTEJERCICIO
 
 #include <string>
+#include "Ejercicio.h"
 using namespace std;
 
 class DTEjercicio{

@@ -26,8 +26,5 @@ DTFecha Inscripcion::obtenerFecha() {
     return Fecha; 
 }
 
-Inscripcion::~Inscripcion(){
-    delete CursoInscripcion;
-    delete EstudianteInscrito;
-}
+Inscripcion::~Inscripcion(){}
 

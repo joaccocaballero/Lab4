@@ -13,7 +13,7 @@ class DTLeccion {
         int id;
         string tema;
         string objetivo;
-        set<DTEjercicio*> Ejercicios;
+        set<DTEjercicio> Ejercicios;
     public:
         DTLeccion(string tema, string objetivo, set<DTEjercicio> ejercicios);
         set<DTEjercicio> obtenerEjercicios();
@@ -24,7 +24,6 @@ class DTLeccion {
           return id <=
                  dt.id;  // Por ejemplo, compara por el atributo 'id'
         }
-        virtual ~DTLeccion();
 };
 
 #endif
