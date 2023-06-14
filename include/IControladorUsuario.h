@@ -40,6 +40,7 @@ class IControladorUsuario {
         virtual DTProfesor obtenerInfoProfesor(string Nickname)=0;
         virtual set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname)=0;
         virtual bool suscribirUsuario(string nickname, set<string> idiomas) = 0;
+        virtual set<string> obtenerCursosNoAprobados(string Nickname) = 0;
         virtual ~IControladorUsuario() = 0;
 };
 

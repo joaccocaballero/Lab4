@@ -103,4 +103,18 @@ set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
     return ColeccionDeProfesores[nickname]->consultarIdiomasProfesor();
 }
 
+set<string> ManejadorUsuario::obtenerCursosNoAprobados(string Nickname){
+    set<string> noAprobados;
+    Estudiante* e = ColeccionDeEstudiantes[Nickname];
+    set<Inscripcion> inscrpciones = e->obtenerInscripciones();
+    set<string>::iterator it;
+    for (it = inscripciones.begin(); inscripciones != conjunto.end(); ++it) {
+        if (it->obtenerAprobacion() == false){
+            Curso* curso= it->obtenerCurso();
+            noAprobados.insert(curso->obtenerNombre);
+        }
+    }
+    return noAprobados;
+}
+
 set<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){}

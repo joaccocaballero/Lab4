@@ -196,6 +196,13 @@ bool ControladorUsuario::suscribirUsuario(string nickname, set<string> idiomas) 
     }
     return res;
 }
+
+set<string> ControladorUsuario:: obtenerCursosNoAprobados(string Nickname){
+    ManejadorUsuario * manejador= manejadorUsuario->getManejadorU();
+    return manejador->obtenerCursosNoAprobados(Nickname);
+}
+
+
 set<string> ControladorUsuario::obtenerSubscripcionesPendientes(string Nickname) {
     ManejadorIdioma *manejador = manejadorIdioma->getManejadorI();
     return manejador->obtenerSuscripcionesPendientes(Nickname);

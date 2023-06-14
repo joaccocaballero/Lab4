@@ -21,13 +21,13 @@ void casosDeUso() {
     //cout << "9: Eliminar Curso" << endl;
     cout << "10: Consultar Curso" << endl;
     cout << "11: Inscribirse a Curso" << endl;
-    //cout << "11: Realizar Ejercicio" << endl;
-    //cout << "12: Consultar Estadísticas" << endl;
-    cout << "13: Suscribirse a Notificaciones" << endl;
-    //cout << "14: Consulta de Notificaciones" << endl;
-    //cout << "15: Eliminar Suscripciones" << endl;
-    cout << "16: Cargar datos genéricos" <<endl;
-    cout << "17: Salir" << endl;
+    //cout << "12: Realizar Ejercicio" << endl;
+    //cout << "13: Consultar Estadísticas" << endl;
+    cout << "14: Suscribirse a Notificaciones" << endl;
+    //cout << "15: Consulta de Notificaciones" << endl;
+    //cout << "16: Eliminar Suscripciones" << endl;
+    cout << "17: Cargar datos genéricos" <<endl;
+    cout << "18: Salir" << endl;
 }
 
 string obtenerDificultad(EnumDificultad d){
@@ -605,8 +605,32 @@ int main() {
                break;
             }
 
+            //Realizar Ejercicio
+            case (12): {
+                //se ingresa nombre de estudiante
+                string nombreEstudiante = "";
+                cout << "Ingrese Nickname de Estudiante:" << endl;
+                getline(cin >> ws, nombreEstudiante);
+                //se lista los ejercicios aun no aprobados
+                set<string> noAprobados = ControladorUsuario->obtenerCursosNoAprobados(string Nickname);
+                if( !noAprobados.empty()){
+                    cout << "Seleccione un ejercicio:" << endl;
+                    for (string nombre : noAprobads) {
+                    cout << "-" + nombre << endl;
+                }
+                string nombreCurso = "";
+                getline(cin >> ws, nombreCurso);  
+                set<string> ejNoAprobados = ControladorCurso->obtenerEjerciciosPendientes(nombreCurso);
+                }
+                else{
+                    cout << "No hay cursos no aprobados disponibles." << endl;
+                }
+               break;
+
+            }
+
             //suscribirse a notificaciones
-            case 13: {
+            case 14: {
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();
                 string nicknameUsuario;
                 cout << "Seleccione un nickname:" <<endl;
@@ -650,12 +674,12 @@ int main() {
                 break;
             }
            //Salida
-            case 17:{
+            case 18:{
                 return 0;
             }
 
             //carga de datos
-            case 16: {
+            case 17: {
                 system("clear");
                 set<string> col;
                 col.insert("Ingles1");

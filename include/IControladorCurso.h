@@ -31,7 +31,7 @@ class IControladorCurso {
         virtual set<string> obtenerCursos() = 0;
         virtual set<string> obtenerCursosNoAprobados(string nombre) = 0;
         virtual set<string> obtenerCursosNoHabilitados() = 0;
-        virtual set<string> obtenerEjerciciosPendientes() = 0;
+        virtual set<string> obtenerEjerciciosPendientes(string nombre) = 0;
         virtual set<string> obtenerLecciones() = 0;
         virtual DTEjercicio seleccionarEjercicio(int id) = 0;
         virtual bool validarEjercicio() = 0;

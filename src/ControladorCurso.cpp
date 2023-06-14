@@ -215,9 +215,12 @@ bool ControladorCurso::validarEjercicio(){
 }
 
 DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
+
 }
 
-set<string> ControladorCurso::obtenerEjerciciosPendientes(){}
+set<string> ControladorCurso::obtenerEjerciciosPendientes(string nombre){
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+}
 
 ControladorCurso::~ControladorCurso(){
     delete instancia;

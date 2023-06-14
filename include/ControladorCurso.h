@@ -70,7 +70,7 @@ class ControladorCurso : public IControladorCurso {
         set<string> obtenerCursos();
         set<string> obtenerCursosNoAprobados(string nombre);
         set<string> obtenerCursosNoHabilitados();
-        set<string> obtenerEjerciciosPendientes();
+        set<string> obtenerEjerciciosPendientes(string nombre);
         set<string> obtenerLecciones();
         DTEjercicio seleccionarEjercicio(int id);
         bool validarEjercicio();

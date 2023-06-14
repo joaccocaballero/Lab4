@@ -42,6 +42,7 @@ class ManejadorUsuario {
         set<DTEstadisticaProfesor> obtenerEstadisticasProfesor(string Nickname);
         set<DTNotificacion> obtenerNotificaciones(string Nickname);
         set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname);
+        set<string> obtenerCursosNoAprobados(string Nickname);
         void agregarInscripcion(Estudiante *e, Inscripcion *i);
 };
 
