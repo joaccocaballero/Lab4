@@ -19,11 +19,12 @@ class Idioma{
         map<string, IObserver*> Suscriptores;
     public:
         Idioma(string Nombre);
-        void AgregarSuscriptor(IObserver* observer);
+        void AgregarSuscriptor(string nickname, IObserver* observer);
         void RemoverSuscriptor();
         string obtenerNombre();
         void NuevoCurso(Curso curso);
-        set<Idioma> obtenerSuscripcionesPendientes(string Nickname);
+        bool esSuscriptor(string Nickname);
+        set<string> obtenerSuscripcionesPendientes(string Nickname);
         ~Idioma();
 };
 

@@ -48,4 +48,15 @@ set<string> ManejadorIdioma::obtenerIdiomas(){
     return retorno;
 }
 set<string> ManejadorIdioma::obtenerEstudiantes() {}
-set<Idioma> ManejadorIdioma::obtenerSuscripcionesPendientes(string Nickname) {}
+set<string> ManejadorIdioma::obtenerSuscripcionesPendientes(string Nickname) {
+    set<string> pendientes;
+    map<string, Idioma*> idiomas = obtenerColeccionIdiomas();
+    map<string, Idioma*>::iterator it;
+    for(it=idiomas.begin(); it!=idiomas.end(); ++it){
+        Idioma *current =  it->second;
+        if (current->esSuscriptor(Nickname) == false){
+            pendientes.insert(current->obtenerNombre());
+        }
+    }
+    return pendientes;
+}

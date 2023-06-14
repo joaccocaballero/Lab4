@@ -53,12 +53,14 @@ class ControladorUsuario : public IControladorUsuario {
          bool obtenerTipo(string nickname);
          set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname);
          set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
-         set<Idioma> obtenerSubscripcionesPendientes(string Nickname);
+         set<string> obtenerSubscripcionesPendientes(string Nickname);
          set<DTNotificacion> obtenerNotificaciones(string Nickname);
          set<string> obtenerUsuarios();
          DTEstudiante obtenerInfoEstudiante(string Nickname);
          DTProfesor obtenerInfoProfesor(string Nickname);
          set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname);
+         bool suscribirUsuario(string nickname, set<string> idiomas);
+
          virtual ~ControladorUsuario();
     };
 

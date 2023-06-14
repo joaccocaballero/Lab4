@@ -22,7 +22,7 @@ class ManejadorIdioma {
         Idioma* obtenerIdioma(string nombreIdioma);
         set<string> obtenerIdiomas();
         set<string> obtenerEstudiantes();
-        set<Idioma> obtenerSuscripcionesPendientes(string Nickname);
+        set<string> obtenerSuscripcionesPendientes(string Nickname);
         map<string, Idioma*> obtenerColeccionIdiomas();
 };
 

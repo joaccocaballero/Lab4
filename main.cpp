@@ -23,7 +23,7 @@ void casosDeUso() {
     cout << "11: Inscribirse a Curso" << endl;
     //cout << "11: Realizar Ejercicio" << endl;
     //cout << "12: Consultar Estadísticas" << endl;
-    //cout << "13: Suscribirse a Notificaciones" << endl;
+    cout << "13: Suscribirse a Notificaciones" << endl;
     //cout << "14: Consulta de Notificaciones" << endl;
     //cout << "15: Eliminar Suscripciones" << endl;
     cout << "16: Cargar datos genéricos" <<endl;
@@ -528,6 +528,50 @@ int main() {
                break;
             }
 
+            //suscribirse a notificaciones
+            case 13: {
+                set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                string nicknameUsuario;
+                cout << "Seleccione un nickname:" <<endl;
+                for (string nickname: usuarios){
+                    cout << "-"+nickname << endl;
+                }
+                getline(cin >> ws, nicknameUsuario);
+                while (!usuarios.count(nicknameUsuario)) {
+                    cout << "Seleccione un nickname existente:" <<endl;
+                    getline(cin >> ws, nicknameUsuario);
+                }
+                set<string> idiomasDisponibles = ControladorUsuario->obtenerSubscripcionesPendientes(nicknameUsuario);
+                set<string> idiomasASuscribirse;
+
+                cout << "Seleccione un idioma:" <<endl;
+                for (string idioma: idiomasDisponibles){
+                    cout << "-"+idioma << endl;
+                }
+                bool agregar = true;
+                while (agregar) {
+                    string idiomaSeleccionado;
+                    cin >> idiomaSeleccionado;
+                    while (!idiomasDisponibles.count(idiomaSeleccionado)) {
+                        cout << "Seleccione un idioma existente:" <<endl;
+                        getline(cin >> ws, idiomaSeleccionado);
+                    }
+                    idiomasASuscribirse.insert(idiomaSeleccionado);
+                    cout << "Desea agregar otro idioma?" << endl;
+                    cout << "1-Si" << endl;
+                    cout << "2-No" << endl;
+                    int agregarOtro;
+                    cin >> agregarOtro;
+                    agregar = (agregarOtro == 1);
+                }
+                bool exito = ControladorUsuario->suscribirUsuario(nicknameUsuario, idiomasASuscribirse);
+                if(exito){
+                    cout << "Suscripciones realizadas con exito" << endl;
+                }else {
+                    cout << "Error al suscribirse" << endl;
+                }
+                break;
+            }
            //Salida
             case 17:{
                 return 0;
