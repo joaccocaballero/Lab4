@@ -515,15 +515,15 @@ int main() {
                 if (!infocurso.getLecciones().empty()){
                     for (DTLeccion leccion : infocurso.getLecciones()) {
                         cout << "   + Tema: " << leccion.obtenerTema() << endl;
-                        cout << "   + Objetivo: " << leccion.obtenerObjetivo()
+                        cout << "       + Objetivo: " << leccion.obtenerObjetivo()
                              << endl;
                         cout << "   *Ejercicios: " << endl;
                         if (!leccion.obtenerEjercicios().empty()){
                           for (DTEjercicio ej : leccion.obtenerEjercicios()) {
                             cout << "       + ID: " << ej.getId() << endl;
-                            cout << "       + Descripcion: "
+                            cout << "           + Descripcion: "
                                  << ej.getDescripcionEjercicio() << endl;
-                            cout << "       + Tipo: "
+                            cout << "           + Tipo: "
                                  << obtenerTipoEjercicio(ej.getTipoEjercicio())
                                  << endl;
                           }

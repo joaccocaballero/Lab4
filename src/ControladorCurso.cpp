@@ -1,5 +1,8 @@
 #include <string>
 #include <iostream>
+#include <ctime>
+#include <chrono>
+
 #include "../include/ControladorCurso.h"
 #include "../include/ControladorUsuario.h"
 #include "../include/ManejadorCurso.h"
@@ -186,7 +189,19 @@ bool ControladorCurso::confirmarInscripcion(string nickname, string nombreCurso)
     ManejadorCurso *manejador = manejadorCurso->getManejadorC();
     Estudiante* e = ctrlU->obtenerEstudiante(nickname);
     Curso* c = manejador->obtenerCurso(nombreCurso);
-    DTFecha aCambiar = DTFecha(1,1,1);
+    //obtengo fecha
+    auto ahora = std::chrono::system_clock::now();
+    std::time_t tiempoActual = std::chrono::system_clock::to_time_t(ahora);
+
+    // Convierte la fecha y hora en una estructura tm
+    std::tm* fecha = std::localtime(&tiempoActual);
+
+    // Obtiene el día, el mes y el año de la estructura tm
+    int dia = fecha->tm_mday;
+    int mes = fecha->tm_mon + 1;  // Se suma 1 porque los meses comienzan desde 0
+    int anio = 23;
+
+    DTFecha aCambiar = DTFecha(dia,mes,anio);
     Inscripcion* inscripcion = new Inscripcion(aCambiar, c, e);
     c->agregarInscripcion(inscripcion);
     return ctrlU->confirmarAltaInscripcion(e, inscripcion);
