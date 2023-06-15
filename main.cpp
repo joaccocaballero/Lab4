@@ -654,7 +654,7 @@ int main() {
                         getline(cin >> ws, ejSeleccionado);
                     }
                     DTEjercicio ejercicioAMostrar = ControladorCurso->seleccionarEjercicio(stoi(ejSeleccionado));
-
+                    system("clear");
                     //imprimo el ejercicio seleccionado
                         cout << "       -Descripción: " << ejercicioAMostrar.getDescripcionEjercicio() << endl;
                         cout << "       -Consigna: " << ejercicioAMostrar.getConsignaEjercicio() << endl;
@@ -820,62 +820,62 @@ int main() {
                 //Alta Estudiantes
                     //U1
                     ControladorUsuario->ingresarDatosUsuario("jpidiom", "asdfg123 ", "Juan Perez", "Soy un apasionado del aprendizaje de idiomas.");
-                    DTFecha Fecha = DTFecha(15, 7, 1995);
-                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha);
+                    DTFecha Fecha1 = DTFecha(15, 7, 1995);
+                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha1);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U2
                     ControladorUsuario->ingresarDatosUsuario("marsilva", "qwer456", "Maria Silva", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.");
-                    DTFecha Fecha = DTFecha(28, 2, 1998);
-                    ControladorUsuario->ingresarDatosEstudiante("Ecuador", Fecha);
+                    DTFecha Fecha2 = DTFecha(28, 2, 1998);
+                    ControladorUsuario->ingresarDatosEstudiante("Ecuador", Fecha2);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U3
                     ControladorUsuario->ingresarDatosUsuario("pero12", "789werty", "Pedro Rodriguez", "Soy un entusiasta del aprendizaje de idiomas.");
-                    DTFecha Fecha = DTFecha(10, 11, 1994);
-                    ControladorUsuario->ingresarDatosEstudiante("Peru", Fecha);
+                    DTFecha Fecha3 = DTFecha(10, 11, 1994);
+                    ControladorUsuario->ingresarDatosEstudiante("Peru", Fecha3);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U4
                     ControladorUsuario->ingresarDatosUsuario("laugu", "c1v2b3m4", "Laura Gutierrez", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.");
-                    DTFecha Fecha = DTFecha(22, 4, 1997);
-                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha);
+                    DTFecha Fecha4 = DTFecha(22, 4, 1997);
+                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha4);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U5
                     ControladorUsuario->ingresarDatosUsuario("carlo22", "tyuipz147", "Carlos Lopez", "Emocionado por adquirir fluidez en diferentes lenguas.");
-                    DTFecha Fecha = DTFecha(3, 9, 1996);
-                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha);
+                    DTFecha Fecha5 = DTFecha(3, 9, 1996);
+                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha5);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U6
                     ControladorUsuario->ingresarDatosUsuario("anator", "1qsxc36", "Ana Torres", "Disfruto de la belleza de las diferentes estructuras y sonidos.");
-                    DTFecha Fecha = DTFecha(12, 1, 1999);
-                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha);
+                    DTFecha Fecha6 = DTFecha(12, 1, 1999);
+                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha6);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U7
                     ControladorUsuario->ingresarDatosUsuario("luher24", "t7h8y5u6", "Lucia Hernandez", "Emocionada en la riqueza cultural que cada idioma ofrece.");
-                    DTFecha Fecha = DTFecha(25, 6, 1993);
-                    ControladorUsuario->ingresarDatosEstudiante("Colombia", Fecha);
+                    DTFecha Fecha7 = DTFecha(25, 6, 1993);
+                    ControladorUsuario->ingresarDatosEstudiante("Colombia", Fecha7);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U8
                     ControladorUsuario->ingresarDatosUsuario("dagon", "1w2e3r4t5", "David Gonzalez", "Aprender nuevas lenguas y sumergirme en diferentes culturas.");
-                    DTFecha Fecha = DTFecha(8, 12, 1997);
-                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha);
+                    DTFecha Fecha8 = DTFecha(8, 12, 1997);
+                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha8);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U9
                     ControladorUsuario->ingresarDatosUsuario("carmor", "6yu7i8m9", "Carmen Morales", "El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.");
-                    DTFecha Fecha = DTFecha(17, 3, 1995);
-                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha);
+                    DTFecha Fecha9 = DTFecha(17, 3, 1995);
+                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha9);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                     //U10
                     ControladorUsuario->ingresarDatosUsuario("jose24", "qwj789p", "Jose Fernandez", "Disfruto del proceso de descubrir nuevas formas de comunicarme.");
-                    DTFecha Fecha = DTFecha(2, 8, 1998);
-                    ControladorUsuario->ingresarDatosEstudiante("Bolivia", Fecha);
+                    DTFecha Fecha10 = DTFecha(2, 8, 1998);
+                    ControladorUsuario->ingresarDatosEstudiante("Bolivia", Fecha10);
                     ControladorUsuario->confirmarAltaEstudiante();
 
                 //Alta profesores
@@ -920,57 +920,184 @@ int main() {
                     ControladorUsuario->agregarEspecializacion("Ingles");
                     ControladorUsuario->confirmarAltaProfesor();
 
-                //Alta cursoIngles1
-                ControladorCurso->ingresarInfoCurso("Ingles1", "cursoDesc",
-                                                    Principiante);
-                ControladorCurso->asignarProfesor("joaco_");
-                ControladorCurso->seleccionarIdioma("Inglés");
-                ControladorCurso->confirmarAltaCurso();
+                //Alta de curso
+                    //Alta C1
+                    ControladorCurso->ingresarInfoCurso("Ingles para principiantes", "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.",Principiante);
+                    ControladorCurso->asignarProfesor("langMaster");
+                    ControladorCurso->seleccionarIdioma("Ingles");
+                    ControladorCurso->confirmarAltaCurso();
 
-                //agrego 1 leccion y 1 ejercicio a Ingles1.
-                ControladorCurso->seleccionarCurso("Ingles1");
-                ControladorCurso->ingresarInfoLeccion("Tema1",
-                                                      "Objetivo1");
-                ControladorCurso->confirmarAltaLeccion();
-                ControladorCurso->seleccionarCurso("Ingles1");
-                ControladorCurso->seleccionarLeccion("Tema1");
-                ControladorCurso->ingresarInfoEjercicio("Traduzca");
-                ControladorCurso->agregarDatosTraducir("frase", "phrase");
-                ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+                    //Alta C2
+                    ControladorCurso->ingresarInfoCurso("Curso de ingles basico", "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.",Principiante);
+                    ControladorCurso->asignarProfesor("langMaster");
+                    ControladorCurso->seleccionarIdioma("Ingles");
+                    ControladorCurso->confirmarAltaCurso();
 
-                //Habilito Curso Inglés 1
-                ControladorCurso->confirmarHabilitacion("Ingles1");
+                    //Alta C3
+                    ControladorCurso->ingresarInfoCurso("Ingles intermedio: mejora tu nivel", "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.",Medio);
+                    ControladorCurso->asignarProfesor("linguaPro");
+                    ControladorCurso->seleccionarIdioma("Ingles");
+                    ControladorCurso->confirmarAltaCurso();
+                    
+                    //Ingreo Previas C3
+                    set<string> previasC3;
+                    previasC3.insert("Ingles para principiantes");
+                    ControladorCurso->ingresarCursosPrevios(previasC3);
 
-                // Alta curso Chino
-                ControladorCurso->ingresarInfoCurso("Chino", "cursoDesc",
-                                                    Principiante);
-                ControladorCurso->asignarProfesor("profe_");
-                ControladorCurso->seleccionarIdioma("Chino");
-                ControladorCurso->confirmarAltaCurso();
+                    //Alta C4
+                    ControladorCurso->ingresarInfoCurso("Curso avanzado de ingles", "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.",Avanzado);
+                    ControladorCurso->asignarProfesor("linguaPro");
+                    ControladorCurso->seleccionarIdioma("Ingles");
+                    ControladorCurso->confirmarAltaCurso();
+                    
+                    // Ingreso Previas C4
+                    set<string> previasC4;
+                    previasC4.insert("Ingles para principiantes");
+                    previasC4.insert("Ingles intermedio: mejora tu nivel");
+                    ControladorCurso->ingresarCursosPrevios(previasC4);
 
-                // agrego 1 leccion y 1 ejercicio a Chino
-                ControladorCurso->seleccionarCurso("Chino");
-                ControladorCurso->ingresarInfoLeccion("Tema1", "Objetivo1");
-                ControladorCurso->confirmarAltaLeccion();
-                ControladorCurso->seleccionarCurso("Chino");
-                ControladorCurso->seleccionarLeccion("Tema1");
-                ControladorCurso->ingresarInfoEjercicio("Traduzca");
-                ControladorCurso->agregarDatosTraducir("frase", "phrase");
-                ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+                    //Alta C5
+                    ControladorCurso->ingresarInfoCurso("Portugues intermedio", "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.",Medio);
+                    ControladorCurso->asignarProfesor("linguaPro");
+                    ControladorCurso->seleccionarIdioma("Portugues");
+                    ControladorCurso->confirmarAltaCurso();
+                   
+                    //Alta C6
+                    ControladorCurso->ingresarInfoCurso("Portugues avanzado", "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.",Avanzado);
+                    ControladorCurso->asignarProfesor("lingoSensei");
+                    ControladorCurso->seleccionarIdioma("Portugues");
+                    ControladorCurso->confirmarAltaCurso();
+                    // Ingreso Previas C5
+                    set<string> previasC5;
+                    previasC5.insert("Portugues intermedio");
+                    ControladorCurso->ingresarCursosPrevios(previasC5);
 
-                // Habilito Curso Chino
-                ControladorCurso->confirmarHabilitacion("Chino");
+                //Alta Leccion en C1
+                    //L1
+                    ControladorCurso->seleccionarCurso("Ingles para principiantes");
+                    ControladorCurso->ingresarInfoLeccion("Saludos y Presentaciones", "Aprender a saludar y despedirse");
+                    ControladorCurso->confirmarAltaLeccion();
+                    //L2
+                    ControladorCurso->seleccionarCurso("Ingles para principiantes");
+                    ControladorCurso->ingresarInfoLeccion("Artículos y Plurales", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos");
+                    ControladorCurso->confirmarAltaLeccion();
 
-                //Alta Curso Ingles2
-                ControladorCurso->ingresarInfoCurso("Ingles2", "cursoDesc",
-                                                    Principiante);
-                ControladorCurso->asignarProfesor("joaco_");
-                ControladorCurso->seleccionarIdioma("Inglés");
-                ControladorCurso->ingresarCursosPrevios(col);
-                ControladorCurso->confirmarAltaCurso();
+                //Alta Leccion C2
+                    //L3
+                    ControladorCurso->seleccionarCurso("Curso de ingles basico");
+                    ControladorCurso->ingresarInfoLeccion("Actividades Cotidianas", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos");
+                    ControladorCurso->confirmarAltaLeccion();
+                    //L4
+                    ControladorCurso->seleccionarCurso("Curso de ingles basico");
+                    ControladorCurso->ingresarInfoLeccion("Presente Simple", "Aprender el uso del presente simple");
+                    ControladorCurso->confirmarAltaLeccion();
 
-               
-                break;
+                //Alta Leccion C3
+                    //L5
+                    ControladorCurso->seleccionarCurso("Ingles intermedio: mejora tu nivel");
+                    ControladorCurso->ingresarInfoLeccion("Conversaciones cotidianas", "Aprender a hacer preguntas y respuestas en situaciones comunes");
+                    ControladorCurso->confirmarAltaLeccion();
+
+                //Alta Leccion C4
+                    //L6
+                    ControladorCurso->seleccionarCurso("Curso avanzado de ingles");
+                    ControladorCurso->ingresarInfoLeccion("Uso de modales avanzados", "Explorar el uso de los modales complejos.");
+                    ControladorCurso->confirmarAltaLeccion();
+
+                //Alta Leccion C5
+                    //L7
+                    ControladorCurso->seleccionarCurso("Portugues intermedio");
+                    ControladorCurso->ingresarInfoLeccion("Lectura y comprension de textos", "Analizar el contenido, vocabulario y estructuras gramaticales utilizadas.");
+                    ControladorCurso->confirmarAltaLeccion();
+
+            // Alta Ejercicios
+                    //E1
+                    ControladorCurso->seleccionarCurso("Ingles para principiantes");
+                    ControladorCurso->seleccionarLeccion("Saludos y Presentaciones");
+                    ControladorCurso->ingresarInfoEjercicio("Presentaciones");
+                    ControladorCurso->agregarDatosTraducir("Mucho gusto en conocerte", "Nice to meet you");
+                    ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+
+                    //E2
+                    ControladorCurso->seleccionarCurso("Ingles para principiantes");
+                    ControladorCurso->seleccionarLeccion("Saludos y Presentaciones");
+                    ControladorCurso->ingresarInfoEjercicio("Presentaciones formales");
+                    ControladorCurso->agregarDatosTraducir("Please --- me to introduce ---", "allow, myself");
+                    ControladorCurso->confirmarAltaEjercicio(CompletarPalabras);
+
+                    //E3
+                    ControladorCurso->seleccionarCurso("Ingles para principiantes");
+                    ControladorCurso->seleccionarLeccion("Artículos y Plurales");
+                    ControladorCurso->ingresarInfoEjercicio("Plurales regulares");
+                    ControladorCurso->agregarDatosTraducir("I have two brothers and three sisters", "Tengo dos hermanos y tres hermanas");
+                    ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+
+                    //E4
+                    ControladorCurso->seleccionarCurso("Ingles para principiantes");
+                    ControladorCurso->seleccionarLeccion("Artículos y Plurales");
+                    ControladorCurso->ingresarInfoEjercicio("Sustantivos contables en plural");
+                    ControladorCurso->agregarDatosTraducir("Can I have --- water, please?", "some");
+                    ControladorCurso->confirmarAltaEjercicio(CompletarPalabras);
+
+                    //E5
+                    ControladorCurso->seleccionarCurso("Curso de ingles basico");
+                    ControladorCurso->seleccionarLeccion("Actividades Cotidianas");
+                    ControladorCurso->ingresarInfoEjercicio("Actividades diarias");
+                    ControladorCurso->agregarDatosTraducir("Wake ---", "up");
+                    ControladorCurso->confirmarAltaEjercicio(CompletarPalabras);
+
+                    //E6
+                    ControladorCurso->seleccionarCurso("Ingles intermedio: mejora tu nivel");
+                    ControladorCurso->seleccionarLeccion("Conversaciones cotidianas");
+                    ControladorCurso->ingresarInfoEjercicio("Consultas de la hora");
+                    ControladorCurso->agregarDatosTraducir("Q:Do you --- the time?, A: Yes, it is half --- 4 ", "have, past");
+                    ControladorCurso->confirmarAltaEjercicio(CompletarPalabras);
+                    
+                    //E7
+                    ControladorCurso->seleccionarCurso("Curso avanzado de ingles");
+                    ControladorCurso->seleccionarLeccion("Uso de modales avanzados");
+                    ControladorCurso->ingresarInfoEjercicio("Dar consejos o expresar obligacion");
+                    ControladorCurso->agregarDatosTraducir("You should visit that museum", "Deberias visitar ese museo");
+                    ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+
+                    //E8
+                    ControladorCurso->seleccionarCurso("Portugues intermedio");
+                    ControladorCurso->seleccionarLeccion("Lectura y comprension de textos");
+                    ControladorCurso->ingresarInfoEjercicio("Imperativo");
+                    ControladorCurso->agregarDatosTraducir("Fale comigo", "Habla conmigo");
+                    ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+
+            //Habilitaciones
+                    //Habilito Curso C1
+                    ControladorCurso->confirmarHabilitacion("Ingles para principiantes");
+                    //Habilito Curso C3
+                    ControladorCurso->confirmarHabilitacion("Ingles intermedio: mejora tu nivel");
+                    //Habilito Curso C4
+                    ControladorCurso->confirmarHabilitacion("Curso avanzado de ingles");
+                    //Habilito Curso C5
+                    ControladorCurso->confirmarHabilitacion("Portugues intermedio");
+            
+            //Inscripciones
+                    //N1
+                    ControladorCurso->confirmarInscripcion("jpidiom", "Ingles para principiantes");
+                    //N2
+                    ControladorCurso->confirmarInscripcion("jpidiom", "Ingles intermedio: mejora tu nivel");
+                    //N3
+                    ControladorCurso->confirmarInscripcion("jpidiom", "Curso avanzado de ingles");
+                    //N4
+                    ControladorCurso->confirmarInscripcion("marsilva", "Ingles para principiantes");
+                    //N5
+                    ControladorCurso->confirmarInscripcion("pero12", "Ingles para principiantes");
+                    //N6
+                    ControladorCurso->confirmarInscripcion("laugu", "Ingles para principiantes");
+                    //N7
+                    ControladorCurso->confirmarInscripcion("laugu", "Portugues intermedio");
+                    //N8
+                    ControladorCurso->confirmarInscripcion("carlo22", "Portugues intermedio");
+                    
+                    
+                    
+                    break;
             }
 
             //Default   
