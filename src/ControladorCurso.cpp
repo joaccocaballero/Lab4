@@ -259,6 +259,10 @@ bool ControladorCurso::validarEjercicio(string solucion){
         if(inscripcionEstudiante->obtenerEjerciciosAprobados(nombreCurso).size() == LeccionSeleccionada->obtenerEjerciciosLeccion().size()){
             inscripcionEstudiante->agregarLeccionAprobada(LeccionSeleccionada, nombreCurso);
         } 
+        if(CursoSeleccionado->getCantidadLecciones() == inscripcionEstudiante->obtenerLeccionesAprobadas(nombreCurso).size()){
+            inscripcionEstudiante->setAprobacion(true);
+        }
+        
         return true;
     }
     else{

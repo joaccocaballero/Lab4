@@ -43,6 +43,7 @@ class Curso {
         void setHabilitacion(bool h);
         void agregarLeccion(Leccion *l);
         void agregarInscripcion(Inscripcion *i);
+        int getCantidadLecciones();
         string obtenerDescripcion();
         EnumDificultad obtenerDificultad();
         string obtenerNombreProf();

@@ -22,6 +22,7 @@ class Inscripcion {
         Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante);
         int obtenerIdInscripcion();
         bool obtenerAprobacion();
+        void setAprobacion(bool a);
         DTFecha obtenerFecha();
         Curso* obtenerCurso();
         void agregarEjercicioAprobado(Ejercicio* ej, string nombreCurso);

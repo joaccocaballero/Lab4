@@ -15,6 +15,10 @@ bool Inscripcion::obtenerAprobacion(){
     return Aprobacion;
 }
 
+void Inscripcion::setAprobacion(bool a){
+    Aprobacion = a;
+}
+
 Curso* Inscripcion::obtenerCurso(){
     return CursoInscripcion;
 }

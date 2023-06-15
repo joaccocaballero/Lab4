@@ -84,6 +84,10 @@ void Curso::agregarInscripcion(Inscripcion *i){
     inscripciones.insert(i);
 }
 
+int Curso::getCantidadLecciones(){
+    return Lecciones.size();
+}
+
 EnumDificultad Curso::obtenerDificultad(){
     return dificultad;
 }

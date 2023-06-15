@@ -654,8 +654,6 @@ int main() {
                     DTEjercicio ejercicioAMostrar = ControladorCurso->seleccionarEjercicio(stoi(ejSeleccionado));
 
                     //imprimo el ejercicio seleccionado
-                    cout << "   *ID: " << ejercicioAMostrar.getId() << endl;
-                        cout << "       -Tipo: " << obtenerTipoEjercicio(ejercicioAMostrar.getTipoEjercicio())<< endl;
                         cout << "       -Descripción: " << ejercicioAMostrar.getDescripcionEjercicio() << endl;
                         cout << "       -Consigna: " << ejercicioAMostrar.getConsignaEjercicio() << endl;
                         cout << "   " << endl;
