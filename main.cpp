@@ -356,6 +356,81 @@ int main() {
                     ControladorCurso->ingresarCursosPrevios(cursosPrevios);
                 }
                 ControladorCurso->confirmarAltaCurso();
+                int agregarLecciones;
+                cout << "Desea agregar una leccion?"<<endl;
+                cout << "1- Si" << endl;
+                cout << "2- No" << endl;
+                cin >> agregarLecciones;
+                while (agregarLecciones == 1){
+                    ControladorCurso->seleccionarCurso(nombreCurso);
+                    string temaLeccion = "";
+                    string objetivoLeccion = "";
+                    int agregar = 0;
+                    // ingreso Datos
+                    cout << "Ingrese tema de la lección:" << endl;
+                    getline(cin >> ws, temaLeccion);
+                    cout << "Ingrese objetivo de la lección:" << endl;
+                    getline(cin >> ws, objetivoLeccion);
+                    ControladorCurso->ingresarInfoLeccion(temaLeccion,
+                                                        objetivoLeccion);
+                    ControladorCurso->confirmarAltaLeccion();
+                    int agregarEjs;
+                    cout << "Desea agregar un ejercicio?"<<endl;
+                    cout << "1- Si" << endl;
+                    cout << "2- No" << endl;
+                    cin >> agregarEjs;
+                    while (agregarEjs == 1) {
+                        ControladorCurso->seleccionarLeccion(temaLeccion);
+                        string descripcion = "";
+                        cout << "Ingrese descripción del ejercicio:";
+                        getline(cin >> ws, descripcion);
+                        ControladorCurso->ingresarInfoEjercicio(descripcion);
+                        int tipoId;
+                        
+                        //Selecciono Tipo ejercicio
+                        cout << "Seleccione el tipo de ejercicio a agregar:" << endl;
+                        cout << "1- Completar Palabras" << endl;
+                        cout << "2- Traducir" << endl;
+                        EnumEjercicios tipo;
+                        cin >> tipoId;
+                        switch (tipoId) {
+                            case 1: {
+                                tipo = CompletarPalabras;
+                                string frase = "";
+                                string solucion = "";
+                                cout << "Ingrese frase a completar:" << endl;
+                                getline(cin >> ws, frase);
+                                cout << "Ingrese solución ejercicio";
+                                getline(cin >> ws, solucion);
+                                ControladorCurso->agregarDatosCompletar(frase, solucion);
+                                break;
+                            }
+                            case 2:{
+                                tipo = TraducirFrase;
+                                string frase = "";
+                                string traduccion = "";
+                                cout << "Ingrese frase a traducir:" << endl;
+                                getline(cin >> ws, frase);
+                                cout << "Ingrese frase traducida:";
+                                getline(cin >> ws, traduccion);
+                                ControladorCurso->agregarDatosTraducir(frase, traduccion);
+                                break;
+                            }
+                            default:
+                                cout << "Seleccione una opción correcta"
+                                    << endl;
+                                break;
+                        }
+                        cout << "Desea agregar otro ejercicio? " << endl;
+                        cout << "1- Si" << endl;
+                        cout << "2- No" << endl;
+                        cin >> agregarEjs;
+                    }
+                    cout << "Desea agregar otra leccion? " << endl;
+                    cout << "1- Si" << endl;
+                    cout << "2- No" << endl;
+                    cin >> agregarLecciones;
+                }
                 break;
             }
 
@@ -386,6 +461,58 @@ int main() {
                 ControladorCurso->ingresarInfoLeccion(temaLeccion,
                                                       objetivoLeccion);
                 ControladorCurso->confirmarAltaLeccion();
+                int agregarEjs;
+                cout << "Desea agregar un ejercicio?"<<endl;
+                cout << "1- Si" << endl;
+                cout << "2- No" << endl;
+                cin >> agregarEjs;
+                while (agregarEjs == 1) {
+                    ControladorCurso->seleccionarLeccion(temaLeccion);
+                    string descripcion = "";
+                    cout << "Ingrese descripción del ejercicio:";
+                    getline(cin >> ws, descripcion);
+                    ControladorCurso->ingresarInfoEjercicio(descripcion);
+                    int tipoId;
+                    
+                    //Selecciono Tipo ejercicio
+                    cout << "Seleccione el tipo de ejercicio a agregar:" << endl;
+                    cout << "1- Completar Palabras" << endl;
+                    cout << "2- Traducir" << endl;
+                    EnumEjercicios tipo;
+                    cin >> tipoId;
+                    switch (tipoId) {
+                        case 1: {
+                            tipo = CompletarPalabras;
+                            string frase = "";
+                            string solucion = "";
+                            cout << "Ingrese frase a completar:" << endl;
+                            getline(cin >> ws, frase);
+                            cout << "Ingrese solución ejercicio";
+                            getline(cin >> ws, solucion);
+                            ControladorCurso->agregarDatosCompletar(frase, solucion);
+                            break;
+                        }
+                        case 2:{
+                            tipo = TraducirFrase;
+                            string frase = "";
+                            string traduccion = "";
+                            cout << "Ingrese frase a traducir:" << endl;
+                            getline(cin >> ws, frase);
+                            cout << "Ingrese frase traducida:";
+                            getline(cin >> ws, traduccion);
+                            ControladorCurso->agregarDatosTraducir(frase, traduccion);
+                            break;
+                        }
+                        default:
+                            cout << "Seleccione una opción correcta"
+                                << endl;
+                            break;
+                    }
+                    cout << "Desea agregar otro ejercicio? " << endl;
+                    cout << "1- Si" << endl;
+                    cout << "2- No" << endl;
+                    cin >> agregarEjs;
+                }
                 break;
             }
 

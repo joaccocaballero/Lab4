@@ -5,6 +5,8 @@
 #include <string>
 #include <set>
 #include <map>
+#include <vector>
+
 #include "Usuario.h"
 #include "IObserver.h"
 
@@ -24,6 +26,7 @@ class Idioma{
         string obtenerNombre();
         void NuevoCurso(Curso curso);
         bool esSuscriptor(string Nickname);
+        vector<string> obtenerSuscriptores();
         set<string> obtenerSuscripcionesPendientes(string Nickname);
         ~Idioma();
 };

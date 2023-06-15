@@ -94,12 +94,14 @@ void ControladorCurso::seleccionarLeccion(string nomLeccion){
 
 void ControladorCurso::confirmarAltaCurso() {
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    ControladorUsuario *ctrlU = controladorUsuario->getInstancia();
     set<Curso*> cursosPrevios = manejador->obtenerCursosPrevios(CursosPrevios);
     set<Leccion*> col;
     set<Inscripcion*> colIns;
     Curso* c = new Curso(false, Nombre, Descripcion, Dificultad, cursosPrevios, IdiomaSeleccionado, col, NicknameProfesor, colIns);
-    // si hay lecciones agregarlas, supongo que llamo a caso de uso desde main si usuario quiere meterle
+    //tengo curso y tengo idioma
 
+    ctrlU->notificarUsuarios(IdiomaSeleccionado->obtenerNombre(), Nombre, IdiomaSeleccionado->obtenerSuscriptores());
     manejador->agregarCurso(c);
     cout << "Curso creado correctamente!" << endl;
 }

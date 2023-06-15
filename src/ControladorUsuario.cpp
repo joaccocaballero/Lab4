@@ -243,4 +243,19 @@ bool ControladorUsuario::removerSuscripciones(string nickname, set<string> idiom
     return res;
 }
 
+void ControladorUsuario::notificarUsuarios(string nombreIdioma, string nombreCurso, vector<string> suscriptores) {
+    DTNotificacion notificacion = DTNotificacion(nombreCurso, nombreIdioma);
+    
+    for (string nickname: suscriptores) {
+        bool tipo = obtenerTipo(nickname);
+        if (tipo) {
+            Estudiante* e = obtenerEstudiante(nickname);
+            e->Notificar(notificacion);
+        } else {
+            Profesor* p = obtenerProfesor(nickname);
+            p->Notificar(notificacion);
+        }
+    }
+}
+
 ControladorUsuario::~ControladorUsuario() { delete instancia; }

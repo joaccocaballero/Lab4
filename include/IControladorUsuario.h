@@ -45,6 +45,7 @@ class IControladorUsuario {
         virtual bool suscribirUsuario(string nickname, set<string> idiomas) = 0;
         virtual set<string> obtenerCursosNoAprobados(string Nickname) = 0;
         virtual bool removerSuscripciones(string nickname, set<string> idiomas) = 0;
+        virtual void notificarUsuarios(string nombreIdioma, string nombreCurso, vector<string> suscriptores) = 0;
         virtual ~IControladorUsuario() = 0;
 };
 
