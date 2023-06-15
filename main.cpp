@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <set>
+#include <vector>
+
 
 #include "include/DTProfesor.h"
 #include "./include/DTEstudiante.h"
@@ -24,8 +26,8 @@ void casosDeUso() {
     cout << "12: Realizar Ejercicio" << endl;
     //cout << "13: Consultar Estadísticas" << endl;
     cout << "14: Suscribirse a Notificaciones" << endl;
-    //cout << "15: Consulta de Notificaciones" << endl;
-    //cout << "16: Eliminar Suscripciones" << endl;
+    cout << "15: Consulta de Notificaciones" << endl;
+    cout << "16: Eliminar Suscripciones" << endl;
     cout << "17: Cargar datos genéricos" <<endl;
     cout << "18: Salir" << endl;
 }
@@ -692,6 +694,11 @@ int main() {
                 set<string> idiomasDisponibles = ControladorUsuario->obtenerSubscripcionesPendientes(nicknameUsuario);
                 set<string> idiomasASuscribirse;
 
+                if(idiomasDisponibles.size() == 0) {
+                    cout<<"No hay idiomas para suscribirse"<< endl;
+                    break;
+                }
+
                 cout << "Seleccione un idioma:" <<endl;
                 for (string idioma: idiomasDisponibles){
                     cout << "-"+idioma << endl;
@@ -718,6 +725,82 @@ int main() {
                 }else {
                     cout << "Error al suscribirse" << endl;
                 }
+                break;
+            }
+           
+           //Consulta de Notificaciones
+            case 15: {
+                set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                string nicknameUsuario;
+                cout << "Seleccione un nickname:" <<endl;
+                for (string nickname: usuarios){
+                    cout << "-"+nickname << endl;
+                }
+                getline(cin >> ws, nicknameUsuario);
+                while (!usuarios.count(nicknameUsuario)) {
+                    cout << "Seleccione un nickname existente:" <<endl;
+                    getline(cin >> ws, nicknameUsuario);
+                }
+                vector<DTNotificacion> notificaciones = ControladorUsuario->obtenerNotificaciones(nicknameUsuario);
+                if (notificaciones.size() > 0) {
+                    cout << "Notificaciones" << endl;
+                    for (DTNotificacion notificacion: notificaciones){
+                        cout << "Curso: "+ notificacion.getNombreCurso() << endl;
+                        cout << "Idioma: "+ notificacion.getNombreIdioma() << endl;
+                        cout << "--------------"<< endl;
+                    } 
+                }else {
+                    cout << "No hay notificaciones" << endl;
+                }
+                break;
+            }
+
+            //Eliminar Suscripciones
+            case 16: {
+                set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                string nicknameUsuario;
+                cout << "Seleccione un nickname:" <<endl;
+                for (string nickname: usuarios){
+                    cout << "-"+nickname << endl;
+                }
+                getline(cin >> ws, nicknameUsuario);
+                while (!usuarios.count(nicknameUsuario)) {
+                    cout << "Seleccione un nickname existente:" <<endl;
+                    getline(cin >> ws, nicknameUsuario);
+                }
+                set<string> idiomasSuscritos = ControladorUsuario->obtenerSubscripciones(nicknameUsuario);
+                set<string> idiomasADesuscribirse;
+
+                if(idiomasSuscritos.size() == 0) {
+                    cout<<"No hay suscripciones para borrar"<< endl;
+                    break;
+                }
+
+                cout << "Seleccione un idioma:" <<endl;
+                for (string idioma: idiomasSuscritos){
+                    cout << "-"+idioma << endl;
+                }
+                bool agregar = true;
+                while (agregar) {
+                    string idiomaSeleccionado;
+                    cin >> idiomaSeleccionado;
+                    while (!idiomasSuscritos.count(idiomaSeleccionado)) {
+                        cout << "Seleccione un idioma existente:" <<endl;
+                        getline(cin >> ws, idiomaSeleccionado);
+                    }
+                    idiomasADesuscribirse.insert(idiomaSeleccionado);
+                    cout << "Desea agregar otro idioma?" << endl;
+                    cout << "1-Si" << endl;
+                    cout << "2-No" << endl;
+                    int agregarOtro;
+                    cin >> agregarOtro;
+                    agregar = (agregarOtro == 1);
+                }
+                //llamar a borrar suscripciones
+                bool res = ControladorUsuario->removerSuscripciones(nicknameUsuario, idiomasADesuscribirse);
+                if(res) {
+                    cout << "Se ha desuscrito con exito!" <<endl;
+                }else cout << "Error al desuscribirse" <<endl;
                 break;
             }
            

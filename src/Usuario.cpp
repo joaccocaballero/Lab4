@@ -24,6 +24,10 @@ void Usuario::Notificar(DTNotificacion Notificacion){
     Notificaciones.push_back(Notificacion);
 }
 
-vector<DTNotificacion> Usuario::obtenerNotificaciones(string Nickname){}
+vector<DTNotificacion> Usuario::obtenerNotificaciones(){
+    vector<DTNotificacion> aux = Notificaciones;
+    Notificaciones.clear();
+    return aux;
+}
 
 Usuario::~Usuario(){}

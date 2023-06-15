@@ -19,7 +19,7 @@ class Usuario : public IObserver {
         string obtenerNombre();
         string obtenerDescripcion();
         void Notificar(DTNotificacion Notificacion);
-        vector<DTNotificacion> obtenerNotificaciones(string Nickname);
+        vector<DTNotificacion> obtenerNotificaciones();
         virtual ~Usuario();
 };
 

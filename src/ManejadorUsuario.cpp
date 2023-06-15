@@ -119,4 +119,17 @@ set<string> ManejadorUsuario::obtenerCursosNoAprobados(string Nickname){
     return noAprobados;
 }
 
-set<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){}
+vector<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){}
+
+vector<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){
+    bool esEstudiante = (ColeccionDeEstudiantes.count(Nickname) == 1);
+    vector<DTNotificacion> notificaciones;
+    if(esEstudiante) {
+        Estudiante *e = obtenerEstudiante(Nickname);
+        notificaciones = e->obtenerNotificaciones();
+    } else {
+        Profesor *p = obtenerProfesor(Nickname);
+        notificaciones = p->obtenerNotificaciones();
+    }
+    return notificaciones;
+}

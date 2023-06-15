@@ -60,3 +60,15 @@ set<string> ManejadorIdioma::obtenerSuscripcionesPendientes(string Nickname) {
     }
     return pendientes;
 }
+set<string> ManejadorIdioma::obtenerSuscripciones(string Nickname) {
+    set<string> suscritos;
+    map<string, Idioma*> idiomas = obtenerColeccionIdiomas();
+    map<string, Idioma*>::iterator it;
+    for(it=idiomas.begin(); it!=idiomas.end(); ++it){
+        Idioma *current =  it->second;
+        if (current->esSuscriptor(Nickname) == true){
+            suscritos.insert(current->obtenerNombre());
+        }
+    }
+    return suscritos;
+}

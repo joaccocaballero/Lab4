@@ -3,6 +3,8 @@
 
 #include <string>
 #include <set>
+#include <vector>
+
 using namespace std;
 #include "DTEstadisticaProfesor.h"
 #include "DTEstadisticaEstudiante.h"
@@ -32,7 +34,8 @@ class IControladorUsuario {
         virtual set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname)= 0;
         virtual set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname)= 0;
         virtual set<string> obtenerSubscripcionesPendientes(string Nickname)= 0;
-        virtual set<DTNotificacion> obtenerNotificaciones(string Nickname) = 0;
+        virtual set<string> obtenerSubscripciones(string nickname)=0;
+        virtual vector<DTNotificacion> obtenerNotificaciones(string Nickname) = 0;
         virtual bool agregarIdioma(string Nombre) = 0;
         virtual set<string> obtenerUsuarios()= 0;
         virtual bool obtenerTipo(string nickname) = 0;
@@ -41,6 +44,7 @@ class IControladorUsuario {
         virtual set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname)=0;
         virtual bool suscribirUsuario(string nickname, set<string> idiomas) = 0;
         virtual set<string> obtenerCursosNoAprobados(string Nickname) = 0;
+        virtual bool removerSuscripciones(string nickname, set<string> idiomas) = 0;
         virtual ~IControladorUsuario() = 0;
 };
 
