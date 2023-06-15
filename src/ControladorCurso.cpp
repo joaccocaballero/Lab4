@@ -217,7 +217,7 @@ set<DTEjercicio> ControladorCurso::obtenerEjerciciosPendientes(string nombreCurs
     seleccionarCurso(nombreCurso);
     set<Leccion*> leccionesAprobadasEstudiante = inscripcionEstudiante->obtenerLeccionesAprobadas(nombreCurso);
     set<Leccion*> leccionesCurso = CursoSeleccionado->obtenerLecciones();
-    for (auto it = leccionesCurso.begin(); it != leccionesCurso.end(); ++it){
+    for (auto it = leccionesCurso.rbegin(); it != leccionesCurso.rend(); ++it){
         Leccion* l = *it;  // Desreferencia el puntero para acceder al objeto real
         if(!leccionesAprobadasEstudiante.count(l)){
             LeccionSeleccionada = l; //recuerdo en controlador la ultima leccion no aprobada
