@@ -71,7 +71,6 @@ class ControladorCurso : public IControladorCurso {
         void confirmarAltaLeccion();
         void confirmarAltaEjercicio(EnumEjercicios tipo);
         set<string> obtenerCursos();
-        set<string> obtenerCursosNoAprobados(string nombre);
         set<string> obtenerCursosNoHabilitados();
         set<DTEjercicio> obtenerEjerciciosPendientes(string nombreCurso, string nicknameEstudiante);
         set<string> obtenerLecciones();

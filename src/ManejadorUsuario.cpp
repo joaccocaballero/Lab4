@@ -119,7 +119,6 @@ set<string> ManejadorUsuario::obtenerCursosNoAprobados(string Nickname){
     return noAprobados;
 }
 
-vector<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){}
 
 vector<DTNotificacion> ManejadorUsuario::obtenerNotificaciones(string Nickname){
     bool esEstudiante = (ColeccionDeEstudiantes.count(Nickname) == 1);

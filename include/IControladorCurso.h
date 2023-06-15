@@ -29,7 +29,6 @@ class IControladorCurso {
         virtual void confirmarAltaLeccion() = 0;
         virtual void confirmarAltaEjercicio(EnumEjercicios tipo) = 0;
         virtual set<string> obtenerCursos() = 0;
-        virtual set<string> obtenerCursosNoAprobados(string nombre) = 0;
         virtual set<string> obtenerCursosNoHabilitados() = 0;
         virtual set<DTEjercicio> obtenerEjerciciosPendientes(string nombreCurso, string nicknameEstudiante) = 0;
         virtual set<string> obtenerLecciones() = 0;

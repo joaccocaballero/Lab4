@@ -142,11 +142,6 @@ set<string> ControladorCurso::obtenerCursos(){
     return manejador->obtenerCursos();
 }
 
-set<string> ControladorCurso::obtenerCursosNoAprobados(string nombre){
-    set<string> cursosHabilitados;
-    return cursosHabilitados;
-}
-
 set<string> ControladorCurso::obtenerLecciones(){
     set<string> retorno;
     set<Leccion*> col =  CursoSeleccionado->obtenerLecciones();
