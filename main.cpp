@@ -678,6 +678,70 @@ int main() {
                break;
             }
 
+            //Consultar Estadisticas
+            case(13): {
+                system("clear");
+                //Se pregunta de que seran las Estadisticas
+                int Eleccion = 0;
+                cout << "Desea obtener Estadisticas de:" << endl;
+                cout << "1- Estudiantes" << endl;
+                cout << "2- Profesores" << endl;
+                cout << "3- Cursos" << endl;
+                cin >> Eleccion;
+                 switch (Eleccion) {
+                    case 1: {
+                        //Se listan todos los estudiantes
+                        set<string> estudiantes = ControladorUsuario->obtenerEstudiantes();
+                        string estudianteSelec = "";
+                        cout << "Seleccione un Estudiante:" << endl;
+                        for (string nombre : estudiantes) {
+                        cout << "-" + nombre << endl;
+                        }
+                        getline(cin >> ws, estudianteSelec);
+                        //se obtiene las estadisticas del estudiante seleccionado
+                        set<DTEstadisticaEstudiante> estadistica = ControladorUsuario->obtenerEstadisticaEstudiante(estudianteSelec);
+                        cout << "Estadisticas del Estudiante:" << endl;
+                        for (DTEstadisticaEstudiante iter : estadistica) {
+                            cout << "Curso:" + iter->getNombreCurso(); << endl;
+                            cout << "Procentaje de avance:" + iter->getAvance(); << endl;
+                        }
+                        break;
+                    }
+                    case 2:{
+                        //Se listan todos los Profesores
+                        set<string> Profesores = ControladorUsuario->obtenerProfesor();
+                        string profesorSelec = "";
+                        cout << "Seleccione un Profesor:" << endl;
+                        for (string nombre : profesores) {
+                        cout << "-" + nombre << endl;
+                        }
+                        getline(cin >> ws, profesorSelec);
+                        //se obtiene las estadisticas del Profesor seleccionado
+                        set<DTEstadisticaEstudiante> estadistica = ControladorUsuario->obtenerEstadisticaProfesor(profesorSelec);
+                        cout << "Estadisticas del Profesor:" << endl;
+                        break;
+                    }
+                    case 3:{
+                        //Se listan todos los Cursos
+                        set<string> Cursos = ControladorCurso->obtenerCursos();
+                        string CursoSelec = "";
+                        cout << "Seleccione un Curso:" << endl;
+                        for (string nombre : Cursos) {
+                        cout << "-" + nombre << endl;
+                        }
+                        getline(cin >> ws, cursoSelec);
+
+                        break;
+                    }
+                    default:
+                        cout << "Seleccione una opción correcta"
+                             << endl;
+                        break;
+                 }
+            }
+
+
+
             //suscribirse a notificaciones
             case 14: {
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();

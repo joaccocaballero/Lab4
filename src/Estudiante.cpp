@@ -5,6 +5,7 @@
 #include "../include/Estudiante.h"
 #include "../include/Idioma.h"
 #include "../include/DTFecha.h"
+#include "../include/DTEstadisticaEstudiante.h"
 
 Estudiante::Estudiante(string Nickname, string Contrasenia, string Nombre,
                        string Descripcion, string PaisResidencia,
@@ -40,6 +41,15 @@ void Estudiante::agregarInscripcion(Inscripcion*i){
 
 
 
-set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string Nickname){}
+set<DTEstadisticaEstudiante> obtenerEstadisticas(){
+  set<Inscripcion*> setInscrip = this->obtenerInscripciones();
+  set<DTEstadisticaEstudiante> EstadisticasEstu;
+  for (Inscripcion* inscrip : setInscrip) {
+      DTEstadisticaEstudiante estadisticaIns = inscrip->crearEstadisticaEstudiante();
+      EstadisticasEstu.insert(estadisticaIns);
+    }
+  this->EstadisticasEstudiante = EstadisticasEstu;
+  return EstadisticasEstu;
+}
 
 Estudiante ::~Estudiante() {}

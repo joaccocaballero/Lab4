@@ -15,6 +15,7 @@ class Inscripcion {
         bool    Aprobacion;
         Curso * CursoInscripcion;
         Estudiante * EstudianteInscrito;
+        DTEstadisticaEstudiante estadistica;
         map<string,set<Ejercicio*>> ejerciciosAprobados;
         map<string, set<Leccion*>> leccionesAprobadas;
        public:
@@ -25,6 +26,7 @@ class Inscripcion {
         void setAprobacion(bool a);
         DTFecha obtenerFecha();
         Curso* obtenerCurso();
+        DTEstadisticaEstudiante crearEstadisticaEstudiante();
         void agregarEjercicioAprobado(Ejercicio* ej, string nombreCurso);
         void agregarLeccionAprobada(Leccion* lec, string nombreCurso);
         set<Ejercicio*> obtenerEjerciciosAprobados(string nombreCurso);
