@@ -205,4 +205,35 @@ vector<DTNotificacion> ControladorUsuario::obtenerNotificaciones(string Nickname
     return manejador->obtenerNotificaciones(Nickname);
 }
 
+set<string> ControladorUsuario::obtenerSubscripciones(string Nickname) {
+    ManejadorIdioma *manejador = manejadorIdioma->getManejadorI();
+    return manejador->obtenerSuscripciones(Nickname);
+}
+
+bool ControladorUsuario::removerSuscripciones(string nickname, set<string> idiomas) {
+    ManejadorIdioma *manId = manejadorIdioma->getManejadorI();
+    ManejadorUsuario *manUs = manejadorUsuario->getManejadorU();
+    Estudiante* e;
+    Profesor* p;
+    bool res = false;
+    bool esEstudiante = manUs->esEstudiante(nickname);
+    if (esEstudiante) {
+        e = manUs->obtenerEstudiante(nickname);
+    } else {
+        p = manUs->obtenerProfesor(nickname);
+    }
+    
+    for (string nombreId: idiomas) {
+        Idioma* idioma = manId->obtenerIdioma(nombreId);
+        if (esEstudiante) {
+            idioma->RemoverSuscriptor(nickname);
+            res = true;
+        } else {
+            idioma->RemoverSuscriptor(nickname);
+            res = true;
+        }
+    }
+    return res;
+}
+
 ControladorUsuario::~ControladorUsuario() { delete instancia; }

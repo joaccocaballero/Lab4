@@ -34,6 +34,7 @@ class IControladorUsuario {
         virtual set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname)= 0;
         virtual set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname)= 0;
         virtual set<string> obtenerSubscripcionesPendientes(string Nickname)= 0;
+        virtual set<string> obtenerSubscripciones(string nickname)=0;
         virtual vector<DTNotificacion> obtenerNotificaciones(string Nickname) = 0;
         virtual bool agregarIdioma(string Nombre) = 0;
         virtual set<string> obtenerUsuarios()= 0;
@@ -42,6 +43,7 @@ class IControladorUsuario {
         virtual DTProfesor obtenerInfoProfesor(string Nickname)=0;
         virtual set<Inscripcion*> obtenerInscripcionesEstudiante(string nickname)=0;
         virtual bool suscribirUsuario(string nickname, set<string> idiomas) = 0;
+        virtual bool removerSuscripciones(string nickname, set<string> idiomas) = 0;
         virtual ~IControladorUsuario() = 0;
 };
 

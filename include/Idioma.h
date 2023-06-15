@@ -20,7 +20,7 @@ class Idioma{
     public:
         Idioma(string Nombre);
         void AgregarSuscriptor(string nickname, IObserver* observer);
-        void RemoverSuscriptor();
+        void RemoverSuscriptor(string nickname);
         string obtenerNombre();
         void NuevoCurso(Curso curso);
         bool esSuscriptor(string Nickname);

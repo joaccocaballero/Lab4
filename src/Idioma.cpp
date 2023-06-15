@@ -10,7 +10,9 @@ this->Nombre=Nombre;
 void Idioma::AgregarSuscriptor(string nickname, IObserver* observer){
     Suscriptores.insert(make_pair(nickname, observer));
 }
-void Idioma::RemoverSuscriptor(){}
+void Idioma::RemoverSuscriptor(string nickname){
+    Suscriptores.erase(nickname);
+}
 string Idioma::obtenerNombre(){
     return this->Nombre;
 }
