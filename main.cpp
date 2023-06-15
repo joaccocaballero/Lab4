@@ -812,23 +812,113 @@ int main() {
             //carga de datos
             case 17: {
                 system("clear");
-                set<string> col;
-                col.insert("Ingles1");
                 //AltaIdioma
-                ControladorUsuario->agregarIdioma("Inglés");
-                ControladorUsuario->agregarIdioma("Chino");
-                //Alta profesor
-                ControladorUsuario->ingresarDatosUsuario("joaco_", "joaco123",
-                                                         "Joaquín", "ProfUser");
-                ControladorUsuario->ingresarInstituto("Fing");
-                ControladorUsuario->agregarEspecializacion("Inglés");
-                ControladorUsuario->confirmarAltaProfesor();
+                ControladorUsuario->agregarIdioma("Ingles");
+                ControladorUsuario->agregarIdioma("Aleman");
+                ControladorUsuario->agregarIdioma("Portugues");
 
-                ControladorUsuario->ingresarDatosUsuario("profe_", "joaco123",
-                                                        "Joaquín", "ProfUser");
-                ControladorUsuario->ingresarInstituto("Fing");
-                ControladorUsuario->agregarEspecializacion("Inglés");
-                ControladorUsuario->confirmarAltaProfesor();
+                //Alta Estudiantes
+                    //U1
+                    ControladorUsuario->ingresarDatosUsuario("jpidiom", "asdfg123 ", "Juan Perez", "Soy un apasionado del aprendizaje de idiomas.");
+                    DTFecha Fecha = DTFecha(15, 7, 1995);
+                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U2
+                    ControladorUsuario->ingresarDatosUsuario("marsilva", "qwer456", "Maria Silva", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.");
+                    DTFecha Fecha = DTFecha(28, 2, 1998);
+                    ControladorUsuario->ingresarDatosEstudiante("Ecuador", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U3
+                    ControladorUsuario->ingresarDatosUsuario("pero12", "789werty", "Pedro Rodriguez", "Soy un entusiasta del aprendizaje de idiomas.");
+                    DTFecha Fecha = DTFecha(10, 11, 1994);
+                    ControladorUsuario->ingresarDatosEstudiante("Peru", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U4
+                    ControladorUsuario->ingresarDatosUsuario("laugu", "c1v2b3m4", "Laura Gutierrez", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.");
+                    DTFecha Fecha = DTFecha(22, 4, 1997);
+                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U5
+                    ControladorUsuario->ingresarDatosUsuario("carlo22", "tyuipz147", "Carlos Lopez", "Emocionado por adquirir fluidez en diferentes lenguas.");
+                    DTFecha Fecha = DTFecha(3, 9, 1996);
+                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U6
+                    ControladorUsuario->ingresarDatosUsuario("anator", "1qsxc36", "Ana Torres", "Disfruto de la belleza de las diferentes estructuras y sonidos.");
+                    DTFecha Fecha = DTFecha(12, 1, 1999);
+                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U7
+                    ControladorUsuario->ingresarDatosUsuario("luher24", "t7h8y5u6", "Lucia Hernandez", "Emocionada en la riqueza cultural que cada idioma ofrece.");
+                    DTFecha Fecha = DTFecha(25, 6, 1993);
+                    ControladorUsuario->ingresarDatosEstudiante("Colombia", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U8
+                    ControladorUsuario->ingresarDatosUsuario("dagon", "1w2e3r4t5", "David Gonzalez", "Aprender nuevas lenguas y sumergirme en diferentes culturas.");
+                    DTFecha Fecha = DTFecha(8, 12, 1997);
+                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U9
+                    ControladorUsuario->ingresarDatosUsuario("carmor", "6yu7i8m9", "Carmen Morales", "El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.");
+                    DTFecha Fecha = DTFecha(17, 3, 1995);
+                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U10
+                    ControladorUsuario->ingresarDatosUsuario("jose24", "qwj789p", "Jose Fernandez", "Disfruto del proceso de descubrir nuevas formas de comunicarme.");
+                    DTFecha Fecha = DTFecha(2, 8, 1998);
+                    ControladorUsuario->ingresarDatosEstudiante("Bolivia", Fecha);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                //Alta profesores
+                    //U11
+                    ControladorUsuario->ingresarDatosUsuario("langMaster", "P4s512",
+                                                            "Marta Grecia", "Soy una profesora apasionada por los idiomas.");
+                    ControladorUsuario->ingresarInstituto("Instituto de Idiomas Moderno");
+                    ControladorUsuario->agregarEspecializacion("Ingles");
+                    ControladorUsuario->agregarEspecializacion("Portugues");
+                    ControladorUsuario->confirmarAltaProfesor();
+                    
+                    //U12
+                    ControladorUsuario->ingresarDatosUsuario("linguaPro", "Pess23",
+                                                            "Carlos Petro", "Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas.");
+                    ControladorUsuario->ingresarInstituto("Centro Global ");
+                    ControladorUsuario->agregarEspecializacion("Ingles");
+                    ControladorUsuario->agregarEspecializacion("Aleman");
+                    ControladorUsuario->agregarEspecializacion("Portugues");
+                    ControladorUsuario->confirmarAltaProfesor();
+                    
+                    //U13
+                    ControladorUsuario->ingresarDatosUsuario(
+                        "talkExpert", "Secret1", "Laura Perez",
+                        "Soy una profesora entusiasta del aprendizaje de idiomas.");
+                    ControladorUsuario->ingresarInstituto("Instituto de Idiomas Vanguardia ");
+                    ControladorUsuario->agregarEspecializacion("Aleman");
+                    ControladorUsuario->confirmarAltaProfesor();
+
+                    // U14
+                    ControladorUsuario->ingresarDatosUsuario(
+                        "lingoSensei", "Secure2", "Franco Lopez",
+                        "Apasionada en guiar a mis estudiantes en su viaje por nuevos horizontes idiomaticos.");
+                    ControladorUsuario->ingresarInstituto("Centro de Idiomas");
+                    ControladorUsuario->agregarEspecializacion("Portugues");
+                    ControladorUsuario->confirmarAltaProfesor();
+
+                    // U15
+                    ControladorUsuario->ingresarDatosUsuario(
+                        "wordMaestro", "Passw0", "Ana Morales",
+                        "Soy una profesora comprometida en desarrollo de habilidades idiomaticas.");
+                    ControladorUsuario->ingresarInstituto("Instituto de Idiomas Progreso");
+                    ControladorUsuario->agregarEspecializacion("Ingles");
+                    ControladorUsuario->confirmarAltaProfesor();
 
                 //Alta cursoIngles1
                 ControladorCurso->ingresarInfoCurso("Ingles1", "cursoDesc",
@@ -879,12 +969,7 @@ int main() {
                 ControladorCurso->ingresarCursosPrevios(col);
                 ControladorCurso->confirmarAltaCurso();
 
-                //alta de estudiante
-                ControladorUsuario->ingresarDatosUsuario("estudiante", "joaco123",
-                                                         "Joaquín", "EstudianteDesc");
-                DTFecha Fecha = DTFecha(10, 12, 2002);
-                ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha);
-                ControladorUsuario->confirmarAltaEstudiante();
+               
                 break;
             }
 
