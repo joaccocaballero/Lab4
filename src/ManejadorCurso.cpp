@@ -78,7 +78,15 @@ bool ManejadorCurso::confirmarHabilitacion(string nombre){
   }
 }
 
-void ManejadorCurso::eliminarCurso(string nombre){}
+void ManejadorCurso::eliminarCurso(string nombre){
+    map<string, Curso*>::iterator it;
+  it=ColeccionDeCursos.find(nombre);
+  if (it != ColeccionDeCursos.end()) {
+    Curso* aEliminar = *it->second;
+    it = ColeccionDeCursos.erase(it);
+    delete aEliminar;
+  }
+}
 set<string> ManejadorCurso::obtenerCursosNoAprobados(){}
 
 Curso* ManejadorCurso::obtenerCurso(string nombre){

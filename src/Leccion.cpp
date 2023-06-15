@@ -45,4 +45,10 @@ set<Ejercicio*> Leccion::obtenerEjerciciosLeccion(){
     return Ejercicios;
 }
 
-Leccion::~Leccion(){}
+Leccion::~Leccion(){
+    set<Ejercicio*>::iterator it; 
+     for (auto it = Ejercicios.begin(); it != Ejercicios.end(); ++it) {
+        delete *it;
+    }
+    Ejercicios.clear();
+}
