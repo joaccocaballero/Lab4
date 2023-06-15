@@ -4,6 +4,7 @@
 
 #include "DTFecha.h"
 #include "Curso.h"
+#include <map>
 
 class Estudiante;
 
@@ -14,13 +15,19 @@ class Inscripcion {
         bool    Aprobacion;
         Curso * CursoInscripcion;
         Estudiante * EstudianteInscrito;
-    public:
+        map<string,set<Ejercicio*>> ejerciciosAprobados;
+        map<string, set<Leccion*>> leccionesAprobadas;
+       public:
         Inscripcion();
         Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante);
         int obtenerIdInscripcion();
         bool obtenerAprobacion();
         DTFecha obtenerFecha();
         Curso* obtenerCurso();
+        void agregarEjercicioAprobado(Ejercicio* ej, string nombreCurso);
+        void agregarLeccionAprobada(Leccion* lec, string nombreCurso);
+        set<Ejercicio*> obtenerEjerciciosAprobados(string nombreCurso);
+        set<Leccion*> obtenerLeccionesAprobadas(string nombreCurso);
         Estudiante * obtenerEstudiante();
         ~Inscripcion();
 };

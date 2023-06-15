@@ -22,6 +22,18 @@ set<Inscripcion*> Estudiante::obtenerInscripciones(){
   return InscripcionesCursos;
 }
 
+Inscripcion* Estudiante::obtenerInscripcionCurso(string nombreCurso){
+  Inscripcion* retorno = NULL;
+  for (Inscripcion* i : InscripcionesCursos) {
+    if (i->obtenerCurso()->obtenerNombre() == nombreCurso) {
+      // El objeto con el atributo buscado fue encontrado
+      retorno = i;
+      break;
+    }
+  }
+  return retorno;
+}
+
 void Estudiante::agregarInscripcion(Inscripcion*i){
   InscripcionesCursos.insert(i);
 }

@@ -10,10 +10,13 @@ class DTEjercicio{
     private:
         int id;
         string descripcion;
+        string consigna;
         EnumEjercicios tipo;
     public:
-        DTEjercicio(int id, string descripcion, EnumEjercicios tipo);
+        DTEjercicio();
+        DTEjercicio(int id, string descripcion,string consigna, EnumEjercicios tipo);
         string getDescripcionEjercicio();
+        string getConsignaEjercicio();
         EnumEjercicios getTipoEjercicio();
         int getId();
         bool operator<(const DTEjercicio& dt) const {

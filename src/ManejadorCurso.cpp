@@ -83,7 +83,6 @@ set<string> ManejadorCurso::obtenerCursosNoAprobados(){}
 
 Curso* ManejadorCurso::obtenerCurso(string nombre){
   map<string, Curso*>::iterator it;
-  cout << nombre << endl;
   it=ColeccionDeCursos.find(nombre);
   if (it != ColeccionDeCursos.end()) {
     return it->second;

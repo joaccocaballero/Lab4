@@ -21,7 +21,7 @@ void casosDeUso() {
     //cout << "9: Eliminar Curso" << endl;
     cout << "10: Consultar Curso" << endl;
     cout << "11: Inscribirse a Curso" << endl;
-    //cout << "12: Realizar Ejercicio" << endl;
+    cout << "12: Realizar Ejercicio" << endl;
     //cout << "13: Consultar Estadísticas" << endl;
     cout << "14: Suscribirse a Notificaciones" << endl;
     //cout << "15: Consulta de Notificaciones" << endl;
@@ -196,7 +196,7 @@ int main() {
                 }
                 string usuarioSeleccionado = "";
                 cin >> usuarioSeleccionado;
-                bool tipoUsuario = ControladorUsuario->obtenerTipo(usuarioSeleccionado );
+                bool tipoUsuario = ControladorUsuario->obtenerTipo(usuarioSeleccionado);
                 if (tipoUsuario == true) {
                     DTEstudiante infoEstu = ControladorUsuario->obtenerInfoEstudiante(usuarioSeleccionado);
                     cout << "Nombre: " + infoEstu.getNombre() << endl; 
@@ -216,6 +216,7 @@ int main() {
                 } 
                 break;
             }
+            
             //AltaIdioma
             case 3: {
                 system("clear");
@@ -552,6 +553,7 @@ int main() {
             
                 break;
             }
+           
             //Inscribirse A Curso
             case 11: {
                 system("clear");
@@ -608,25 +610,72 @@ int main() {
             //Realizar Ejercicio
             case (12): {
                 //se ingresa nombre de estudiante
-                string nombreEstudiante = "";
+                set<string> nicknamesSistema = ControladorUsuario->obtenerUsuarios();
+                string nicknameEstudiante = "";
                 cout << "Ingrese Nickname de Estudiante:" << endl;
-                getline(cin >> ws, nombreEstudiante);
-                //se lista los ejercicios aun no aprobados
-                set<string> noAprobados = ControladorUsuario->obtenerCursosNoAprobados(string Nickname);
-                if( !noAprobados.empty()){
-                    cout << "Seleccione un ejercicio:" << endl;
-                    for (string nombre : noAprobads) {
-                    cout << "-" + nombre << endl;
+                getline(cin >> ws, nicknameEstudiante);
+                while (!nicknamesSistema.count(nicknameEstudiante)) {
+                    cout << "Ingrese un nickname válido:" << endl;
+                    getline(cin >> ws, nicknameEstudiante);
                 }
-                string nombreCurso = "";
-                getline(cin >> ws, nombreCurso);  
-                set<string> ejNoAprobados = ControladorCurso->obtenerEjerciciosPendientes(nombreCurso);
+
+                //se lista los cursos aun no aprobados
+                set<string> noAprobados = ControladorUsuario->obtenerCursosNoAprobados(nicknameEstudiante);
+                if(!noAprobados.empty()){
+                    cout << "Seleccione un curso:" << endl;
+                    for (string nombre : noAprobados) {
+                    cout << "-" + nombre << endl;
+                    }
+                    string nombreCurso = "";
+                    getline(cin >> ws, nombreCurso);
+                    while (!noAprobados.count(nombreCurso)) {
+                        cout << "Ingrese un curso válido:" << endl;
+                        getline(cin >> ws, nombreCurso);
+                    }
+
+                    set<DTEjercicio> ejNoAprobados = ControladorCurso->obtenerEjerciciosPendientes(nombreCurso, nicknameEstudiante);
+                    set<string> idEjercicios;
+                    //se imprimen ejercicios pendientes
+                    for (DTEjercicio ejercicio : ejNoAprobados) {
+                        idEjercicios.insert(to_string(ejercicio.getId()));
+                        cout << "**SELECCIONE UN EJERCICIO**:" << endl;
+                        cout << "   *ID: " << ejercicio.getId() << endl;
+                        cout << "       -Tipo: " << obtenerTipoEjercicio(ejercicio.getTipoEjercicio())<< endl;
+                        cout << "       -Descripción: " << ejercicio.getDescripcionEjercicio() << endl;
+                        cout << "       -Consigna: " << ejercicio.getConsignaEjercicio() << endl;
+                        cout << "   " << endl;
+                    }
+                    string ejSeleccionado;
+                    getline(cin >> ws, ejSeleccionado);
+                    while (!idEjercicios.count(ejSeleccionado)) {
+                        cout << "Ingrese un ejercicio válido:" << endl;
+                        getline(cin >> ws, ejSeleccionado);
+                    }
+                    DTEjercicio ejercicioAMostrar = ControladorCurso->seleccionarEjercicio(stoi(ejSeleccionado));
+
+                    //imprimo el ejercicio seleccionado
+                    cout << "   *ID: " << ejercicioAMostrar.getId() << endl;
+                        cout << "       -Tipo: " << obtenerTipoEjercicio(ejercicioAMostrar.getTipoEjercicio())<< endl;
+                        cout << "       -Descripción: " << ejercicioAMostrar.getDescripcionEjercicio() << endl;
+                        cout << "       -Consigna: " << ejercicioAMostrar.getConsignaEjercicio() << endl;
+                        cout << "   " << endl;
+                    
+                    cout << "Ingrese su respuesta: " << endl;
+
+                    string respuesta = "";
+                    getline(cin >> ws, respuesta);
+                    if(ControladorCurso->validarEjercicio(respuesta)){
+                        cout << "RESPUESTA CORRECTA!" << endl;
+                        cout << "   *Ejercicio Aprobado!" << endl;
+                    }
+                    else{
+                        cout << "RESPUESTA INCORRECTA!" << endl;
+                    }
                 }
                 else{
                     cout << "No hay cursos no aprobados disponibles." << endl;
                 }
                break;
-
             }
 
             //suscribirse a notificaciones
@@ -673,6 +722,7 @@ int main() {
                 }
                 break;
             }
+           
            //Salida
             case 18:{
                 return 0;

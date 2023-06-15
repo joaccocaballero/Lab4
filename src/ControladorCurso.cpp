@@ -12,6 +12,7 @@
 #include "../include/CompletarFrase.h"
 #include "../include/Traducir.h"
 #include "../include/Inscripcion.h"
+#include "../include/DTEjercicio.h"
 
 using namespace std;
 
@@ -207,19 +208,63 @@ bool ControladorCurso::confirmarInscripcion(string nickname, string nombreCurso)
     return ctrlU->confirmarAltaInscripcion(e, inscripcion);
 }
 
-DTEjercicio ControladorCurso::seleccionarEjercicio(int id){
-}
-
-bool ControladorCurso::validarEjercicio(){
-    return true;
-}
-
 DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
 
 }
 
-set<string> ControladorCurso::obtenerEjerciciosPendientes(string nombre){
-    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+set<DTEjercicio> ControladorCurso::obtenerEjerciciosPendientes(string nombreCurso, string nicknameEstudiante){
+    set<DTEjercicio> retorno;
+    ControladorUsuario* ctrlU = controladorUsuario->getInstancia();
+    Estudiante* e = ctrlU->obtenerEstudiante(nicknameEstudiante);
+    inscripcionEstudiante = e->obtenerInscripcionCurso(nombreCurso);
+    seleccionarCurso(nombreCurso);
+    set<Leccion*> leccionesAprobadasEstudiante = inscripcionEstudiante->obtenerLeccionesAprobadas(nombreCurso);
+    set<Leccion*> leccionesCurso = CursoSeleccionado->obtenerLecciones();
+    for (auto it = leccionesCurso.begin(); it != leccionesCurso.end(); ++it){
+        Leccion* l = *it;  // Desreferencia el puntero para acceder al objeto real
+        if(!leccionesAprobadasEstudiante.count(l)){
+            LeccionSeleccionada = l; //recuerdo en controlador la ultima leccion no aprobada
+            set<Ejercicio*> colEjercicios = l->obtenerEjerciciosLeccion();
+            set<Ejercicio*> ejerAprobadosEstudiante = inscripcionEstudiante->obtenerEjerciciosAprobados(nombreCurso);
+            for (auto it2 = colEjercicios.begin(); it2!= colEjercicios.end(); ++it2){
+              Ejercicio* e = *it2;
+              if (!ejerAprobadosEstudiante.count(e)){ //Busco ejercicios no aprobados en leccion encontrada previamente
+                DTEjercicio ejNoAprobado = DTEjercicio(e->obtenerId(), e->obtenerDescripcion(), e->getConsigna(), e->obtenerTipo());
+                retorno.insert(ejNoAprobado);
+              }
+            }
+        }
+        break;
+    }
+    return retorno;
+}
+
+DTEjercicio ControladorCurso::seleccionarEjercicio(int id){
+    DTEjercicio retorno;
+    set<Ejercicio*> colEjercicios = LeccionSeleccionada->obtenerEjerciciosLeccion();
+    for (Ejercicio* e : colEjercicios) {
+        if (e->obtenerId() == id) {
+               EjercicioSeleccionado = e; 
+               retorno = DTEjercicio(e->obtenerId(), e->obtenerDescripcion(), e->getConsigna(), e->obtenerTipo());
+            break;
+        }
+    }
+    return retorno;
+}
+
+bool ControladorCurso::validarEjercicio(string solucion){
+    string nombreCurso = CursoSeleccionado->obtenerNombre();
+    if(EjercicioSeleccionado->esCorrecto(solucion)){
+        inscripcionEstudiante->agregarEjercicioAprobado(EjercicioSeleccionado, nombreCurso);
+        if(inscripcionEstudiante->obtenerEjerciciosAprobados(nombreCurso).size() == LeccionSeleccionada->obtenerEjerciciosLeccion().size()){
+            inscripcionEstudiante->agregarLeccionAprobada(LeccionSeleccionada, nombreCurso);
+        } 
+        return true;
+    }
+    else{
+        return false;
+    }
+
 }
 
 ControladorCurso::~ControladorCurso(){

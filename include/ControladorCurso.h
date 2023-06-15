@@ -15,6 +15,7 @@
 #include "ManejadorIdioma.h"
 #include "DTCurso.h"
 #include "DTCursoDisponible.h"
+#include "DTEjercicio.h"
 
 using namespace std;
 
@@ -47,6 +48,8 @@ class ControladorCurso : public IControladorCurso {
         string frase;
         string solucion;
         set<DTCurso*> ColeccionDTCurso;
+        Inscripcion* inscripcionEstudiante;
+        Ejercicio * EjercicioSeleccionado;
         ControladorCurso();
     public:
         static ControladorCurso * getInstancia();
@@ -70,10 +73,10 @@ class ControladorCurso : public IControladorCurso {
         set<string> obtenerCursos();
         set<string> obtenerCursosNoAprobados(string nombre);
         set<string> obtenerCursosNoHabilitados();
-        set<string> obtenerEjerciciosPendientes(string nombre);
+        set<DTEjercicio> obtenerEjerciciosPendientes(string nombreCurso, string nicknameEstudiante);
         set<string> obtenerLecciones();
         DTEjercicio seleccionarEjercicio(int id);
-        bool validarEjercicio();
+        bool validarEjercicio(string nombre);
         DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
         bool confirmarHabilitacion(string nombre);
         DTCurso obtenerInfoCurso(string nombre);

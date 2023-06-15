@@ -10,10 +10,10 @@ Ejercicio::Ejercicio(int id, string consigna, string descripcion,EnumEjercicios 
     this->tipo = tipo;
 }
 string Ejercicio::getConsigna(){
-    return this->consigna;
+    return consigna;
 }
 EnumEjercicios Ejercicio::obtenerTipo(){
-    return this->tipo;
+    return tipo;
 }
 
 int Ejercicio::obtenerId(){

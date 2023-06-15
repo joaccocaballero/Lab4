@@ -106,12 +106,14 @@ set<string> ManejadorUsuario::obtenerIdiomasProfesor(string nickname){
 set<string> ManejadorUsuario::obtenerCursosNoAprobados(string Nickname){
     set<string> noAprobados;
     Estudiante* e = ColeccionDeEstudiantes[Nickname];
-    set<Inscripcion> inscrpciones = e->obtenerInscripciones();
-    set<string>::iterator it;
-    for (it = inscripciones.begin(); inscripciones != conjunto.end(); ++it) {
-        if (it->obtenerAprobacion() == false){
-            Curso* curso= it->obtenerCurso();
-            noAprobados.insert(curso->obtenerNombre);
+    
+    set<Inscripcion*> inscripciones = e->obtenerInscripciones();
+    set<Inscripcion*>::iterator it;
+    for (it = inscripciones.begin(); it != inscripciones.end(); ++it) {
+        Inscripcion *current  = *it;
+        if (current->obtenerAprobacion() == false){
+            Curso* curso= current->obtenerCurso();
+            noAprobados.insert(curso->obtenerNombre());
         }
     }
     return noAprobados;

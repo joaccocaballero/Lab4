@@ -30,7 +30,7 @@ set<DTEjercicio> Leccion::obtenerSetDTEjercicio(){
     set<Ejercicio*>::iterator it;
     for (it = col.begin(); it != col.end(); ++it) {
       Ejercicio* current = *it;
-      DTEjercicio e = DTEjercicio(current->obtenerId(), current->obtenerDescripcion(),
+      DTEjercicio e = DTEjercicio(current->obtenerId(), current->obtenerDescripcion(), current->getConsigna(),
       current->obtenerTipo());
       retorno.insert(e);
     }
