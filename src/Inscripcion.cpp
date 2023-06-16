@@ -1,4 +1,7 @@
 #include "../include/Inscripcion.h"
+#include <string>
+#include <iostream>
+using namespace std;
 
 Inscripcion::Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante) {
     this->CursoInscripcion = curso;
@@ -45,5 +48,8 @@ void Inscripcion::agregarLeccionAprobada(Leccion* lec, string nombreCurso){
     leccionesAprobadas[nombreCurso].insert(lec);
 }
 
-Inscripcion::~Inscripcion(){}
+Inscripcion::~Inscripcion(){
+    EstudianteInscrito->eliminarInscripcion(this);
+    
+}
 

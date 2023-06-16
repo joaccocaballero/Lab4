@@ -24,7 +24,7 @@ void casosDeUso() {
     cout << "6: Agregar Lección" << endl;
     cout << "7: Agregar Ejercicio" << endl;
     cout << "8: Habilitar Curso" << endl;
-    //cout << "9: Eliminar Curso" << endl;
+    cout << "9: Eliminar Curso" << endl;
     cout << "10: Consultar Curso" << endl;
     cout << "11: Inscribirse a Curso" << endl;
     cout << "12: Realizar Ejercicio" << endl;
@@ -235,7 +235,7 @@ int main() {
                         cout << "   -"+elem << endl;
                     }
                     cout << "Instituto: " + infoProfe.getInstituto() << endl; 
-                }
+                } 
                 clearInputBuffer();
                 break;
             }
@@ -640,7 +640,7 @@ int main() {
                  }
                  ControladorCurso->confirmarAltaEjercicio(tipo);
                  clearInputBuffer();
-                 break;
+                break;
             }
 
             //Habilitar Curso
@@ -665,12 +665,33 @@ int main() {
                 clearInputBuffer();
                 break;
             }
-
+            //Eliminar Curso
+            case 9:{
+                system("clear");
+                set<string> cursos = ControladorCurso->obtenerCursos();
+                cout << "Seleccione el curso a eliminar:" << endl;
+                string cursoSeleccionado = "";
+                // imprimo nombre de los cursos
+                for (string nombre : cursos) {
+                    cout << "-" + nombre << endl;
+                }
+                getline(cin >> ws, cursoSeleccionado);
+                system("clear");
+                while (!cursos.count(cursoSeleccionado)) {
+                    cout << "Seleccione un curso válido:" << endl;
+                    getline(cin >> ws, cursoSeleccionado);
+                    system("clear");
+                }                
+                ControladorCurso->confirmarEliminacion(cursoSeleccionado);
+                cout << "Ha sido eliminado el curso: "<< cursoSeleccionado << endl;
+                clearInputBuffer();
+                break;
+            }
             //Consultar curso
             case(10): {
                 // Obtengo Cursos
                 system("clear");
-                set<string> cursos = ControladorCurso->obtenerCursos();
+                 set<string> cursos = ControladorCurso->obtenerCursos();
                 cout << "Seleccione un curso:" << cursos.size() << endl;
                 string cursoSeleccionado = "";
                 // imprimo nombre de los cursos
@@ -713,12 +734,12 @@ int main() {
                           }
                         }
                         else{
-                          cout << "Sin Ejercicios. " << endl;
+                          cout << "     Sin Ejercicios. " << endl;
                         }
                     }
                 }
                 else{
-                    cout << "Sin Lecciones. " << endl;
+                    cout << "       Sin Lecciones. " << endl;
                 }
                     
                 cout << "   *Inscripciones: " << endl;
@@ -792,7 +813,7 @@ int main() {
                     cout << "No hay cursos disponibles para inscripción." << endl;
                 }
                 clearInputBuffer();
-                break;
+               break;
             }
 
             //Realizar Ejercicio
@@ -801,11 +822,11 @@ int main() {
                system("clear");
                set<string> nicknamesSistema =
                    ControladorUsuario->obtenerUsuarios();
-               string nicknameEstudiante = "";
-               cout << "Ingrese Nickname de Estudiante:" << endl;
-               getline(cin >> ws, nicknameEstudiante);
+                string nicknameEstudiante = "";
+                cout << "Ingrese Nickname de Estudiante:" << endl;
+                getline(cin >> ws, nicknameEstudiante);
                system("clear");
-               while (!nicknamesSistema.count(nicknameEstudiante)) {
+                while (!nicknamesSistema.count(nicknameEstudiante)) {
                     cout << "Ingrese un nickname válido:" << endl;
                     getline(cin >> ws, nicknameEstudiante);
                     system("clear");
@@ -814,62 +835,62 @@ int main() {
                 //se lista los cursos aun no aprobados
                 set<string> noAprobados = ControladorUsuario->obtenerCursosNoAprobados(nicknameEstudiante);
                 if(!noAprobados.empty()){
-                        cout << "Seleccione un curso:" << endl;
-                        for (string nombre : noAprobados) {
-                        cout << "-" + nombre << endl;
-                        }
-                        string nombreCurso = "";
-                        getline(cin >> ws, nombreCurso);
+                    cout << "Seleccione un curso:" << endl;
+                    for (string nombre : noAprobados) {
+                    cout << "-" + nombre << endl;
+                    }
+                    string nombreCurso = "";
+                    getline(cin >> ws, nombreCurso);
                         system("clear");
-                        while (!noAprobados.count(nombreCurso)) {
-                            cout << "Ingrese un curso válido:" << endl;
-                            getline(cin >> ws, nombreCurso);
+                    while (!noAprobados.count(nombreCurso)) {
+                        cout << "Ingrese un curso válido:" << endl;
+                        getline(cin >> ws, nombreCurso);
                             system("clear");
-                        }
+                    }
 
-                        set<DTEjercicio> ejNoAprobados = ControladorCurso->obtenerEjerciciosPendientes(nombreCurso, nicknameEstudiante);
-                        set<string> idEjercicios;
-                        //se imprimen ejercicios pendientes
+                    set<DTEjercicio> ejNoAprobados = ControladorCurso->obtenerEjerciciosPendientes(nombreCurso, nicknameEstudiante);
+                    set<string> idEjercicios;
+                    //se imprimen ejercicios pendientes
                         system("clear");
                         if(!ejNoAprobados.empty()){
                             cout << "**SELECCIONE UN EJERCICIO**:" << endl;
-                        for (DTEjercicio ejercicio : ejNoAprobados) {
-                            idEjercicios.insert(to_string(ejercicio.getId()));
-                            cout << "   *ID: " << ejercicio.getId() << endl;
-                            cout << "       -Tipo: " << obtenerTipoEjercicio(ejercicio.getTipoEjercicio())<< endl;
-                            cout << "       -Descripción: " << ejercicio.getDescripcionEjercicio() << endl;
-                            cout << "       -Consigna: " << ejercicio.getConsignaEjercicio() << endl;
-                            cout << "   " << endl;
-                        }
-                        string ejSeleccionado;
+                    for (DTEjercicio ejercicio : ejNoAprobados) {
+                        idEjercicios.insert(to_string(ejercicio.getId()));
+                        cout << "   *ID: " << ejercicio.getId() << endl;
+                        cout << "       -Tipo: " << obtenerTipoEjercicio(ejercicio.getTipoEjercicio())<< endl;
+                        cout << "       -Descripción: " << ejercicio.getDescripcionEjercicio() << endl;
+                        cout << "       -Consigna: " << ejercicio.getConsignaEjercicio() << endl;
+                        cout << "   " << endl;
+                    }
+                    string ejSeleccionado;
+                    getline(cin >> ws, ejSeleccionado);
+                    while (!idEjercicios.count(ejSeleccionado)) {
+                        cout << "Ingrese un ejercicio válido:" << endl;
                         getline(cin >> ws, ejSeleccionado);
-                        while (!idEjercicios.count(ejSeleccionado)) {
-                            cout << "Ingrese un ejercicio válido:" << endl;
-                            getline(cin >> ws, ejSeleccionado);
-                        }
-                        DTEjercicio ejercicioAMostrar = ControladorCurso->seleccionarEjercicio(stoi(ejSeleccionado));
+                    }
+                    DTEjercicio ejercicioAMostrar = ControladorCurso->seleccionarEjercicio(stoi(ejSeleccionado));
                         system("clear");
-                        //imprimo el ejercicio seleccionado
+                    //imprimo el ejercicio seleccionado
                         cout << "   *EJERCICIO: " << ejercicioAMostrar.getId() << endl;
-                            cout << "       -Descripción: " << ejercicioAMostrar.getDescripcionEjercicio() << endl;
-                            cout << "       -Consigna: " << ejercicioAMostrar.getConsignaEjercicio() << endl;
-                            cout << "   " << endl;
-                        
-                        cout << "Ingrese su respuesta: " << endl;
+                        cout << "       -Descripción: " << ejercicioAMostrar.getDescripcionEjercicio() << endl;
+                        cout << "       -Consigna: " << ejercicioAMostrar.getConsignaEjercicio() << endl;
+                        cout << "   " << endl;
+                    
+                    cout << "Ingrese su respuesta: " << endl;
 
-                        string respuesta = "";
-                        getline(cin >> ws, respuesta);
-                        if(ControladorCurso->validarEjercicio(respuesta)){
+                    string respuesta = "";
+                    getline(cin >> ws, respuesta);
+                    if(ControladorCurso->validarEjercicio(respuesta)){
                             system("clear");
-                            cout << "RESPUESTA CORRECTA!" << endl;
-                            cout << "   *Ejercicio Aprobado!" << endl;
-                        }
-                        else{
-                            system("clear");
-                            cout << "RESPUESTA INCORRECTA!" << endl;
-                        }
+                        cout << "RESPUESTA CORRECTA!" << endl;
+                        cout << "   *Ejercicio Aprobado!" << endl;
                     }
                     else{
+                            system("clear");
+                        cout << "RESPUESTA INCORRECTA!" << endl;
+                    }
+                }
+                else{
                         cout << "No hay ejercicios pendientes para este curso." << endl;
                     }
                 }
@@ -877,7 +898,7 @@ int main() {
                     cout << "No hay cursos no aprobados disponibles." << endl;
                 }
                 clearInputBuffer();
-                break;
+               break;
             }
 
             //suscribirse a notificaciones
@@ -1090,8 +1111,8 @@ int main() {
                     ControladorUsuario->ingresarInstituto("Instituto de Idiomas Moderno");
                     ControladorUsuario->agregarEspecializacion("Ingles");
                     ControladorUsuario->agregarEspecializacion("Portugues");
-                    ControladorUsuario->confirmarAltaProfesor();
-                    
+                ControladorUsuario->confirmarAltaProfesor();
+
                     //U12
                     ControladorUsuario->ingresarDatosUsuario("linguaPro", "Pess23",
                                                             "Carlos Petro", "Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas.");
@@ -1099,8 +1120,8 @@ int main() {
                     ControladorUsuario->agregarEspecializacion("Ingles");
                     ControladorUsuario->agregarEspecializacion("Aleman");
                     ControladorUsuario->agregarEspecializacion("Portugues");
-                    ControladorUsuario->confirmarAltaProfesor();
-                    
+                ControladorUsuario->confirmarAltaProfesor();
+
                     //U13
                     ControladorUsuario->ingresarDatosUsuario(
                         "talkExpert", "Secret1", "Laura Perez",
@@ -1142,24 +1163,22 @@ int main() {
                     ControladorCurso->ingresarInfoCurso("Ingles intermedio: mejora tu nivel", "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.",Medio);
                     ControladorCurso->asignarProfesor("linguaPro");
                     ControladorCurso->seleccionarIdioma("Ingles");
-                    ControladorCurso->confirmarAltaCurso();
-                    
                     //Ingreo Previas C3
                     set<string> previasC3;
                     previasC3.insert("Ingles para principiantes");
                     ControladorCurso->ingresarCursosPrevios(previasC3);
+                    ControladorCurso->confirmarAltaCurso();
 
                     //Alta C4
                     ControladorCurso->ingresarInfoCurso("Curso avanzado de ingles", "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.",Avanzado);
                     ControladorCurso->asignarProfesor("linguaPro");
                     ControladorCurso->seleccionarIdioma("Ingles");
-                    ControladorCurso->confirmarAltaCurso();
-                    
                     // Ingreso Previas C4
                     set<string> previasC4;
                     previasC4.insert("Ingles para principiantes");
                     previasC4.insert("Ingles intermedio: mejora tu nivel");
                     ControladorCurso->ingresarCursosPrevios(previasC4);
+                    ControladorCurso->confirmarAltaCurso();
 
                     //Alta C5
                     ControladorCurso->ingresarInfoCurso("Portugues intermedio", "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.",Medio);
@@ -1171,17 +1190,17 @@ int main() {
                     ControladorCurso->ingresarInfoCurso("Portugues avanzado", "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.",Avanzado);
                     ControladorCurso->asignarProfesor("lingoSensei");
                     ControladorCurso->seleccionarIdioma("Portugues");
-                    ControladorCurso->confirmarAltaCurso();
                     // Ingreso Previas C5
                     set<string> previasC5;
                     previasC5.insert("Portugues intermedio");
                     ControladorCurso->ingresarCursosPrevios(previasC5);
+                    ControladorCurso->confirmarAltaCurso();
 
-                //Alta Leccion en C1
-                    //L1
+                    // Alta Leccion en C1
+                    // L1
                     ControladorCurso->seleccionarCurso("Ingles para principiantes");
                     ControladorCurso->ingresarInfoLeccion("Saludos y Presentaciones", "Aprender a saludar y despedirse");
-                    ControladorCurso->confirmarAltaLeccion();
+                ControladorCurso->confirmarAltaLeccion();
                     //L2
                     ControladorCurso->seleccionarCurso("Ingles para principiantes");
                     ControladorCurso->ingresarInfoLeccion("Artículos y Plurales", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos");
@@ -1221,7 +1240,7 @@ int main() {
                     ControladorCurso->seleccionarLeccion("Saludos y Presentaciones");
                     ControladorCurso->ingresarInfoEjercicio("Presentaciones");
                     ControladorCurso->agregarDatosTraducir("Mucho gusto en conocerte", "Nice to meet you");
-                    ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
+                ControladorCurso->confirmarAltaEjercicio(TraducirFrase);
 
                     //E2
                     ControladorCurso->seleccionarCurso("Ingles para principiantes");
@@ -1353,14 +1372,14 @@ int main() {
                     ControladorCurso->validarEjercicio("some");
 
                     cout << "Datos genéricos cargados correctamente!" << endl;
-                    break;
+                break;
             }
 
             //Default   
             default:{
                 cout << "" << endl;
                 cout << "Ingrese una opción correcta..." << endl;
-            }
+            } 
                 
         }
         if (continuarSesion) {

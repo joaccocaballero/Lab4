@@ -22,6 +22,7 @@ class Estudiante: public Usuario {
         Inscripcion* obtenerInscripcionCurso(string nombreCurso);
         set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string nickname);
         void agregarInscripcion(Inscripcion* i);
+        void eliminarInscripcion(Inscripcion* i);
         string obtenerPais();
         ~Estudiante();
 };

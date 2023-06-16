@@ -32,4 +32,6 @@ void Ejercicio::setId(int identifier){
 bool Ejercicio::esCorrecto(string solucion){
     return true;
 }
-Ejercicio::~Ejercicio(){}
+Ejercicio::~Ejercicio(){
+    
+}
