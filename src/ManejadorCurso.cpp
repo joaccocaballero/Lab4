@@ -82,7 +82,7 @@ void ManejadorCurso::eliminarCurso(string nombre){
     map<string, Curso*>::iterator it;
   it=ColeccionDeCursos.find(nombre);
   if (it != ColeccionDeCursos.end()) {
-    Curso* aEliminar = *it->second;
+    Curso* aEliminar = it->second;
     it = ColeccionDeCursos.erase(it);
     delete aEliminar;
   }

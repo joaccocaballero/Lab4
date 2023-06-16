@@ -132,17 +132,17 @@ DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){
 
 Curso::~Curso(){
     set<Leccion*>::iterator itLeccion;
-    for (auto itLeccion = Lecciones.begin(); itLeccion != Lecciones.end(); ++it) {
+    for (auto itLeccion = Lecciones.begin(); itLeccion != Lecciones.end(); ++itLeccion) {
         delete *itLeccion;
     }
     Lecciones.clear();
     set<Curso*>::iterator itCursoPrevio;
-    for (auto itCursoPrevio = cursosPrevios.begin(); itCursoPrevio != cursosPrevios.end(); ++it) {
+    for (auto itCursoPrevio = cursosPrevios.begin(); itCursoPrevio != cursosPrevios.end(); ++itCursoPrevio) {
         delete *itCursoPrevio;
     }
     cursosPrevios.clear();
     set<Inscripcion*>::iterator itInscripcion;
-    for (auto itInscripcion = inscripciones.begin(); itInscripcion != inscripciones.end(); ++it) {
+    for (auto itInscripcion = inscripciones.begin(); itInscripcion != inscripciones.end(); ++itInscripcion) {
         delete *itInscripcion;
     }
     inscripciones.clear();
