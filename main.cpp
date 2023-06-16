@@ -734,7 +734,7 @@ int main() {
                         cout << "-" + nombre << endl;
                         }
                         getline(cin >> ws, cursoSelec);
-
+                        DTEstadisticaCurso estadistica = ControladorCurso->obtenerEstadisticaCurso();
                         break;
                     }
                     default:

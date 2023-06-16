@@ -13,6 +13,7 @@
 #include "DTLeccion.h"
 #include "DTInscripcion.h"
 #include "DTEstadisticaProfesor.h"
+#include "DTEstadisticaCurso.h"
 
 using namespace std;
 
@@ -54,7 +55,7 @@ class Curso {
         set<DTLeccion> obtenerSetDTLeccion();
         set<DTInscripcion> obtenerSetDTInscripcion();
         DTEstadisticaProfesor obtenerEstadisticasProfesor();
-        DTEstadisticaCurso* obtenerEstadisticaCurso(string nombre);
+        DTEstadisticaCurso obtenerEstadisticaCurso();
         ~Curso();
 };
 

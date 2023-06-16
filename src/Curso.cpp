@@ -121,13 +121,10 @@ set<DTInscripcion> Curso::obtenerSetDTInscripcion(){
     return retorno;
 }
 
-DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){
-    /*nombre= "";
-    set<Inscripcion> inscriptos;
-    set<Leccion*> lecciones = obtenerLecciones();
-    int avance = 10;
-    DTEstadisticaCurso* estadisticas = new DTEstadisticaCurso("a","a",Principiante,"idioma", "profe", "false", lecciones, inscriptos, avance);
-    return estadisticas;*/
+DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
+
+    DTEstadisticaCurso estadistica = DTEstadisticaCurso(obtNombre(), obtenerDescripcion(), )
+    return estadistica;
 }
 
 DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){

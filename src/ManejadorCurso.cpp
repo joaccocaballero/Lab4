@@ -167,4 +167,8 @@ set<DTEstadisticaProfesor> ManejadorCurso::obtenerEstadisticasProfesor(string Ni
 
 DTEjercicio ManejadorCurso::obtenerEjercicio(int id){}
 bool ManejadorCurso::respuestaEjercicio(string sol){}
-DTEstadisticaCurso ManejadorCurso::obtenerEstadisticaCurso(string nombre){}
+DTEstadisticaCurso ManejadorCurso::obtenerEstadisticaCurso(string nombre){
+  Curso* curso = obtenerCurso(nombre);
+  DTEstadisticaCurso estadisticaCurso = curso->obtenerEstadisticaCurso();
+  return estadisticaCurso;
+}
