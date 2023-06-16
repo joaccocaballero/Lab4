@@ -82,6 +82,7 @@ void ControladorCurso::seleccionarIdioma(string nomIdioma){
 void ControladorCurso::confirmarEliminacion(string nombre){
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
     manejador->eliminarCurso(nombre);
+    
 }
 
 void ControladorCurso::seleccionarCurso(string nomCurso) {

@@ -79,14 +79,23 @@ bool ManejadorCurso::confirmarHabilitacion(string nombre){
 }
 
 void ManejadorCurso::eliminarCurso(string nombre){
-    map<string, Curso*>::iterator it;
-  it=ColeccionDeCursos.find(nombre);
-  if (it != ColeccionDeCursos.end()) {
-    Curso* aEliminar = it->second;
-    it = ColeccionDeCursos.erase(it);
-    delete aEliminar;
+  //Eliminar del conjunto Cursos Previos, el curso que voy a eliminar
+  map<string, Curso*>::iterator it1;
+  Curso * CursoAEliminar = obtenerCurso(nombre);
+  for(auto it1=ColeccionDeCursos.begin(); it1 != ColeccionDeCursos.end(); ++it1){
+    Curso* current = it1->second;
+    if(current->esPrevio(CursoAEliminar)){
+      current->eliminarCursoPrevio(CursoAEliminar);
+    }
   }
+
+  map<string, Curso*>::iterator it2 = ColeccionDeCursos.find(nombre);
+  Curso* aEliminar = ColeccionDeCursos[nombre];
+  delete aEliminar;
+  ColeccionDeCursos.erase(it2);
+    
 }
+
 set<string> ManejadorCurso::obtenerCursosNoAprobados(){}
 
 Curso* ManejadorCurso::obtenerCurso(string nombre){

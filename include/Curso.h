@@ -40,6 +40,7 @@ class Curso {
         set<string> obtenerEjerciciosPendientes(string nombre);
         Idioma* getIdioma();
         bool obtenerHabilitacion();
+        bool esPrevio(Curso * c);
         void setHabilitacion(bool h);
         void agregarLeccion(Leccion *l);
         void agregarInscripcion(Inscripcion *i);
@@ -48,6 +49,7 @@ class Curso {
         EnumDificultad obtenerDificultad();
         string obtenerNombreProf();
         set<Curso*> obtenerPrevias();
+        void eliminarCursoPrevio(Curso * curso);
         set<Inscripcion*> obtenerInscripciones();
         set<DTLeccion> obtenerSetDTLeccion();
         set<DTInscripcion> obtenerSetDTInscripcion();

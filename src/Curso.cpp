@@ -88,6 +88,19 @@ int Curso::getCantidadLecciones(){
     return Lecciones.size();
 }
 
+void Curso::eliminarCursoPrevio(Curso * curso){
+    cursosPrevios.erase(curso);
+}
+
+bool Curso::esPrevio(Curso *c){
+    if(cursosPrevios.count(c)){
+        return true;
+    } 
+    else{
+        return false;
+    }
+}
+
 EnumDificultad Curso::obtenerDificultad(){
     return dificultad;
 }
@@ -131,20 +144,19 @@ DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){
 }
 
 Curso::~Curso(){
+    set<Inscripcion*>::iterator itInscripcion;
+    for (auto itInscripcion = inscripciones.begin();
+         itInscripcion != inscripciones.end(); ++itInscripcion) {
+        delete *itInscripcion;
+    }
+    inscripciones.clear();
+    
+
     set<Leccion*>::iterator itLeccion;
     for (auto itLeccion = Lecciones.begin(); itLeccion != Lecciones.end(); ++itLeccion) {
         delete *itLeccion;
     }
     Lecciones.clear();
-    set<Curso*>::iterator itCursoPrevio;
-    for (auto itCursoPrevio = cursosPrevios.begin(); itCursoPrevio != cursosPrevios.end(); ++itCursoPrevio) {
-        delete *itCursoPrevio;
-    }
     cursosPrevios.clear();
-    set<Inscripcion*>::iterator itInscripcion;
-    for (auto itInscripcion = inscripciones.begin(); itInscripcion != inscripciones.end(); ++itInscripcion) {
-        delete *itInscripcion;
-    }
-    inscripciones.clear();
 
 }

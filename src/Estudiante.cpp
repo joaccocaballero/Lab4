@@ -38,6 +38,10 @@ void Estudiante::agregarInscripcion(Inscripcion*i){
   InscripcionesCursos.insert(i);
 }
 
+void Estudiante::eliminarInscripcion(Inscripcion *i){
+  InscripcionesCursos.erase(i);
+}
+
 
 
 set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string Nickname){}

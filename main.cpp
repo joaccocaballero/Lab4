@@ -540,20 +540,23 @@ int main() {
             }
             //Eliminar Curso
             case 9:{
+                system("clear");
                 set<string> cursos = ControladorCurso->obtenerCursos();
-                cout << "Seleccione el curso a eliminar:" << cursos.size() << endl;
+                cout << "Seleccione el curso a eliminar:" << endl;
                 string cursoSeleccionado = "";
                 // imprimo nombre de los cursos
                 for (string nombre : cursos) {
                     cout << "-" + nombre << endl;
                 }
                 getline(cin >> ws, cursoSeleccionado);
+                system("clear");
                 while (!cursos.count(cursoSeleccionado)) {
                     cout << "Seleccione un curso válido:" << endl;
                     getline(cin >> ws, cursoSeleccionado);
-                }                // Obtengo Cursos
+                    system("clear");
+                }                
                 ControladorCurso->confirmarEliminacion(cursoSeleccionado);
-                cout << "Ha sido eliminado el curso:"<< cursoSeleccionado << endl;
+                cout << "Ha sido eliminado el curso: "<< cursoSeleccionado << endl;
                 clearInputBuffer();
                 break;
             }
@@ -604,12 +607,12 @@ int main() {
                           }
                         }
                         else{
-                          cout << "Sin Ejercicios. " << endl;
+                          cout << "     Sin Ejercicios. " << endl;
                         }
                     }
                 }
                 else{
-                    cout << "Sin Lecciones. " << endl;
+                    cout << "       Sin Lecciones. " << endl;
                 }
                     
                 cout << "   *Inscripciones: " << endl;
@@ -1021,7 +1024,7 @@ int main() {
                     ControladorCurso->ingresarInfoCurso("Ingles para principiantes", "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.",Principiante);
                     ControladorCurso->asignarProfesor("langMaster");
                     ControladorCurso->seleccionarIdioma("Ingles");
-                ControladorCurso->confirmarAltaCurso();
+                    ControladorCurso->confirmarAltaCurso();
 
                     //Alta C2
                     ControladorCurso->ingresarInfoCurso("Curso de ingles basico", "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.",Principiante);
@@ -1033,24 +1036,22 @@ int main() {
                     ControladorCurso->ingresarInfoCurso("Ingles intermedio: mejora tu nivel", "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.",Medio);
                     ControladorCurso->asignarProfesor("linguaPro");
                     ControladorCurso->seleccionarIdioma("Ingles");
-                    ControladorCurso->confirmarAltaCurso();
-
                     //Ingreo Previas C3
                     set<string> previasC3;
                     previasC3.insert("Ingles para principiantes");
                     ControladorCurso->ingresarCursosPrevios(previasC3);
+                    ControladorCurso->confirmarAltaCurso();
 
                     //Alta C4
                     ControladorCurso->ingresarInfoCurso("Curso avanzado de ingles", "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.",Avanzado);
                     ControladorCurso->asignarProfesor("linguaPro");
                     ControladorCurso->seleccionarIdioma("Ingles");
-                ControladorCurso->confirmarAltaCurso();
-
                     // Ingreso Previas C4
                     set<string> previasC4;
                     previasC4.insert("Ingles para principiantes");
                     previasC4.insert("Ingles intermedio: mejora tu nivel");
                     ControladorCurso->ingresarCursosPrevios(previasC4);
+                    ControladorCurso->confirmarAltaCurso();
 
                     //Alta C5
                     ControladorCurso->ingresarInfoCurso("Portugues intermedio", "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.",Medio);
@@ -1062,14 +1063,14 @@ int main() {
                     ControladorCurso->ingresarInfoCurso("Portugues avanzado", "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.",Avanzado);
                     ControladorCurso->asignarProfesor("lingoSensei");
                     ControladorCurso->seleccionarIdioma("Portugues");
-                    ControladorCurso->confirmarAltaCurso();
                     // Ingreso Previas C5
                     set<string> previasC5;
                     previasC5.insert("Portugues intermedio");
                     ControladorCurso->ingresarCursosPrevios(previasC5);
+                    ControladorCurso->confirmarAltaCurso();
 
-                //Alta Leccion en C1
-                    //L1
+                    // Alta Leccion en C1
+                    // L1
                     ControladorCurso->seleccionarCurso("Ingles para principiantes");
                     ControladorCurso->ingresarInfoLeccion("Saludos y Presentaciones", "Aprender a saludar y despedirse");
                 ControladorCurso->confirmarAltaLeccion();
