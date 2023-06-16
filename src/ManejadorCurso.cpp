@@ -150,6 +150,20 @@ set<Curso*> ManejadorCurso::obtenerCursosPrevios(set<string> nombrePrevios){
   }
   return cursosPrevios;
 }
+set<DTEstadisticaProfesor> ManejadorCurso::obtenerEstadisticasProfesor(string Nickname){
+    map<string, Curso*> ColeccionDeCursos;
+    set<DTEstadisticaProfesor> estadisProf;
+    for (Curso* iter = ColeccionDeCursos.begin(); iter != ColeccionDeCursos.end(); ++iter) {
+          string nombreProfesor = iter->second->obtenerNombreProf();
+          if(nombreProfesor == Nickname){
+            estadisProf.insert(iter->second->obtenerEstadisticasProfesor());
+          }
+    }
+    this->EstadisticasProfesor = estadisProf;
+    return estadisProf;
+    }
+
+
 
 DTEjercicio ManejadorCurso::obtenerEjercicio(int id){}
 bool ManejadorCurso::respuestaEjercicio(string sol){}

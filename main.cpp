@@ -717,8 +717,12 @@ int main() {
                         }
                         getline(cin >> ws, profesorSelec);
                         //se obtiene las estadisticas del Profesor seleccionado
-                        set<DTEstadisticaEstudiante> estadistica = ControladorUsuario->obtenerEstadisticaProfesor(profesorSelec);
+                        set<DTEstadisticaProfesor> estadistica = ControladorUsuario->obtenerEstadisticaProfesor(profesorSelec);
                         cout << "Estadisticas del Profesor:" << endl;
+                        for (DTEstadisticaProfesor iter : estadistica) {
+                            cout << "Curso:" + iter->getNombreCurso(); << endl;
+                            cout << "Porcentaje promedio de avance de los alumnos:" + iter->getPromedio(); << endl;
+                        }
                         break;
                     }
                     case 3:{

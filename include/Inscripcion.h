@@ -5,6 +5,7 @@
 #include "DTFecha.h"
 #include "Curso.h"
 #include <map>
+#include "DTEstadisticaEstudiante.h"
 
 class Estudiante;
 

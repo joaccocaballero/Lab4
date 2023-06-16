@@ -12,6 +12,7 @@
 #include "Inscripcion.h"
 #include "DTLeccion.h"
 #include "DTInscripcion.h"
+#include "DTEstadisticaProfesor.h"
 
 using namespace std;
 
@@ -30,6 +31,7 @@ class Curso {
         set<Leccion*> Lecciones;
         set<Curso*> cursosPrevios;
         set<Inscripcion*> inscripciones;
+        DTEstadisticaProfesor EstadisticaProfesor;
         string nombreProf;
     public:
         Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf,
@@ -51,6 +53,7 @@ class Curso {
         set<Inscripcion*> obtenerInscripciones();
         set<DTLeccion> obtenerSetDTLeccion();
         set<DTInscripcion> obtenerSetDTInscripcion();
+        DTEstadisticaProfesor obtenerEstadisticasProfesor();
         DTEstadisticaCurso* obtenerEstadisticaCurso(string nombre);
         ~Curso();
 };

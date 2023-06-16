@@ -130,5 +130,23 @@ DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){
     return estadisticas;*/
 }
 
+DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
+    string nombreCurso = obtenerNombre();
+    int avance = 0;
+    int Promedio = 0;
+    set<Inscripcion*> col = obtenerInscripciones();
+    int cantidad = col.size();
+    set<Inscripcion*>::iterator it;
+    for (it = col.begin(); it != col.end(); ++it) {
+        Inscripcion* current = *it;
+        DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
+        avance += estudianteInscripto->getAvance();
+    }
+    Promedio = avance/cantidad;
+    DTEstadisticaProfesor retorno = DTEstadisticaProfesor(nombreCurso, Promedio);
+    this->EstadisticaProfesor = retorno;
+    return retorno;
+}
+
 Curso::~Curso(){
 }

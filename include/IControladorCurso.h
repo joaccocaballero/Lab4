@@ -39,6 +39,7 @@ class IControladorCurso {
         virtual set<DTCursoDisponible> obtenerCursosDisponibles(string nickname)=0;
         virtual bool confirmarInscripcion(string nickname, string nombreCurso) = 0;
         virtual bool confirmarHabilitacion(string nombre)= 0;
+        virtual set<DTEstadisticaProfesor> obtenerEstadisticasProfesor(string Nickname) = 0;
         virtual DTCurso obtenerInfoCurso(string nombre) = 0;
         virtual ~IControladorCurso() = 0;
 };

@@ -8,12 +8,10 @@ using namespace std;
 class DTEstadisticaProfesor{
     private:
         string Curso;
-        int Avance;
         int Promedio;
     public:
-        DTEstadisticaProfesor(string Curso, int Avance, int Promedio);
+        DTEstadisticaProfesor(string Curso, int Promedio);
         string getNombreCurso();
-        int getAvance();
         int getPromedio();
 
 };

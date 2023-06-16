@@ -93,11 +93,12 @@ set<string> ManejadorUsuario::obtenerEstudiantes(){}
 set<DTEstadisticaEstudiante> ManejadorUsuario::obtenerEstadisticasEstudiantes(
     string Nickname){
         Estudiante* e = ColeccionDeEstudiantes[Nickname];
-        set<DTEstadisticaEstudiante> dtEstadisEstudiante = e->obtenerEstadisticasEstudiante();
+        set<DTEstadisticaEstudiante> dtEstadisEstudiante = e->obtenerEstadisticas();
         return dtEstadisEstudiante;
     }
 
-set<string> ManejadorUsuario::obtenerProfesores(){}
+set<string> ManejadorUsuario::obtenerProfesores(){
+}
 
 set<DTEstadisticaProfesor> ManejadorUsuario::obtenerEstadisticasProfesor(
     string Nickname){}

@@ -165,9 +165,8 @@ set<DTEstadisticaEstudiante> ControladorUsuario::obtenerEstadisticaEstudiante(st
 }
 
 set<DTEstadisticaProfesor> ControladorUsuario::obtenerEstadisticaProfesor(string Nickname){
-    // Agrega tu implementación aquí
-    set<DTEstadisticaProfesor> estadisticas;
-    return estadisticas;
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerEstadisticasProfesor(nickname);
 }
 
 bool ControladorUsuario::suscribirUsuario(string nickname, set<string> idiomas) {
