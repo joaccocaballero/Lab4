@@ -862,9 +862,16 @@ int main() {
                             clearInputBuffer();
                             break;
                         }
+                        default:{
+                            cout << "" << endl;
+                            cout << "Ingrese una opción correcta..." << endl;
+                        }
+                        clearInputBuffer();
+                    break;
                     }
-
-                }
+                    clearInputBuffer();
+                break;
+            }
                     
 
             //suscribirse a notificaciones

@@ -122,24 +122,28 @@ set<DTInscripcion> Curso::obtenerSetDTInscripcion(){
 }
 
 DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
-    int avance;
+    int avance = 0;
+    int Promedio = 0;
     std::set<Inscripcion*>::iterator it;
     cout << "Seleccione un Profesor: "<< endl;
+    int cantidad = inscripciones.size();
     for (it= inscripciones.begin(); it!=inscripciones.end(); ++it) {
-
+        Inscripcion* current = *it;
+        DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
+        avance += estudianteInscripto->getAvance();
     }
+    Promedio = avance/cantidad;
     DTEstadisticaCurso estadistica = DTEstadisticaCurso(nombre, descripcion, dificultad, IdiomaEnseniado, nombreProf, HabilitacionToString(), Lecciones, inscripciones, avance);
     return estadistica;
 }
 
 DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
-    string nombreCurso = obtenerNombre();
+    string nombreCurso = this->nombre;
     int avance = 0;
     int Promedio = 0;
-    set<Inscripcion*> col = obtenerInscripciones();
-    int cantidad = col.size();
+    int cantidad = inscripciones.size();
     set<Inscripcion*>::iterator it;
-    for (it = col.begin(); it != col.end(); ++it) {
+    for (it= inscripciones.begin(); it!=inscripciones.end(); ++it) {
         Inscripcion* current = *it;
         DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
         avance += estudianteInscripto->getAvance();
