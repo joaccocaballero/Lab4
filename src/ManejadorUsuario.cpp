@@ -5,7 +5,7 @@ using namespace std;
 #include "../include/ManejadorUsuario.h"
 #include "../include/DTEstudiante.h"
 #include "../include/DTProfesor.h"
-#include "../include/DTEstadisticaEstudiante.h"
+#include "../include/DTEstudiante.h"
 #include "../include/DTEstadisticaProfesor.h"
 
 

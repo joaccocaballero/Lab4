@@ -28,7 +28,7 @@ void casosDeUso() {
     cout << "10: Consultar Curso" << endl;
     cout << "11: Inscribirse a Curso" << endl;
     cout << "12: Realizar Ejercicio" << endl;
-    //cout << "13: Consultar Estadísticas" << endl;
+    cout << "13: Consultar Estadísticas" << endl;
     cout << "14: Suscribirse a Notificaciones" << endl;
     cout << "15: Consulta de Notificaciones" << endl;
     cout << "16: Eliminar Suscripciones" << endl;
@@ -770,6 +770,102 @@ int main() {
                 clearInputBuffer();
                break;
             }
+
+            case 13: {
+                    string sopcion;
+                    cout << "Seleccione una opción:" << endl;
+                    cout << "1- Consultar estadística de Estudiante. "<< endl;
+                    cout << "2- Consultar estadística de Profesor. " << endl;
+                    cout << "2- Consultar estadística de Curso. " << endl;
+                    getline(cin >> ws, sopcion);
+                    int opcion = std::stoi(sopcion);
+                    switch(opcion) {
+                        case 1:{
+                            //imprime todos los nicknames
+                            set<string> NickEstudiantes = ControladorUsuario->obtenerEstudiantes();
+                            std::set<string>::iterator it;
+                            cout << "Seleccione un Estudiante: "<< endl;
+                            for (it= NickEstudiantes.begin(); it!=NickEstudiantes.end(); ++it) {
+                                string elem = *it;
+                                cout << "-"+elem << endl;
+                            }
+
+                            //selecciona el nickname
+                            string estudiante;
+                            getline(cin >> ws, estudiante);
+                            system("clear");
+                            while (!NickEstudiantes.count(estudiante)) {
+                                cout << "Seleccione un nickname existente:" <<endl;
+                                getline(cin >> ws, estudiante);
+                                system("clear");
+                            }
+                            set<DTEstadisticaEstudiante> estadisticas = ControladorUsuario->obtenerEstadisticaEstudiante(estudiante);
+                            //recorre el set e imprime
+                            cout << "Estadisticas del estudiante: " << estudiante << endl;
+                            for (DTEstadisticaEstudiante est: estadisticas) {
+                                cout << "   Curso: " << est.getNombreCurso() << endl;
+                                cout << "   Avance: " << est.getAvance() << endl;
+                                cout << "   " << endl;
+                            }
+                            clearInputBuffer();
+                            break;
+                        }
+                        case 2:{
+                            //imprime nicknames de profesores
+                            set<string> NickProfesores = ControladorUsuario->obtenerProfesores();
+                            std::set<string>::iterator it;
+                            cout << "Seleccione un Profesor: "<< endl;
+                            for (it= NickProfesores.begin(); it!=NickProfesores.end(); ++it) {
+                                string elem = *it;
+                                cout << "-"+elem << endl;
+                            }
+                            string profesor;
+                            getline(cin >> ws, profesor);
+                            system("clear");
+                            while (!NickProfesores.count(profesor)) {
+                                cout << "Seleccione un nickname existente:" <<endl;
+                                getline(cin >> ws, profesor);
+                                system("clear");
+                            }
+                            set<DTEstadisticaProfesor> estadisticas = ControladorUsuario->obtenerEstadisticaProfesor(profesor);
+                            cout << "Estadisticas del profesor: " << profesor << endl;
+                            for (DTEstadisticaProfesor pro: estadisticas) {
+                                cout << "   Curso: " << pro.getNombreCurso() << endl;
+                                cout << "   Promedio: " << pro.getPromedio() << endl;
+                                cout << "   " << endl;
+                            }
+                            clearInputBuffer();
+                            break;
+                        }
+                        case 3:{
+                            //imprime todos los cursos
+                            set<string> NombreCursos = ControladorCurso->obtenerCursosHabilitados();
+                            std::set<string>::iterator it;
+                            cout << "Seleccione un Curso: "<< endl;
+                            for (it= NombreCursos.begin(); it!=NombreCursos.end(); ++it) {
+                                string elem = *it;
+                                cout << "-"+elem << endl;
+                            }
+                            string curso;
+                            getline(cin >> ws, curso);
+                            system("clear");
+                            while (!NombreCursos.count(curso)) {
+                                cout << "Seleccione un curso existente:" <<endl;
+                                getline(cin >> ws, curso);
+                                system("clear");
+                            }
+                            DTEstadisticaCurso estadisticas = ControladorCurso->obtenerEstadisticaCurso(curso);
+                            cout << "Estadisticas del curso: " << curso << endl;
+                            cout << "   Curso: " << estadisticas.getNombreCurso() << endl;
+                            cout << "   Promedio: " << estadisticas.getAvance() << endl;
+                            cout << "   " << endl;
+                            clearInputBuffer();
+                            break;
+                        }
+                    }
+
+                }
+                    
 
             //suscribirse a notificaciones
             case 14: {
