@@ -48,18 +48,18 @@ void Inscripcion::agregarLeccionAprobada(Leccion* lec, string nombreCurso){
 DTEstadisticaEstudiante Inscripcion::crearEstadisticaEstudiante(){
     int avance = 0;
     string Curso = "";
-    set<Ejercicio*> setAprobados = this->obtenerEjerciciosAprobados(this->CursoInscripcion);
+    set<Ejercicio*> setAprobados = this->obtenerEjerciciosAprobados(CursoInscripcion->obtenerNombre());
     int aprobados = setAprobados.size();
     Curso* cursoIns = this->obtenerCurso();
     set<Leccion*> setTotales = cursoIns->obtenerLecciones();
     set<Ejercicio*> ejerciciosLecciones;
     for (Leccion* leccion : setTotales) {
         set<Ejercicio*> ejsleccion = leccion->obtenerEjerciciosLeccion();
-        ejerciciosLecciones.insert(ejsLeccion.begin(), ejerciciosLeccion.end());
+        ejerciciosLecciones.insert(ejsleccion.begin(), ejsleccion.end());
     }
     int totales = ejerciciosLecciones.size();
     avance = (aprobados/ totales)*100;
-    DTEstadisticaCurso estadistica= DTEstadisticaCurso(cursoIns->obtenerNombre(), avance);
+    DTEstadisticaEstudiante estadistica= DTEstadisticaEstudiante(cursoIns->obtenerNombre(), avance);
     this->estadistica = estadistica;
     return estadistica; 
 }

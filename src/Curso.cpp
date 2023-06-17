@@ -122,7 +122,13 @@ set<DTInscripcion> Curso::obtenerSetDTInscripcion(){
 }
 
 DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
-    DTEstadisticaCurso estadistica = DTEstadisticaCurso(nombre, descripcion, dificultad, IdiomaEnseniado, nombreProf, HabilitacionToString(), Lecciones, inscripciones, 10);
+    int avance;
+    std::set<Inscripcion*>::iterator it;
+    cout << "Seleccione un Profesor: "<< endl;
+    for (it= inscripciones.begin(); it!=inscripciones.end(); ++it) {
+
+    }
+    DTEstadisticaCurso estadistica = DTEstadisticaCurso(nombre, descripcion, dificultad, IdiomaEnseniado, nombreProf, HabilitacionToString(), Lecciones, inscripciones, avance);
     return estadistica;
 }
 
@@ -148,5 +154,6 @@ string Curso::HabilitacionToString(){
     if (habilitacion) return "Hablitado";
     return "No habilitado";
 }
+
 Curso::~Curso(){
 }
