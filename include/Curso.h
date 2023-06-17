@@ -56,6 +56,7 @@ class Curso {
         set<DTInscripcion> obtenerSetDTInscripcion();
         DTEstadisticaProfesor obtenerEstadisticasProfesor();
         DTEstadisticaCurso obtenerEstadisticaCurso();
+        string HabilitacionToString();
         ~Curso();
 };
 

@@ -122,8 +122,7 @@ set<DTInscripcion> Curso::obtenerSetDTInscripcion(){
 }
 
 DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
-
-    DTEstadisticaCurso estadistica = DTEstadisticaCurso(obtNombre(), obtenerDescripcion(), )
+    DTEstadisticaCurso estadistica = DTEstadisticaCurso(nombre, descripcion, dificultad, IdiomaEnseniado, nombreProf, HabilitacionToString(), Lecciones, inscripciones, 10);
     return estadistica;
 }
 
@@ -145,5 +144,9 @@ DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
     return retorno;
 }
 
+string Curso::HabilitacionToString(){
+    if (habilitacion) return "Hablitado";
+    return "No habilitado";
+}
 Curso::~Curso(){
 }

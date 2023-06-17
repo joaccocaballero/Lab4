@@ -4,11 +4,13 @@
 
 #include <string>
 #include "Curso.h"
+#include "Idioma.h"
 
 using namespace std;
 
 class Leccion;
 class Inscripcion;
+class Idioma;
 
 class DTEstadisticaCurso {
  private:
@@ -18,18 +20,18 @@ class DTEstadisticaCurso {
     Idioma* Idioma;
     string Profesor;
     string Habilitacion;
-    set<Leccion> Lecciones;
-    set<Inscripcion> Inscripciones;
+    set<Leccion*> Lecciones;
+    set<Inscripcion*> Inscripciones;
     int Avance;
  public:
     DTEstadisticaCurso();
     DTEstadisticaCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
-    Idioma Idioma, string Profesor, string Habilitacion, set<Leccion> Lecciones,
-    set<Inscripcion> Inscripciones, int Avance);
+    Idioma* idioma, string Profesor, string Habilitacion, set<Leccion*> Lecciones,
+    set<Inscripcion*> Inscripciones, int Avance);
     string getNombreCurso();
     string getDescripcionCurso();
     EnumDificultad getDificultad();
-    string getIdioma();
+    Idioma* getIdioma();
     string getProfesor();
     string getHabilitacion();
     set<Leccion> getLecciones();
