@@ -5,9 +5,10 @@
 #include "DTFecha.h"
 #include "Curso.h"
 #include <map>
-#include "DTEstadisticaEstudiante.h"
 
 class Estudiante;
+class Curso;
+class DTEstadisticaEstudiante;
 
 class Inscripcion {
     private:
@@ -37,5 +38,6 @@ class Inscripcion {
 };
 
 #include "../include/Estudiante.h"
+#include "DTEstadisticaEstudiante.h"
 
 #endif

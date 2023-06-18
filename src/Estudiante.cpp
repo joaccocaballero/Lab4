@@ -1,7 +1,3 @@
-
-#include <set>
-#include <string>
- 
 #include "../include/Estudiante.h"
 #include "../include/Idioma.h"
 #include "../include/DTFecha.h"
@@ -39,16 +35,15 @@ void Estudiante::agregarInscripcion(Inscripcion*i){
   InscripcionesCursos.insert(i);
 }
 
-
-
-set<DTEstadisticaEstudiante> obtenerEstadisticas(){
-  set<Inscripcion*> setInscrip = this->obtenerInscripciones();
+set<DTEstadisticaEstudiante> Estudiante::obtenerEstadisticas(){
+  set<Inscripcion*>::iterator it;
   set<DTEstadisticaEstudiante> EstadisticasEstu;
-  for (Inscripcion* inscrip : setInscrip) {
-      DTEstadisticaEstudiante estadisticaIns = inscrip->crearEstadisticaEstudiante();
+  for (it=InscripcionesCursos.begin(); it!=InscripcionesCursos.end(); ++it) {
+      Inscripcion* current = *it;
+      DTEstadisticaEstudiante estadisticaIns = current->crearEstadisticaEstudiante();
       EstadisticasEstu.insert(estadisticaIns);
     }
-  this->EstadisticasEstudiante = EstadisticasEstu;
+  EstadisticasEstudiante = EstadisticasEstu;
   return EstadisticasEstu;
 }
 

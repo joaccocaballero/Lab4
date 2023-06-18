@@ -7,42 +7,52 @@
 using namespace std;
 
 DTEstadisticaCurso::DTEstadisticaCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
-        Idioma* idioma, string Profesor, string Habilitacion, set<Leccion*> Lecciones,
-        set<Inscripcion*> Inscripciones, int Avance){
+                                       Idioma *idioma, string Profesor, string Habilitacion, set<Leccion *> Lecciones,
+                                       set<Inscripcion *> Inscripciones, int Avance)
+{
     this->Nombre = Nombre;
     this->Descripcion = Descripcion;
     this->Dificultad = Dificultad;
-    this->Idioma = idioma;
+    this->idioma = idioma;
     this->Profesor = Profesor;
     this->Habilitacion = Habilitacion,
     this->Lecciones = Lecciones,
     this->Inscripciones = Inscripciones,
-    this->Avance = Avance;            
+    this->Avance = Avance;
 }
-string DTEstadisticaCurso::getNombreCurso(){
+string DTEstadisticaCurso::getNombreCurso()
+{
     return Nombre;
 }
-string DTEstadisticaCurso::getDescripcionCurso(){
+string DTEstadisticaCurso::getDescripcionCurso()
+{
     return Descripcion;
 }
-EnumDificultad DTEstadisticaCurso::getDificultad(){
+EnumDificultad DTEstadisticaCurso::getDificultad()
+{
     return Dificultad;
 }
-Idioma* DTEstadisticaCurso::getIdioma(){
-    return Idioma;
+Idioma *DTEstadisticaCurso::getIdioma()
+{
+    return idioma;
 }
-string DTEstadisticaCurso::getProfesor(){
+string DTEstadisticaCurso::getProfesor()
+{
     return Profesor;
 }
-string DTEstadisticaCurso::getHabilitacion(){
+string DTEstadisticaCurso::getHabilitacion()
+{
     return Habilitacion;
 }
-set<Leccion*> DTEstadisticaCurso::getLecciones(){
+set<Leccion *> DTEstadisticaCurso::getLecciones()
+{
     return Lecciones;
 }
-set<Inscripcion*> DTEstadisticaCurso::getInscripciones(){
+set<Inscripcion *> DTEstadisticaCurso::getInscripciones()
+{
     return Inscripciones;
 }
-int DTEstadisticaCurso::getAvance(){
+int DTEstadisticaCurso::getAvance()
+{
     return Avance;
 }

@@ -2,7 +2,6 @@
 #include <set>
 #include <iostream>
 #include "../include/Leccion.h"
-#include "../include/DTEstadisticaCurso.h"
 #include "../include/Curso.h"
 #include "../include/DTLeccion.h"
 #include "../include/DTInscripcion.h"
@@ -10,8 +9,8 @@
 using namespace std;
 
 
-Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad,set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf,
-set<Inscripcion*> colInscripciones){
+Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf,
+    set<Inscripcion*> colInscripciones){
     this->habilitacion = habilitacion;
     this->nombre = nombre;
     this->descripcion = descripcion;
@@ -20,7 +19,7 @@ set<Inscripcion*> colInscripciones){
     this->cursosPrevios = cursosPrevios;
     this->Lecciones = lecciones;
     this->nombreProf = nombreProf;
-    this->inscripciones = inscripciones;
+    this->inscripciones = colInscripciones;
 }
 
 string Curso::obtenerNombre(){
@@ -130,7 +129,7 @@ DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
     for (it= inscripciones.begin(); it!=inscripciones.end(); ++it) {
         Inscripcion* current = *it;
         DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
-        avance += estudianteInscripto->getAvance();
+        avance += estudianteInscripto.getAvance();
     }
     Promedio = avance/cantidad*100;
     DTEstadisticaCurso estadistica = DTEstadisticaCurso(nombre, descripcion, dificultad, IdiomaEnseniado, nombreProf, HabilitacionToString(), Lecciones, inscripciones, Promedio);
@@ -138,7 +137,7 @@ DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
 }
 
 DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
-    string nombreCurso = this->nombre;
+    string nombreCurso = nombre;
     int avance = 0;
     int Promedio = 0;
     int cantidad = inscripciones.size();
@@ -146,7 +145,7 @@ DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
     for (it= inscripciones.begin(); it!=inscripciones.end(); ++it) {
         Inscripcion* current = *it;
         DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
-        avance += estudianteInscripto->getAvance();
+        avance += estudianteInscripto.getAvance();
     }
     Promedio = avance/cantidad*100;
     DTEstadisticaProfesor retorno = DTEstadisticaProfesor(nombreCurso, Promedio);

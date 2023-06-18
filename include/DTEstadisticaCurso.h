@@ -10,14 +10,13 @@ using namespace std;
 
 class Leccion;
 class Inscripcion;
-class Idioma;
 
 class DTEstadisticaCurso {
  private:
     string Nombre;
     string Descripcion;
     EnumDificultad Dificultad;
-    Idioma* Idioma;
+    Idioma* idioma;
     string Profesor;
     string Habilitacion;
     set<Leccion*> Lecciones;
@@ -34,9 +33,12 @@ class DTEstadisticaCurso {
     Idioma* getIdioma();
     string getProfesor();
     string getHabilitacion();
-    set<Leccion> getLecciones();
-    set<Inscripcion> getInscripciones();
+    set<Leccion*> getLecciones();
+    set<Inscripcion*> getInscripciones();
     int getAvance();
+   bool operator<(const DTEstadisticaCurso& dt) const {
+      return Avance < dt.Avance;
+   }
 };
 
 #include "Leccion.h"

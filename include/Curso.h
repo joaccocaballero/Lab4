@@ -9,18 +9,16 @@
 
 #include "Idioma.h"
 #include "Leccion.h"
-#include "Inscripcion.h"
 #include "DTLeccion.h"
 #include "DTInscripcion.h"
 #include "DTEstadisticaProfesor.h"
-#include "DTEstadisticaCurso.h"
-
 using namespace std;
+
+enum EnumDificultad { Principiante, Medio, Avanzado };
 
 class DTEstadisticaCurso;
 class Inscripcion;
 
-enum EnumDificultad { Principiante, Medio, Avanzado };
 
 class Curso {
     private:
@@ -61,5 +59,7 @@ class Curso {
 };
 
 #include "DTEstadisticaCurso.h"
+#include "Inscripcion.h"
+
 
 #endif

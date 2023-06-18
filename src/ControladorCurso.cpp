@@ -215,7 +215,7 @@ set<DTEstadisticaProfesor> ControladorCurso::obtenerEstadisticasProfesor(string 
 
 DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
     ManejadorCurso* manejador = manejadorCurso->getManejadorC();
-    return manejador->obtenerEstadisticasCurso(nombre);
+    return manejador->obtenerEstadisticaCurso(nombre);
 }
 
 set<DTEjercicio> ControladorCurso::obtenerEjerciciosPendientes(string nombreCurso, string nicknameEstudiante){
