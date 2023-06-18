@@ -208,34 +208,38 @@ int main() {
             case 2: {
                 system("clear");
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();
-                cout << "Seleccione un usuario" << endl;
-                std::set<string>::iterator it;
-                for (it= usuarios.begin(); it!=usuarios.end(); ++it) {
-                    string elem = *it;
-                    cout << "-"+elem << endl;
-                }
-                string usuarioSeleccionado = "";
-                cin >> usuarioSeleccionado;
-                bool tipoUsuario = ControladorUsuario->obtenerTipo(usuarioSeleccionado);
-                system("clear");
-                cout << "DATOS DE USUARIO:" << endl;
-                if (tipoUsuario == true) {
-                    DTEstudiante infoEstu = ControladorUsuario->obtenerInfoEstudiante(usuarioSeleccionado);
-                    cout << "Nombre: " + infoEstu.getNombre() << endl; 
-                    cout << "Descripcion: " + infoEstu.getDescripcion() << endl; 
-                    cout << "Pais: " + infoEstu.getPaisResidencia() << endl; 
-                } else {
-                    DTProfesor infoProfe = ControladorUsuario->obtenerInfoProfesor(usuarioSeleccionado);
-                    cout << "Nombre: " + infoProfe.getNombre() << endl;
-                    cout << "Descripcion: " + infoProfe.getDescripcion() << endl;
-                    set<string> idiomas = infoProfe.getIdiomas();
-                    cout << "Idiomas: "<< endl;
-                    for (it= idiomas.begin(); it!=idiomas.end(); ++it) {
+                if(!usuarios.empty()){
+                    cout << "Seleccione un usuario" << endl;
+                    std::set<string>::iterator it;
+                    for (it= usuarios.begin(); it!=usuarios.end(); ++it) {
                         string elem = *it;
-                        cout << "   -"+elem << endl;
+                        cout << "-"+elem << endl;
                     }
-                    cout << "Instituto: " + infoProfe.getInstituto() << endl; 
-                } 
+                    string usuarioSeleccionado = "";
+                    cin >> usuarioSeleccionado;
+                    bool tipoUsuario = ControladorUsuario->obtenerTipo(usuarioSeleccionado);
+                    system("clear");
+                    cout << "DATOS DE USUARIO:" << endl;
+                    if (tipoUsuario == true) {
+                        DTEstudiante infoEstu = ControladorUsuario->obtenerInfoEstudiante(usuarioSeleccionado);
+                        cout << "Nombre: " + infoEstu.getNombre() << endl; 
+                        cout << "Descripcion: " + infoEstu.getDescripcion() << endl; 
+                        cout << "Pais: " + infoEstu.getPaisResidencia() << endl; 
+                    } else {
+                        DTProfesor infoProfe = ControladorUsuario->obtenerInfoProfesor(usuarioSeleccionado);
+                        cout << "Nombre: " + infoProfe.getNombre() << endl;
+                        cout << "Descripcion: " + infoProfe.getDescripcion() << endl;
+                        set<string> idiomas = infoProfe.getIdiomas();
+                        cout << "Idiomas: "<< endl;
+                        for (it= idiomas.begin(); it!=idiomas.end(); ++it) {
+                            string elem = *it;
+                            cout << "   -"+elem << endl;
+                        }
+                        cout << "Instituto: " + infoProfe.getInstituto() << endl; 
+                    } }
+                else {
+                    cout << "No se encontraron Usuarios existentes en el Sistema" << endl;
+                }
                 clearInputBuffer();
                 break;
             }
@@ -244,11 +248,12 @@ int main() {
             case 3: {
                 system("clear");
                 bool seIngresaNuevo = false;
-                while (seIngresaNuevo == false) {
+                bool seCancela = false;
+                while ((seIngresaNuevo == false) && (seCancela == false)) {
                     string nuevoIdioma = "";
                     bool flagNuevoIdioma = false;
                     cout << "Ingrese nuevo Idioma:" << endl;
-                    cin >> nuevoIdioma;
+                    getline(cin >> ws, nuevoIdioma);
                     // Me fijo si existe idioma
                     flagNuevoIdioma =
                         ControladorUsuario->agregarIdioma(nuevoIdioma);
@@ -256,8 +261,14 @@ int main() {
                         cout << "Idioma ingresado correctamente." << endl;
                         seIngresaNuevo = true;
                     } else {
-                        cout << "El idioma ingresado ya existe, ingrese otro."
-                             << endl;
+                        int opcion = 0;
+                        cout << "El idioma ingresado ya existe, ingrese otro o cancele la acción:" << endl;
+                        cout << "1- Ingresar nuevo idioma" << endl;
+                        cout << "2- Cancelar acción" << endl;
+                        cin >> opcion;
+                        if(opcion == 2){
+                            seCancela= true;
+                        }
                     }
                 }
                 clearInputBuffer();
@@ -284,6 +295,7 @@ int main() {
             case 5: {
                 system("clear");
                 set<string> listadoProfesores = ControladorUsuario->obtenerProfesores();
+                if(!listadoProfesores.empty()){
                 cout << "Seleccione un profesor:" << endl;
                 string profesorSeleccionado = "";
                 // imprimo nombre de los profesores
@@ -324,6 +336,10 @@ int main() {
                         break;
                     case 3:
                         dificultad = Avanzado;
+                        break;
+                    default:
+                        cout << "Seleccione una opción correcta"
+                             << endl;
                         break;
                 }
                 ControladorCurso->ingresarInfoCurso(nombreCurso, descripcion, dificultad);
@@ -393,6 +409,7 @@ int main() {
                 cout << "1- Si" << endl;
                 cout << "2- No" << endl;
                 cin >> agregarLecciones;
+                system("clear");
                 while (agregarLecciones == 1){
                     ControladorCurso->seleccionarCurso(nombreCurso);
                     string temaLeccion = "";
@@ -401,8 +418,10 @@ int main() {
                     // ingreso Datos
                     cout << "Ingrese tema de la lección:" << endl;
                     getline(cin >> ws, temaLeccion);
+                    system("clear");
                     cout << "Ingrese objetivo de la lección:" << endl;
                     getline(cin >> ws, objetivoLeccion);
+                    system("clear");
                     ControladorCurso->ingresarInfoLeccion(temaLeccion,
                                                         objetivoLeccion);
                     ControladorCurso->confirmarAltaLeccion();
@@ -411,11 +430,13 @@ int main() {
                     cout << "1- Si" << endl;
                     cout << "2- No" << endl;
                     cin >> agregarEjs;
+                    system("clear");
                     while (agregarEjs == 1) {
                         ControladorCurso->seleccionarLeccion(temaLeccion);
                         string descripcion = "";
                         cout << "Ingrese descripción del ejercicio:";
                         getline(cin >> ws, descripcion);
+                        system("clear");
                         ControladorCurso->ingresarInfoEjercicio(descripcion);
                         int tipoId;
                         
@@ -425,6 +446,7 @@ int main() {
                         cout << "2- Traducir" << endl;
                         EnumEjercicios tipo;
                         cin >> tipoId;
+                        system("clear");
                         switch (tipoId) {
                             case 1: {
                                 tipo = CompletarPalabras;
@@ -432,8 +454,10 @@ int main() {
                                 string solucion = "";
                                 cout << "Ingrese frase a completar:" << endl;
                                 getline(cin >> ws, frase);
+                                system("clear");
                                 cout << "Ingrese solución ejercicio";
                                 getline(cin >> ws, solucion);
+                                system("clear");
                                 ControladorCurso->agregarDatosCompletar(frase, solucion);
                                 break;
                             }
@@ -443,8 +467,10 @@ int main() {
                                 string traduccion = "";
                                 cout << "Ingrese frase a traducir:" << endl;
                                 getline(cin >> ws, frase);
+                                system("clear");
                                 cout << "Ingrese frase traducida:";
                                 getline(cin >> ws, traduccion);
+                                system("clear");
                                 ControladorCurso->agregarDatosTraducir(frase, traduccion);
                                 break;
                             }
@@ -462,6 +488,10 @@ int main() {
                     cout << "1- Si" << endl;
                     cout << "2- No" << endl;
                     cin >> agregarLecciones;
+                    system("clear");
+                }}
+                else {
+                    cout << "No se han encontrado Profesores en el Sistema" << endl;
                 }
                 clearInputBuffer();
                 break;
@@ -471,6 +501,7 @@ int main() {
             case 6: {
                 system("clear");
                 set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
+                if(!cursosNoHabilitados.empty()){
                 cout << "Seleccione un curso:" << endl;
                 string cursoSeleccionado = "";
                 //imprimo nombre de los cursos
@@ -503,11 +534,13 @@ int main() {
                 cout << "1- Si" << endl;
                 cout << "2- No" << endl;
                 cin >> agregarEjs;
+                system("clear");
                 while (agregarEjs == 1) {
                     ControladorCurso->seleccionarLeccion(temaLeccion);
                     string descripcion = "";
                     cout << "Ingrese descripción del ejercicio:";
                     getline(cin >> ws, descripcion);
+                    system("clear");
                     ControladorCurso->ingresarInfoEjercicio(descripcion);
                     int tipoId;
                     
@@ -517,6 +550,7 @@ int main() {
                     cout << "2- Traducir" << endl;
                     EnumEjercicios tipo;
                     cin >> tipoId;
+                    system("clear");
                     switch (tipoId) {
                         case 1: {
                             tipo = CompletarPalabras;
@@ -524,8 +558,10 @@ int main() {
                             string solucion = "";
                             cout << "Ingrese frase a completar:" << endl;
                             getline(cin >> ws, frase);
+                            system("clear");
                             cout << "Ingrese solución ejercicio";
                             getline(cin >> ws, solucion);
+                            system("clear");
                             ControladorCurso->agregarDatosCompletar(frase, solucion);
                             break;
                         }
@@ -535,8 +571,10 @@ int main() {
                             string traduccion = "";
                             cout << "Ingrese frase a traducir:" << endl;
                             getline(cin >> ws, frase);
+                            system("clear");
                             cout << "Ingrese frase traducida:";
                             getline(cin >> ws, traduccion);
+                            system("clear");
                             ControladorCurso->agregarDatosTraducir(frase, traduccion);
                             break;
                         }
@@ -550,6 +588,10 @@ int main() {
                     cout << "2- No" << endl;
                     cin >> agregarEjs;
                 }
+                }
+                else{
+                    cout << "No se han encontrado Cursos en el Sistema" << endl;
+                }
                 clearInputBuffer();
                 break;
             }
@@ -559,6 +601,7 @@ int main() {
                 system("clear");
                 //Obtengo Cursos No Habilitados
                  set<string> cursosNoHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
+                 if(!cursosNoHabilitados.empty()){
                  cout << "Seleccione un curso:" << endl;
                  string cursoSeleccionado = "";
                  // imprimo nombre de los cursos
@@ -639,6 +682,10 @@ int main() {
                         break;
                  }
                  ControladorCurso->confirmarAltaEjercicio(tipo);
+                 }
+                 else {
+                    cout << "No se encontraron Cursos no habilitados en el Sistema" << endl;
+                 }
                  clearInputBuffer();
                 break;
             }
@@ -649,6 +696,7 @@ int main() {
                 //se lista todos los cursos no habilitados
                 cout << "Seleccione un curso:" << endl;
                 set<string> noHabilitados = ControladorCurso->obtenerCursosNoHabilitados();
+                if(!noHabilitados.empty()){
                 string cursoSeleccionado = "";
                 for (string curso: noHabilitados){
                     cout << "-"+curso << endl;
@@ -662,13 +710,19 @@ int main() {
                 }else{
                     cout << "El curso no pudo ser habilitado" << endl;
                 }
+                }
+                else{
+                    cout << "No se han encontrado Cursos no habilitados en el Sistema" << endl;
+                }
                 clearInputBuffer();
                 break;
+                
             }
             //Eliminar Curso
             case 9:{
                 system("clear");
                 set<string> cursos = ControladorCurso->obtenerCursos();
+                if(!cursos.empty()){
                 cout << "Seleccione el curso a eliminar:" << endl;
                 string cursoSeleccionado = "";
                 // imprimo nombre de los cursos
@@ -684,6 +738,9 @@ int main() {
                 }                
                 ControladorCurso->confirmarEliminacion(cursoSeleccionado);
                 cout << "Ha sido eliminado el curso: "<< cursoSeleccionado << endl;
+                }else {
+                    cout << "No se han encontrado Cursos en el Sistema" << endl;
+                }
                 clearInputBuffer();
                 break;
             }
@@ -692,6 +749,7 @@ int main() {
                 // Obtengo Cursos
                 system("clear");
                  set<string> cursos = ControladorCurso->obtenerCursos();
+                 if(!cursos.empty()){
                 cout << "Seleccione un curso:" << cursos.size() << endl;
                 string cursoSeleccionado = "";
                 // imprimo nombre de los cursos
@@ -754,6 +812,9 @@ int main() {
                 else{
                     cout << "       Sin Inscripciones." << endl;
                 }
+                } else {
+                    cout << "No se han encontrado Cursos en el Sistema" << endl;
+                }
                 clearInputBuffer();
                 break;
             }
@@ -762,6 +823,7 @@ int main() {
             case 11: {
                 system("clear");
                 set<string> estudiantesDisponibles = ControladorUsuario->obtenerEstudiantes();
+                if(!estudiantesDisponibles.empty()){
                 string estudiante = "";
                 cout << "Ingrese nickname estudiante: " << endl;
                 getline(cin >> ws, estudiante);
@@ -812,6 +874,10 @@ int main() {
                 else{
                     cout << "No hay cursos disponibles para inscripción." << endl;
                 }
+                }
+                else{
+                    cout << "No se han encontrado Cursos en el Sistema" << endl;
+                }
                 clearInputBuffer();
                break;
             }
@@ -822,6 +888,7 @@ int main() {
                system("clear");
                set<string> nicknamesSistema =
                    ControladorUsuario->obtenerUsuarios();
+                if(!nicknamesSistema.empty()){
                 string nicknameEstudiante = "";
                 cout << "Ingrese Nickname de Estudiante:" << endl;
                 getline(cin >> ws, nicknameEstudiante);
@@ -897,6 +964,9 @@ int main() {
                 else{
                     cout << "No hay cursos no aprobados disponibles." << endl;
                 }
+                }else {
+                    cout << "No se han encontrado Usuarios en el Sistema" << endl; 
+                }
                 clearInputBuffer();
                break;
             }
@@ -914,6 +984,7 @@ int main() {
                         case 1:{
                             //imprime todos los nicknames
                             set<string> NickEstudiantes = ControladorUsuario->obtenerEstudiantes();
+                            if(!NickEstudiantes.empty()){
                             std::set<string>::iterator it;
                             cout << "Seleccione un Estudiante: "<< endl;
                             for (it= NickEstudiantes.begin(); it!=NickEstudiantes.end(); ++it) {
@@ -938,12 +1009,16 @@ int main() {
                                 cout << "   Avance: " << est.getAvance() << endl;
                                 cout << "   " << endl;
                             }
+                            }else{
+                                cout << "No se han encontrado Estudiantes en el Sistema" << endl;
+                            }
                             clearInputBuffer();
                             break;
                         }
                         case 2:{
                             //imprime nicknames de profesores
                             set<string> NickProfesores = ControladorUsuario->obtenerProfesores();
+                            if(!NickProfesores.empty()){
                             std::set<string>::iterator it;
                             cout << "Seleccione un Profesor: "<< endl;
                             for (it= NickProfesores.begin(); it!=NickProfesores.end(); ++it) {
@@ -964,6 +1039,9 @@ int main() {
                                 cout << "   Curso: " << pro.getNombreCurso() << endl;
                                 cout << "   Promedio: " << pro.getPromedio() << endl;
                                 cout << "   " << endl;
+                            }}
+                            else{
+                                cout << "No se han encontrado Profesores en el Sistema" << endl;
                             }
                             clearInputBuffer();
                             break;
@@ -971,6 +1049,7 @@ int main() {
                         case 3:{
                             //imprime todos los cursos
                             set<string> NombreCursos = ControladorCurso->obtenerCursosHabilitados();
+                            if(!NombreCursos.empty()){
                             std::set<string>::iterator it;
                             cout << "Seleccione un Curso: "<< endl;
                             for (it= NombreCursos.begin(); it!=NombreCursos.end(); ++it) {
@@ -990,6 +1069,9 @@ int main() {
                             cout << "   Curso: " << estadisticas.getNombreCurso() << endl;
                             cout << "   Promedio: " << estadisticas.getAvance() << endl;
                             cout << "   " << endl;
+                            }else {
+                                cout << "No se han encontrado Cursos en el Sistema" << endl;
+                            }
                             clearInputBuffer();
                             break;
                         }
