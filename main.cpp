@@ -771,6 +771,7 @@ int main() {
                break;
             }
 
+            //Consultar Estadisticas
             case 13: {
                     string sopcion;
                     cout << "Seleccione una opción:" << endl;

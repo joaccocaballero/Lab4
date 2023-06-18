@@ -10,7 +10,6 @@ class DTEstadisticaProfesor{
         string Curso;
         int Promedio;
     public:
-        DTEstadisticaProfesor();
         DTEstadisticaProfesor(string Curso, int Promedio);
         string getNombreCurso();
         int getPromedio();
