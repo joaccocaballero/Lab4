@@ -1,10 +1,13 @@
 #include "../include/Inscripcion.h"
+#include "../include/DTEstadisticaProfesor.h"
+
 
 Inscripcion::Inscripcion(DTFecha fecha, Curso* curso, Estudiante* estudiante) {
     this->CursoInscripcion = curso;
     this->EstudianteInscrito = estudiante;
     this->Fecha = fecha;
     this->Aprobacion= false;
+    this->estadistica = DTEstadisticaEstudiante(curso->obtenerNombre(), 0);
 }
 
 int Inscripcion::obtenerIdInscripcion(){

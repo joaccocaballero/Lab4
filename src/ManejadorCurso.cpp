@@ -163,8 +163,6 @@ set<DTEstadisticaProfesor> ManejadorCurso::obtenerEstadisticasProfesor(string Ni
     return estadisProf;
     }
 
-
-
 DTEjercicio ManejadorCurso::obtenerEjercicio(int id){}
 bool ManejadorCurso::respuestaEjercicio(string sol){}
 DTEstadisticaCurso ManejadorCurso::obtenerEstadisticaCurso(string nombre){

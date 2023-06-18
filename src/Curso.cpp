@@ -5,12 +5,13 @@
 #include "../include/Curso.h"
 #include "../include/DTLeccion.h"
 #include "../include/DTInscripcion.h"
+#include "../include/DTEstadisticaProfesor.h"
+
 
 using namespace std;
 
 
-Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf,
-    set<Inscripcion*> colInscripciones){
+Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf, set<Inscripcion*> colInscripciones){
     this->habilitacion = habilitacion;
     this->nombre = nombre;
     this->descripcion = descripcion;
@@ -20,6 +21,7 @@ Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificulta
     this->Lecciones = lecciones;
     this->nombreProf = nombreProf;
     this->inscripciones = colInscripciones;
+    this->EstadisticaProfesor = DTEstadisticaProfesor("asd", 0);
 }
 
 string Curso::obtenerNombre(){
@@ -139,7 +141,7 @@ DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
 DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
     string nombreCurso = nombre;
     int avance = 0;
-    int Promedio = 0;
+    int promedio = 0;
     int cantidad = inscripciones.size();
     set<Inscripcion*>::iterator it;
     for (it= inscripciones.begin(); it!=inscripciones.end(); ++it) {
@@ -147,8 +149,8 @@ DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
         DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
         avance += estudianteInscripto.getAvance();
     }
-    Promedio = avance/cantidad*100;
-    DTEstadisticaProfesor retorno = DTEstadisticaProfesor(nombreCurso, Promedio);
+    promedio = static_cast<int>(avance/cantidad*100);
+    DTEstadisticaProfesor retorno = DTEstadisticaProfesor(nombreCurso, promedio);
     this->EstadisticaProfesor = retorno;
     return retorno;
 }

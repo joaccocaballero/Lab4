@@ -33,8 +33,7 @@ class Curso {
         DTEstadisticaProfesor EstadisticaProfesor;
         string nombreProf;
     public:
-        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf,
-        set<Inscripcion*> colInscripciones);
+        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma* idioma, set<Leccion*> lecciones, string nombreProf, set<Inscripcion*> colInscripciones);
         string obtenerNombre();
         set<Leccion*> obtenerLecciones();
         Leccion* obtenerLeccion(string nomLeccion);

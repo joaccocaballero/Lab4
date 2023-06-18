@@ -7,10 +7,11 @@ using namespace std;
 
 class DTEstadisticaProfesor{
     private:
-        string Curso;
+        string curso;
         int Promedio;
     public:
-        DTEstadisticaProfesor(string Curso, int Promedio);
+        DTEstadisticaProfesor();
+        DTEstadisticaProfesor(string curso, int Promedio);
         string getNombreCurso();
         int getPromedio();
         bool operator<(const DTEstadisticaProfesor& dt) const {

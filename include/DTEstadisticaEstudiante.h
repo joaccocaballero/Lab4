@@ -10,6 +10,7 @@ class DTEstadisticaEstudiante {
         string curso;
         int Avance;
     public: 
+        DTEstadisticaEstudiante();
         DTEstadisticaEstudiante(string curso, int avance);
         string getNombreCurso();
         int getAvance();
