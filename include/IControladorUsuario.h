@@ -32,7 +32,6 @@ class IControladorUsuario {
         virtual void ingresarInstituto(string NombreInstituto)= 0;
         virtual set<string> obtenerEstudiantes()= 0;
         virtual set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname)= 0;
-        virtual set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname)= 0;
         virtual set<string> obtenerSubscripcionesPendientes(string Nickname)= 0;
         virtual set<string> obtenerSubscripciones(string nickname)=0;
         virtual vector<DTNotificacion> obtenerNotificaciones(string Nickname) = 0;

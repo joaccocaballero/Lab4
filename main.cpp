@@ -338,7 +338,7 @@ int main() {
                 for (string nombre: idiomas) {
                     cout << "-"+nombre << endl;
                 }
-                cin >> idiomaSeleccionado;
+                getline(cin >> ws, idiomaSeleccionado);
                 system("clear");
                 ControladorCurso->seleccionarIdioma(idiomaSeleccionado);
 
@@ -777,7 +777,7 @@ int main() {
                     cout << "Seleccione una opción:" << endl;
                     cout << "1- Consultar estadística de Estudiante. "<< endl;
                     cout << "2- Consultar estadística de Profesor. " << endl;
-                    cout << "2- Consultar estadística de Curso. " << endl;
+                    cout << "3- Consultar estadística de Curso. " << endl;
                     getline(cin >> ws, sopcion);
                     int opcion = std::stoi(sopcion);
                     switch(opcion) {
@@ -828,7 +828,7 @@ int main() {
                                 getline(cin >> ws, profesor);
                                 system("clear");
                             }
-                            set<DTEstadisticaProfesor> estadisticas = ControladorUsuario->obtenerEstadisticaProfesor(profesor);
+                            set<DTEstadisticaProfesor> estadisticas = ControladorCurso->obtenerEstadisticasProfesor(profesor);
                             cout << "Estadisticas del profesor: " << profesor << endl;
                             for (DTEstadisticaProfesor pro: estadisticas) {
                                 cout << "   Curso: " << pro.getNombreCurso() << endl;

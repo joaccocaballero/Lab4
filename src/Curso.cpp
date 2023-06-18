@@ -133,7 +133,12 @@ DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
         DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
         avance += estudianteInscripto.getAvance();
     }
-    Promedio = avance/cantidad*100;
+    if(cantidad != 0 ){
+        Promedio = avance/cantidad*100;
+    }
+    else {
+        Promedio = 0;
+    }
     DTEstadisticaCurso estadistica = DTEstadisticaCurso(nombre, descripcion, dificultad, IdiomaEnseniado, nombreProf, HabilitacionToString(), Lecciones, inscripciones, Promedio);
     return estadistica;
 }
@@ -149,7 +154,12 @@ DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
         DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
         avance += estudianteInscripto.getAvance();
     }
-    promedio = static_cast<int>(avance/cantidad*100);
+    if(cantidad != 0 ){
+        promedio = static_cast<int>(avance/cantidad*100);
+    }
+    else {
+        promedio = 0;
+    }
     DTEstadisticaProfesor retorno = DTEstadisticaProfesor(nombreCurso, promedio);
     this->EstadisticaProfesor = retorno;
     return retorno;
