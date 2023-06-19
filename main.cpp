@@ -1090,16 +1090,19 @@ int main() {
             //suscribirse a notificaciones
             case 14: {
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                if(!usuarios.empty()){
                 string nicknameUsuario;
                 cout << "Seleccione un nickname:" <<endl;
                 for (string nickname: usuarios){
                     cout << "-"+nickname << endl;
                 }
                 getline(cin >> ws, nicknameUsuario);
+                system("clear");
                 while (!usuarios.count(nicknameUsuario)) {
                     cout << "Seleccione un nickname existente:" <<endl;
                     getline(cin >> ws, nicknameUsuario);
                 }
+                system("clear");
                 set<string> idiomasDisponibles = ControladorUsuario->obtenerSubscripcionesPendientes(nicknameUsuario);
                 set<string> idiomasASuscribirse;
 
@@ -1134,6 +1137,9 @@ int main() {
                 }else {
                     cout << "Error al suscribirse" << endl;
                 }
+                }else {
+                    cout << "No se han encontrado Cursos en el Sistema" << endl;
+                }
                 clearInputBuffer();
                 break;
             }
@@ -1141,6 +1147,7 @@ int main() {
            //Consulta de Notificaciones
             case 15: {
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                if(!usuarios.empty()){
                 string nicknameUsuario;
                 cout << "Seleccione un nickname:" <<endl;
                 for (string nickname: usuarios){
@@ -1151,6 +1158,7 @@ int main() {
                     cout << "Seleccione un nickname existente:" <<endl;
                     getline(cin >> ws, nicknameUsuario);
                 }
+                system("clear");
                 vector<DTNotificacion> notificaciones = ControladorUsuario->obtenerNotificaciones(nicknameUsuario);
                 if (notificaciones.size() > 0) {
                     cout << "Notificaciones" << endl;
@@ -1161,7 +1169,11 @@ int main() {
                     } 
                 }else {
                     cout << "No hay notificaciones" << endl;
-                }
+                }}
+                    else{
+                        cout << "No se han encontrado Usuarios en el Sistema" << endl;
+                    }
+                
                 clearInputBuffer();
                 break;
             }
@@ -1169,6 +1181,7 @@ int main() {
             //Eliminar Suscripciones
             case 16: {
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();
+                if(!usuarios.empty()){
                 string nicknameUsuario;
                 cout << "Seleccione un nickname:" <<endl;
                 for (string nickname: usuarios){
@@ -1212,6 +1225,9 @@ int main() {
                 if(res) {
                     cout << "Se ha desuscrito con exito!" <<endl;
                 }else cout << "Error al desuscribirse" <<endl;
+                } else {
+                    cout << "No se han encontrado Usuarios en el Sistema" << endl;
+                }
                 clearInputBuffer();
                 break;
             }
