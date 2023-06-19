@@ -31,6 +31,6 @@ set<string> Profesor::consultarIdiomasProfesor(){
     return nombreIdiomas;
 }
 
-set<DTEstadisticaProfesor> Profesor::obtenerEstadisticaProfesor(string Nickname){}
+// set<DTEstadisticaProfesor> Profesor::obtenerEstadisticaProfesor(string Nickname){}
 
 Profesor ::~Profesor() {}

@@ -7,12 +7,16 @@ using namespace std;
 
 class DTEstadisticaEstudiante {
     private:
-        string Curso;
+        string curso;
         int Avance;
     public: 
-        DTEstadisticaEstudiante(string Curso, int avance);
+        DTEstadisticaEstudiante();
+        DTEstadisticaEstudiante(string curso, int avance);
         string getNombreCurso();
         int getAvance();
+        bool operator<(const DTEstadisticaEstudiante& dt) const {
+            return Avance < dt.Avance;
+        }
 };
 
 #endif

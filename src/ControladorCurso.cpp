@@ -209,8 +209,14 @@ bool ControladorCurso::confirmarInscripcion(string nickname, string nombreCurso)
     return ctrlU->confirmarAltaInscripcion(e, inscripcion);
 }
 
-DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
+set<DTEstadisticaProfesor> ControladorCurso::obtenerEstadisticasProfesor(string Nickname){
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    return manejador->obtenerEstadisticasProfesor(Nickname);
+}
 
+DTEstadisticaCurso ControladorCurso::obtenerEstadisticaCurso(string nombre){
+    ManejadorCurso* manejador = manejadorCurso->getManejadorC();
+    return manejador->obtenerEstadisticaCurso(nombre);
 }
 
 set<DTEjercicio> ControladorCurso::obtenerEjerciciosPendientes(string nombreCurso, string nicknameEstudiante){

@@ -16,11 +16,12 @@ class Estudiante: public Usuario {
         string PaisResidencia;
         DTFecha FechaNacimiento;
         set<Inscripcion*> InscripcionesCursos;
+        set<DTEstadisticaEstudiante> EstadisticasEstudiante;
     public:
         Estudiante(string Nickname, string Contrasenia, string Nombre, string Descripcion, string PaisResidencia, DTFecha FechaNacimiento);
         set<Inscripcion*> obtenerInscripciones();
         Inscripcion* obtenerInscripcionCurso(string nombreCurso);
-        set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string nickname);
+        set<DTEstadisticaEstudiante> obtenerEstadisticas();
         void agregarInscripcion(Inscripcion* i);
         void eliminarInscripcion(Inscripcion* i);
         string obtenerPais();

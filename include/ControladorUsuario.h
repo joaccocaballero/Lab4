@@ -53,7 +53,6 @@ class ControladorUsuario : public IControladorUsuario {
          Estudiante* obtenerEstudiante(string nickname);
          bool obtenerTipo(string nickname);
          set<DTEstadisticaEstudiante> obtenerEstadisticaEstudiante(string Nickname);
-         set<DTEstadisticaProfesor> obtenerEstadisticaProfesor(string Nickname);
          set<string> obtenerSubscripcionesPendientes(string Nickname);
          vector<DTNotificacion> obtenerNotificaciones(string Nickname);
          void notificarUsuarios(string nombreIdioma, string nombreCurso, vector<string> suscriptores);

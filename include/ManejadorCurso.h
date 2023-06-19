@@ -9,6 +9,7 @@
 #include "Ejercicio.h"
 #include "Leccion.h"
 #include "DTCursoDisponible.h"
+#include "DTEstadisticaProfesor.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class ManejadorCurso {
  private:
   static ManejadorCurso* instancia;
   map<string, Curso*> ColeccionDeCursos;
+  set<DTEstadisticaProfesor> EstadisticasProfesor;
   ManejadorCurso();
 
  public:
@@ -35,6 +37,8 @@ class ManejadorCurso {
   set<string> obtenerCursosNoHabilitados();
   DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
   int cantidadEjercicios(set<Leccion*> lecs);
+  set<DTEstadisticaProfesor> obtenerEstadisticasProfesor(
+    string Nickname);
   set<DTCursoDisponible> obtenerCursosDisponibles(set<Curso*> cursos, set<Curso*> cursosAprobados);
   bool confirmarHabilitacion(string nombre);
 };

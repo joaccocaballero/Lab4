@@ -1,10 +1,7 @@
-
-#include <set>
-#include <string>
- 
 #include "../include/Estudiante.h"
 #include "../include/Idioma.h"
 #include "../include/DTFecha.h"
+#include "../include/DTEstadisticaEstudiante.h"
 
 Estudiante::Estudiante(string Nickname, string Contrasenia, string Nombre,
                        string Descripcion, string PaisResidencia,
@@ -42,8 +39,16 @@ void Estudiante::eliminarInscripcion(Inscripcion *i){
   InscripcionesCursos.erase(i);
 }
 
-
-
-set<DTEstadisticaEstudiante> obtenerEstadisticasEstudiante(string Nickname){}
+set<DTEstadisticaEstudiante> Estudiante::obtenerEstadisticas(){
+  set<Inscripcion*>::iterator it;
+  set<DTEstadisticaEstudiante> EstadisticasEstu;
+  for (it=InscripcionesCursos.begin(); it!=InscripcionesCursos.end(); ++it) {
+      Inscripcion* current = *it;
+      DTEstadisticaEstudiante estadisticaIns = current->crearEstadisticaEstudiante();
+      EstadisticasEstu.insert(estadisticaIns);
+    }
+  EstadisticasEstudiante = EstadisticasEstu;
+  return EstadisticasEstu;
+}
 
 Estudiante ::~Estudiante() {}

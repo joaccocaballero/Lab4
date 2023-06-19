@@ -9,16 +9,16 @@
 
 #include "Idioma.h"
 #include "Leccion.h"
-#include "Inscripcion.h"
 #include "DTLeccion.h"
 #include "DTInscripcion.h"
-
+#include "DTEstadisticaProfesor.h"
 using namespace std;
+
+enum EnumDificultad { Principiante, Medio, Avanzado };
 
 class DTEstadisticaCurso;
 class Inscripcion;
 
-enum EnumDificultad { Principiante, Medio, Avanzado };
 
 class Curso {
     private:
@@ -30,10 +30,10 @@ class Curso {
         set<Leccion*> Lecciones;
         set<Curso*> cursosPrevios;
         set<Inscripcion*> inscripciones;
+        DTEstadisticaProfesor EstadisticaProfesor;
         string nombreProf;
     public:
-        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf,
-        set<Inscripcion*> colInscripciones);
+        Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma* idioma, set<Leccion*> lecciones, string nombreProf, set<Inscripcion*> colInscripciones);
         string obtenerNombre();
         set<Leccion*> obtenerLecciones();
         Leccion* obtenerLeccion(string nomLeccion);
@@ -53,10 +53,14 @@ class Curso {
         set<Inscripcion*> obtenerInscripciones();
         set<DTLeccion> obtenerSetDTLeccion();
         set<DTInscripcion> obtenerSetDTInscripcion();
-        DTEstadisticaCurso* obtenerEstadisticaCurso(string nombre);
+        DTEstadisticaProfesor obtenerEstadisticasProfesor();
+        DTEstadisticaCurso obtenerEstadisticaCurso();
+        string HabilitacionToString();
         ~Curso();
 };
 
 #include "DTEstadisticaCurso.h"
+#include "Inscripcion.h"
+
 
 #endif

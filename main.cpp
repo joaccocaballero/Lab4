@@ -28,7 +28,7 @@ void casosDeUso() {
     cout << "10: Consultar Curso" << endl;
     cout << "11: Inscribirse a Curso" << endl;
     cout << "12: Realizar Ejercicio" << endl;
-    //cout << "13: Consultar Estadísticas" << endl;
+    cout << "13: Consultar Estadísticas" << endl;
     cout << "14: Suscribirse a Notificaciones" << endl;
     cout << "15: Consulta de Notificaciones" << endl;
     cout << "16: Eliminar Suscripciones" << endl;
@@ -338,7 +338,7 @@ int main() {
                 for (string nombre: idiomas) {
                     cout << "-"+nombre << endl;
                 }
-                cin >> idiomaSeleccionado;
+                getline(cin >> ws, idiomaSeleccionado);
                 system("clear");
                 ControladorCurso->seleccionarIdioma(idiomaSeleccionado);
 
@@ -901,6 +901,110 @@ int main() {
                break;
             }
 
+            //Consultar Estadisticas
+            case 13: {
+                    string sopcion;
+                    cout << "Seleccione una opción:" << endl;
+                    cout << "1- Consultar estadística de Estudiante. "<< endl;
+                    cout << "2- Consultar estadística de Profesor. " << endl;
+                    cout << "3- Consultar estadística de Curso. " << endl;
+                    getline(cin >> ws, sopcion);
+                    int opcion = std::stoi(sopcion);
+                    switch(opcion) {
+                        case 1:{
+                            //imprime todos los nicknames
+                            set<string> NickEstudiantes = ControladorUsuario->obtenerEstudiantes();
+                            std::set<string>::iterator it;
+                            cout << "Seleccione un Estudiante: "<< endl;
+                            for (it= NickEstudiantes.begin(); it!=NickEstudiantes.end(); ++it) {
+                                string elem = *it;
+                                cout << "-"+elem << endl;
+                            }
+
+                            //selecciona el nickname
+                            string estudiante;
+                            getline(cin >> ws, estudiante);
+                            system("clear");
+                            while (!NickEstudiantes.count(estudiante)) {
+                                cout << "Seleccione un nickname existente:" <<endl;
+                                getline(cin >> ws, estudiante);
+                                system("clear");
+                            }
+                            set<DTEstadisticaEstudiante> estadisticas = ControladorUsuario->obtenerEstadisticaEstudiante(estudiante);
+                            //recorre el set e imprime
+                            cout << "Estadisticas del estudiante: " << estudiante << endl;
+                            for (DTEstadisticaEstudiante est: estadisticas) {
+                                cout << "   Curso: " << est.getNombreCurso() << endl;
+                                cout << "   Avance: " << est.getAvance() << endl;
+                                cout << "   " << endl;
+                            }
+                            clearInputBuffer();
+                            break;
+                        }
+                        case 2:{
+                            //imprime nicknames de profesores
+                            set<string> NickProfesores = ControladorUsuario->obtenerProfesores();
+                            std::set<string>::iterator it;
+                            cout << "Seleccione un Profesor: "<< endl;
+                            for (it= NickProfesores.begin(); it!=NickProfesores.end(); ++it) {
+                                string elem = *it;
+                                cout << "-"+elem << endl;
+                            }
+                            string profesor;
+                            getline(cin >> ws, profesor);
+                            system("clear");
+                            while (!NickProfesores.count(profesor)) {
+                                cout << "Seleccione un nickname existente:" <<endl;
+                                getline(cin >> ws, profesor);
+                                system("clear");
+                            }
+                            set<DTEstadisticaProfesor> estadisticas = ControladorCurso->obtenerEstadisticasProfesor(profesor);
+                            cout << "Estadisticas del profesor: " << profesor << endl;
+                            for (DTEstadisticaProfesor pro: estadisticas) {
+                                cout << "   Curso: " << pro.getNombreCurso() << endl;
+                                cout << "   Promedio: " << pro.getPromedio() << endl;
+                                cout << "   " << endl;
+                            }
+                            clearInputBuffer();
+                            break;
+                        }
+                        case 3:{
+                            //imprime todos los cursos
+                            set<string> NombreCursos = ControladorCurso->obtenerCursosHabilitados();
+                            std::set<string>::iterator it;
+                            cout << "Seleccione un Curso: "<< endl;
+                            for (it= NombreCursos.begin(); it!=NombreCursos.end(); ++it) {
+                                string elem = *it;
+                                cout << "-"+elem << endl;
+                            }
+                            string curso;
+                            getline(cin >> ws, curso);
+                            system("clear");
+                            while (!NombreCursos.count(curso)) {
+                                cout << "Seleccione un curso existente:" <<endl;
+                                getline(cin >> ws, curso);
+                                system("clear");
+                            }
+                            DTEstadisticaCurso estadisticas = ControladorCurso->obtenerEstadisticaCurso(curso);
+                            cout << "Estadisticas del curso: " << curso << endl;
+                            cout << "   Curso: " << estadisticas.getNombreCurso() << endl;
+                            cout << "   Promedio: " << estadisticas.getAvance() << endl;
+                            cout << "   " << endl;
+                            clearInputBuffer();
+                            break;
+                        }
+                        default:{
+                            cout << "" << endl;
+                            cout << "Ingrese una opción correcta..." << endl;
+                        }
+                        clearInputBuffer();
+                    break;
+                    }
+                    clearInputBuffer();
+                break;
+            }
+                    
+
             //suscribirse a notificaciones
             case 14: {
                 set<string> usuarios = ControladorUsuario->obtenerUsuarios();
@@ -1039,6 +1143,78 @@ int main() {
             case 17: {
                 system("clear");
                 //AltaIdioma
+                ControladorUsuario->agregarIdioma("Ingles");
+                ControladorUsuario->agregarIdioma("Aleman");
+                ControladorUsuario->agregarIdioma("Portugues");
+
+                //Alta Estudiantes
+                    //U1
+                    ControladorUsuario->ingresarDatosUsuario("jpidiom", "asdfg123 ", "Juan Perez", "Soy un apasionado del aprendizaje de idiomas.");
+                    DTFecha Fecha1 = DTFecha(15, 7, 1995);
+                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha1);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U2
+                    ControladorUsuario->ingresarDatosUsuario("marsilva", "qwer456", "Maria Silva", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.");
+                    DTFecha Fecha2 = DTFecha(28, 2, 1998);
+                    ControladorUsuario->ingresarDatosEstudiante("Ecuador", Fecha2);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U3
+                    ControladorUsuario->ingresarDatosUsuario("pero12", "789werty", "Pedro Rodriguez", "Soy un entusiasta del aprendizaje de idiomas.");
+                    DTFecha Fecha3 = DTFecha(10, 11, 1994);
+                    ControladorUsuario->ingresarDatosEstudiante("Peru", Fecha3);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U4
+                    ControladorUsuario->ingresarDatosUsuario("laugu", "c1v2b3m4", "Laura Gutierrez", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.");
+                    DTFecha Fecha4 = DTFecha(22, 4, 1997);
+                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha4);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U5
+                    ControladorUsuario->ingresarDatosUsuario("carlo22", "tyuipz147", "Carlos Lopez", "Emocionado por adquirir fluidez en diferentes lenguas.");
+                    DTFecha Fecha5 = DTFecha(3, 9, 1996);
+                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha5);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U6
+                    ControladorUsuario->ingresarDatosUsuario("anator", "1qsxc36", "Ana Torres", "Disfruto de la belleza de las diferentes estructuras y sonidos.");
+                    DTFecha Fecha6 = DTFecha(12, 1, 1999);
+                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha6);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U7
+                    ControladorUsuario->ingresarDatosUsuario("luher24", "t7h8y5u6", "Lucia Hernandez", "Emocionada en la riqueza cultural que cada idioma ofrece.");
+                    DTFecha Fecha7 = DTFecha(25, 6, 1993);
+                    ControladorUsuario->ingresarDatosEstudiante("Colombia", Fecha7);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U8
+                    ControladorUsuario->ingresarDatosUsuario("dagon", "1w2e3r4t5", "David Gonzalez", "Aprender nuevas lenguas y sumergirme en diferentes culturas.");
+                    DTFecha Fecha8 = DTFecha(8, 12, 1997);
+                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha8);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U9
+                    ControladorUsuario->ingresarDatosUsuario("carmor", "6yu7i8m9", "Carmen Morales", "El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.");
+                    DTFecha Fecha9 = DTFecha(17, 3, 1995);
+                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha9);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                    //U10
+                    ControladorUsuario->ingresarDatosUsuario("jose24", "qwj789p", "Jose Fernandez", "Disfruto del proceso de descubrir nuevas formas de comunicarme.");
+                    DTFecha Fecha10 = DTFecha(2, 8, 1998);
+                    ControladorUsuario->ingresarDatosEstudiante("Bolivia", Fecha10);
+                    ControladorUsuario->confirmarAltaEstudiante();
+
+                //Alta profesores
+                    //U11
+                    ControladorUsuario->ingresarDatosUsuario("langMaster", "P4s512",
+                                                            "Marta Grecia", "Soy una profesora apasionada por los idiomas.");
+                    ControladorUsuario->ingresarInstituto("Instituto de Idiomas Moderno");
+                    ControladorUsuario->agregarEspecializacion("Ingles");
+                    ControladorUsuario->agregarEspecializacion("Portugues");
                 ControladorUsuario->agregarIdioma("Ingles");
                 ControladorUsuario->agregarIdioma("Aleman");
                 ControladorUsuario->agregarIdioma("Portugues");
@@ -1380,6 +1556,14 @@ int main() {
                 cout << "" << endl;
                 cout << "Ingrese una opción correcta..." << endl;
             } 
+                
+        }
+        if (continuarSesion) {
+            std::cout << "       " <<endl;;
+            std::cout << "________________________________________________" << endl;;
+            std::cout << "Presione Enter para volver al menú principal...";
+            clearInputBuffer();
+        }
                 
         }
         if (continuarSesion) {

@@ -7,15 +7,16 @@ using namespace std;
 
 class DTEstadisticaProfesor{
     private:
-        string Curso;
-        int Avance;
+        string curso;
         int Promedio;
     public:
-        DTEstadisticaProfesor(string Curso, int Avance, int Promedio);
+        DTEstadisticaProfesor();
+        DTEstadisticaProfesor(string curso, int Promedio);
         string getNombreCurso();
-        int getAvance();
         int getPromedio();
-
+        bool operator<(const DTEstadisticaProfesor& dt) const {
+            return Promedio < dt.Promedio;
+        }
 };
 
 #endif

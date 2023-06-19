@@ -160,16 +160,10 @@ bool ControladorUsuario::obtenerTipo(string nickname) {
 }
 
 set<DTEstadisticaEstudiante> ControladorUsuario::obtenerEstadisticaEstudiante(string Nickname){
-    // Agrega tu implementación aquí
-    set<DTEstadisticaEstudiante> estadisticas;
-    return estadisticas;
+    ManejadorUsuario *manejador = manejadorUsuario->getManejadorU();
+    return manejador->obtenerEstadisticasEstudiantes(Nickname);
 }
 
-set<DTEstadisticaProfesor> ControladorUsuario::obtenerEstadisticaProfesor(string Nickname){
-    // Agrega tu implementación aquí
-    set<DTEstadisticaProfesor> estadisticas;
-    return estadisticas;
-}
 
 bool ControladorUsuario::suscribirUsuario(string nickname, set<string> idiomas) {
     ManejadorIdioma *manId = manejadorIdioma->getManejadorI();

@@ -167,7 +167,23 @@ set<Curso*> ManejadorCurso::obtenerCursosPrevios(set<string> nombrePrevios){
   }
   return cursosPrevios;
 }
+set<DTEstadisticaProfesor> ManejadorCurso::obtenerEstadisticasProfesor(string Nickname){
+    map<string, Curso*>::iterator iter;
+    set<DTEstadisticaProfesor> estadisProf;
+    for (iter = ColeccionDeCursos.begin(); iter != ColeccionDeCursos.end(); ++iter) {
+      string nombreProfesor = iter->second->obtenerNombreProf();
+      if(nombreProfesor == Nickname){
+        estadisProf.insert(iter->second->obtenerEstadisticasProfesor());
+      }
+    }
+    this->EstadisticasProfesor = estadisProf;
+    return estadisProf;
+    }
 
 DTEjercicio ManejadorCurso::obtenerEjercicio(int id){}
 bool ManejadorCurso::respuestaEjercicio(string sol){}
-DTEstadisticaCurso ManejadorCurso::obtenerEstadisticaCurso(string nombre){}
+DTEstadisticaCurso ManejadorCurso::obtenerEstadisticaCurso(string nombre){
+  Curso* curso = obtenerCurso(nombre);
+  DTEstadisticaCurso estadisticaCurso = curso->obtenerEstadisticaCurso();
+  return estadisticaCurso;
+}

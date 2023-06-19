@@ -5,6 +5,8 @@ using namespace std;
 #include "../include/ManejadorUsuario.h"
 #include "../include/DTEstudiante.h"
 #include "../include/DTProfesor.h"
+#include "../include/DTEstudiante.h"
+#include "../include/DTEstadisticaProfesor.h"
 
 
 ManejadorUsuario* ManejadorUsuario::manejadorU = NULL;
@@ -89,9 +91,14 @@ void ManejadorUsuario::agregarInscripcion(Estudiante* e, Inscripcion* i){
 set<string> ManejadorUsuario::obtenerEstudiantes(){}
 
 set<DTEstadisticaEstudiante> ManejadorUsuario::obtenerEstadisticasEstudiantes(
-    string Nickname){}
+    string Nickname){
+        Estudiante* e = ColeccionDeEstudiantes[Nickname];
+        set<DTEstadisticaEstudiante> dtEstadisEstudiante = e->obtenerEstadisticas();
+        return dtEstadisEstudiante;
+    }
 
-set<string> ManejadorUsuario::obtenerProfesores(){}
+set<string> ManejadorUsuario::obtenerProfesores(){
+}
 
 set<DTEstadisticaProfesor> ManejadorUsuario::obtenerEstadisticasProfesor(
     string Nickname){}

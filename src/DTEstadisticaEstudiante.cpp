@@ -2,13 +2,16 @@
 #include "../include/DTEstadisticaEstudiante.h"
 
 using namespace std;
-
-DTEstadisticaEstudiante::DTEstadisticaEstudiante(string Curso, int avance){
+DTEstadisticaEstudiante::DTEstadisticaEstudiante(){
+    this->Avance = 0;
+    this->curso = "";
+}
+DTEstadisticaEstudiante::DTEstadisticaEstudiante(string curso, int avance){
     this->Avance = avance;
-    this->Curso = Curso;
+    this->curso = curso;
 }
 string DTEstadisticaEstudiante::getNombreCurso(){
-    return Curso;
+    return curso;
 }
 int DTEstadisticaEstudiante::getAvance(){
     return Avance;

@@ -16,6 +16,7 @@
 #include "DTCurso.h"
 #include "DTCursoDisponible.h"
 #include "DTEjercicio.h"
+#include "DTEstadisticaProfesor.h"
 
 using namespace std;
 
@@ -77,6 +78,7 @@ class ControladorCurso : public IControladorCurso {
         DTEjercicio seleccionarEjercicio(int id);
         bool validarEjercicio(string nombre);
         DTEstadisticaCurso obtenerEstadisticaCurso(string nombre);
+        set<DTEstadisticaProfesor> obtenerEstadisticasProfesor(string Nickname);
         bool confirmarHabilitacion(string nombre);
         DTCurso obtenerInfoCurso(string nombre);
         virtual ~ControladorCurso();

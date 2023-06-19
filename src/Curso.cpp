@@ -2,16 +2,16 @@
 #include <set>
 #include <iostream>
 #include "../include/Leccion.h"
-#include "../include/DTEstadisticaCurso.h"
 #include "../include/Curso.h"
 #include "../include/DTLeccion.h"
 #include "../include/DTInscripcion.h"
+#include "../include/DTEstadisticaProfesor.h"
+
 
 using namespace std;
 
 
-Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad,set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf,
-set<Inscripcion*> colInscripciones){
+Curso::Curso(bool habilitacion, string nombre, string descripcion, EnumDificultad dificultad, set<Curso*> cursosPrevios, Idioma *idioma, set<Leccion*> lecciones, string nombreProf, set<Inscripcion*> colInscripciones){
     this->habilitacion = habilitacion;
     this->nombre = nombre;
     this->descripcion = descripcion;
@@ -20,7 +20,8 @@ set<Inscripcion*> colInscripciones){
     this->cursosPrevios = cursosPrevios;
     this->Lecciones = lecciones;
     this->nombreProf = nombreProf;
-    this->inscripciones = inscripciones;
+    this->inscripciones = colInscripciones;
+    this->EstadisticaProfesor = DTEstadisticaProfesor("asd", 0);
 }
 
 string Curso::obtenerNombre(){
@@ -134,13 +135,52 @@ set<DTInscripcion> Curso::obtenerSetDTInscripcion(){
     return retorno;
 }
 
-DTEstadisticaCurso* Curso::obtenerEstadisticaCurso(string nombre){
-    /*nombre= "";
-    set<Inscripcion> inscriptos;
-    set<Leccion*> lecciones = obtenerLecciones();
-    int avance = 10;
-    DTEstadisticaCurso* estadisticas = new DTEstadisticaCurso("a","a",Principiante,"idioma", "profe", "false", lecciones, inscriptos, avance);
-    return estadisticas;*/
+DTEstadisticaCurso Curso::obtenerEstadisticaCurso(){
+    int avance = 0;
+    int Promedio = 0;
+    std::set<Inscripcion*>::iterator it;
+    cout << "Seleccione un Profesor: "<< endl;
+    int cantidad = inscripciones.size();
+    for (it= inscripciones.begin(); it!=inscripciones.end(); ++it) {
+        Inscripcion* current = *it;
+        DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
+        avance += estudianteInscripto.getAvance();
+    }
+    if(cantidad != 0 ){
+        Promedio = avance/cantidad*100;
+    }
+    else {
+        Promedio = 0;
+    }
+    DTEstadisticaCurso estadistica = DTEstadisticaCurso(nombre, descripcion, dificultad, IdiomaEnseniado, nombreProf, HabilitacionToString(), Lecciones, inscripciones, Promedio);
+    return estadistica;
+}
+
+DTEstadisticaProfesor Curso::obtenerEstadisticasProfesor(){
+    string nombreCurso = nombre;
+    int avance = 0;
+    int promedio = 0;
+    int cantidad = inscripciones.size();
+    set<Inscripcion*>::iterator it;
+    for (it= inscripciones.begin(); it!=inscripciones.end(); ++it) {
+        Inscripcion* current = *it;
+        DTEstadisticaEstudiante estudianteInscripto = current->crearEstadisticaEstudiante();
+        avance += estudianteInscripto.getAvance();
+    }
+    if(cantidad != 0 ){
+        promedio = static_cast<int>(avance/cantidad*100);
+    }
+    else {
+        promedio = 0;
+    }
+    DTEstadisticaProfesor retorno = DTEstadisticaProfesor(nombreCurso, promedio);
+    this->EstadisticaProfesor = retorno;
+    return retorno;
+}
+
+string Curso::HabilitacionToString(){
+    if (habilitacion) return "Hablitado";
+    return "No habilitado";
 }
 
 Curso::~Curso(){

@@ -4,6 +4,7 @@
 
 #include <string>
 #include "Curso.h"
+#include "Idioma.h"
 
 using namespace std;
 
@@ -15,26 +16,29 @@ class DTEstadisticaCurso {
     string Nombre;
     string Descripcion;
     EnumDificultad Dificultad;
-    string Idioma;
+    Idioma* idioma;
     string Profesor;
     string Habilitacion;
-    set<Leccion> Lecciones;
-    set<Inscripcion> Inscripciones;
+    set<Leccion*> Lecciones;
+    set<Inscripcion*> Inscripciones;
     int Avance;
  public:
     DTEstadisticaCurso();
     DTEstadisticaCurso(string Nombre, string Descripcion, EnumDificultad Dificultad,
-    string Idioma, string Profesor, string Habilitacion, set<Leccion> Lecciones,
-    set<Inscripcion> Inscripciones, int Avance);
+    Idioma* idioma, string Profesor, string Habilitacion, set<Leccion*> Lecciones,
+    set<Inscripcion*> Inscripciones, int Avance);
     string getNombreCurso();
     string getDescripcionCurso();
     EnumDificultad getDificultad();
-    string getIdioma();
+    Idioma* getIdioma();
     string getProfesor();
     string getHabilitacion();
-    set<Leccion> getLecciones();
-    set<Inscripcion> getInscripciones();
+    set<Leccion*> getLecciones();
+    set<Inscripcion*> getInscripciones();
     int getAvance();
+   bool operator<(const DTEstadisticaCurso& dt) const {
+      return Avance < dt.Avance;
+   }
 };
 
 #include "Leccion.h"
