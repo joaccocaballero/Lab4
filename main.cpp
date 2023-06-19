@@ -1219,75 +1219,7 @@ int main() {
                 ControladorUsuario->agregarIdioma("Aleman");
                 ControladorUsuario->agregarIdioma("Portugues");
 
-                //Alta Estudiantes
-                    //U1
-                    ControladorUsuario->ingresarDatosUsuario("jpidiom", "asdfg123 ", "Juan Perez", "Soy un apasionado del aprendizaje de idiomas.");
-                    DTFecha Fecha1 = DTFecha(15, 7, 1995);
-                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha1);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U2
-                    ControladorUsuario->ingresarDatosUsuario("marsilva", "qwer456", "Maria Silva", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.");
-                    DTFecha Fecha2 = DTFecha(28, 2, 1998);
-                    ControladorUsuario->ingresarDatosEstudiante("Ecuador", Fecha2);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U3
-                    ControladorUsuario->ingresarDatosUsuario("pero12", "789werty", "Pedro Rodriguez", "Soy un entusiasta del aprendizaje de idiomas.");
-                    DTFecha Fecha3 = DTFecha(10, 11, 1994);
-                    ControladorUsuario->ingresarDatosEstudiante("Peru", Fecha3);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U4
-                    ControladorUsuario->ingresarDatosUsuario("laugu", "c1v2b3m4", "Laura Gutierrez", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.");
-                    DTFecha Fecha4 = DTFecha(22, 4, 1997);
-                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha4);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U5
-                    ControladorUsuario->ingresarDatosUsuario("carlo22", "tyuipz147", "Carlos Lopez", "Emocionado por adquirir fluidez en diferentes lenguas.");
-                    DTFecha Fecha5 = DTFecha(3, 9, 1996);
-                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha5);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U6
-                    ControladorUsuario->ingresarDatosUsuario("anator", "1qsxc36", "Ana Torres", "Disfruto de la belleza de las diferentes estructuras y sonidos.");
-                    DTFecha Fecha6 = DTFecha(12, 1, 1999);
-                    ControladorUsuario->ingresarDatosEstudiante("Argentina", Fecha6);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U7
-                    ControladorUsuario->ingresarDatosUsuario("luher24", "t7h8y5u6", "Lucia Hernandez", "Emocionada en la riqueza cultural que cada idioma ofrece.");
-                    DTFecha Fecha7 = DTFecha(25, 6, 1993);
-                    ControladorUsuario->ingresarDatosEstudiante("Colombia", Fecha7);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U8
-                    ControladorUsuario->ingresarDatosUsuario("dagon", "1w2e3r4t5", "David Gonzalez", "Aprender nuevas lenguas y sumergirme en diferentes culturas.");
-                    DTFecha Fecha8 = DTFecha(8, 12, 1997);
-                    ControladorUsuario->ingresarDatosEstudiante("Uruguay", Fecha8);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U9
-                    ControladorUsuario->ingresarDatosUsuario("carmor", "6yu7i8m9", "Carmen Morales", "El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.");
-                    DTFecha Fecha9 = DTFecha(17, 3, 1995);
-                    ControladorUsuario->ingresarDatosEstudiante("Chile", Fecha9);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                    //U10
-                    ControladorUsuario->ingresarDatosUsuario("jose24", "qwj789p", "Jose Fernandez", "Disfruto del proceso de descubrir nuevas formas de comunicarme.");
-                    DTFecha Fecha10 = DTFecha(2, 8, 1998);
-                    ControladorUsuario->ingresarDatosEstudiante("Bolivia", Fecha10);
-                    ControladorUsuario->confirmarAltaEstudiante();
-
-                //Alta profesores
-                    //U11
-                    ControladorUsuario->ingresarDatosUsuario("langMaster", "P4s512",
-                                                            "Marta Grecia", "Soy una profesora apasionada por los idiomas.");
-                    ControladorUsuario->ingresarInstituto("Instituto de Idiomas Moderno");
-                    ControladorUsuario->agregarEspecializacion("Ingles");
-                    ControladorUsuario->agregarEspecializacion("Portugues");
-                ControladorUsuario->confirmarAltaProfesor();
+               
 
                     //U12
                     ControladorUsuario->ingresarDatosUsuario("linguaPro", "Pess23",
@@ -1572,6 +1504,6 @@ int main() {
             std::cout << "Presione Enter para volver al menú principal...";
             clearInputBuffer();
         }
-    }
     return 0;
-}
+
+    }

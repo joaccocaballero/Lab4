@@ -75,5 +75,4 @@ DTEstadisticaEstudiante Inscripcion::crearEstadisticaEstudiante(){
     return estadistica; 
 }
 
-Inscripcion::~Inscripcion(){}
 
